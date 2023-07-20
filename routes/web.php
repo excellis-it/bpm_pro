@@ -1,10 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\AuthController as AdminAuthController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Homecontroller;
 
 
@@ -27,10 +28,19 @@ Route::post('/user-login-check', [AuthController::class, 'loginCheck'])->name('l
 
 Route::get('/admin', [AdminAuthController::class, 'admin'])->name('admin');
 Route::group(['prefix' => 'admin'], function () {
-    Route::get('/login', [AdminAuthController::class, 'login'])->name('admin.login');
-    Route::post('/login-check', [AdminAuthController::class, 'loginCheck'])->name('admin.login.check');  //login check
     Route::group(['middleware' => 'admin'], function () {
         Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+        Route::get('users',[UserController::class, 'list'])->name('user.list');
+        Route::get('profile', [ProfileController::class, 'index'])->name('admin.profile');
+        Route::post('profile/update', [ProfileController::class, 'profileUpdate'])->name('admin.profile.update');
+        Route::get('logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
+      
+    });
+});
+
+Route::group(['prefix' => 'user'], function () {
+    Route::group(['middleware' => 'user'], function () {
+        Route::get('dashboard', [DashboardController::class, 'index'])->name('user.dashboard');
         Route::get('profile', [ProfileController::class, 'index'])->name('admin.profile');
         Route::post('profile/update', [ProfileController::class, 'profileUpdate'])->name('admin.profile.update');
         Route::get('logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
