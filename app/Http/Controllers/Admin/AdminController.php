@@ -5,14 +5,19 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class AdminController extends Controller
 {
     //
-    public function index()
+    public function admin()
     {
-        $admins = User::role('ADMIN')->get();
-        return view('admin.admin.list')->with(compact('admins'));
+        if (Auth::check() && Auth::user()->hasRole('ADMIN')) {
+            return redirect()->route('admin.dashboard');
+        } else {
+            return redirect()->route('login');
+        }
     }
 
     public function store(Request $request)

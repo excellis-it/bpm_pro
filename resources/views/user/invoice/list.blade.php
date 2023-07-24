@@ -1,6 +1,6 @@
-@extends('admin.layouts.master')
+@extends('user.layouts.master')
 @section('title')
-    All Customer Details - {{ env('APP_NAME') }}
+    Customer Invoice - {{ env('APP_NAME') }}
 @endsection
 @push('styles')
 <style>
@@ -24,13 +24,16 @@
             <div class="page-header">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h3 class="page-title">Users Information</h3>
+                        <h3 class="page-title">Users Invoice</h3>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="">Users</a></li>
+                            <li class="breadcrumb-item"><a href="">Users Invoive</a></li>
                             <li class="breadcrumb-item active">List</li>
                         </ul>
                     </div>
-                    
+                    <div class="col-auto float-end ms-auto">
+                        <a href="{{ route('invoice.create') }}" class="btn add-btn"><i class="fa fa-plus"></i> Add
+                            Invoice</a>
+                    </div>
                 </div>
             </div>
 
@@ -39,7 +42,7 @@
                     <div class="card-title">
                         <div class="row">
                             <div class="col-md-6">
-                                <h4 class="mb-0">Users Details</h4>
+                                <h4 class="mb-0">Users Invoives</h4>
                             </div>
 
                         </div>
@@ -53,7 +56,6 @@
                                     <th> Name</th>
                                     <th> Email</th>
                                     <th> Phone</th>
-                                    <th> Status</th>
                                     {{-- <th> Action</th> --}}
                                 </tr>
                             </thead>
@@ -72,55 +74,5 @@
 
 @push('scripts')
    
-<script>
-    $(document).ready(function() {
 
-        var table = $('#example').DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: "{{ route('user.ajax.list') }}",
-            columns: [{
-                    data: 'name',
-                    name: 'name'
-                },
-                {
-                    data: 'email',
-                    name: 'email'
-                },
-                {
-                    data: 'phone',
-                    name: 'phone'
-                },
-                {
-                    data: 'status',
-                    name: 'status',
-                    orderable: false,
-                    searchable: false
-                },
-                
-            ]
-        });
-
-    });
-</script>
-
-<script>
-    $(document).on('change', '.toggle-class', function() {
-        var status = $(this).prop('checked') == true ? 1 : 0;
-        var user_id = $(this).data('id');
-
-        $.ajax({
-            type: "GET",
-            dataType: "json",
-            url: '{{ route('user.status.change') }}',
-            data: {
-                'status': status,
-                'user_id': user_id
-            },
-            success: function(resp) {
-                console.log(resp.success)
-            }
-        });
-    });
-</script>
 @endpush

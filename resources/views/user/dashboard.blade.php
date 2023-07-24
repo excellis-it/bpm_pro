@@ -1,6 +1,6 @@
-@extends('admin.layouts.master')
+@extends('user.layouts.master')
 @section('title')
-    Dashboard - {{ env('APP_NAME') }} admin
+    Dashboard - {{ env('APP_NAME') }} user
 @endsection
 @push('styles')
 @endpush
@@ -12,7 +12,7 @@
             <div class="page-header">
                 <div class="row">
                     <div class="col-sm-12">
-                        <h3 class="page-title">Welcome Admin!</h3>
+                        <h3 class="page-title">Welcome User!</h3>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item active">Dashboard</li>
                         </ul>

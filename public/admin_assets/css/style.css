@@ -3310,7 +3310,7 @@ input[type="file"].form-control {
 
 .sidebar,
 .two-col-bar {
-    background-color: #34444c;
+    background-color: #888;
     border-right: 1px solid transparent;
     margin-top: 0;
     position: fixed;
@@ -3323,6 +3323,8 @@ input[type="file"].form-control {
     width: 230px;
     z-index: 1001;
 }
+
+
 
 @media (max-width: 992px) {
     .sidebar,
@@ -3359,6 +3361,10 @@ input[type="file"].form-control {
 .sidebar .sidebar-menu ul li,
 .two-col-bar .sidebar-menu ul li {
     position: relative;
+}
+
+.sidebar .sidebar-menu ul li .main-menu{
+    
 }
 
 .sidebar .sidebar-menu ul li.submenu .noti-dot:before,
@@ -3402,12 +3408,30 @@ input[type="file"].form-control {
     font-size: 16px;
 }
 
+.sidebar .sidebar-menu ul li.main-menu a,
+.two-col-bar .sidebar-menu ul li.main-menu a {
+    justify-content: flex-start;
+    position: relative;
+    font-size: 20px;
+    color: #fff;
+    height: auto;
+    -webkit-transition: all 0.2s ease;
+    -ms-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+    padding: 8px 15px;
+}
+
+.sidebar .sidebar-menu ul li.main-menu a:hover {
+    color: #fff;;
+    background-color: #ff9b44;
+}
+
 .sidebar .sidebar-menu ul li a,
 .two-col-bar .sidebar-menu ul li a {
     justify-content: flex-start;
     position: relative;
     font-size: 15px;
-    color: #b7c0cd;
+    color: #fff;
     height: auto;
     -webkit-transition: all 0.2s ease;
     -ms-transition: all 0.2s ease;
@@ -3417,7 +3441,8 @@ input[type="file"].form-control {
 
 .sidebar .sidebar-menu ul li a:hover,
 .two-col-bar .sidebar-menu ul li a:hover {
-    color: rgb(43 233 9 / 36%);
+    color: #fff;
+    background-color: #ff9b44;
 }
 
 .sidebar .sidebar-menu ul li a span,
@@ -3492,7 +3517,7 @@ input[type="file"].form-control {
 .sidebar .sidebar-menu ul li a .chat-avatar-sm,
 .two-col-bar .sidebar-menu ul li a .chat-avatar-sm {
     display: inline-block;
-    float: left;
+    float:left;
     margin-left: 0 !important;
     margin-right: 10px;
     position: relative;
@@ -3545,7 +3570,7 @@ input[type="file"].form-control {
 .sidebar .sidebar-menu ul li.active a,
 .two-col-bar .sidebar-menu ul li.active a {
     color: #fff;
-    background-color: rgb(43 233 9 / 36%);
+    background-color:#ff9b44 ;
 }
 
 .sidebar .sidebar-menu ul ul,
@@ -5133,7 +5158,7 @@ input[type="file"].form-control {
 }
 
 [data-layout-mode="purple"] .header .page-title-box h3 {
-    color: #fff;
+    color: #eeeb25;
 }
 
 [data-layout-mode="purple"] .header .logo2 {
@@ -11517,4 +11542,11 @@ button.close {
     width: 200px;
     height: 200px;
     border-radius: 100%;
+}
+
+.logo{
+	width:150px;
+}
+.logo img{
+  width: 100%;
 }

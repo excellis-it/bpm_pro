@@ -13,7 +13,7 @@
         </a>
 
         <div class="page-title-box">
-            <h3>Welcome to admin panel</h3>
+            <h3>Welcome to user panel</h3>
         </div>
 
         <a id="mobile_btn" class="mobile_btn" href="#sidebar"><i class="fa fa-bars"></i></a>
@@ -23,7 +23,7 @@
                 <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
                     <span class="user-img"><img src="{{ asset("admin_assets/images/icon.png") }}" alt="">
                         <span class="status online"></span></span>
-                    <span>Admin</span>
+                    <span>User</span>
                 </a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="{{ route('admin.profile') }}">My Profile</a>

@@ -3,12 +3,12 @@
         <div id="sidebar-menu" class="sidebar-menu">
             <ul class="sidebar-vertical">
                 <li class="main-menu">
-                    <a href="#">Admin Dashboard</a>
+                    <a href="#">User Dashboard</a>
                 </li>
 
                 <li class="submenu">
-                    <li class="{{ request()->is('admin/users') ? 'active' : '' }}">
-                    <a href="{{ route('user.list') }}" ><i class="la la-users"></i> <span>Manage Users </span></a>     
+                    <li class="{{ request()->is('user/invoice*') ? 'active' : '' }}">
+                    <a href="{{ route('invoice.index') }}" ><i class="la la-file"></i> <span>Invoice</span></a>     
                     </li>
                 </ul> 
         </div>

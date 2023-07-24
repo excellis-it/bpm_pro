@@ -21,27 +21,17 @@ class ProfileController extends Controller
 
     public function profileUpdate(Request $request)
     {
+        
         $request->validate([
             'name'     => 'required',
             'email'    => 'required|regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix|unique:users,email,'.Auth::user()->id,
+            'phone'    => 'required'
         ]);
 
         $data = User::find(Auth::user()->id);
         $data->name = $request->name;
         $data->email = $request->email;
-
-        if ($request->hasFile('profile_picture')) {
-            $request->validate([
-                'profile_picture' => 'required|image|mimes:jpg,webp,png,jpeg,gif,svg|max:2048',
-            ]);
-            $fileData = $this->imageUpload($request->file('profile_picture'), 'admin');
-            if (!empty($fileData['filePath'])) {
-                if ((!empty($data->profile_picture)) && Storage::exists($data->profile_picture)) {
-                    Storage::delete($data->profile_picture);
-                }
-                $data->profile_picture = $fileData['filePath'] ?? null;
-            }
-        }
+        $data->phone = $request->phone;
         $data->save();
         return redirect()->back()->with('message', 'Profile updated successfully.');
     }

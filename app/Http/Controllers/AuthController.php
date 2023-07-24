@@ -15,7 +15,7 @@ class AuthController extends Controller
         if (Auth::check() && Auth::user()->hasRole('ADMIN')) {
             return redirect()->route('admin.dashboard');
         } else {
-            return redirect()->route('admin.login');
+            return redirect()->route('login');
         }
     }
 
@@ -66,7 +66,7 @@ class AuthController extends Controller
             if ($user->hasRole('ADMIN')) {
                 return redirect()->route('admin.dashboard');
             } else if($user->hasRole('USER') && $user->status == 1){
-                return redirect()->route('user.dashboard');
+                return redirect()->route('invoice.index');
             }else{
                 Auth::logout();
                 return redirect()->back()->with('error', 'Email id & password was invalid!');
@@ -81,6 +81,6 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('admin.login');
+        return redirect()->route('login');
     }
 }

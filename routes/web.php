@@ -2,11 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Homecontroller;
+use App\Http\Controllers\User\InvoiceController;
 
 
 // Clear cache
@@ -26,24 +28,29 @@ Route::post('/user-login-check', [AuthController::class, 'loginCheck'])->name('l
 
 /* ----------------- Admin Routes -----------------*/
 
-Route::get('/admin', [AdminAuthController::class, 'admin'])->name('admin');
+Route::get('/admin', [AdminController::class, 'admin'])->name('admin');
 Route::group(['prefix' => 'admin'], function () {
     Route::group(['middleware' => 'admin'], function () {
-        Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
-        Route::get('users',[UserController::class, 'list'])->name('user.list');
+        Route::get('dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+        Route::get('/users',[UserController::class, 'list'])->name('user.list');
+        Route::get('/all-users',[Usercontroller::class,'userList'])->name('user.ajax.list');
+        Route::get('/status-change',[UserController::class, 'userStatusChange'])->name('user.status.change');
         Route::get('profile', [ProfileController::class, 'index'])->name('admin.profile');
         Route::post('profile/update', [ProfileController::class, 'profileUpdate'])->name('admin.profile.update');
-        Route::get('logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
+        Route::get('logout', [AuthController::class, 'logout'])->name('admin.logout');
       
     });
 });
 
 Route::group(['prefix' => 'user'], function () {
     Route::group(['middleware' => 'user'], function () {
-        Route::get('dashboard', [DashboardController::class, 'index'])->name('user.dashboard');
-        Route::get('profile', [ProfileController::class, 'index'])->name('admin.profile');
-        Route::post('profile/update', [ProfileController::class, 'profileUpdate'])->name('admin.profile.update');
-        Route::get('logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
-      
+        Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('user.dashboard');
+        Route::get('profile', [ProfileController::class, 'index'])->name('user.profile');
+        Route::post('profile/update', [ProfileController::class, 'profileUpdate'])->name('user.profile.update');
+        Route::get('logout', [AdminAuthController::class, 'logout'])->name('user.logout');
+        // Route::resource('invoice', 'InvoiceController');
+        Route::resources([
+            'invoice' => InvoiceController::class,
+        ]);
     });
 });

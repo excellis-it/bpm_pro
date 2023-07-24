@@ -20,7 +20,7 @@ class Admin
         if (Auth::check() && Auth::user()->hasRole('ADMIN')) {
             return $next($request);
         } else {
-            return redirect()->route('admin.login');
+            return redirect()->route('login');
         }
     }
 }

@@ -23,7 +23,7 @@ BPM PRO | HOME
                                 <h1>Quality Service At An<br> Affordable Price</h1>  
                             </div>
                             <div class="btn-get">
-                                <a href="#" class="btn get-btn">Registration</a>
+                                <a href="{{ route('register') }}" class="btn get-btn">Registration</a>
                             </div>
                         </div>
                     </div>
@@ -42,7 +42,7 @@ BPM PRO | HOME
                                 <h1>Quality Service At An<br> Affordable Price</h1>  
                             </div>
                             <div class="btn-get">
-                                <a href="#" class="btn get-btn">Registration</a>
+                                <a href="{{ route('register') }}" class="btn get-btn">Registration</a>
                             </div>
                         </div>
                     </div>
@@ -61,7 +61,7 @@ BPM PRO | HOME
                                 <h1>Quality Service At An<br> Affordable Price</h1>  
                             </div>
                             <div class="btn-get">
-                                <a href="#" class="btn get-btn">Registration</a>
+                                <a href="{{ route('register') }}" class="btn get-btn">Registration</a>
                             </div>
                         </div>
                     </div>

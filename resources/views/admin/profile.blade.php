@@ -31,15 +31,7 @@
                         <div class="row">
                             <div class="col-12 col-lg-7 border-right">
                                 <div class="d-md-flex align-items-center">
-                                    <div class="mb-md-0 mb-3">
-                                        @if(!Auth::user()->profile_picture)
-                                        <a href="{{asset('admin_assets/img/profiles/avatar-21.jpg')}}" target="_blank">
-                                        <img src="{{asset('admin_assets/img/profiles/avatar-21.jpg')}}" class="rounded-circle shadow" width="130px" height="130px" alt="" /></a>
-                                        @else
-                                        <a href="{{Storage::url(Auth::user()->profile_picture)}}" target="_blank">
-                                        <img src="{{Storage::url(Auth::user()->profile_picture)}}" class="rounded-circle shadow" width="130px" height="130px" alt=""></a>
-                                        @endif
-                                    </div>
+                                    
                                     <div class="ms-md-4 flex-grow-1">
                                         <div class="d-flex align-items-center mb-1">
                                             <h4 class="mb-0">{{Auth::user()->name}}</h4>
@@ -59,15 +51,9 @@
                                         <div class="form-body">
                                             <div class="row">
                                                 <div class="col-12 col-lg-5 border-right">
-                                                    <form class="row g-3" action="{{route('admin.profile.update')}}" method="post" enctype="multipart/form-data">
+                                                    <form class="row g-3" action="{{ route('admin.profile.update') }}" method="post" enctype="multipart/form-data">
                                                         @csrf
-                                                        <div class="col-12">
-                                                            <label class="form-label">Profile Picture</label>
-                                                            <input type="file" name="profile_picture" class="form-control">
-                                                            @if($errors->has('profile_picture'))
-                                                            <div class="error" style="color:red;">{{ $errors->first('profile_picture') }}</div>
-                                                            @endif
-                                                        </div>
+                                                       
                                                         <div class="col-12">
                                                             <label class="form-label">Name</label>
                                                             <input type="text" value="{{Auth::user()->name}}" name="name" class="form-control">
@@ -80,6 +66,13 @@
                                                             <input type="text" value="{{Auth::user()->email}}" name="email" class="form-control">
                                                             @if($errors->has('email'))
                                                             <div class="error" style="color:red;">{{ $errors->first('email') }}</div>
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <label class="form-label">Phone</label>
+                                                            <input type="text" value="{{Auth::user()->phone}}" name="phone" class="form-control">
+                                                            @if($errors->has('phone'))
+                                                            <div class="error" style="color:red;">{{ $errors->first('phone') }}</div>
                                                             @endif
                                                         </div>
                                                         
