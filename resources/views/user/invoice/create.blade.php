@@ -143,12 +143,12 @@
                                                     <div class="col-md-6">
                                                         <label for="inputEnterYourName" class="col-form-label"> Gst <span
                                                                 style="color: red;">*</span></label>
-                                                        <input type="text" name="bil_to_phone" id=""
-                                                            class="form-control" value="{{ old('bil_to_phone') }}"
+                                                        <input type="text" name="gst" id=""
+                                                            class="form-control" value="{{ old('gst') }}"
                                                             placeholder="Enter Gst">
-                                                        @if ($errors->has('bil_to_phone'))
+                                                        @if ($errors->has('gst'))
                                                             <div class="error" style="color:red;">
-                                                                {{ $errors->first('bil_to_phone') }}</div>
+                                                                {{ $errors->first('gst') }}</div>
                                                         @endif
                                                     </div>
 
@@ -234,12 +234,12 @@
                                                                 {{ $errors->first('rate') }}</div>
                                                         @endif
                                                     </div>
-                                                    <div class="col-md-3">
+                                                    <div class="col-md-3" >
                                                         <label for="inputEnterYourName" class="col-form-label"> Quantity
                                                             <span style="color: red;">*</span></label>
                                                         <input type="text" name="quantity[]" id="quan_1"
                                                             class="form-control" value="{{ old('quantity') }}"
-                                                            placeholder="Enter Quantity">
+                                                            placeholder="Enter Quantity" oninput="quant(1)" >
                                                         @if ($errors->has('quantity'))
                                                             <div class="error" style="color:red;">
                                                                 {{ $errors->first('quantity') }}</div>
@@ -267,7 +267,7 @@
                                                         
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <td> Total Amount: </td>
+                                                        <td> Total Amount($): <input id="total_amount" name="total" value="00"></td>
                                                             
                                                     </div>
 
@@ -278,7 +278,7 @@
                                                     <div class="col-md-12">
                                                         <label for="inputEnterYourName" class="col-form-label"> Notes
                                                             <span style="color: red;">*</span></label>
-                                                        <textarea name="notes[]" id=""
+                                                        <textarea name="notes" id=""
                                                             class="form-control" value="{{ old('notes') }}"
                                                             placeholder="Enter Notes"></textarea>
                                                         @if ($errors->has('notes'))
@@ -362,7 +362,7 @@
     $("#add").click(function(){
         i++;
         
-        $(".add-item").append('<div class="row" id="addMoreInputFields_'+i+'"><div class="col-md-6"><label for="inputEnterYourName" class="col-form-label"> Item Description <span style="color: red;">*</span></label><input type="text" name="item_description[]"  class="form-control" value="{{ old('item_description') }}" placeholder="Enter Description">@if ($errors->has('item_description'))<div class="error" style="color:red;">{{ $errors->first('item_description') }}</div>@endif</div><div class="col-md-6"><label for="inputEnterYourName" class="col-form-label"> AdditionalDetails <span style="color: red;">*</span></label><input type="text" name="additional_details[]" id="" class="form-control" value="{{ old('additional_details') }}" placeholder="Enter Description">@if ($errors->has('additional_details'))<div class="error" style="color:red;">{{ $errors->first('additional_details') }}</div>@endif</div><div class="col-md-3"><label for="inputEnterYourName" class="col-form-label"> Rate <span style="color: red;">*</span></label><input type="text" name="rate[]"  class="form-control" value="{{ old('rate') }}" oninput="rating('+i+')" placeholder="Enter Rate">@if ($errors->has('rate'))<div class="error" style="color:red;">{{ $errors->first('rate') }}</div>@endif</div><div class="col-md-3"><label for="inputEnterYourName" class="col-form-label"> Quantity<span style="color: red;">*</span></label><input type="text" name="quantity[]" id="" class="form-control" value="{{ old('rate') }}" placeholder="Enter Quantity">@if ($errors->has('quantity'))<div class="error" style="color:red;">{{ $errors->first('quantity') }}</div>@endif</div><div class="col-md-2"><label for="inputEnterYourName" class="col-form-label"> Amount</label><input type="text" name="amount[]" style="border:none;border-bottom: 2px solid rgb(223, 123, 10);"></div><div class="col-md-2"><label for="inputEnterYourName" class="col-form-label"></lable><a class="btn btn-danger btn_remove" onclick="remove('+i+')" >remove</a></div></div>');
+        $(".add-item").append('<div class="row" id="addMoreInputFields_'+i+'"><div class="col-md-6"><label for="inputEnterYourName" class="col-form-label"> Item Description <span style="color: red;">*</span></label><input type="text" name="item_description[]"  class="form-control" value="{{ old('item_description') }}" placeholder="Enter Description">@if ($errors->has('item_description'))<div class="error" style="color:red;">{{ $errors->first('item_description') }}</div>@endif</div><div class="col-md-6"><label for="inputEnterYourName" class="col-form-label"> AdditionalDetails <span style="color: red;">*</span></label><input type="text" name="additional_details[]" id="" class="form-control" value="{{ old('additional_details') }}" placeholder="Enter Description">@if ($errors->has('additional_details'))<div class="error" style="color:red;">{{ $errors->first('additional_details') }}</div>@endif</div><div class="col-md-3"><label for="inputEnterYourName" class="col-form-label"> Rate <span style="color: red;">*</span></label><input type="text" name="rate[]" id="rate_'+i+'"  class="form-control" value="{{ old('rate') }}" oninput="rating('+i+')" placeholder="Enter Rate">@if ($errors->has('rate'))<div class="error" style="color:red;">{{ $errors->first('rate') }}</div>@endif</div><div class="col-md-3" ><label for="inputEnterYourName" class="col-form-label"> Quantity<span style="color: red;">*</span></label><input type="text" name="quantity[]" id="quan_'+i+'" class="form-control" oninput="quant('+i+')" value="{{ old('rate') }}" placeholder="Enter Quantity">@if ($errors->has('quantity'))<div class="error" style="color:red;">{{ $errors->first('quantity') }}</div>@endif</div><div class="col-md-2"><label for="inputEnterYourName" class="col-form-label"> Amount</label><input type="text" id="amount_'+i+'" name="amount[]" style="border:none;border-bottom: 2px solid rgb(223, 123, 10);"></div><div class="col-md-2"><label for="inputEnterYourName" class="col-form-label"></lable><a class="btn btn-danger btn_remove" onclick="remove('+i+')" >remove</a></div></div>');
     });
 
     function remove(i)
@@ -372,12 +372,36 @@
 
 </script>
  <script>
+    
+    function quant(i)
+    {
+       var rate = $('#rate_'+i).val();
+       var quant = $('#quan_'+i).val();
+       var amount = (rate * quant);
+       var total_amount = $('#total_amount').val();
+       
+       $('#amount_'+i).val(amount);
+       var sum = parseInt(total_amount)+parseInt(amount);
+       $('#total_amount').val(sum); 
+       
+    }
+
     function rating(i)
     {
-        // alert(i);
-       var rate = $('#rate'+i).val();
-       alert(rate);
+    //    var rate = $('#rate_'+i).val();
+    //    var quant = $('#quan_'+i).val();
+    //    var amount = (rate * quant);
+    //    $('#amount_'+i).val(amount);
+    //    var total_amount = $('#total_amount').val();
+    //    alert(total_amount);
+       
+    //    
+    //    var sum = parseInt(total_amount)+parseInt(amount);
+    //    $('#total_amount').val(sum); 
     }
     </script> 
+
+    
+
 
 @endpush
