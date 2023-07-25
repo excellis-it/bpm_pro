@@ -22,11 +22,14 @@
                     <div class="col">
                         <h3 class="page-title">Create</h3>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="">Invoice</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('invoice.index') }}">Invoice</a></li>
                             <li class="breadcrumb-item active">Create Invoice</li>
                         </ul>
                     </div>
-
+                    <div class="col-auto float-end ms-auto">
+                        <a href="{{ route('invoice.index') }}"><button type="button" class="btn btn-dark">
+                            < Back</button></a>
+                    </div>
                 </div>
             </div>
 
@@ -293,7 +296,7 @@
                                                         <div id="sig"></div>
                                                         <br><br>
                                                         <button id="clear" class="btn btn-danger">Clear Signature</button>
-                                                        <button class="btn btn-success">Save</button>
+                                                        {{-- <button class="btn btn-success">Save</button> --}}
                                                         <textarea id="signature" name="signed" style="display: none"></textarea>
                                                     </div>
 

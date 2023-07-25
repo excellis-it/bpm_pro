@@ -3,7 +3,17 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Invoice;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use App\Models\Item;
+use App\Mail\InvoiceMail;
+use App\Models\File;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
+use PDF;
 
 class InvoiceController extends Controller
 {
@@ -11,7 +21,8 @@ class InvoiceController extends Controller
 
     public function index()
     { 
-        return view('user.invoice.list');
+        $user_invoices = Invoice::where('user_id',Auth::user()->id)->get();
+        return view('user.invoice.list',compact('user_invoices'));
     }
 
     public function create()
@@ -21,7 +32,7 @@ class InvoiceController extends Controller
 
     public function store(Request $request)
     {
-        return $request;
+        
         $request->validate([
             'from_name'     => 'required',
             'bil_to_name'     => 'required',
@@ -38,6 +49,8 @@ class InvoiceController extends Controller
             'notes'=>'required',
         ]);
 
+        $rand = rand(0000,1111);
+
         $invoice = new Invoice;
         $invoice->user_id = Auth::user()->id;
         $invoice->from_name = $request->from_name;
@@ -51,12 +64,13 @@ class InvoiceController extends Controller
         $invoice->bil_to_phone = $request->bil_to_phone;
         $invoice->bil_to_mobile = $request->bil_to_mobile;
         $invoice->bil_to_faxNo = $request->bil_to_faxNo;
-        $invoice->invoice_no = $request->rand(0000,1111);
+        $invoice->invoice_no = $request->$rand;
         $invoice->terms = $request->terms;
         $invoice->notes = $request->notes;
         $invoice->sub_total = $request->total;
         $invoice->total = $request->total;
 
+        //image upload
         if ($request->hasFile('photo')) {
             $request->validate([
                 'photo' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
@@ -64,18 +78,77 @@ class InvoiceController extends Controller
             
             $file= $request->file('photo');
             $filename= date('YmdHi').$file->getClientOriginalName();
-            $image_path = $request->file('photo')->store('users','image', 'public');
+            $image_path = $request->file('photo')->store('users', 'public');
             $invoice->image = $image_path;
         }
-
-        $folderPath = public_path('users/signature/');
+        //signature upload
+        $folderPath = public_path('upload/');
         $image_parts = explode(";base64,", $request->signed);   
         $image_type_aux = explode("image/", $image_parts[0]);   
         $image_type = $image_type_aux[1];   
         $image_base64 = base64_decode($image_parts[1]);  
         $file = $folderPath . uniqid() . '.'.$image_type;
-        file_put_contents($file, $image_base64);
-        return back()->with('success', 'success Full upload signature');
+        $invoice->signature = $file;
+        // file_put_contents($file, $image_base64);
+        $invoice->save();
+        
+        //items add
+        foreach ($request->item_description as $key => $item) {
+            if($item != null){
+                $add_items = Item::create([
+                    'user_id' => Auth::user()->id,
+                    'invoice_id' => $invoice->id,
+                    'item_description' => $item,
+                    'item_additional_details' => $request->additional_details[$key],
+                    'item_rate' => $request->rate[$key],
+                    'item_quantity' => $request->quantity[$key],
+                    'item_amount' =>$request->amount[$key]   
+                ]);
+            }   
+        }
+
+        //pdf generate
+
+        $invoice_details = Invoice::where('id', $invoice->id)->first();
+        $items = Item::where('invoice_id',$invoice->id)->get();
+        $data = [
+            'invoice_details' => $invoice_details,
+            'items' => $items
+            
+        ];
+        $options['isHtml5ParserEnabled'] = true;
+        $options['isRemoteEnabled'] = true;
+        $options['isPhpEnabled'] = true;
+        $options['defaultFont'] = 'sans-serif';
+
+        $pdf = PDF::loadView('pdf.invoice', $data)->setOptions($options)->setPaper('a3', 'potrait');
+        $data = new File();
+        $content = $pdf->download()->getOriginalContent();
+        $filename = 'en'. $invoice->id . date('YmdHi').'.pdf';
+        Storage::put('invoice/'.$filename, $content);
+        $data->file = 'invoice/'.$filename;
+        $data->user_id = Auth::user()->id;
+        $data->invoice_id = $invoice->id;
+        $data->save();
+
+        //mail send
+
+        $maildata = [
+            'id' => $invoice->id,
+            'name' => $invoice->from_name,
+        ];
+        Mail::to($request->bil_to_email)->send(new InvoiceMail($maildata));
+        
+        return redirect()->route('invoice.index')->with('message', 'Invoice created successfully');
+    }
+
+    public function downloadInvoice($id)
+    {
+       
+        $invoice = File::where('invoice_id',$id)->first();
+        $file_path = $invoice->file;
+        $myFile = storage_path('app\public\\'.$file_path);
+    	return response()->download($myFile);
     }
 
     public function show($id)

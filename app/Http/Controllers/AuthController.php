@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Mail\WelcomeMail;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
@@ -45,6 +47,13 @@ class AuthController extends Controller
         $user->password = bcrypt($input['password']);
         $user->save();
         $user->assignRole('USER');
+
+        $maildata = [
+            'name' => $user->name,
+            'email' => $user->email,
+            'phone' => $user->phone,
+        ];
+        Mail::to($request->email)->send(new WelcomeMail($maildata));
         
         return redirect()->route('login')->with('message', 'Your account has been created successfully.');
     }

@@ -55,11 +55,22 @@
                                 <tr>
                                     <th> Name</th>
                                     <th> Email</th>
-                                    <th> Phone</th>
-                                    {{-- <th> Action</th> --}}
+                                    <th> Address</th>
+                                    <th> Phone </th>
+                                    <th>Total Amount</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($user_invoices as $invoice)
+                                <tr>
+                                    <td>{{ $invoice->bil_to_name }}</td>
+                                    <td>{{ $invoice->bil_to_email }}</td>
+                                    <td>{{ $invoice->bil_to_address }}</td>
+                                    <td>{{ $invoice->bil_to_phone }}</td>
+                                    <td>{{ $invoice->total }}
+                                </tr>
+                                @endforeach
                                
                             </tbody>
                         </table>

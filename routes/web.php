@@ -52,5 +52,7 @@ Route::group(['prefix' => 'user'], function () {
         Route::resources([
             'invoice' => InvoiceController::class,
         ]);
+
+        Route::get('download-invoice/{id}', [InvoiceController::class, 'downloadInvoice'])->name('download.invoice');
     });
 });
