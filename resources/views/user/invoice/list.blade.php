@@ -50,7 +50,7 @@
 
                     <hr />
                     <div class="table-responsive">
-                        <table id="example" class="table table-striped table-bordered" style="width:100%">
+                        <table id="myTable" class="dd table table-striped table-bordered" style="width:100%">
                             <thead>
                                 <tr>
                                     <th> Name</th>
@@ -85,5 +85,22 @@
 
 @push('scripts')
    
+<script>
+    $(document).ready(function() {
+        //Default data table
+        $('#myTable').DataTable({
+            "aaSorting": [],
+            "columnDefs": [{
+                    "orderable": false,
+                    "targets": [0]
+                },
+                {
+                    "orderable": true,
+                    "targets": [0, 1, 2, 3, 4]
+                }
+            ]
+        });
 
+    });
+</script>
 @endpush

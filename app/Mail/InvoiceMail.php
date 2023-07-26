@@ -29,7 +29,8 @@ class InvoiceMail extends Mailable
      */
     public function build()
     {
+        return $this->view('mail.InvoiceMail')->subject('Invoice for bpm-pro')->with('maildata', $this->maildata);
+
         
-        return $this->markdown('mail.InvoiceMail')->subject('Invoice for bpm-pro')->with('maildata', $this->maildata);
     }
 }

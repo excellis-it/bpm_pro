@@ -26,6 +26,7 @@ class CreateInvoicesTable extends Migration
             $table->string('bil_to_address')->nullable();
             $table->string('bil_to_phone')->nullable();
             $table->string('bil_to_mobile')->nullable();
+            $table->string('tax')->nullable();
             $table->string('bil_to_faxNo')->nullable();
             $table->string('invoice_no')->nullable();
             $table->string('terms')->nullable();

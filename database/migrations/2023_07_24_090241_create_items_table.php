@@ -17,8 +17,8 @@ class CreateItemsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('invoice_id')->references('id')->on('invoices')->onDelete('cascade');
-            $table->string('item_description')->nullable();
-            $table->string('item_additional_details')->nullable();
+            $table->longText('item_description')->nullable();
+            $table->longText('item_additional_details')->nullable();
             $table->string('item_rate')->nullable();
             $table->string('item_quantity')->nullable();
             $table->string('item_amount')->nullable();

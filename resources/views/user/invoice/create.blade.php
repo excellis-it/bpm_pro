@@ -60,7 +60,7 @@
                                                         <label for="inputEnterYourName" class="col-form-label"> Name <span
                                                                 style="color: red;">*</span></label>
                                                         <input type="text" name="from_name" id=""
-                                                            class="form-control" value="{{ old('from_name') }}"
+                                                            class="form-control" value="{{ Auth::user()->name }}"
                                                             placeholder="Enter Name">
                                                         @if ($errors->has('from_name'))
                                                             <div class="error" style="color:red;">
@@ -81,7 +81,7 @@
                                                         <label for="inputEnterYourName" class="col-form-label"> Email <span
                                                                 style="color: red;">*</span></label>
                                                         <input type="text" name="from_email" class="form-control"
-                                                            value="{{ old('from_email') }}" placeholder="Enter Email">
+                                                            value="{{ Auth::user()->email }}" placeholder="Enter Email">
                                                         @if ($errors->has('from_email'))
                                                             <div class="error" style="color:red;">
                                                                 {{ $errors->first('from_email') }}</div>
@@ -123,7 +123,7 @@
                                                         <label for="inputEnterYourName" class="col-form-label"> Phone <span
                                                                 style="color: red;">*</span></label>
                                                         <input type="text" name="from_phone" id=""
-                                                            class="form-control" value="{{ old('from_phone') }}"
+                                                            class="form-control" value="{{ Auth::user()->phone }}"
                                                             placeholder="Enter Phone">
                                                         @if ($errors->has('from_phone'))
                                                             <div class="error" style="color:red;">
@@ -168,7 +168,17 @@
                                                     </div>
 
                                                     <div class="col-md-6">
+                                                        <label for="inputEnterYourName" class="col-form-label"> Tax (%)<span
+                                                            style="color: red;">*</span></label>
+                                                        <input type="text" name="tax" 
+                                                            class="form-control" value="{{ old('tax') }}"
+                                                            placeholder="Enter tax" >
+                                                        @if ($errors->has('tax'))
+                                                            <div class="error" style="color:red;">
+                                                                {{ $errors->first('tax') }}</div>
+                                                        @endif
                                                     </div>
+
                                                     <div class="col-md-6">
                                                         <label for="inputEnterYourName" class="col-form-label"> Fax <span
                                                                 style="color: red;">*</span></label>
@@ -253,7 +263,7 @@
                                                             Amount</label>
 
                                                         <input type="text" name="amount[]" id="amount_1"
-                                                            style="border:none;border-bottom: 2px solid rgb(223, 123, 10);" >
+                                                            style="border:none;border-bottom: 2px solid rgb(223, 123, 10);" readonly>
                                                     </div>
                                                     </div>
                                                        
@@ -269,10 +279,10 @@
                                                     <div class="col-md-8">
                                                         
                                                     </div>
-                                                    <div class="col-md-4">
+                                                    {{-- <div class="col-md-4">
                                                         <td> Total Amount($): <input id="total_amount" name="total" value="00"></td>
                                                             
-                                                    </div>
+                                                    </div> --}}
 
                                                     <div class="col-md-12">
                                                         <hr>
@@ -301,7 +311,7 @@
                                                     </div>
 
                                                     <div class="col-md-6">
-                                                        <label for="inputEnterYourName" class="col-form-label"> Photo
+                                                        <label for="inputEnterYourName" class="col-form-label"> Logo (ratio:426px,137px)
                                                             <span style="color: red;">*</span></label>
                                                         <input type="file" name="photo" 
                                                             class="form-control" id="selectImage">
@@ -365,11 +375,15 @@
     $("#add").click(function(){
         i++;
         
-        $(".add-item").append('<div class="row" id="addMoreInputFields_'+i+'"><div class="col-md-6"><label for="inputEnterYourName" class="col-form-label"> Item Description <span style="color: red;">*</span></label><input type="text" name="item_description[]"  class="form-control" value="{{ old('item_description') }}" placeholder="Enter Description">@if ($errors->has('item_description'))<div class="error" style="color:red;">{{ $errors->first('item_description') }}</div>@endif</div><div class="col-md-6"><label for="inputEnterYourName" class="col-form-label"> AdditionalDetails <span style="color: red;">*</span></label><input type="text" name="additional_details[]" id="" class="form-control" value="{{ old('additional_details') }}" placeholder="Enter Description">@if ($errors->has('additional_details'))<div class="error" style="color:red;">{{ $errors->first('additional_details') }}</div>@endif</div><div class="col-md-3"><label for="inputEnterYourName" class="col-form-label"> Rate <span style="color: red;">*</span></label><input type="text" name="rate[]" id="rate_'+i+'"  class="form-control" value="{{ old('rate') }}" oninput="rating('+i+')" placeholder="Enter Rate">@if ($errors->has('rate'))<div class="error" style="color:red;">{{ $errors->first('rate') }}</div>@endif</div><div class="col-md-3" ><label for="inputEnterYourName" class="col-form-label"> Quantity<span style="color: red;">*</span></label><input type="text" name="quantity[]" id="quan_'+i+'" class="form-control" oninput="quant('+i+')" value="{{ old('rate') }}" placeholder="Enter Quantity">@if ($errors->has('quantity'))<div class="error" style="color:red;">{{ $errors->first('quantity') }}</div>@endif</div><div class="col-md-2"><label for="inputEnterYourName" class="col-form-label"> Amount</label><input type="text" id="amount_'+i+'" name="amount[]" style="border:none;border-bottom: 2px solid rgb(223, 123, 10);"></div><div class="col-md-2"><label for="inputEnterYourName" class="col-form-label"></lable><a class="btn btn-danger btn_remove" onclick="remove('+i+')" >remove</a></div></div>');
+        $(".add-item").append('<div class="row" id="addMoreInputFields_'+i+'"><div class="col-md-6"><label for="inputEnterYourName" class="col-form-label"> Item Description <span style="color: red;">*</span></label><input type="text" name="item_description[]"  class="form-control" value="{{ old('item_description') }}" placeholder="Enter Description">@if ($errors->has('item_description'))<div class="error" style="color:red;">{{ $errors->first('item_description') }}</div>@endif</div><div class="col-md-6"><label for="inputEnterYourName" class="col-form-label"> AdditionalDetails <span style="color: red;">*</span></label><input type="text" name="additional_details[]" id="" class="form-control" value="{{ old('additional_details') }}" placeholder="Enter Description">@if ($errors->has('additional_details'))<div class="error" style="color:red;">{{ $errors->first('additional_details') }}</div>@endif</div><div class="col-md-3"><label for="inputEnterYourName" class="col-form-label"> Rate <span style="color: red;">*</span></label><input type="text" name="rate[]" id="rate_'+i+'"  class="form-control" value="{{ old('rate') }}" oninput="rating('+i+')" placeholder="Enter Rate">@if ($errors->has('rate'))<div class="error" style="color:red;">{{ $errors->first('rate') }}</div>@endif</div><div class="col-md-3" ><label for="inputEnterYourName" class="col-form-label"> Quantity<span style="color: red;">*</span></label><input type="text" name="quantity[]" id="quan_'+i+'" class="form-control" oninput="quant('+i+')" value="{{ old('rate') }}" placeholder="Enter Quantity">@if ($errors->has('quantity'))<div class="error" style="color:red;">{{ $errors->first('quantity') }}</div>@endif</div><div class="col-md-2"><label for="inputEnterYourName" class="col-form-label"> Amount</label><input type="text" id="amount_'+i+'" name="amount[]" style="border:none;border-bottom: 2px solid rgb(223, 123, 10);" readonly></div><div class="col-md-2"><label for="inputEnterYourName" class="col-form-label"></lable><a class="btn btn-danger btn_remove" onclick="remove('+i+')" >remove</a></div></div>');
     });
 
     function remove(i)
     {
+        var total_amount = $('#total_amount').val();
+        var amount = $('#amount_'+i).val();
+        var calculate = (total_amount - amount);
+        $('#total_amount').val(calculate); 
         $('#addMoreInputFields_'+i).remove();
     }
 
@@ -384,22 +398,21 @@
        var total_amount = $('#total_amount').val();
        
        $('#amount_'+i).val(amount);
-       var sum = parseInt(total_amount)+parseInt(amount);
-       $('#total_amount').val(sum); 
+    //    var sum = parseInt(total_amount)+parseInt(amount);
+    //    $('#total_amount').val(sum); 
        
     }
 
     function rating(i)
     {
-    //    var rate = $('#rate_'+i).val();
-    //    var quant = $('#quan_'+i).val();
-    //    var amount = (rate * quant);
-    //    $('#amount_'+i).val(amount);
+       var rate = $('#rate_'+i).val();
+       var quant = $('#quan_'+i).val();
+       var amount = (rate * quant);
+       $('#amount_'+i).val(amount);
     //    var total_amount = $('#total_amount').val();
     //    alert(total_amount);
-       
-    //    
     //    var sum = parseInt(total_amount)+parseInt(amount);
+    //    alert(sum);
     //    $('#total_amount').val(sum); 
     }
     </script> 

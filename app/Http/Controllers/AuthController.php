@@ -73,7 +73,7 @@ class AuthController extends Controller
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password] )) {
             $user = User::where('email', $request->email)->first();
             if ($user->hasRole('ADMIN')) {
-                return redirect()->route('admin.dashboard');
+                return redirect()->route('user.list');
             } else if($user->hasRole('USER') && $user->status == 1){
                 return redirect()->route('invoice.index');
             }else{
