@@ -303,11 +303,11 @@
                                                     <div class="col-md-6">
                                                         <label  for="inputEnterYourName" class="col-form-label">Draw Signature:</label>
                                                         <br/>
-                                                        <div id="sig"></div>
+                                                        <div id="signature"></div>
                                                         <br><br>
-                                                        <button id="clear" class="btn btn-danger">Clear Signature</button>
+                                                        <button id="reset" class="btn btn-danger">Clear Signature</button>
                                                         {{-- <button class="btn btn-success">Save</button> --}}
-                                                        <textarea id="signature" name="signed" style="display: none"></textarea>
+                                                        <textarea id="signature_capture" name="signed" style="display: none"></textarea>
                                                     </div>
 
                                                     <div class="col-md-6">
@@ -347,16 +347,32 @@
 
 @push('scripts')
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script> 
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="http://keith-wood.name/js/jquery.signature.js"></script>
+{{-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script> --}}
+<script type="text/javascript" src="https://cdn.rawgit.com/willowsystems/jSignature/master/libs/jSignature.min.js"></script>
 <script type="text/javascript">
 
-    var sig = $('#sig').signature({syncField: '#signature', syncFormat: 'PNG'});
-    $('#clear').click(function(e) {
-        e.preventDefault();
-        sig.signature('clear');
-        $("#signature").val('');
-    });
+
+    $(document).ready(function() { 
+
+$('#signature').jSignature();
+var $sigdiv = $('#signature');
+var datapair = $sigdiv.jSignature('getData', 'svgbase64');
+
+$('#signature').bind('change', function(e) {
+  var data = $('#signature').jSignature('getData');
+  $("#signature_capture").val(data);
+  $("#signature_capture").show();
+});
+  
+$('#reset').click(function(e){
+  $('#signature').jSignature('clear');
+  var data = $('#signature').jSignature('getData');
+  $("#signature_capture").val('');
+  e.preventDefault();
+});
+  
+});
+
 </script>
 
 <script>

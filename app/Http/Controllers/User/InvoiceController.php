@@ -32,7 +32,7 @@ class InvoiceController extends Controller
 
     public function store(Request $request)
     {
-       
+        
         $request->validate([
             'from_name'     => 'required',
             'bil_to_name'     => 'required',

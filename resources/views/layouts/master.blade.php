@@ -14,6 +14,9 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('frontend_assets/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('frontend_assets/css/responsive.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('admin_assets/css/jquery.signature.css')}}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript" src="{{asset('admin_assets/js/jquery.signature.js')}}"></script>
 </head>
 <body>  
 
@@ -47,7 +50,7 @@
 };
 });
 </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
   <script src="https://alexandrebuffet.fr/codepen/slider/slick-animation.min.js"></script>
   <script src="{{asset('frontend_assets/js/bootstrap.bundle.min.js')}}"></script>

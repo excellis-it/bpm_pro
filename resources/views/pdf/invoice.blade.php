@@ -21,7 +21,7 @@
                                         <tbody>
                                             <tr>
                                                 <td align="left"><img
-                                                        src="{{'data:image/jpg;base64,'.base64_encode(file_get_contents('https://excellis.co.in/bpm-pro/frontend_assets/img/pdf_cc.jpg'))}}"
+                                                        src="{{'data:image/jpg;base64,'.base64_encode(file_get_contents('https://excellis.co.in/bpm_pro/frontend_assets/img/pdf_cc.jpg'))}}"
                                                         width="100%"
                                                         style="height: 120px;
                                                 margin-left: -29px;"
