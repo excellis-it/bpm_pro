@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\User\ProfileController as UserProfileController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Homecontroller;
 use App\Http\Controllers\User\InvoiceController;
@@ -25,6 +26,7 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/register-store', [AuthController::class, 'registerStore'])->name('register.store');
 Route::post('/user-login-check', [AuthController::class, 'loginCheck'])->name('login.check');
+Route::get('/form',[Homecontroller::class, 'form'])->name('form');
 
 /* ----------------- Admin Routes -----------------*/
 
@@ -38,6 +40,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('profile', [ProfileController::class, 'index'])->name('admin.profile');
         Route::post('profile/update', [ProfileController::class, 'profileUpdate'])->name('admin.profile.update');
         Route::get('logout', [AuthController::class, 'logout'])->name('admin.logout');
+        
       
     });
 });
@@ -45,14 +48,15 @@ Route::group(['prefix' => 'admin'], function () {
 Route::group(['prefix' => 'user'], function () {
     Route::group(['middleware' => 'user'], function () {
         Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('user.dashboard');
-        Route::get('profile', [ProfileController::class, 'index'])->name('user.profile');
-        Route::post('profile/update', [ProfileController::class, 'profileUpdate'])->name('user.profile.update');
-        Route::get('logout', [AdminAuthController::class, 'logout'])->name('user.logout');
+        Route::get('profile', [UserProfileController::class, 'index'])->name('user.profile');
+        Route::post('profile/update', [UserProfileController::class, 'profileUpdate'])->name('user.profile.update');
+        Route::get('logout', [UserProfileController::class, 'logout'])->name('user.logout');
         // Route::resource('invoice', 'InvoiceController');
         Route::resources([
             'invoice' => InvoiceController::class,
-        ]);
-
-        Route::get('download-invoice/{id}', [InvoiceController::class, 'downloadInvoice'])->name('download.invoice');
+        ]); 
     });
+    
+    Route::get('download-invoice/{id}', [InvoiceController::class, 'downloadInvoice'])->name('download.invoice');
+    
 });

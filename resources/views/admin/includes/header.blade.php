@@ -23,7 +23,7 @@
                 <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
                     <span class="user-img"><img src="{{ asset("admin_assets/images/icon.png") }}" alt="">
                         <span class="status online"></span></span>
-                    <span>Admin</span>
+                    <span>{{Auth::user()->name}}</span>
                 </a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="{{ route('admin.profile') }}">My Profile</a>

@@ -1,0 +1,459 @@
+:root {
+    --main-color: #A6000E;
+    --heading-color: #1E1E1E;
+    --text-color: #1E1E1E;
+    --white-color: #fff;
+    --black-color: #000;
+    --orange-color: #FF7E00;
+    --grey-color: #ECECEC;
+    --yellow-color: #FFC107;
+    --main-font: 'Exo', sans-serif;
+    --heading-font: 'Exo', sans-serif;
+    --button-font: 'Exo', sans-serif;
+  }
+
+@media (min-width:1450px) {
+    .container {
+        max-width: 1500px;
+    }
+}
+
+@media (max-width:1600px) {
+
+
+    /*  */
+    .slide .slide__content--headings .title {
+        font-size: 75px;
+    }
+
+    .ftr-sec::before {
+        width: 66%;
+    }
+
+    .call_to_action {
+        padding: 50px 0 100px;
+    }
+
+    .ftr-sec::before {
+        bottom: 17%;
+    }
+
+    .brand-img {
+        width: 80px;
+        height: 42px;
+        margin: 0 auto;
+    }
+
+    .call_email a {
+        font-size: 14px;
+    }
+
+    .ftr-btm ul li a {
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    .blue-bdr::before {
+        width: 30px;
+    }
+
+    .blue-bdr-1::after {
+        width: 30px;
+    }
+
+    .ser-sec-inr {
+        padding: 50px 0px;
+    }
+}
+
+
+@media (max-width:1440px) {
+
+    #cssmenu>ul>li>a {
+        padding: 14px 15px;
+    }
+    .story-div h2 {
+        font-size: 50px;
+        line-height: 54px;
+    }
+    .heading-1 h2 {
+        font-size: 54px;
+        line-height: 58px;
+    }
+
+}
+
+@media (max-width:1366px) {
+    .heading-1 h2 {
+        font-size: 44px;
+        line-height: 48px;
+    }
+
+    .heading-2 h4 {
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    .heading-2 h3 {
+        font-size: 38px;
+        line-height: 44px;
+    }
+
+    .package-head h3 {
+        font-size: 30px;
+        line-height: 34px;
+        line-height: 18px;
+    }
+
+    .package-head h4 {
+        font-size: 10px;
+        line-height: 14px;
+    }
+
+    .package-head {
+        padding: 38px 20px;
+    }
+    .arrival-box{
+        margin-bottom: 20px;
+    }
+    .new-arrival {
+        padding: 50px 0px 0;
+    }
+    .deal-month-1{
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    /*  */
+    .inr-bnr-text h1 {
+        font-size: 70px;
+    }
+
+}
+
+@media (max-width:1280px) {
+    .recomd::before {
+        height: 24px;
+        top: 5px;
+    }
+    .abt-inr{
+        padding: 50px 0px;
+        margin-top: 0%;
+    }
+
+    /*  */
+    .ftr-sec::before {
+        bottom: 17%;
+    }
+
+    #cssmenu>ul>li>a {
+        padding: 23px 7px;
+    }
+
+    .ftr-sec::before {
+        display: none;
+    }
+}
+
+@media (max-width:1199.98px) {
+    .pack-img{
+        display: none;
+    }
+    .package-box{
+        margin-bottom: 20px;
+    }
+	.text-img{
+		width:100%;
+		height:auto;
+	}
+}
+
+@media (max-width:1024px) {
+
+    #cssmenu>ul>li:last-child>a {
+        background: transparent;
+        color: var(--black-color);
+        color: var(--black-color);
+        font-weight: 600;
+    }
+
+    #cssmenu>ul>li.active>a:after {
+        bottom: 10px;
+        left: 7%;
+    }
+    /*  */
+    .trining-pack-sec {
+        padding: 20px 0px;
+    }
+    .package-div {
+        padding-top: 0px;
+    }
+    .why-chs-div {
+        padding: 25px;
+    }
+    .why-text h3 {
+        font-size: 18px;
+        line-height: 22px;
+    }
+    .gal-sec {
+        padding: 20px 0px;
+    }
+    .story-ftr-frm-div {
+        padding: 100px 50px 60px 100px;
+    }
+    .story-ftr-frm-box .form-control {
+        padding: 5px 10px;
+    }
+    .top-prods .arrival-box-img{
+       height: 100%; 
+    }
+    .abt-left{
+        text-align: center;
+    }
+    .explore{
+        margin: 0;
+    }
+    .insta-sec {
+        padding-bottom: 20px;
+    }
+
+}
+
+@media (max-width:991px) {
+    .trends-left-img{
+        display: none;
+    }
+    .trends-left {
+      min-height: auto;
+    }
+    .training-sec {
+        padding: 20px 0px;
+    }
+    .slick-nav.prev-arrow {
+        top: 35%;
+    }
+    .story-ftr-img {
+        position: relative;
+        margin-bottom: 20px;
+    }
+    .story-inr{
+       padding: 50px 0px; 
+    }
+    .abt-rit-img {
+        margin-bottom: 20px;
+    }
+    .new-arrival {
+        padding: 20px 0px 0;
+    }
+}
+
+@media (max-width:768px) {
+    .abt-sec {
+        padding: 20px 0px;
+    }
+    .abt-left{
+        margin-bottom: 20px;  
+    }
+    .slide .slide__content--headings .top-title{
+        font-size: 14px;
+    }
+    .slide .slide__content--headings .title {
+        font-size: 40px;
+    }
+    .traininig-vdo {
+        padding: 0px 0px;
+    }
+    .abt-rit-img {
+        margin-bottom: 20px;
+    }
+    .vdo-sec {
+        padding: 0px;
+    }
+    .story-sec {
+        padding: 20px 0px;
+    }
+    .story-inr {
+        padding: 20px 0px;
+    }
+    .story-div h2 {
+        font-size: 40px;
+        line-height: 44px;
+    }
+    .training-inr-sec {
+        padding: 20px 0px;
+    }
+    .inner_contact_sec {
+        padding: 20px 0;
+    }
+    .abt_content{
+      margin-bottom: 20px;
+    }
+    .explore-btm, .explore-btm-1{
+      display: none;
+    }
+    .explore-div{
+        padding-left: 0;
+    }
+    .insta-sec {
+        padding: 20px 0px;
+    }
+    .inr-bnr-text h1 {
+        font-size: 45px;
+    }
+    .product-sec {
+        padding: 20px 0px;
+    }
+    .select-price-div .form-select {
+        margin-bottom: 10px;
+    }
+    .inr-bnr-img {
+        height: 160px;
+    }
+    .gallery_section {
+        padding: 20px 0;
+    }
+}
+
+@media (max-width:767px) {
+    .ftr-top {
+        background: var(--text-color);
+        padding: 20px 10px;
+    }
+
+    .inr-bnr-text h1 {
+        font-size: 20px;
+    }
+
+    .stuff-img-2 {
+        margin-top: 10%;
+    }
+
+    .msn-right-text::before {
+        height: 290px;
+    }
+
+    .font_size_line_height {
+        padding: 20px;
+    }
+    .slide .slide__content--headings .top-title{
+       display: none;   
+    }
+    .red_btn{
+        padding: 8px 15px;
+    }
+    .red_btn span{
+        font-size: 13px;
+    }
+    .slick-nav.prev-arrow{
+        display: none!important;
+    }
+    .slick-nav.next-arrow{
+        display: none!important; 
+    }
+    .slide .slide__content--headings .title {
+        font-size: 30px;
+    }
+    .heading-1 h2 {
+        font-size: 25px;
+        line-height: 24px;
+    }
+    .heading-1 p {
+        font-size: 14px;
+        line-height: 26px;
+    }
+    .trends-sec {
+        padding-top: 20px;
+    }
+    .test-sec {
+        padding: 20px 0px;
+    }
+    .trends-left{
+        padding: 35px 15px;
+    }
+    .package-head {
+        padding: 20px 10px;
+    }
+    .package-text {
+        padding: 20px 0px 10px;
+    }
+    .package-text ul {
+        min-height: auto;
+    }
+    .story-div h2 {
+        font-size: 20px;
+        line-height: 24px;
+    }
+    .test-quote{
+        display: none;
+    }
+    .story-ftr-frm-div {
+        padding: 20px;
+    }
+    .heading-2 h3 {
+        font-size: 28px;
+        line-height: 32px;
+    }
+    .story-inr {
+        padding: 0px 0px;
+    }
+    .story-ftr {
+        padding: 0px 0px 20px;
+    }
+    .heading-1 {
+       padding: 0!important;
+    }
+    .con-head h4 {
+        font-size: 34px;
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+    .inner_contact_sec .main_loc{
+        padding: 20px;
+        min-height: auto;
+    }
+    .sub-btn{
+        width: 100%;
+    }
+	.slide .slide__content {
+		width: 60%;
+	}
+	.find-us h4{
+		font-size:25px;
+	}
+	.find-us .add-text h4{
+		font-size:16px;
+	}
+    .deal-month-1{
+      display: block!important;
+      text-align: center;
+    }
+    #cssmenu {
+        width: 100%;
+        position: absolute;
+        top: 46px;
+        right: 0px;
+    }
+    .navbar{
+      justify-content: center;
+    }
+    .arrival-box-img {
+        margin-top: 10px;
+    }
+    .deal-month-slide-wrap{
+        display: block!important;
+    }
+    .deal-month-slide .arrival-box-text{
+        height: 100%;
+    }
+    .search-panel .input-group{
+        width: 100%;
+    }
+    .login-details {
+        padding: 5px 10px;
+    }
+    .logo {
+        padding-right: 5px;
+    }
+  
+}
+
+@media (max-width:375.98px) {}

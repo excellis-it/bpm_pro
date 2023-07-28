@@ -25,6 +25,7 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
         <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css">
+        <link rel="stylesheet" type="text/css" href="http://keith-wood.name/css/jquery.signature.css">
     @stack('styles')
     <style>
         .error {
@@ -65,16 +66,17 @@
 <script src="{{ asset('admin_assets/js/chart.js') }}"></script>
 <script src="{{ asset('admin_assets/js/greedynav.js') }}"></script>
 <script src="{{ asset('admin_assets/js/select2.min.js') }}"></script>
-<script src="{{ asset('admin_assets/js/bootstrap-datetimepicker.min.js') }}"></script>
+
 
 <script src="{{ asset('admin_assets/js/layout.js') }}"></script>
 <script src="{{ asset('admin_assets/js/theme-settings.js') }}"></script>
 <script src="{{ asset('admin_assets/js/app.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
+<!--signature-->
+
+
 <script>
     @if (Session::has('message'))
         toastr.options = {

@@ -26,7 +26,7 @@
                     <div class="col">
                         <h3 class="page-title">Users Invoice</h3>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="">Users Invoive</a></li>
+                            <li class="breadcrumb-item"><a href="">Users Invoice</a></li>
                             <li class="breadcrumb-item active">List</li>
                         </ul>
                     </div>
@@ -42,7 +42,7 @@
                     <div class="card-title">
                         <div class="row">
                             <div class="col-md-6">
-                                <h4 class="mb-0">Users Invoives</h4>
+                                <h4 class="mb-0">Users Invoices</h4>
                             </div>
 
                         </div>
@@ -53,12 +53,12 @@
                         <table id="myTable" class="dd table table-striped table-bordered" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th> Name</th>
-                                    <th> Email</th>
-                                    <th> Address</th>
-                                    <th> Phone </th>
+                                    <th>Bill To Name</th>
+                                    <th>Bill To Email</th>
+                                    <th>Bill To Address</th>
+                                    <th>Bill To Phone </th>
                                     <th>Total Amount</th>
-                                    
+                                    <th>Invoice</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -68,7 +68,8 @@
                                     <td>{{ $invoice->bil_to_email }}</td>
                                     <td>{{ $invoice->bil_to_address }}</td>
                                     <td>{{ $invoice->bil_to_phone }}</td>
-                                    <td>{{ $invoice->total }}
+                                    <td>{{ $invoice->total }}</td>
+                                    <td><a href="{{ route('download.invoice', $invoice->id) }}" ><i class="fas fa-download"></i></a></td>
                                 </tr>
                                 @endforeach
                                
@@ -92,7 +93,7 @@
             "aaSorting": [],
             "columnDefs": [{
                     "orderable": false,
-                    "targets": [0]
+                    "targets": [5]
                 },
                 {
                     "orderable": true,

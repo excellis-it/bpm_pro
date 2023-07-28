@@ -2,7 +2,7 @@
 @section('title')
     {{ env('APP_NAME') }} | Create Invoice
 @endsection
-<link rel="stylesheet" type="text/css" href="http://keith-wood.name/css/jquery.signature.css">
+<!--<link rel="stylesheet" type="text/css" href="http://keith-wood.name/css/jquery.signature.css">-->
    
 @push('styles')
 <style>
@@ -168,8 +168,7 @@
                                                     </div>
 
                                                     <div class="col-md-6">
-                                                        <label for="inputEnterYourName" class="col-form-label"> Tax (%)<span
-                                                            style="color: red;">*</span></label>
+                                                        <label for="inputEnterYourName" class="col-form-label"> Tax (%)</label>
                                                         <input type="text" name="tax" 
                                                             class="form-control" value="{{ old('tax') }}"
                                                             placeholder="Enter tax" >
@@ -180,8 +179,7 @@
                                                     </div>
 
                                                     <div class="col-md-6">
-                                                        <label for="inputEnterYourName" class="col-form-label"> Fax <span
-                                                                style="color: red;">*</span></label>
+                                                        <label for="inputEnterYourName" class="col-form-label"> Fax </label>
                                                         <input type="text" name="bil_to_faxNo" id=""
                                                             class="form-control" value="{{ old('bil_to_faxNo') }}"
                                                             placeholder="Enter Fax">
@@ -218,45 +216,33 @@
                                                         <label for="inputEnterYourName" class="col-form-label"> Item
                                                             Description <span style="color: red;">*</span></label>
                                                         <input type="text" name="item_description[]" 
-                                                            class="form-control" value="{{ old('item_description') }}"
+                                                            class="form-control" 
                                                             placeholder="Enter Description">
-                                                        @if ($errors->has('item_description'))
-                                                            <div class="error" style="color:red;">
-                                                                {{ $errors->first('item_description') }}</div>
-                                                        @endif
+                                                        
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label for="inputEnterYourName" class="col-form-label"> Additional
                                                             Details <span style="color: red;">*</span></label>
                                                         <input type="text" name="additional_details[]" id=""
-                                                            class="form-control" value="{{ old('additional_details') }}"
-                                                            placeholder="Enter Description">
-                                                        @if ($errors->has('additional_details'))
-                                                            <div class="error" style="color:red;">
-                                                                {{ $errors->first('additional_details') }}</div>
-                                                        @endif
+                                                            class="form-control" 
+                                                            placeholder="Enter Additional Details">
+                                                        
                                                     </div>
                                                     <div class="col-md-3">
                                                         <label for="inputEnterYourName" class="col-form-label"> Rate <span
                                                                 style="color: red;">*</span></label>
                                                         <input type="text" name="rate[]" 
-                                                            class="form-control" value="{{ old('rate') }}"
+                                                            class="form-control" 
                                                             placeholder="Enter Rate" id="rate_1" oninput="rating(1)">
-                                                        @if ($errors->has('rate'))
-                                                            <div class="error" style="color:red;">
-                                                                {{ $errors->first('rate') }}</div>
-                                                        @endif
+                                                        
                                                     </div>
                                                     <div class="col-md-3" >
                                                         <label for="inputEnterYourName" class="col-form-label"> Quantity
                                                             <span style="color: red;">*</span></label>
                                                         <input type="text" name="quantity[]" id="quan_1"
-                                                            class="form-control" value="{{ old('quantity') }}"
+                                                            class="form-control" 
                                                             placeholder="Enter Quantity" oninput="quant(1)" >
-                                                        @if ($errors->has('quantity'))
-                                                            <div class="error" style="color:red;">
-                                                                {{ $errors->first('quantity') }}</div>
-                                                        @endif
+                                                        
                                                     </div>
                                                     <div class="col-md-2">
                                                         <label for="inputEnterYourName" class="col-form-label">
@@ -279,10 +265,10 @@
                                                     <div class="col-md-8">
                                                         
                                                     </div>
-                                                    {{-- <div class="col-md-4">
-                                                        <td> Total Amount($): <input id="total_amount" name="total" value="00"></td>
+                                                    <!-- <div class="col-md-4">-->
+                                                    <!--    <td> Total Amount($): <input id="total_amount" name="total" value="00"></td>-->
                                                             
-                                                    </div> --}}
+                                                    <!--</div> -->
 
                                                     <div class="col-md-12">
                                                         <hr>
@@ -293,25 +279,47 @@
                                                             <span style="color: red;">*</span></label>
                                                         <textarea name="notes" id=""
                                                             class="form-control" value="{{ old('notes') }}"
-                                                            placeholder="Enter Notes"></textarea>
+                                                            placeholder="Enter Notes..."></textarea>
                                                         @if ($errors->has('notes'))
                                                             <div class="error" style="color:red;">
                                                                 {{ $errors->first('notes') }}</div>
                                                         @endif
                                                     </div>
+                                                    
+                                                    <div class="col-md-6">
+                                                        <label for="inputEnterYourName" class="col-form-label"> Date
+                                                            <span style="color: red;">*</span></label>
+                                                        <input type="date" name="invoice_date" id=""
+                                                            class="form-control" value="{{ old('invoice_date') }}">
+                                                        @if ($errors->has('invoice_date'))
+                                                            <div class="error" style="color:red;">
+                                                                {{ $errors->first('invoice_date') }}</div>
+                                                        @endif
+                                                    </div>
+                                                    
+                                                    <div class="col-md-6">
+                                                        <label for="inputEnterYourName" class="col-form-label"> Invoice No.
+                                                            <span style="color: red;">*</span></label>
+                                                        <input type="text" name="invoice_no" id=""
+                                                            class="form-control" value="{{ old('invoice_no') }}" placeholder="Enter Invoice No">
+                                                        @if ($errors->has('invoice_no'))
+                                                            <div class="error" style="color:red;">
+                                                                {{ $errors->first('invoice_no') }}</div>
+                                                        @endif
+                                                    </div>
 
                                                     <div class="col-md-6">
-                                                        <label  for="inputEnterYourName" class="col-form-label">Draw Signature:</label>
+                                                        <label  for="inputEnterYourName" class="col-form-label">Draw Signature <span style="color: red;">*</span></label>
                                                         <br/>
                                                         <div id="signature"></div>
                                                         <br><br>
                                                         <button id="reset" class="btn btn-danger">Clear Signature</button>
-                                                        {{-- <button class="btn btn-success">Save</button> --}}
-                                                        <textarea id="signature_capture" name="signed" style="display: none"></textarea>
+                                                        <!--<button class="btn btn-success">Save</button> -->
+                                                        <textarea id="signature_capture" name="signed" hidden></textarea>
                                                     </div>
 
                                                     <div class="col-md-6">
-                                                        <label for="inputEnterYourName" class="col-form-label"> Logo (ratio:426px,137px)
+                                                        <label for="inputEnterYourName" class="col-form-label"> Logo (ratio:426px,137px; type: .png)
                                                             <span style="color: red;">*</span></label>
                                                         <input type="file" name="photo" 
                                                             class="form-control" id="selectImage">
@@ -329,6 +337,8 @@
                                                             <button type="submit"
                                                                 class="btn px-5 submit-btn">Create</button>
                                                         </div>
+                                                        
+                                                       
                                                     </div>
                                                 </div>
                                         </form>
@@ -346,30 +356,29 @@
 @endsection
 
 @push('scripts')
-<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script> 
-{{-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script> --}}
+
+
 <script type="text/javascript" src="https://cdn.rawgit.com/willowsystems/jSignature/master/libs/jSignature.min.js"></script>
 <script type="text/javascript">
 
+$(document).ready(function() { 
 
-    $(document).ready(function() { 
+    $('#signature').jSignature();
+    var $sigdiv = $('#signature');
+    var datapair = $sigdiv.jSignature('getData', 'svgbase64');
 
-$('#signature').jSignature();
-var $sigdiv = $('#signature');
-var datapair = $sigdiv.jSignature('getData', 'svgbase64');
-
-$('#signature').bind('change', function(e) {
-  var data = $('#signature').jSignature('getData');
-  $("#signature_capture").val(data);
-  $("#signature_capture").show();
-});
+    $('#signature').bind('change', function(e) {
+        var data = $('#signature').jSignature('getData');
+        $("#signature_capture").val(data);
+        $("#signature_capture").show();
+    });
   
-$('#reset').click(function(e){
-  $('#signature').jSignature('clear');
-  var data = $('#signature').jSignature('getData');
-  $("#signature_capture").val('');
-  e.preventDefault();
-});
+    $('#reset').click(function(e){
+    $('#signature').jSignature('clear');
+        var data = $('#signature').jSignature('getData');
+    $("#signature_capture").val('');
+    e.preventDefault();
+    });
   
 });
 
@@ -391,7 +400,7 @@ $('#reset').click(function(e){
     $("#add").click(function(){
         i++;
         
-        $(".add-item").append('<div class="row" id="addMoreInputFields_'+i+'"><div class="col-md-6"><label for="inputEnterYourName" class="col-form-label"> Item Description <span style="color: red;">*</span></label><input type="text" name="item_description[]"  class="form-control" value="{{ old('item_description') }}" placeholder="Enter Description">@if ($errors->has('item_description'))<div class="error" style="color:red;">{{ $errors->first('item_description') }}</div>@endif</div><div class="col-md-6"><label for="inputEnterYourName" class="col-form-label"> AdditionalDetails <span style="color: red;">*</span></label><input type="text" name="additional_details[]" id="" class="form-control" value="{{ old('additional_details') }}" placeholder="Enter Description">@if ($errors->has('additional_details'))<div class="error" style="color:red;">{{ $errors->first('additional_details') }}</div>@endif</div><div class="col-md-3"><label for="inputEnterYourName" class="col-form-label"> Rate <span style="color: red;">*</span></label><input type="text" name="rate[]" id="rate_'+i+'"  class="form-control" value="{{ old('rate') }}" oninput="rating('+i+')" placeholder="Enter Rate">@if ($errors->has('rate'))<div class="error" style="color:red;">{{ $errors->first('rate') }}</div>@endif</div><div class="col-md-3" ><label for="inputEnterYourName" class="col-form-label"> Quantity<span style="color: red;">*</span></label><input type="text" name="quantity[]" id="quan_'+i+'" class="form-control" oninput="quant('+i+')" value="{{ old('rate') }}" placeholder="Enter Quantity">@if ($errors->has('quantity'))<div class="error" style="color:red;">{{ $errors->first('quantity') }}</div>@endif</div><div class="col-md-2"><label for="inputEnterYourName" class="col-form-label"> Amount</label><input type="text" id="amount_'+i+'" name="amount[]" style="border:none;border-bottom: 2px solid rgb(223, 123, 10);" readonly></div><div class="col-md-2"><label for="inputEnterYourName" class="col-form-label"></lable><a class="btn btn-danger btn_remove" onclick="remove('+i+')" >remove</a></div></div>');
+        $(".add-item").append('<div class="row" id="addMoreInputFields_'+i+'"><div class="col-md-6"><label for="inputEnterYourName" class="col-form-label"> Item Description <span style="color: red;">*</span></label><input type="text" name="item_description[]"  class="form-control"  placeholder="Enter Description">@if ($errors->has('item_description'))<div class="error" style="color:red;">{{ $errors->first('item_description') }}</div>@endif</div><div class="col-md-6"><label for="inputEnterYourName" class="col-form-label"> AdditionalDetails <span style="color: red;">*</span></label><input type="text" name="additional_details[]" id="" class="form-control"  placeholder="Enter Description">@if ($errors->has('additional_details'))<div class="error" style="color:red;">{{ $errors->first('additional_details') }}</div>@endif</div><div class="col-md-3"><label for="inputEnterYourName" class="col-form-label"> Rate <span style="color: red;">*</span></label><input type="text" name="rate[]" id="rate_'+i+'"  class="form-control"  oninput="rating('+i+')" placeholder="Enter Rate">@if ($errors->has('rate'))<div class="error" style="color:red;">{{ $errors->first('rate') }}</div>@endif</div><div class="col-md-3" ><label for="inputEnterYourName" class="col-form-label"> Quantity<span style="color: red;">*</span></label><input type="text" name="quantity[]" id="quan_'+i+'" class="form-control" oninput="quant('+i+')"  placeholder="Enter Quantity">@if ($errors->has('quantity'))<div class="error" style="color:red;">{{ $errors->first('quantity') }}</div>@endif</div><div class="col-md-2"><label for="inputEnterYourName" class="col-form-label"> Amount</label><input type="text" id="amount_'+i+'" name="amount[]" style="border:none;border-bottom: 2px solid rgb(223, 123, 10);" readonly></div><div class="col-md-2"><label for="inputEnterYourName" class="col-form-label"></lable><a class="btn btn-danger btn_remove" onclick="remove('+i+')" >remove</a></div></div>');
     });
 
     function remove(i)

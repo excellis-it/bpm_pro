@@ -31,7 +31,7 @@
                         <div class="input-boxes">
                             <div class="input-box">
                                 <i class="fas fa-envelope"></i>
-                                <input type="text" name="email" placeholder="Enter email">
+                                <input type="text"  value="{{old('email')}}" name="email" placeholder="Enter email">
                             </div>
                             @if ($errors->has('email'))
                                 <div class="error" style="color:red;">{{ $errors->first('email') }}</div>
@@ -49,7 +49,7 @@
                                 <input type="submit" class="submit" value="Submit">
                             </div>
                             <div class="text sign-up-text">Don't have an account? <a
-                                    href="{{ route('register') }}" class="sign">Sigup now</a></div>
+                                    href="{{ route('register') }}" class="sign">Signup now</a></div>
                         </div>
                     </form>
                 </div>

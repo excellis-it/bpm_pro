@@ -31,7 +31,7 @@
                         <div class="input-boxes">
                             <div class="input-box">
                                 <i class="fas fa-user"></i>
-                                <input type="text" name="name" placeholder="Enter name">
+                                <input type="text" name="name" value="{{old('name')}}" placeholder="Enter name">
                             </div>
                             @if ($errors->has('name'))
                                 <div class="error" style="color:red;">{{ $errors->first('name') }}</div>
@@ -39,7 +39,7 @@
 
                             <div class="input-box">
                                 <i class="fas fa-envelope"></i>
-                                <input type="text" name="email" placeholder="Enter email" >
+                                <input type="text" name="email" value="{{old('email')}}"  placeholder="Enter email" >
                             </div>
                             @if ($errors->has('email'))
                                 <div class="error" style="color:red;">{{ $errors->first('email') }}</div>
@@ -47,7 +47,7 @@
 
                             <div class="input-box">
                               <i class="fas fa-phone"></i>
-                              <input type="text" name="phone" placeholder="Enter phone" >
+                              <input type="text" name="phone" value="{{old('phone')}}" placeholder="Enter phone" >
                           </div>
                           @if ($errors->has('phone'))
                               <div class="error" style="color:red;">{{ $errors->first('phone') }}</div>

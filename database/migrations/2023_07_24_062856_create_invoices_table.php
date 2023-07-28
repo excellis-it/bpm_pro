@@ -35,6 +35,7 @@ class CreateInvoicesTable extends Migration
             $table->string('total')->nullable();
             $table->string('balance_due')->nullable();
             $table->string('signature')->nullable();
+            $table->string('invoice_date')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
         });

@@ -38,11 +38,13 @@
                                                 <td
                                                     style="font-size: 14px; color: #000; font-weight: 800; line-height: 18px; vertical-align: top; text-align: right; padding: 15px 0 0;">
                                                     <img src="{{'data:image/png;base64,'.base64_encode(file_get_contents(public_path('storage/'.$data['invoice_detail']['image'])))}}"
-                                                        width="100%" height="32" alt="logo" border="0"
-                                                        style="object-fit: contain;" /><br>
-                                                    <span>Adress:{{ $data['invoice_detail']['from_address']}}</span><br>
+                                                        alt="logo" border="0"
+                                                        style="object-fit: contain;width:100px;" /><br>
+                                                    <span>Address:{{ $data['invoice_detail']['from_address']}}</span><br>
                                                     <span>Phone: {{ $data['invoice_detail']['from_phone']}}</span><br>
-                                                    <span>Mail Id: {{ $data['invoice_detail']['from_email']}}</span><br>
+                                                    <span>Email: {{ $data['invoice_detail']['from_email']}}</span><br>
+                                                    <span>Date: {{ $data['invoice_detail']['invoice_date']}}</span>
+                                                    
 
                                                    
                                                    
@@ -77,6 +79,7 @@
                                                     <span
                                                         style="font-size: 20px; font-weight: 900; color: #FF7B02; line-height: 30px;">{{ $data['invoice_detail']['bil_to_name']}}</span>
                                                     <br>
+                                                    <span>{{ $data['invoice_detail']['bil_to_email']}}</span><br>
                                                     <span>{{ $data['invoice_detail']['bil_to_address']}}</span>
                                                 </td>
                                             </tr>
@@ -91,7 +94,8 @@
                                                     <span
                                                         style="background: #ff8719; color: #fff; padding: 3px 40px; text-align: center; font-size: 36px; line-height: 1; font-weight: 300; display: inline-block;">INVOICE</span><br>
                                                     <span
-                                                        style="color: #000; text-align: center; display: inline-block; width: 100%; padding: 8px 0; font-size: 18px; font-weight: 600;">{{ $data['invoice_detail']['invoice_no']}}</span>
+                                                        style="color: #000; text-align: center; display: inline-block; width: 100%; padding: 8px 0; font-size: 18px; font-weight: 600;">{{ $data['invoice_detail']['invoice_no']}}</span><br>
+                                                        
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -151,87 +155,24 @@
                                 <td height="1" colspan="4" style="border-bottom:1px solid #e4e4e4"></td>
                             </tr>
                             @endforeach
-                            {{-- <tr>
-                                <td
-                                    style="font-size: 14px; font-wight: 800;  color: #000;  line-height: 18px;  vertical-align: top; padding:10px;">
-                                    Web Design
-                                </td>
-                                <td
-                                    style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px;">
-                                    $15000</td>
-                                <td style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px;"
-                                    align="center">1</td>
-                                <td style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px;"
-                                    align="right">$15000</td>
-                            </tr>
-                            <tr>
-                                <td height="1" colspan="4" style="border-bottom:1px solid #e4e4e4"></td>
-                            </tr>
-                            <tr>
-                                <td
-                                    style="font-size: 14px; font-wight: 800;  color: #000;  line-height: 18px;  vertical-align: top; padding:10px;">
-                                    Web Development
-                                </td>
-                                <td
-                                    style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px;">
-                                    $15000</td>
-                                <td style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px"
-                                    align="center">1</td>
-                                <td style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px"
-                                    align="right">$15000</td>
-                            </tr>
-                            <tr>
-                                <td height="1" colspan="4" style="border-bottom:1px solid #e4e4e4"></td>
-                            </tr>
-                            <tr>
-                                <td
-                                    style="font-size: 14px; font-wight: 800;  color: #000;  line-height: 18px;  vertical-align: top; padding:10px">
-                                    Business Card
-                                </td>
-                                <td
-                                    style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px">
-                                    $15000</td>
-                                <td style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px"
-                                    align="center">1</td>
-                                <td style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px"
-                                    align="right">$15000</td>
-                            </tr>
-                            <tr>
-                                <td height="1" colspan="4" style="border-bottom:1px solid #e4e4e4"></td>
-                            </tr>
-                            <tr>
-                                <td
-                                    style="font-size: 14px; font-wight: 800;  color: #000;  line-height: 18px;  vertical-align: top; padding:10px">
-                                    Business Proposal
-                                </td>
-                                <td
-                                    style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px">
-                                    $15000</td>
-                                <td style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px"
-                                    align="center">1</td>
-                                <td style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px"
-                                    align="right">$15000</td>
-                            </tr>
-                            <tr>
-                                <td height="1" colspan="4" style="border-bottom:1px solid #e4e4e4"></td>
-                            </tr>
-                            <tr>
-                                <td
-                                    style="font-size: 14px; font-wight: 800;  color: #000;  line-height: 18px;  vertical-align: top; padding:10px">
-                                    Mobile App
-                                </td>
-                                <td
-                                    style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px">
-                                    $15000</td>
-                                <td style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px"
-                                    align="center">1</td>
-                                <td style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px"
-                                    align="right">$15000</td>
-                            </tr>
+                            
+                            <!--<tr>-->
+                            <!--    <td-->
+                            <!--        style="font-size: 14px; font-wight: 800;  color: #000;  line-height: 18px;  vertical-align: top; padding:10px">-->
+                            <!--        Mobile App-->
+                            <!--    </td>-->
+                            <!--    <td-->
+                            <!--        style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px">-->
+                            <!--        $15000</td>-->
+                            <!--    <td style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px"-->
+                            <!--        align="center">1</td>-->
+                            <!--    <td style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px"-->
+                            <!--        align="right">$15000</td>-->
+                            <!--</tr>-->
 
-                            <tr>
-                                <td height="1" colspan="4" style="border-bottom:1px solid #e4e4e4"></td>
-                            </tr> --}}
+                            <!--<tr>-->
+                            <!--    <td height="1" colspan="4" style="border-bottom:1px solid #e4e4e4"></td>-->
+                            <!--</tr> -->
 
                         </tbody>
                     </table>
@@ -242,10 +183,18 @@
                     <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
                         <tbody>
                             <tr>
+                                
+                                @if($data['invoice_detail']['tax'] == null)
+                                <td
+                                    style="font-size: 16px;  color: #fff; line-height: 22px; vertical-align: top; text-transform: uppercase; text-align:right; background: #FF7B02; padding: 10px; width: 70%; font-weight: 600;">
+                                    Total
+                                </td>
+                                @else
                                 <td
                                     style="font-size: 16px;  color: #fff; line-height: 22px; vertical-align: top; text-transform: uppercase; text-align:right; background: #FF7B02; padding: 10px; width: 70%; font-weight: 600;">
                                     Total + ({{ $data['invoice_detail']['tax']}}% Tax)
                                 </td>
+                                @endif
                                 <td
                                     style="font-size: 16px;  color: #646a6e; line-height: 22px; vertical-align: top; text-align:right; white-space:nowrap; background: #fff; padding: 10px; border: 3px solid #ff7b02; width: 30%">
                                     ${{ $data['invoice_detail']['total']}}
@@ -270,7 +219,7 @@
                                             <tr>
                                                 <td
                                                     style="font-size: 14px;  color: #000; line-height: 1; vertical-align: top; text-align: right;">
-                                                    <strong>Best Regards</strong>
+                                                    <strong>Thanks for your business</strong>
                                                 </td>
                                             </tr>
                                             <tr>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Invoice;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -54,11 +55,13 @@ class UserController extends Controller
             $name = $record->name;
             $email = $record->email;
             $phone = $record->phone;
+            $no_of_invoice = Invoice::where('user_id',$id)->get()->count();
 
             $data_arr[] = array(
                "name" => $name,
                "email" => $email,
                "phone" => $phone,
+               "invoice" =>$no_of_invoice,
                "status" => '<div class="button-switch"><input type="checkbox" id="switch-orange" class="switch toggle-class" data-id="'.$record->id.'"'.($record->status ? 'checked' : '').'/><label for="switch-orange" class="lbl-off"></label><label for="switch-orange" class="lbl-on"></label></div>',
             );
         }                                                                                                                                                   

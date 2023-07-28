@@ -78,7 +78,7 @@ class AuthController extends Controller
                 return redirect()->route('invoice.index');
             }else{
                 Auth::logout();
-                return redirect()->back()->with('error', 'Email id & password was invalid!');
+                return redirect()->back()->with('error', 'Your account is not active yet!');
             }
         } else {
             return redirect()->back()->with('error', 'Email id & password was invalid!');

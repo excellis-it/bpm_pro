@@ -53,8 +53,11 @@
                                     <th> Name</th>
                                     <th> Email</th>
                                     <th> Phone</th>
+                                    <th>
+                                        No. of Invoice generate
+                                    </th>
                                     <th> Status</th>
-                                    {{-- <th> Action</th> --}}
+                                    
                                 </tr>
                             </thead>
                             <tbody>
@@ -90,6 +93,10 @@
                 {
                     data: 'phone',
                     name: 'phone'
+                },
+                {
+                    data: 'invoice',
+                    name: 'invoice'
                 },
                 {
                     data: 'status',

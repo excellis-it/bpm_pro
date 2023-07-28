@@ -23,11 +23,11 @@
                 <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
                     <span class="user-img"><img src="{{ asset("admin_assets/images/icon.png") }}" alt="">
                         <span class="status online"></span></span>
-                    <span>User</span>
+                    <span>{{Auth::user()->name}}</span>
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="{{ route('admin.profile') }}">My Profile</a>
-                    <a class="dropdown-item" href="{{ route('admin.logout') }}">Logout</a>
+                <a class="dropdown-item" href="{{ route('user.profile') }}">My Profile</a>
+                <a class="dropdown-item" href="{{ route('user.logout') }}">Logout</a>
                 </div>
             </li>
         </ul>
@@ -36,8 +36,8 @@
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i
                     class="fa fa-ellipsis-v"></i></a>
             <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item" href="{{ route('admin.profile') }}">My Profile</a>
-                <a class="dropdown-item" href="{{ route('admin.logout') }}">Logout</a>
+                <a class="dropdown-item" href="{{ route('user.profile') }}">My Profile</a>
+                <a class="dropdown-item" href="{{ route('user.logout') }}">Logout</a>
             </div>
         </div>
     </div>
