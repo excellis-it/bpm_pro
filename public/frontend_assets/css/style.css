@@ -443,4 +443,13 @@ a:hover {
   color: #1E1E1E;
 }
 
+/*28-07-2023*/
+.login_logo{
+}
+.login_logo a img {
+     width: 100%!important;
+    height: 50px!important;
+    position: relative!important;
+}
+
 

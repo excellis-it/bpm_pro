@@ -15,8 +15,13 @@
         <div class="cover">
             <div class="front">
                 <img src="{{ asset('frontend_assets/images/frontImg.jpg') }}" alt="">
-                <div class="text">               
-                    <h2 class="text-head">BPM PRO</h2>
+                <div class="text">  
+                     <div class="login_logo">
+                        <a href="https://excellis.co.in/bpm_pro"
+                        ><img src="https://excellis.co.in/bpm_pro/frontend_assets/img/logo.png" alt="">
+                        </a>
+                    </div> 
+                    <!--<h2 class="text-head">BPM PRO</h2>-->
                     <span class="text-1">Quality Service At An</span>
                     <span class="text-2"> Affordable Price</span>            
                 </div>
@@ -31,7 +36,7 @@
                         <div class="input-boxes">
                             <div class="input-box">
                                 <i class="fas fa-envelope"></i>
-                                <input type="text"  value="{{old('email')}}" name="email" placeholder="Enter email">
+                                <input type="text" name="email" placeholder="Enter email">
                             </div>
                             @if ($errors->has('email'))
                                 <div class="error" style="color:red;">{{ $errors->first('email') }}</div>

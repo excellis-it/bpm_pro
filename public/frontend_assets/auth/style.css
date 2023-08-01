@@ -223,3 +223,12 @@ body{
     display: none;
   }
 }
+
+
+.login_logo{
+}
+.login_logo a img {
+     width: 100%!important;
+    height: 50px!important;
+    position: relative!important;
+}

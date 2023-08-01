@@ -23,7 +23,10 @@ class CreateInvoicesTable extends Migration
             $table->string('from_gst')->nullable();
             $table->string('bil_to_name')->nullable();
             $table->string('bil_to_email')->nullable();
+            $table->string('bil_to_state')->nullable();
+            $table->string('bil_to_city')->nullable();
             $table->string('bil_to_address')->nullable();
+            $table->string('bil_to_zipcode')->nullable();
             $table->string('bil_to_phone')->nullable();
             $table->string('bil_to_mobile')->nullable();
             $table->string('tax')->nullable();

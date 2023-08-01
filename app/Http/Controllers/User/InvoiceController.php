@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Item;
+use App\Models\State;
 use App\Mail\InvoiceMail;
 use App\Models\File;
 use Illuminate\Support\Facades\Validator;
@@ -21,18 +22,25 @@ class InvoiceController extends Controller
 
     public function index()
     { 
-        $user_invoices = Invoice::where('user_id',Auth::user()->id)->orderBy('id','desc')->get();
-        return view('user.invoice.list',compact('user_invoices'));
+        if(!Auth::user()->logo)
+        {
+            return redirect()->route('user.profile')->with('error','please update your profile first');
+        }else{
+            $user_invoices = Invoice::where('user_id',Auth::user()->id)->orderBy('id','desc')->get();
+            return view('user.invoice.list',compact('user_invoices'));
+        }
+        
     }
 
     public function create()
     {
-        return view('user.invoice.create');
+        $states = State::orderBy('id','desc')->get();
+        return view('user.invoice.create',compact('states'));
     }
 
     public function store(Request $request)
     {
-        
+        return $request;
         $request->validate([
             'from_name'     => 'required',
             'bil_to_name'     => 'required',
@@ -71,7 +79,7 @@ class InvoiceController extends Controller
         //image upload
         if ($request->hasFile('photo')) {
             $request->validate([
-                'photo' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+                'photo' => 'required|image|mimes:jpg,png,jpeg|max:2048',
             ]);
             
             $file= $request->file('photo');

@@ -75,7 +75,7 @@ class AuthController extends Controller
             if ($user->hasRole('ADMIN')) {
                 return redirect()->route('user.list');
             } else if($user->hasRole('USER') && $user->status == 1){
-                return redirect()->route('invoice.index');
+                return redirect()->route('user.profile');
             }else{
                 Auth::logout();
                 return redirect()->back()->with('error', 'Your account is not active yet!');

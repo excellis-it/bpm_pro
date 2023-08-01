@@ -16,7 +16,12 @@
             <div class="front">
                 <img src="{{ asset('frontend_assets/images/frontImg.jpg') }}" alt="">
                 <div class="text">
-                    <h2 class="text-head">BPM PRO</h2>
+                    <div class="login_logo">
+                        <a href="https://excellis.co.in/bpm_pro"
+                        ><img src="https://excellis.co.in/bpm_pro/frontend_assets/img/logo.png" alt="">
+                        </a>
+                    </div> 
+                    <!--<h2 class="text-head">BPM PRO</h2>-->
                     <span class="text-1">Quality Service At An</span>
                     <span class="text-2"> Affordable Price</span>
                 </div>
@@ -31,7 +36,7 @@
                         <div class="input-boxes">
                             <div class="input-box">
                                 <i class="fas fa-user"></i>
-                                <input type="text" name="name" value="{{old('name')}}" placeholder="Enter name">
+                                <input type="text" name="name" placeholder="Enter name">
                             </div>
                             @if ($errors->has('name'))
                                 <div class="error" style="color:red;">{{ $errors->first('name') }}</div>
@@ -39,7 +44,7 @@
 
                             <div class="input-box">
                                 <i class="fas fa-envelope"></i>
-                                <input type="text" name="email" value="{{old('email')}}"  placeholder="Enter email" >
+                                <input type="text" name="email" placeholder="Enter email" >
                             </div>
                             @if ($errors->has('email'))
                                 <div class="error" style="color:red;">{{ $errors->first('email') }}</div>
@@ -47,7 +52,7 @@
 
                             <div class="input-box">
                               <i class="fas fa-phone"></i>
-                              <input type="text" name="phone" value="{{old('phone')}}" placeholder="Enter phone" >
+                              <input type="text" name="phone" placeholder="Enter phone" >
                           </div>
                           @if ($errors->has('phone'))
                               <div class="error" style="color:red;">{{ $errors->first('phone') }}</div>
