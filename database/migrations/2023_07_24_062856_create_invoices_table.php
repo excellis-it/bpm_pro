@@ -39,7 +39,10 @@ class CreateInvoicesTable extends Migration
             $table->string('balance_due')->nullable();
             $table->string('signature')->nullable();
             $table->string('invoice_date')->nullable();
+            $table->string('company')->nullable();
             $table->string('image')->nullable();
+            $table->string('send_id')->nullable();
+            $table->string('send_in_status')->nullable();
             $table->timestamps();
         });
     }

@@ -60,42 +60,68 @@
                                         <div class="card-body">
                                             <div class="form-body">
                                                 <div class="row">
-                                                    <div class="col-12 col-lg-5 border-right">
+                                                    <div class="col-12 col-lg-12 border-right mt-3">
                                                         <form class="row g-3" action="{{ route('user.profile.update') }}"
                                                             method="post" enctype="multipart/form-data">
                                                             @csrf
 
-                                                            <div class="col-12">
+                                                        <div class="row mt-2">
+                                                            <div class="col-6">
                                                                 <label class="form-label">Name<span style="color: red;">*</span></label>
                                                                 <input type="text" value="{{ Auth::user()->name }}"
-                                                                    name="name" class="form-control">
+                                                                    name="name" class="form-control" placeholder="Name">
                                                                 @if ($errors->has('name'))
                                                                     <div class="error" style="color:red;">
                                                                         {{ $errors->first('name') }}</div>
                                                                 @endif
                                                             </div>
-                                                            <div class="col-12">
+                                                            <div class="col-6">
                                                                 <label class="form-label">Email<span style="color: red;">*</span></label>
                                                                 <input type="text" value="{{ Auth::user()->email }}"
-                                                                    name="email" class="form-control">
+                                                                    name="email" class="form-control" placeholder="Email">
                                                                 @if ($errors->has('email'))
                                                                     <div class="error" style="color:red;">
                                                                         {{ $errors->first('email') }}</div>
                                                                 @endif
                                                             </div>
-                                                            <div class="col-12">
+                                                        </div>
+
+                                                        <div class="row  mt-2">
+                                                            <div class="col-6">
                                                                 <label class="form-label">Phone<span style="color: red;">*</span></label>
                                                                 <input type="text" value="{{ Auth::user()->phone }}"
-                                                                    name="phone" class="form-control">
+                                                                    name="phone" class="form-control" placeholder="Phone">
                                                                 @if ($errors->has('phone'))
                                                                     <div class="error" style="color:red;">
                                                                         {{ $errors->first('phone') }}</div>
                                                                 @endif
                                                             </div>
+                                                      
+                                                            <div class="col-6">
+                                                                <label class="form-label">Street address<span style="color: red;">*</span></label>
+                                                                <textarea name="address" class="form-control">{{ Auth::user()->address }}</textarea>
+                                                                @if ($errors->has('address'))
+                                                                    <div class="error" style="color:red;">
+                                                                        {{ $errors->first('address') }}</div>
+                                                                @endif
+                                                            </div>                                                            
+                                                        </div>    
 
-                                                            <div class="col-12">
-                                                                <label class="form-label">State<span
+                                                        <div class="row mt-2">
+                                                            <div class="col-6">
+                                                                <label class="form-label">City<span
                                                                         style="color: red;">*</span></label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="inputPassword3" name="city" value="{{ Auth::user()->city }}"
+                                                                        placeholder="City">
+                                                                    @if ($errors->has('city'))
+                                                                    <div class="error" style="color:red;">
+                                                                        {{ $errors->first('city') }}</div>
+                                                                    @endif
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <label class="form-label">State<span
+                                                                    style="color: red;">*</span></label>
                                                                 <select class="form-control" name="state">
                                                                     @foreach ($states as $state)
                                                                         <option value="{{ $state->name }}"
@@ -104,37 +130,34 @@
                                                                         </option>
                                                                     @endforeach
                                                                 </select>
-                                                            </div>
+                                                            </div>                                                              
+                                                        </div>    
 
-                                                            <div class="col-12">
-                                                                <label class="form-label">City<span
-                                                                        style="color: red;">*</span></label>
-                                                                    <input type="text" class="form-control"
-                                                                        id="inputPassword3" name="city" value="{{ Auth::user()->city }}"
-                                                                        placeholder="City">
-                                                            </div>
-
-                                                            <div class="col-12">
-                                                                <label class="form-label">Address<span style="color: red;">*</span></label>
-                                                                <textarea name="address" class="form-control">{{ Auth::user()->address }}</textarea>
-                                                                @if ($errors->has('address'))
-                                                                    <div class="error" style="color:red;">
-                                                                        {{ $errors->first('address') }}</div>
-                                                                @endif
-                                                            </div>
-
-                                                            <div class="col-12">
+                                                        <div class="row mt-2">
+                                                            <div class="col-6">
                                                                 <label class="form-label">Gst<span style="color: red;">*</span></label>
                                                                 <input type="text" value="{{ Auth::user()->gst }}"
-                                                                    name="gst" class="form-control">
+                                                                    name="gst" class="form-control" placeholder="Gst">
                                                                 @if ($errors->has('gst'))
                                                                     <div class="error" style="color:red;">
                                                                         {{ $errors->first('gst') }}</div>
                                                                 @endif
                                                             </div>
 
-                                                            <div class="col-12">
-                                                                <label class="form-label">Logo<span style="color: red;">*</span></label>
+                                                            <div class="col-6">
+                                                                <label class="form-label">Company<span style="color: red;">*</span></label>
+                                                                <input type="text" value="{{ Auth::user()->company }}"
+                                                                    name="company" class="form-control" placeholder="Company">
+                                                                @if ($errors->has('company'))
+                                                                    <div class="error" style="color:red;">
+                                                                        {{ $errors->first('company') }}</div>
+                                                                @endif
+                                                            </div>                                                          
+                                                        </div>  
+                                                        
+                                                        <div class="row mt-2">
+                                                            <div class="col-6">
+                                                                <label class="form-label">Logo</label>
                                                                 <input type="file" name="logo"
                                                                     class="form-control">
                                                                 @if ($errors->has('logo'))
@@ -142,15 +165,14 @@
                                                                         {{ $errors->first('logo') }}</div>
                                                                 @endif
                                                             </div>
+                                                        </div>    
 
-                                                            <div class="col-6">
-                                                                <button type="submit"
-                                                                    class="btn btn-primary">Update</button>
-                                                            </div>
-
+                                                        <div class="col-6">
+                                                            <button type="submit"
+                                                                class="btn btn-primary">Update</button>
+                                                        </div>
                                                         </form>
                                                     </div>
-
                                                 </div>
                                             </div>
                                         </div>

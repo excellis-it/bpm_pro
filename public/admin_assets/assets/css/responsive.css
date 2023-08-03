@@ -457,3 +457,11 @@
 }
 
 @media (max-width:375.98px) {}
+
+ /* Responsive */
+        @media (max-width:768px) {
+            .sign-box {
+                display: block;
+            }
+        }
+        

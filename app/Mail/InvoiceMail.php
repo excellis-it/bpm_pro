@@ -29,7 +29,12 @@ class InvoiceMail extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.InvoiceMail')->subject('Invoice for bpm-pro')->with('maildata', $this->maildata);
+        // return $this->view('mail.InvoiceMail')->subject('Invoice for bpm-pro')->with('maildata', $this->maildata);
+        $path = 'https://excellis.co.in/bpm_pro/public/storage/invoice/';
+        
+        return $this->view('mail.InvoiceMail')
+            ->subject('Invoice for bpm-pro')
+            ->attach($path.$this->maildata['pdf_file']);
 
         
     }

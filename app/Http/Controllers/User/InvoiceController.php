@@ -40,53 +40,80 @@ class InvoiceController extends Controller
 
     public function store(Request $request)
     {
-        return $request;
+        // return $request;
+       
         $request->validate([
+            'type' => 'required',
+            'currency' => 'required',
+            'send_in'  => 'required',
             'from_name'     => 'required',
-            'bil_to_name'     => 'required',
             'from_email' =>'required|regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix',
+            'bill_from_state'     => 'required',
+            'bill_from_city'  => 'required',
+            'from_address' => 'required',
+            'bill_from_phone' => 'required',
+            'bill_from_gst' => 'required',
+            'bill_from_company' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
             'bil_to_email'    =>'required|regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix',
-            'from_address' =>'required',
             'bil_to_address' =>'required',
-            'from_phone' =>'required|numeric',
-            'bil_to_phone' =>'required|numeric',
-            'gst' => 'required',
-            'bil_to_mobile' =>'required|numeric',
-            'bil_to_faxNo' =>'required',
-            'terms'=>'required', 
+            'bil_to_city' =>'required',
+            'bil_to_state' =>'required',
+            'bil_to_zipcode' =>'required',
+            'bil_to_phone' =>'required',
+            'bil_to_mobile' => 'required',
+            'bil_to_company' =>'required',
+            'bil_to_faxNo'=>'required', 
             'notes'=>'required',
-            'tax' => 'required',
+            'sub_amount' => 'required',
+            'sum_amount' => 'required',
+            'invoice_no' => 'required',
         ]);
+        
+       
 
         $invoice = new Invoice;
         $invoice->user_id = Auth::user()->id;
         $invoice->from_name = $request->from_name;
         $invoice->from_email = $request->from_email;
+        $invoice->from_state = $request->bill_from_state;
+        $invoice->from_city = $request->bill_from_city;
         $invoice->from_address = $request->from_address;
-        $invoice->from_phone = $request->from_phone;
-        $invoice->from_gst = $request->gst;
-        $invoice->bil_to_name = $request->bil_to_name;
+        $invoice->from_phone = $request->bill_from_phone;
+        $invoice->from_gst = $request->bill_from_gst;
+        $invoice->bil_to_name = $request->first_name.''.$request->last_name;
         $invoice->bil_to_email = $request->bil_to_email;
+        $invoice->bil_to_state = $request->bil_to_state;
+        $invoice->bil_to_city = $request->bil_to_city;
         $invoice->bil_to_address = $request->bil_to_address;
+        $invoice->bil_to_zipcode = $request->bil_to_zipcode;
         $invoice->bil_to_phone = $request->bil_to_phone;
         $invoice->bil_to_mobile = $request->bil_to_mobile;
+        $invoice->tax = '10';
+        $invoice->type = $request->type;
         $invoice->bil_to_faxNo = $request->bil_to_faxNo;
-        $invoice->tax = $request->tax;
-        $invoice->invoice_no = 'INV'.rand(00000,11111);
-        $invoice->terms = $request->terms;
+        $invoice->invoice_no = $request->invoice_no;
         $invoice->notes = $request->notes;
+        $invoice->sub_total = $request->sub_amount;
+        $invoice->total = $request->sum_amount;
+        $invoice->invoice_date = $request->invoice_date;
+        $invoice->company = $request->company;
+        $invoice->send_id = $request->send_id;
+        $invoice->send_in_status = $request->send_in_status;
+        $invoice->image = Auth::user()->logo;
         
         //image upload
-        if ($request->hasFile('photo')) {
-            $request->validate([
-                'photo' => 'required|image|mimes:jpg,png,jpeg|max:2048',
-            ]);
+        // if ($request->hasFile('photo')) {
+        //     $request->validate([
+        //         'photo' => 'required|image|mimes:jpg,png,jpeg|max:2048',
+        //     ]);
             
-            $file= $request->file('photo');
-            $filename= date('YmdHi').$file->getClientOriginalName();
-            $image_path = $request->file('photo')->store('users', 'public');
-            $invoice->image = $image_path;
-        }
+        //     $file= $request->file('photo');
+        //     $filename= date('YmdHi').$file->getClientOriginalName();
+        //     $image_path = $request->file('photo')->store('users', 'public');
+        //     $invoice->image = $image_path;
+        // }
         //signature upload
         // $folderPath = public_path('upload/');
         $image_parts = explode(";base64,", $request->signed);   
@@ -130,7 +157,7 @@ class InvoiceController extends Controller
         $update = Invoice::where('id',$invoice->id)->first();
         $update->sub_total = $totalCost;
         $calculate_price = ($totalCost * 10/100);
-        $update->total = $totalCost + $calculate_price;
+        $update->total = $totalCost + $calculate_price + $request->other_amount;
         $update->update();
 
         //pdf generate
@@ -162,6 +189,7 @@ class InvoiceController extends Controller
             'id' => $data->invoice_id,
             'invoice_detail' => $invoice_details,
             'items' => $items,
+            'pdf_file' => $filename,
         ];
         
         Mail::to($request->bil_to_email)->send(new InvoiceMail($maildata));
@@ -174,8 +202,9 @@ class InvoiceController extends Controller
        
         $invoice = File::where('invoice_id',$id)->first();
         $file_path = $invoice->file;
-        $myFile = storage_path('app\public\\'.$file_path);
-    	return response()->download($myFile);
+        
+        return response()->download(storage_path('app/public/' . $file_path));
+        
     }
 
     public function show($id)

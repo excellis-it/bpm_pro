@@ -10,11 +10,6 @@
             width: 100%;
             height: 100px;
         }
-
-        #sig canvas {
-            width: 100% !important;
-            height: auto;
-        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
     <!-- font -->
@@ -22,6 +17,7 @@
         href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('admin_assets/assets/css/bootstrap.min.css') }}">
+
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('admin_assets/assets/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -115,8 +111,8 @@
         }
 
         /* .signature input {
-                display: none;
-            } */
+                                    display: none;
+                                } */
 
         .signature label span {
             width: 100%;
@@ -351,7 +347,7 @@
 
                                 <div class="inv-head-wrap d-flex justify-content-between">
                                     <div class="inv-head">
-                                        <h2>New Invoice No <span>(EIT0065)</span></h2>
+                                        <h2>New Invoice No <span id="invoice_show"></span></h2>
                                     </div>
 
                                     <div class="pre-view-wrap d-flex justify-content-end align-items-center">
@@ -371,11 +367,15 @@
                                                     <div class="inv-number">
                                                         <div class="form-floating">
                                                             <select class="form-select" name="type" id="floatingSelect"
-                                                                aria-label="Floating label select example">
+                                                                aria-label="Floating label select example" >
                                                                 <option selected value="Invoice">Invoice</option>
                                                                 <option value="Estimate">Estimate</option>
                                                             </select>
                                                             <label for="floatingSelect">Type</label>
+                                                            @if ($errors->has('type'))
+                                                            <div class="error" style="color:red;">
+                                                                {{ $errors->first('type') }}</div>
+                                                            @endif
                                                         </div>
                                                     </div>
                                                 </div>
@@ -391,6 +391,10 @@
                                                                 <option selected value="Usd">Usd</option>
                                                             </select>
                                                             <label for="floatingSelect">Curency</label>
+                                                             @if ($errors->has('currency'))
+                                                            <div class="error" style="color:red;">
+                                                                {{ $errors->first('currency') }}</div>
+                                                            @endif
                                                         </div>
                                                     </div>
                                                 </div>
@@ -408,6 +412,10 @@
                                                                 <option value="3">Weekly</option>
                                                             </select>
                                                             <label for="floatingSelect">Send in</label>
+                                                            @if ($errors->has('send_in'))
+                                                            <div class="error" style="color:red;">
+                                                                {{ $errors->first('send_in') }}</div>
+                                                            @endif
                                                         </div>
                                                     </div>
                                                 </div>
@@ -418,83 +426,137 @@
                                         <div class="row justify-content-end">
                                             <div class="col-xl-12 col-12">
                                                 <div class="bill-head">
-                                                    <h2>Bill To</h2>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {{-- <div class="col-xl-6 col-12">
-                                        <div class="form-left me-3">
-                                            <div class="form-group row">
-                                                <label for="inputEmail3" class="col-sm-2 col-form-label">Name<span
-                                                        style="color: red;">*</span></label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="inputEmail3"
-                                                        placeholder="Business Name">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="inputPassword3" class="col-sm-2 col-form-label">Email<span
-                                                        style="color: red;">*</span></label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="inputPassword3"
-                                                        placeholder="name@business.com">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="inputPassword3" class="col-sm-2 col-form-label">State<span
-                                                        style="color: red;">*</span></label>
-                                                <div class="col-sm-10">
-                                                    <select class="form-control" name="state">
-                                                        @foreach ($states as $state)
-                                                            <option value="{{ $state->name }}">{{ $state->name }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="inputPassword3" class="col-sm-2 col-form-label">City<span style="color: red;">*</span></label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="inputPassword3"
-                                                        placeholder="City">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="inputPassword3" class="col-sm-2 col-form-label">Address<span
-                                                        style="color: red;">*</span></label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="inputPassword3"
-                                                        placeholder="Street">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="inputPassword3" class="col-sm-2 col-form-label">Phone<span
-                                                        style="color: red;">*</span></label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="inputPassword3"
-                                                        placeholder="(123) 456 789">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="inputPassword3" class="col-sm-2 col-form-label">GST
-                                                    #<span style="color: red;">*</span></label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="inputPassword3"
-                                                        placeholder="123456789 RT">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> --}}
-                                        <div class="col-xl-12">
-                                            <div class="form-left me-3">
-                                                <!--<h2>Bill To</h2>-->
 
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-12">
+                                            <div class="form-left me-3">
                                                 <div class="form-group row">
                                                     <label for="inputEmail3" class="col-sm-2 col-form-label">Name<span
                                                             style="color: red;">*</span></label>
                                                     <div class="col-sm-10">
-                                                        <input type="text" class="form-control" name="bil_to_name"
-                                                            id="inputEmail3" placeholder="Client Name">
+                                                        <input type="text" class="form-control" id="inputEmail3" name="from_name"
+                                                            placeholder="Business Name" value="{{ Auth::user()->name }}">
+                                                            @if ($errors->has('from_name'))
+                                                            <div class="error" style="color:red;">
+                                                                {{ $errors->first('from_name') }}</div>
+                                                            @endif
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="inputPassword3" class="col-sm-2 col-form-label">Email<span
+                                                            style="color: red;">*</span></label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="inputPassword3"
+                                                            placeholder="name@business.com" name="from_email"
+                                                            value="{{ Auth::user()->email }}">
+                                                            @if ($errors->has('from_email'))
+                                                            <div class="error" style="color:red;">
+                                                                {{ $errors->first('from_email') }}</div>
+                                                            @endif
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="inputPassword3" class="col-sm-2 col-form-label">State<span
+                                                            style="color: red;">*</span></label>
+                                                    <div class="col-sm-10">
+                                                        <select class="form-control" name="bill_from_state">
+                                                            @foreach ($states as $state)
+                                                                <option value="{{ $state->name }}" {{ (Auth::user()->state) == $state->name ? 'selected' : ''}}>{{ $state->name }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                        @if ($errors->has('bill_from_state'))
+                                                            <div class="error" style="color:red;">
+                                                                {{ $errors->first('bill_from_state') }}</div>
+                                                            @endif
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="inputPassword3" class="col-sm-2 col-form-label">City<span
+                                                            style="color: red;">*</span></label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="inputPassword3"
+                                                            placeholder="City" value="{{ Auth::user()->city }}" name="bill_from_city">
+                                                            @if ($errors->has('bill_from_city'))
+                                                            <div class="error" style="color:red;">
+                                                                {{ $errors->first('bill_from_city') }}</div>
+                                                            @endif
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="inputPassword3"
+                                                        class="col-sm-2 col-form-label">Address<span
+                                                            style="color: red;">*</span></label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="inputPassword3"
+                                                            placeholder="Street" value="{{ Auth::user()->address }}" name="from_address">
+                                                            @if ($errors->has('from_address'))
+                                                            <div class="error" style="color:red;">
+                                                                {{ $errors->first('from_address') }}</div>
+                                                            @endif
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="inputPassword3" class="col-sm-2 col-form-label">Phone<span
+                                                            style="color: red;">*</span></label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="inputPassword3"
+                                                            placeholder="(123) 456 789" value="{{ Auth::user()->phone }}" name="bill_from_phone">
+                                                            @if ($errors->has('bill_from_phone'))
+                                                            <div class="error" style="color:red;">
+                                                                {{ $errors->first('bill_from_phone') }}</div>
+                                                            @endif
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="inputPassword3" class="col-sm-2 col-form-label">GST
+                                                        #<span style="color: red;">*</span></label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="inputPassword3"
+                                                            placeholder="123456789 RT" value="{{ Auth::user()->gst }}" name="bill_from_gst">
+                                                            @if ($errors->has('bill_from_gst'))
+                                                            <div class="error" style="color:red;">
+                                                                {{ $errors->first('bill_from_gst') }}</div>
+                                                            @endif
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="inputPassword3" class="col-sm-2 col-form-label">Company<span style="color: red;">*</span></label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control" id="inputPassword3"
+                                                             value="{{ Auth::user()->company }}" name="bill_from_company">
+                                                             @if ($errors->has('bill_from_company'))
+                                                            <div class="error" style="color:red;">
+                                                                {{ $errors->first('bill_from_company') }}</div>
+                                                            @endif
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6">
+                                            <div class="form-left me-3">
+                                                <h2>Bill To</h2>
+
+                                                <div class="form-group row">
+                                                    <label for="inputEmail3" class="col-sm-2 col-form-label">Name<span
+                                                            style="color: red;">*</span></label>
+                                                    <div class="col-sm-5">
+                                                        <input type="text" class="form-control" name="first_name"
+                                                            id="inputEmail3" placeholder="First Name">
+                                                            @if ($errors->has('first_name'))
+                                                            <div class="error" style="color:red;">
+                                                                {{ $errors->first('first_name') }}</div>
+                                                            @endif
+                                                    </div>
+                                                    <div class="col-sm-5">
+                                                        <input type="text" class="form-control" name="last_name"
+                                                            id="inputEmail3" placeholder="Last Name">
+                                                            @if ($errors->has('last_name'))
+                                                            <div class="error" style="color:red;">
+                                                                {{ $errors->first('last_name') }}</div>
+                                                            @endif
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -503,6 +565,10 @@
                                                     <div class="col-sm-10">
                                                         <input type="text" class="form-control" name="bil_to_email"
                                                             id="inputPassword3" placeholder="name@client.com">
+                                                            @if ($errors->has('bil_to_email'))
+                                                            <div class="error" style="color:red;">
+                                                                {{ $errors->first('bil_to_email') }}</div>
+                                                            @endif
                                                     </div>
                                                 </div>
 
@@ -512,6 +578,10 @@
                                                     <div class="col-sm-10">
                                                         <input type="text" class="form-control" id="inputPassword3"
                                                             name="bil_to_address" placeholder="Location">
+                                                            @if ($errors->has('bil_to_address'))
+                                                            <div class="error" style="color:red;">
+                                                                {{ $errors->first('bil_to_address') }}</div>
+                                                            @endif
                                                     </div>
                                                 </div>
 
@@ -521,6 +591,10 @@
                                                     <div class="col-sm-10">
                                                         <input type="text" class="form-control" id="inputPassword3"
                                                             name="bil_to_city" placeholder="City">
+                                                            @if ($errors->has('bil_to_city'))
+                                                            <div class="error" style="color:red;">
+                                                                {{ $errors->first('bil_to_city') }}</div>
+                                                            @endif
                                                     </div>
                                                 </div>
 
@@ -534,6 +608,10 @@
                                                                 </option>
                                                             @endforeach
                                                         </select>
+                                                        @if ($errors->has('bil_to_state'))
+                                                            <div class="error" style="color:red;">
+                                                                {{ $errors->first('bil_to_state') }}</div>
+                                                            @endif
                                                     </div>
                                                 </div>
 
@@ -545,6 +623,10 @@
                                                     <div class="col-sm-10">
                                                         <input type="text" class="form-control" id="inputPassword3"
                                                             placeholder="Zipcode" name="bil_to_zipcode">
+                                                            @if ($errors->has('bil_to_zipcode'))
+                                                            <div class="error" style="color:red;">
+                                                                {{ $errors->first('bil_to_zipcode') }}</div>
+                                                            @endif
                                                     </div>
                                                 </div>
 
@@ -552,9 +634,13 @@
                                                     <label for="inputPassword3" class="col-sm-2 col-form-label">Phone<span
                                                             style="color: red;">*</span></label>
                                                     <div class="col-sm-10">
-                                                        <input type="text" class="form-control" id="bill_to_phone"
-                                                            name="bil_to_phone" placeholder="(123) 456 789"
-                                                            onblur="formatPhone(this);" onkeypress="formatPhone(this);">
+                                                        <input type="text" class="form-control phone-format"
+                                                            id="bill_to_phone" name="bil_to_phone"
+                                                            placeholder="+1 123 456 7890">
+                                                            @if ($errors->has('bil_to_phone'))
+                                                            <div class="error" style="color:red;">
+                                                                {{ $errors->first('bil_to_phone') }}</div>
+                                                            @endif
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -562,9 +648,26 @@
                                                         class="col-sm-2 col-form-label">Mobile<span
                                                             style="color: red;">*</span></label>
                                                     <div class="col-sm-10">
+                                                        <input type="text" class="form-control phone-format"
+                                                            id="inputPassword3" name="bil_to_mobile"
+                                                            placeholder="+1 123 456 7890">
+                                                            @if ($errors->has('bil_to_mobile'))
+                                                            <div class="error" style="color:red;">
+                                                                {{ $errors->first('bil_to_mobile') }}</div>
+                                                            @endif
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="inputPassword3"
+                                                        class="col-sm-2 col-form-label">Company<span
+                                                            style="color: red;">*</span></label>
+                                                    <div class="col-sm-10">
                                                         <input type="text" class="form-control" id="inputPassword3"
-                                                            name="bil_to_mobile" placeholder="(123) 456 789"
-                                                            onblur="formatPhone(this);" onkeypress="formatPhone(this);">
+                                                            name="bil_to_company" placeholder="Company">
+                                                            @if ($errors->has('bil_to_company'))
+                                                            <div class="error" style="color:red;">
+                                                                {{ $errors->first('bil_to_company') }}</div>
+                                                            @endif
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -573,6 +676,10 @@
                                                     <div class="col-sm-10">
                                                         <input type="text" class="form-control" name="bil_to_faxNo"
                                                             id="inputPassword3" placeholder="123456789">
+                                                            @if ($errors->has('bil_to_faxNo'))
+                                                            <div class="error" style="color:red;">
+                                                                {{ $errors->first('bil_to_faxNo') }}</div>
+                                                            @endif
                                                     </div>
                                                 </div>
                                             </div>
@@ -597,30 +704,31 @@
                                                     <div class="row justify-content-between">
                                                         <div class="col-xl-6 col-12">
                                                             <div class="form-group">
-                                                                <textarea class="form-control" id="" placeholder="Item Description" rows="2"></textarea>
+                                                                <textarea class="form-control" name="item_description[]" placeholder="Item Description" rows="2"></textarea>
                                                             </div>
                                                         </div>
                                                         <div class="col-xl-6 col-12">
                                                             <div class="form-group">
-                                                                <textarea class="form-control" id="" placeholder="Additional Description" rows="2"></textarea>
+                                                                <textarea class="form-control" name="additional_details[]" placeholder="Additional Description" rows="2"></textarea>
                                                             </div>
                                                         </div>
                                                         <div class="col-xl-4 col-12">
                                                             <div class="form-group">
-                                                                <input type="text" class="form-control"
-                                                                    id="inputEmail3" placeholder="Rate">
+                                                                <input type="text" class="form-control rate"
+                                                                    name="rate[]" placeholder="Rate">
                                                             </div>
                                                         </div>
                                                         <div class="col-xl-4 col-12">
                                                             <div class="form-group">
-                                                                <input type="text" class="form-control"
-                                                                    id="inputEmail3" placeholder="Quantity">
+                                                                <input type="text" class="form-control quantity"
+                                                                    name="quantity[]" placeholder="Quantity">
                                                             </div>
                                                         </div>
                                                         <div class="col-xl-4 col-12">
                                                             <div class="form-group">
-                                                                <input type="text" class="form-control"
-                                                                    id="inputEmail3" placeholder="Amount">
+                                                                <input type="text" class="form-control amount"
+                                                                    name="amount[]" id="amount_1" placeholder="Amount"
+                                                                    readonly>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -679,11 +787,18 @@
                                         <div class="col-xl-3 col-12 mt-3">
                                             <a class="btn add-btn" id="add_more_item">Add Item</a>
                                         </div>
-                                       
 
                                     </div>
                                 </div>
+
                                 <div class="form-div-wrap">
+                                    <div class="form-group row">
+                                        <label for="inputPassword3" class="col-sm-2 col-form-label">Notes<span
+                                                style="color: red;">*</span></label>
+                                        <div class="col-sm-10">
+                                            <textarea class="form-control" name="notes" id="inputPassword3"></textarea>
+                                        </div>
+                                    </div>
                                     <div class="sign-box">
                                         <div class="signature">
                                             <h2>Signature</h2>
@@ -692,7 +807,7 @@
                                             <button id="reset" class="btn btn-danger">Clear Signature</button>
                                             <textarea id="signature_capture" name="signed" hidden></textarea>
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -701,11 +816,10 @@
                                     <div class="logo-div-wrap d-flex align-items-center justify-content-between mt-3">
                                         <div class="logo-div">
                                             <a href="https://excellis.co.in/bpm_pro"><img
-                                                    src="https://excellis.co.in/bpm_pro/frontend_assets/img/logo.png"
-                                                    alt=""></a>
+                                                    src="{{ Storage::url(Auth::user()->logo) }}" alt=""></a>
                                         </div>
                                         <div class="logo-text">
-                                            <h3>BPM PRO</h3>
+                                            <h3>{{ Auth::user()->company }}</h3>
                                         </div>
                                     </div>
                                     <div class="inv-number-div">
@@ -714,26 +828,37 @@
                                                 <div class="inv-number">
                                                     <div class="form-floating">
                                                         <input type="text" name="invoice_no" class="form-control"
-                                                            id="floatingInputValue" placeholder="" value="EIT0065">
+                                                            id="invoice_no">
                                                         <label for="floatingInputValue">Invoice Number</label>
+                                                        @if ($errors->has('invoice_no'))
+                                                            <div class="error" style="color:red;">
+                                                                {{ $errors->first('invoice_no') }}</div>
+                                                            @endif
                                                     </div>
                                                 </div>
                                                 <div class="inv-number">
                                                     <div class="form-floating">
-                                                        <input type="date" name="invoice_date" class="form-control"
-                                                            id="floatingInputValue" placeholder="" value="EIT0065">
+                                                        <input type="date" name="invoice_date" class="form-control">
                                                         <label for="floatingInputValue">Invoice Date</label>
+                                                        @if ($errors->has('invoice_date'))
+                                                            <div class="error" style="color:red;">
+                                                                {{ $errors->first('invoice_date') }}</div>
+                                                            @endif
                                                     </div>
                                                 </div>
                                                 <div class="inv-number">
                                                     <div class="form-floating">
                                                         <select class="form-select" name="due" id="floatingSelect"
                                                             aria-label="Floating label select example">
-                                                            <option selected>On Receipt</option>
-                                                            <option value="1">On Receipt</option>
+                                                            <option selected value="on receipt">On Receipt</option>
+                                                            <option value="on receipt">On Receipt</option>
 
                                                         </select>
                                                         <label for="floatingSelect">Due</label>
+                                                        @if ($errors->has('due'))
+                                                            <div class="error" style="color:red;">
+                                                                {{ $errors->first('due') }}</div>
+                                                            @endif
                                                     </div>
                                                 </div>
                                             </div>
@@ -748,40 +873,48 @@
                                                         <h3>Subtotal</h3>
                                                     </div>
                                                     <div>
-                                                        <h4>$300.00</h4>
+                                                        <input type="hidden" id="total_amount" name="sub_amount"
+                                                            value="0">
+                                                        <h4><span class="total_amount">0</span></h4>
+                                                        @if ($errors->has('sub_amount'))
+                                                            <div class="error" style="color:red;">
+                                                                {{ $errors->first('sub_amount') }}</div>
+                                                            @endif
                                                     </div>
                                                 </div>
-                                                <div class="sub d-flex justify-content-between">
+                                                {{-- <div class="sub d-flex justify-content-between">
                                                     <div>
                                                         <h3>Other Discount</h3>
                                                     </div>
                                                     <div>
                                                         <h4 style="color: blue; font-weight: 600;">-$25.00</h4>
                                                     </div>
-                                                </div>
-                                                <div class="sub d-flex justify-content-between">
+                                                </div> --}}
+                                                {{-- <div class="sub d-flex justify-content-between">
                                                     <div>
                                                         <h3>Shipping</h3>
                                                     </div>
                                                     <div>
                                                         <h4 style="color: blue; font-weight: 600;">Add</h4>
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                                 <hr />
                                                 <div class="sub d-flex justify-content-between">
                                                     <div>
-                                                        <h3>Tax(local...9.75%)</h3>
+                                                        <h3>Tax(10%)</h3>
                                                     </div>
-                                                    <div>
-                                                        <h4>$26.81</h4>
-                                                    </div>
+                                                   
                                                 </div>
                                                 <div class="sub d-flex justify-content-between">
                                                     <div>
                                                         <h3>Other Amount</h3>
                                                     </div>
                                                     <div>
-                                                        <h4 style="color: blue; font-weight: 600;">Add</h4>
+                                                        <h4 style="color: blue; font-weight: 600;" id="other_amount">Add
+                                                        </h4>
+                                                        <input type="text" name="other_amount" id="other_amount_input"
+                                                            class="form-control" placeholder="Other amount"
+                                                            style="display:none;">
                                                     </div>
                                                 </div>
                                                 <hr />
@@ -790,7 +923,13 @@
                                                         <h3 style="font-weight: 600; color: #000;">Total</h3>
                                                     </div>
                                                     <div>
-                                                        <h4>$301.81</h4>
+                                                        <input type="hidden" id="sum_amount" name="sum_amount"
+                                                            value="0">
+                                                        <h4><span class="sum_amount">0</span></h4>
+                                                        @if ($errors->has('sum_amount'))
+                                                            <div class="error" style="color:red;">
+                                                                {{ $errors->first('sum_amount') }}</div>
+                                                            @endif
                                                     </div>
                                                 </div>
                                             </div>
@@ -806,332 +945,17 @@
 
 
         {{-- invoice view modal --}}
-        <div class="modal fade" id="modelWindow" role="dialog" style="margin-left:0px">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-                    </div>
-                    <div class="modal-body">
-
-
-                        <body style="background: #f2f2f2;">
-                            <table width="600" border="0" cellpadding="0" cellspacing="0" bgcolor="#ffffff"
-                                style="border-radius: 0px; margin: 0 auto;">
-                                <tbody>
-                                    <tr>
-                                        <td style="padding:0 30px">
-                                            <table width="100%" border="0" cellpadding="0" cellspacing="0"
-                                                align="">
-                                                <tbody>
-                                                    <tr>
-                                                        <td colspan="2"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <table border="0" cellpadding="0" cellspacing="0"
-                                                                align="">
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td align="left"><img src=""
-                                                                                width="100%"
-                                                                                style="height: 120px;
-                                                    margin-left: -29px;"
-                                                                                alt="logo" border="0" /></td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </td>
-
-                                                        <td>
-                                                            <table border="0" cellpadding="0" cellspacing="0"
-                                                                align="right">
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td
-                                                                            style="font-size: 14px; color: #000; font-weight: 800; line-height: 18px; vertical-align: top; text-align: right; padding: 15px 0 0;">
-                                                                            <img src="" alt="logo"
-                                                                                border="0"
-                                                                                style="object-fit: contain;width:100px;" /><br>
-                                                                            <span>Address:</span><br>
-                                                                            <span>Phone: </span><br>
-                                                                            <span>Email: </span><br>
-                                                                            <span>Date: </span>
-
-
-
-
-                                                                        </td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </td>
-                                                    </tr>
-
-                                                </tbody>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding:0 30px">
-                                            <table width="100%" border="0" cellpadding="0" cellspacing="0"
-                                                align="center">
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <table border="0" cellpadding="0" cellspacing="0"
-                                                                align="left">
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td
-                                                                            style="font-size: 20px; font-weight: 300; color: #000; line-height: 30px; vertical-align: top; text-align: left; text-transform: uppercase;">
-                                                                            Invoice to
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td
-                                                                            style="font-size: 14px; font-weight: 800; color: #000; line-height: 20px; vertical-align: top; text-align: left;">
-                                                                            <span
-                                                                                style="font-size: 20px; font-weight: 900; color: #FF7B02; line-height: 30px;"></span>
-                                                                            <br>
-                                                                            <span></span><br>
-                                                                            <span></span>
-                                                                        </td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </td>
-                                                        <td>
-                                                            <table border="0" cellpadding="0" cellspacing="0"
-                                                                align="right">
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td style="">
-                                                                            <span
-                                                                                style="background: #ff8719; color: #fff; padding: 3px 40px; text-align: center; font-size: 36px; line-height: 1; font-weight: 300; display: inline-block;">INVOICE</span><br>
-                                                                            <span
-                                                                                style="color: #000; text-align: center; display: inline-block; width: 100%; padding: 8px 0; font-size: 18px; font-weight: 600;"></span><br>
-
-                                                                        </td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td height="20"></td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding:0 30px">
-                                            <table width="100%" border="0" cellpadding="0" cellspacing="0"
-                                                align="center">
-                                                <tbody>
-                                                    <tr>
-                                                        <th style="background: #ff8719; font-size: 16px; font-wight: 800;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;"
-                                                            width="52%" align="left">
-                                                            Item description
-                                                        </th>
-                                                        <th style="background: #ff8719; font-size: 16px;  font-wight: 800;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;"
-                                                            align="left">
-                                                            Rate
-                                                        </th>
-                                                        <th style="background: #ff8719; font-size: 16px;  font-wight: 800; color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px"
-                                                            align="center">
-                                                            Quantity
-                                                        </th>
-                                                        <th style="background: #ff8719; font-size: 16px;  font-wight: 800;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px"
-                                                            align="right">
-                                                            Amount
-                                                        </th>
-                                                    </tr>
-                                                    <tr>
-                                                        <td height="1" style="background: #bebebe;" colspan="4">
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td height="10" colspan="4"></td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td
-                                                            style="font-size: 14px; font-wight: 800;  color: #000;  line-height: 18px;  vertical-align: top; padding:10px;">
-
-                                                        </td>
-                                                        <td
-                                                            style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px;">
-                                                            $</td>
-                                                        <td style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px;"
-                                                            align="center"></td>
-                                                        <td style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px;"
-                                                            align="right">$</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td height="1" colspan="4"
-                                                            style="border-bottom:1px solid #e4e4e4"></td>
-                                                    </tr>
-
-
-                                                    <!--<tr>-->
-                                                    <!--    <td-->
-                                                    <!--        style="font-size: 14px; font-wight: 800;  color: #000;  line-height: 18px;  vertical-align: top; padding:10px">-->
-                                                    <!--        Mobile App-->
-                                                    <!--    </td>-->
-                                                    <!--    <td-->
-                                                    <!--        style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px">-->
-                                                    <!--        $15000</td>-->
-                                                    <!--    <td style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px"-->
-                                                    <!--        align="center">1</td>-->
-                                                    <!--    <td style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px"-->
-                                                    <!--        align="right">$15000</td>-->
-                                                    <!--</tr>-->
-
-                                                    <!--<tr>-->
-                                                    <!--    <td height="1" colspan="4" style="border-bottom:1px solid #e4e4e4"></td>-->
-                                                    <!--</tr> -->
-
-                                                </tbody>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding:0 30px">
-                                            <table width="100%" border="0" cellpadding="0" cellspacing="0"
-                                                align="center">
-                                                <tbody>
-                                                    <tr>
-
-
-                                                        <td
-                                                            style="font-size: 16px;  color: #646a6e; line-height: 22px; vertical-align: top; text-align:right; white-space:nowrap; background: #fff; padding: 10px; border: 3px solid #ff7b02; width: 30%">
-                                                            $900
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding:0 30px">
-                                            <table width="100%" border="0" cellpadding="0" cellspacing="0"
-                                                align="">
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <table width="220" border="0" cellpadding="0"
-                                                                cellspacing="0" align="right">
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td height="20"></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td
-                                                                            style="font-size: 14px;  color: #000; line-height: 1; vertical-align: top; text-align: right;">
-                                                                            <strong>Thanks for your business</strong>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td width="100%" height="10"></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td
-                                                                            style="font-size: 14px;  color: #000; line-height: 20px; vertical-align: top; text-align: right;">
-                                                                            <strong>Signature</strong>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td style="text-align: right;">
-                                                                            <img src="" alt=""
-                                                                                srcset=""
-                                                                                style="width:300px; height:100px; object-fit:contain;" />
-                                                                        </td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-
-
-                                                            <table width="220" border="0" cellpadding="0"
-                                                                cellspacing="0" align="left">
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td height="20"></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td
-                                                                            style="font-size: 14px;  color: #000; line-height: 1; vertical-align: top; text-align: left;">
-                                                                            <strong>Note</strong>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td width="100%" height="10"></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td
-                                                                            style="font-size: 14px;  color: #000; line-height: 20px; vertical-align: top; ">
-                                                                            lorem Ipsum is simply dummy text of the printing
-                                                                            and typesetting industry. Lorem
-                                                                            Ipsum has
-                                                                        </td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <table width="600" border="0" cellpadding="0" cellspacing="0"
-                                                align="center" bgcolor="#ffffff" style="border-radius: 0 0 10px 10px;">
-
-                                                <tr>
-                                                    <td height="50"></td>
-                                                </tr>
-                                                <tr bgcolor="#000" style="text-align: center;">
-                                                    <td height="50" style="color: #fff; padding: 10px;">
-                                                        <p>lorem Ipsum is simply dummy text of the printing and typesetting
-                                                            industry. Lorem
-                                                            Ipsum has
-                                                            been the industry's standard dummy text ever since the 1500s,
-                                                            when an unknown
-                                                            printer took a
-                                                            galley of type and scrambled it to make a type specimen book.
-                                                        </p>
-                                                    </td>
-                                                </tr>
-
-                                            </table>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
-
-                        </body>
-
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn-close" aria-label="Close"></button>
-                    </div>
-                </div>
-            </div>
-            {{-- modal end  --}}
-        </div>
         {{-- modal end  --}}
     @endsection
 
     @push('scripts')
-    
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/guillaumepotier/Parsley.js@2.9.2/dist/parsley.js"></script>
+
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
         <script src="{{ asset('admin_assets/assets/js/custom.js') }}"></script>
-
         <script type="text/javascript" src="https://cdn.rawgit.com/willowsystems/jSignature/master/libs/jSignature.min.js">
         </script>
         <script type="text/javascript">
@@ -1161,66 +985,98 @@
             });
         </script>
 
-       
+
 
         <script>
-            var i = 1;
-            $("#add_more_item").click(function() {
-                i++;
+            $(document).ready(function() {
 
-        $(".add-item").append('<div class="add-item-wrap"><div class="cross-btn"><a onclick="remove('+i+')"><i class="fa-solid fa-xmark"></i></a></div><div class="row justify-content-between"><div class="col-xl-12"><div class="item-head"><h2>Item Description</h2></div><div class="form-left form-item"><div class="row justify-content-between"><div class="col-xl-6 col-12"><div class="form-group"><textarea class="form-control" id="" placeholder="Item Description" rows="2"></textarea></div></div><div class="col-xl-6 col-12"><div class="form-group"><textarea class="form-control" id="" placeholder="Additional Description" rows="2"></textarea></div></div><div class="col-xl-4 col-12"><div class="form-group"><input type="text" class="form-control" id="inputEmail3" placeholder="Rate"></div></div><div class="col-xl-4 col-12"><div class="form-group"><input type="text" class="form-control" id="inputEmail3" placeholder="Quantity"></div></div><div class="col-xl-4 col-12"><div class="form-group"><input type="text" class="form-control" id="inputEmail3" placeholder="Amount"></div></div></div></div></div></div></div>');
+                var i = 1;
+                $("#add_more_item").click(function() {
+                    i++;
+
+                    $(".add-item").append('<div class="add-item-wrap" id="addMoreInputFields_' + i +
+                        '"><div class="cross-btn"><a onclick="remove(' + i +
+                        ')"><i class="fa-solid fa-xmark"></i></a></div><div class="row justify-content-between"><div class="col-xl-12"><div class="item-head"><h2>Item Description</h2></div><div class="form-left form-item"><div class="row justify-content-between"><div class="col-xl-6 col-12"><div class="form-group"><textarea class="form-control" name="item_description[]" placeholder="Item Description" rows="2"></textarea></div></div><div class="col-xl-6 col-12"><div class="form-group"><textarea class="form-control" name="additional_details[]" placeholder="Additional Description" rows="2"></textarea></div></div><div class="col-xl-4 col-12"><div class="form-group"><input type="text" class="form-control rate" name="rate[]" id="rate_' +
+                        i +
+                        '"  placeholder="Rate"></div></div><div class="col-xl-4 col-12"><div class="form-group"><input type="text" class="form-control quantity"  name="quantity[]" id="quan_' +
+                        i +
+                        '"  placeholder="Quantity"></div></div><div class="col-xl-4 col-12"><div class="form-group"><input type="text" class="form-control amount" id="' +
+                        i + '" placeholder="Amount" readonly></div></div></div></div></div></div></div>'
+                    );
+                });
+
+
+                function calculateTotalAmount() {
+                    $('.rate').each(function(index) {
+                        const rateValue = parseFloat($(this).val()) || 0;
+                        const quantityValue = parseFloat($('.quantity').eq(index).val()) || 0;
+                        const totalAmount = rateValue * quantityValue;
+                        $('.amount').eq(index).val(totalAmount);
+                    });
+                }
+
+                // Function to calculate the overall result
+                function calculateResult() {
+                    let result = 0;
+                    $('.amount').each(function() {
+                        const totalAmountValue = parseFloat($(this).val()) || 0;
+                        result += totalAmountValue;
+                    });
+                    $('.total_amount').text('$'+result);
+                    $('.sum_amount').text('$'+result);
+                    $('#total_amount').val(result);
+                    $('#sum_amount').val(result);
+                }
+
+                // Attach keyup event to the rate and quantity fields
+                $(document).on('keyup', '.rate, .quantity', function() {
+
+
+                    calculateTotalAmount();
+                    calculateResult();
+                });
+
+                // Initialize the total amount and result on page load
+                calculateTotalAmount();
+                calculateResult();
+            });
+        </script>
+
+
+
+        <script>
+            $(document).ready(function() {
+                $('.phone-format').mask('+1 999 999 9999');
             });
 
-        $(document).ready(function() 
-        {   
-            function remove(i) {
-                
-                var total_amount = $('#total_amount').val();
-                var amount = $('#amount_' + i).val();
-                var calculate = (total_amount - amount);
-                $('#total_amount').val(calculate);
-                $('#addMoreInputFields_' + i).remove();
-            }
-        });
-        </script>
-        <script>
-            function quant(i) {
-                var rate = $('#rate_' + i).val();
-                var quant = $('#quan_' + i).val();
-                var amount = (rate * quant);
-                var total_amount = $('#total_amount').val();
+            $('#invoice_no').keyup(function() {
+                var invoice = $('#invoice_no').val();
 
-                $('#amount_' + i).val(amount);
-                //    var sum = parseInt(total_amount)+parseInt(amount);
-                //    $('#total_amount').val(sum); 
+                $('#invoice_show').html('(' + invoice + ')');
 
-            }
+            });
 
-            function rating(i) {
-                var rate = $('#rate_' + i).val();
-                var quant = $('#quan_' + i).val();
-                var amount = (rate * quant);
-                $('#amount_' + i).val(amount);
-                //    var total_amount = $('#total_amount').val();
-                //    alert(total_amount);
-                //    var sum = parseInt(total_amount)+parseInt(amount);
-                //    alert(sum);
-                //    $('#total_amount').val(sum); 
-            }
-        </script>
+            $('#other_amount').click(function() {
+                $('#other_amount_input').show();
+                $('#other_amount').hide();
+            })
 
-        <script>
-            function formatPhone(obj) {
-                var numbers = obj.value.replace(/\D/g, ''),
-                    char = {
-                        0: '(',
-                        3: ') ',
-                        6: '  '
-                    };
-                obj.value = '';
-                for (var i = 0; i < numbers.length; i++) {
-                    obj.value += (char[i] || '') + numbers[i];
+            $(document).on('change','#other_amount_input',function(){
+
+            // $('#other_amount_input').keyup(function() {
+                var other_amount = $('#other_amount_input').val();
+                var total = $('#sum_amount').val();
+                var sub_total = $('#total_amount').val();
+                var sum_total = parseInt(other_amount) + parseInt(total);
+                $('.sum_amount').text('$'+sum_total);
+                $('#sum_amount').val(sum_total);
+                if(other_amount == '')
+                {
+                    $('.sum_amount').text('$'+sub_total);
+                    $('#sum_amount').val(sub_total);
                 }
-            }
+                
+            });
+
         </script>
     @endpush

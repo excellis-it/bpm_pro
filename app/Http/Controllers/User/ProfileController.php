@@ -32,7 +32,7 @@ class ProfileController extends Controller
             'gst'      => 'required',
             'state'    => 'required',
             'city'     => 'required',
-
+            'company'  => 'required',
             
         ]);
 
@@ -44,6 +44,7 @@ class ProfileController extends Controller
         $data->state = $request->state;
         $data->city = $request->city;
         $data->address  = $request->address;
+        $data->company = $request->company;
         
         if ($request->hasFile('logo')) {
             $request->validate([
