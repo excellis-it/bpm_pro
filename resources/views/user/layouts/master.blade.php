@@ -40,7 +40,7 @@
 
     <!--end header-->
     <!--sidebar-wrapper-->
-    @include('user.includes.sidebar')
+   
     <!--end sidebar-wrapper-->
 
     <!--page-wrapper-->
@@ -49,7 +49,7 @@
     <!--end page-wrapper-->
 
     <!--footer -->
-    @include('user.includes.footer')
+
 
     <!-- end footer -->
 

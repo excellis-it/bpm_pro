@@ -30,8 +30,9 @@ class AuthController extends Controller
     {
        
         $request->validate([
-            'name'     => 'required',
-            'phone'     => 'required|numeric|digits:10',
+            'fname'     => 'required',
+            'lname'     => 'required',
+            'phone'     => 'required',
             'email'    => 'required|email|unique:users|regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix',
             'password' => 'required|min:8',
             'confirm_password' => 'required|min:8|same:password',
@@ -41,7 +42,8 @@ class AuthController extends Controller
 
         $input = $request->all();
         $user = new User;
-        $user->name = $input['name'];
+        $user->first_name = $input['fname'];
+         $user->last_name = $input['lname'];
         $user->email = $input['email'];
         $user->phone = $input['phone'];
         $user->password = bcrypt($input['password']);

@@ -1,16 +1,17 @@
 <div class="main-wrapper">
+    <div class="container">
     <div class="header">
         <div class="header-left">
             <div class="logo"><a href="{{ route('home') }}"><img src="{{ asset('frontend_assets/img/logo.png') }}" alt=""/></a></div>
             
         </div>
-        <a id="toggle_btn" href="javascript:void(0);">
-            <span class="bar-icon">
-                <span></span>
-                <span></span>
-                <span></span>
-            </span>
-        </a>
+        <!--<a id="toggle_btn" href="javascript:void(0);">-->
+        <!--    <span class="bar-icon">-->
+        <!--        <span></span>-->
+        <!--        <span></span>-->
+        <!--        <span></span>-->
+        <!--    </span>-->
+        <!--</a>-->
 
         <div class="page-title-box">
             <h3>Welcome to user panel</h3>
@@ -18,7 +19,9 @@
 
         <a id="mobile_btn" class="mobile_btn" href="#sidebar"><i class="fa fa-bars"></i></a>
         <ul class="nav user-menu">
-
+             <li class="nav-item dropdown has-arrow main-drop bdr_1">
+                <a href="{{ route('invoice.index') }}" class="nav-link">Invoice </a>
+            </li>      
             <li class="nav-item dropdown has-arrow main-drop">
                 <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
                     <span class="user-img">
@@ -46,3 +49,4 @@
             </div>
         </div>
     </div>
+   </div>

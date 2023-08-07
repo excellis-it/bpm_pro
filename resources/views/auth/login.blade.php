@@ -17,7 +17,7 @@
                 <img src="{{ asset('frontend_assets/images/frontImg.jpg') }}" alt="">
                 <div class="text">  
                      <div class="login_logo">
-                        <a href="https://excellis.co.in/bpm_pro"
+                        <a href="{{ url('/') }}"
                         ><img src="https://excellis.co.in/bpm_pro/frontend_assets/img/logo.png" alt="">
                         </a>
                     </div> 

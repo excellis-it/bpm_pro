@@ -10,7 +10,7 @@ use App\Http\Controllers\User\ProfileController as UserProfileController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Homecontroller;
 use App\Http\Controllers\User\InvoiceController;
-
+use Illuminate\Support\Facades\Artisan;
 
 // Clear cache
 Route::get('clear', function () {
@@ -58,5 +58,12 @@ Route::group(['prefix' => 'user'], function () {
     });
     
     Route::get('download-invoice/{id}', [InvoiceController::class, 'downloadInvoice'])->name('download.invoice');
+    Route::get('invoiceChangeStatus', [InvoiceController::class, 'invoiceChangeStatus'])->name('invoice.change-status');
     
+});
+
+
+Route::get('/cronsStartToWorkEmailSend', function () {
+    Artisan::call('send:mail');
+    return true;
 });

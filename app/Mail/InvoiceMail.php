@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Storage;
 
 class InvoiceMail extends Mailable
 {
@@ -30,11 +31,11 @@ class InvoiceMail extends Mailable
     public function build()
     {
         // return $this->view('mail.InvoiceMail')->subject('Invoice for bpm-pro')->with('maildata', $this->maildata);
-        $path = 'https://excellis.co.in/bpm_pro/public/storage/invoice/';
+        $path = Storage::url($this->maildata['pdf_file']);
         
         return $this->view('mail.InvoiceMail')
             ->subject('Invoice for bpm-pro')
-            ->attach($path.$this->maildata['pdf_file']);
+            ->attach($path);
 
         
     }

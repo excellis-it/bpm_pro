@@ -17,7 +17,7 @@
                 <img src="{{ asset('frontend_assets/images/frontImg.jpg') }}" alt="">
                 <div class="text">
                     <div class="login_logo">
-                        <a href="https://excellis.co.in/bpm_pro"
+                        <a href="{{ url('/') }}"
                         ><img src="https://excellis.co.in/bpm_pro/frontend_assets/img/logo.png" alt="">
                         </a>
                     </div> 
@@ -36,10 +36,18 @@
                         <div class="input-boxes">
                             <div class="input-box">
                                 <i class="fas fa-user"></i>
-                                <input type="text" name="name" placeholder="Enter name">
+                                <input type="text" name="fname" placeholder="Enter first name">
                             </div>
-                            @if ($errors->has('name'))
-                                <div class="error" style="color:red;">{{ $errors->first('name') }}</div>
+                            @if ($errors->has('fname'))
+                                <div class="error" style="color:red;">{{ $errors->first('fname') }}</div>
+                            @endif
+
+                            <div class="input-box">
+                                <i class="fas fa-user"></i>
+                                <input type="text" name="lname" placeholder="Enter last name">
+                            </div>
+                            @if ($errors->has('lname'))
+                            <div class="error" style="color:red;">{{ $errors->first('lname') }}</div>
                             @endif
 
                             <div class="input-box">
@@ -52,7 +60,7 @@
 
                             <div class="input-box">
                               <i class="fas fa-phone"></i>
-                              <input type="text" name="phone" placeholder="Enter phone" >
+                              <input type="text" name="phone" placeholder="+1 123 456 7890"  class="phone-format">
                           </div>
                           @if ($errors->has('phone'))
                               <div class="error" style="color:red;">{{ $errors->first('phone') }}</div>
@@ -91,6 +99,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 <script>
     @if (Session::has('message'))
         toastr.options = {
@@ -123,4 +132,10 @@
         }
         toastr.warning("{{ session('warning') }}");
     @endif
+</script>
+
+<script>
+    $(document).ready(function() {
+        $('.phone-format').mask('+1 999 999 9999');
+    });
 </script>

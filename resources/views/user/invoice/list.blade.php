@@ -58,6 +58,8 @@
                                     <th>Bill To Address</th>
                                     <th>Bill To Phone </th>
                                     <th>Total Amount</th>
+                                    <th>Send In</th>
+                                    <td>Stop Sending</td>
                                     <th>Invoice</th>
                                 </tr>
                             </thead>
@@ -69,6 +71,27 @@
                                     <td>{{ $invoice->bil_to_address }}</td>
                                     <td>{{ $invoice->bil_to_phone }}</td>
                                     <td>{{ $invoice->total }}</td>
+                                    <td>
+                                        @if($invoice->send_id == 1)
+                                         One Time
+                                        @elseif($invoice->send_id == 2)
+                                        Weekly
+                                        @else
+                                        Monthly
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if($invoice->send_id != 1)
+                                        <div class="button-switch">
+                                            
+                                            <input type="checkbox" id="switch-orange" class="switch toggle-class"
+                                                data-id="{{ $invoice['id'] }}"
+                                                {{ $invoice['send_in_status'] ? 'checked' : '' }} />
+                                            <label for="switch-orange" class="lbl-off"></label>
+                                            <label for="switch-orange" class="lbl-on"></label>
+                                        </div>
+                                        @endif
+                                    </td>
                                     <td><a href="{{ route('download.invoice', $invoice->id) }}" ><i class="fas fa-download"></i></a></td>
                                 </tr>
                                 @endforeach
@@ -102,6 +125,25 @@
             ]
         });
 
+    });
+</script>
+<script>
+    $('.toggle-class').change(function() {
+        var status = $(this).prop('checked') == true ? 1 : 0;
+        var id = $(this).data('id');
+
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: '{{route("invoice.change-status")}}',
+            data: {
+                'status': status,
+                'id': id
+            },
+            success: function(resp) {
+                console.log(resp.success)
+            }
+        });
     });
 </script>
 @endpush

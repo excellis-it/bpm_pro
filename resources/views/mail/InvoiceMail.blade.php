@@ -1,105 +1,132 @@
-
-
 <!doctype html>
 <html lang="en">
 <title>BPM-PRO </title>
-<script src="https://unpkg.com/phosphor-icons"></script>
 
-
-<body style="background: #f2f2f2;text-align:center;width:100%;">
-
+<body style="background: #f2f2f2;">
     <table width="600" border="0" cellpadding="0" cellspacing="0" bgcolor="#ffffff"
         style="border-radius: 0px; margin: 0 auto;">
         <tbody>
+
             <tr>
-                <td style="padding:0 30px">
-                    <table width="100%" border="0" cellpadding="0" cellspacing="0" align="">
-                        <tbody>
-                            <tr>
-                                <td colspan="2"></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <table border="0" cellpadding="0" cellspacing="0" align="">
-                                        <tbody>
-                                            <tr>
-                                                <td align="left"><img
-                                                        src="{{$message->embed(asset('/frontend_assets/img/pdf_cc.jpg'))}}"
-                                                        width="100%"
-                                                        style="height: 120px;
-                                                margin-left: -29px;"
-                                                        alt="logo" border="0" /></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </td>
-                                
-                                
-                                
-                                <td>
-                                    <table border="0" cellpadding="0" cellspacing="0" align="right">
-                                        <tbody>
-                                            <tr>
-                                                <td
-                                                    style="font-size: 14px; color: #000; font-weight: 800; line-height: 18px; vertical-align: top; text-align: right; padding: 15px 0 0;">
-                                                    <img src="{{$message->embed(asset('/public/storage/'.$maildata['invoice_detail']['image']))}}"
-                                                          alt="logo" border="0"
-                                                        style="object-fit: contain;width:100px;" /><br>
-                                                    <span>Adress:{{ $maildata['invoice_detail']['from_address']}}</span><br>
-                                                    <span>Phone: {{ $maildata['invoice_detail']['from_phone']}}</span><br>
-                                                    <span>Mail Id: {{ $maildata['invoice_detail']['from_email']}}</span><br>
-
-                                                    
-                                                   
-
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </td>
-                            </tr>
-
-                        </tbody>
-                    </table>
-                </td>
-            </tr>
-            <tr>
-                <td style="padding:0 30px">
+                <td style="padding:10px 30px 0">
                     <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
                         <tbody>
                             <tr>
                                 <td>
-                                    <table border="0" cellpadding="0" cellspacing="0" align="left">
+                                    <table border="0" cellpadding="0" cellspacing="0" align="left"
+                                        style="width: 100%;">
                                         <tbody>
                                             <tr>
                                                 <td
-                                                    style="font-size: 20px; font-weight: 300; color: #000; line-height: 30px; vertical-align: top; text-align: left; text-transform: uppercase;">
-                                                    Invoice to
+                                                    style="font-size: 14px; color: #000; font-weight: 800; line-height: 18px; vertical-align: top; text-align: left;">
+                                                    <img src="{{'data:image/png;base64,'.base64_encode(file_get_contents(public_path('storage/'.$maildata['invoice_detail']['image'])))}}" alt="logo" border="0"
+                                                        style="object-fit: contain; width: 100px; height: 50px;" />
+                                                    <span
+                                                        style="display: block; text-align: left; padding-top: 5px;">Adress:
+                                                        {{ $maildata['invoice_detail']['from_address'] }}</span>
+                                                        <span
+                                                        style="display: block; text-align: left; padding-top: 5px;">
+                                                        {{ $maildata['invoice_detail']['from_city'] }}, {{ $maildata['invoice_detail']['from_state'] }}, {{ $maildata['invoice_detail']['from_zipcode'] }}</span>
+                                                    <span
+                                                        style="display: block; text-align: left; padding-top: 5px;">Phone:{{ $maildata['invoice_detail']['from_phone'] }}</span>
+                                                    <span
+                                                        style="display: block; text-align: left; padding-top: 5px;">Email: {{ $maildata['invoice_detail']['from_email'] }}</span>
+
                                                 </td>
-                                            </tr>
-                                            <tr>
+
                                                 <td
                                                     style="font-size: 14px; font-weight: 800; color: #000; line-height: 20px; vertical-align: top; text-align: left;">
-                                                    <span
-                                                        style="font-size: 20px; font-weight: 900; color: #FF7B02; line-height: 30px;">{{ $maildata['invoice_detail']['bil_to_name']}}</span>
-                                                    <br>
-                                                    <span>{{  $maildata['invoice_detail']['bil_to_address']}}</span><br>
-                                                    <span>Date: {{ $maildata['invoice_detail']['invoice_date']}}</span>
+                                                    <table border="0" cellpadding="0" cellspacing="0"
+                                                        align="right">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <span
+                                                                        style="color: #2f75b5;
+                                                                    padding: 3px 0px;
+                                                                    text-align: right;
+                                                                    font-size: 36px;
+                                                                    line-height: 1;
+                                                                    font-weight: 500;
+                                                                    display: inline-block;
+                                                                    width:219px;">{{ $maildata['invoice_detail']['type'] }}</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><span
+                                                                        style="background: #2f75b5; margin: 10px 0px; padding: 5px; color: #fff;  display: flex;
+                                                                    justify-content: space-between">
+                                                                        <span>Invoice#</span> <span>Date</span></span>
+                                                                    <span
+                                                                        style="color: #000; text-align: center; display: inline-block; width: 100%; font-size: 14px; font-weight: 600; display: flex; justify-content: space-between">
+                                                                        <span>@if($maildata['invoice_id'])  {{ $maildata['invoice_id'] }}  @else {{ $maildata['invoice_detail']['invoice_no'] }} @endif</span>
+                                                                        <span>{{ $maildata['invoice_detail']['invoice_date'] }}</span>
+                                                                    </span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
                                                 </td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </td>
+                            </tr>
+                            <tr>
                                 <td>
-                                    <table border="0" cellpadding="0" cellspacing="0" align="right">
+                                    <table border="0" cellpadding="0" cellspacing="0" align="left"
+                                        style="width: 100%; vertical-align: top; margin-top: 18px;">
                                         <tbody>
                                             <tr>
-                                                <td style="">
+                                                <td
+                                                    style="font-size: 14px; color: #000; font-weight: 800; line-height: 18px; vertical-align: top; text-align: right;">
                                                     <span
-                                                        style="background: #ff8719; color: #fff; padding: 3px 40px; text-align: center; font-size: 36px; line-height: 1; font-weight: 300; display: inline-block;">INVOICE</span><br>
+                                                        style="display: block; text-align: left; background: #2f75b5; padding: 5px; color: #fff;">Bill
+                                                        To</span>
                                                     <span
-                                                        style="color: #000; text-align: center; display: inline-block; width: 100%; padding: 8px 0; font-size: 18px; font-weight: 600;">{{ $maildata['invoice_detail']['invoice_no']}}</span><br>
-                                                        
+                                                        style="display: block; text-align: left; padding-top: 5px;">Name:
+                                                        {{ $maildata['invoice_detail']['bil_to_name'] }}</span>
+                                                    <span
+                                                        style="display: block; text-align: left; padding-top: 5px;">Company
+                                                        Name: {{ $maildata['invoice_detail']['company'] }}</span>
+                                                    <span
+                                                        style="display: block; text-align: left; padding-top: 5px;">Address:
+                                                        {{ $maildata['invoice_detail']['bil_to_address'] }}</span>
+                                                        <span
+                                                        style="display: block; text-align: left; padding-top: 5px;">
+                                                        {{ $maildata['invoice_detail']['bil_to_city'] }}, {{ $maildata['invoice_detail']['bil_to_state'] }}, {{ $maildata['invoice_detail']['bil_to_zipcode'] }}</span>
+                                                    <span
+                                                        style="display: block; text-align: left; padding-top: 5px;">{{ $maildata['invoice_detail']['bil_to_zipcode'] }}</span>
+                                                    <span
+                                                        style="display: block; text-align: left; padding-top: 5px;">Phone:
+                                                        {{ $maildata['invoice_detail']['bil_to_phone'] }}</span>
+                                                    <span
+                                                        style="display: block; text-align: left; padding-top: 5px;">Email : {{ $maildata['invoice_detail']['bil_to_email'] }}</span>
+                                                </td>
+                                                <td style="vertical-align: top;">
+                                                    <table border="0" cellpadding="0" cellspacing="0" align="right"
+                                                        style="vertical-align: top;">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="font-size: 14px; color: #000; font-weight: 800; line-height: 18px; vertical-align: top; text-align: right;"
+                                                                ><span
+                                                                        style="background: #2f75b5;
+                                                                    margin: 10px 0px;
+                                                                    padding: 5px;
+                                                                    color: #fff;
+                                                                    width: 211px;
+                                                                    text-align: center;">
+                                                                        Project Name and Address</span>
+                                                                        <span
+                                                                        style="display: block; text-align: left; padding-top: 5px;">Project name:
+                                                                        {{ $maildata['invoice_detail']['project_name'] }}</span>
+                                                                        <span
+                                                                        style="display: block; text-align: left; padding-top: 5px;">Address:
+                                                                        {{ $maildata['invoice_detail']['project_address'] }}</span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -118,19 +145,19 @@
                     <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
                         <tbody>
                             <tr>
-                                <th style="background: #ff8719; font-size: 16px; font-wight: 800;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;"
+                                <th style="background: #2f75b5; font-size: 16px; font-weight: 800;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;"
                                     width="52%" align="left">
-                                    Item description
+                                    Description
                                 </th>
-                                <th style="background: #ff8719; font-size: 16px;  font-wight: 800;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;"
+                                <th style="background: #2f75b5; font-size: 16px;  font-weight: 800;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;"
                                     align="left">
                                     Rate
                                 </th>
-                                <th style="background: #ff8719; font-size: 16px;  font-wight: 800; color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px"
+                                <th style="background: #2f75b5; font-size: 16px;  font-weight: 800; color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px"
                                     align="center">
                                     Quantity
                                 </th>
-                                <th style="background: #ff8719; font-size: 16px;  font-wight: 800;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px"
+                                <th style="background: #2f75b5; font-size: 16px;  font-weight: 800;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px"
                                     align="right">
                                     Amount
                                 </th>
@@ -141,42 +168,103 @@
                             <tr>
                                 <td height="10" colspan="4"></td>
                             </tr>
-                            @foreach($maildata['items'] as $vall)
-                            <tr>
+                            @foreach ($maildata['items'] as $vall)
+                                <tr>
+                                    <td
+                                        style="font-size: 14px; font-weight: 800;  color: #000;  line-height: 18px;  vertical-align: top; padding:10px;">
+                                        {{ $vall->item_description }}
+                                    </td>
+                                    <td
+                                        style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px;">
+                                        ${{ $vall->item_rate }}</td>
+                                    <td style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px;"
+                                        align="center">{{ $vall->item_quantity }}</td>
+                                    <td style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px;"
+                                        align="right">${{ $vall->item_amount }}</td>
+                                </tr>
+                                <tr>
+                                    <td height="1" colspan="4" style="border-bottom:1px solid #e4e4e4"></td>
+                                </tr>
+                            @endforeach
+
+                            {{-- <tr>
                                 <td
-                                    style="font-size: 14px; font-wight: 800;  color: #000;  line-height: 18px;  vertical-align: top; padding:10px;">
-                                    {{ $vall->item_description }}
+                                    style="font-size: 14px; font-weight: 800;  color: #000;  line-height: 18px;  vertical-align: top; padding:10px;">
+                                    Web Design
                                 </td>
                                 <td
                                     style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px;">
-                                    ${{ $vall->item_rate }}</td>
+                                    $15000</td>
                                 <td style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px;"
-                                    align="center">{{ $vall->item_quantity }}</td>
+                                    align="center">1</td>
                                 <td style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px;"
-                                    align="right">${{ $vall->item_amount }}</td>
+                                    align="right">$15000</td>
                             </tr>
                             <tr>
                                 <td height="1" colspan="4" style="border-bottom:1px solid #e4e4e4"></td>
                             </tr>
-                            @endforeach
                             
-                            <!--<tr>-->
-                            <!--    <td height="1" colspan="4" style="border-bottom:1px solid #e4e4e4"></td>-->
-                            <!--</tr>-->
-                            <!--<tr>-->
-                            <!--    <td-->
-                            <!--        style="font-size: 14px; font-wight: 800;  color: #000;  line-height: 18px;  vertical-align: top; padding:10px">-->
-                            <!--        Business Proposal-->
-                            <!--    </td>-->
-                            <!--    <td-->
-                            <!--        style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px">-->
-                            <!--        $15000</td>-->
-                            <!--    <td style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px"-->
-                            <!--        align="center">1</td>-->
-                            <!--    <td style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px"-->
-                            <!--        align="right">$15000</td>-->
-                            <!--</tr>-->
-                            
+                           
+                            --}}
+
+                            <tr>
+                                <td height="1" colspan="4" style="border-bottom:3px solid #000"></td>
+                            </tr>
+                            <tr>
+                                <td
+                                    style="font-size: 16px; font-weight: 600; color: #2f75b5;  line-height: 14px;  vertical-align: top; padding:10px">
+                                    Notes: {{ $maildata['invoice_detail']['notes'] }}
+                                </td>
+                                <td colspan="2"
+                                    style="font-size: 16px; color: #000; line-height: 14px; text-align: left; vertical-align: top; padding: 10px; font-weight: 400; background: #cce7ff;">
+                                    Subtotal:
+                                </td>
+                                <td
+                                    style="font-size: 16px; color: #000; line-height: 14px; text-align: right; vertical-align: top; padding: 10px; font-weight: 400; background: #e6f3ff;">
+                                    ${{ $maildata['invoice_detail']['sub_total'] }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td
+                                    style="font-size: 16px; color: #000; line-height: 14px; text-align: left; vertical-align: top; padding: 10px; font-weight: 400; background: #cce7ff;">
+                                    Tax:
+                                </td>
+                                <td
+                                    style="font-size: 16px; color: #000; line-height: 14px; text-align: left; vertical-align: top; padding: 10px; font-weight: 400; background: #cce7ff;">
+                                   
+                                  @if($maildata['invoice_detail']['tax_amount'] )  {{ $maildata['invoice_detail']['tax_amount'] }}% @endif
+                                </td>
+                                @php
+                                if ($maildata['invoice_detail']['tax_amount']) {
+                                    $tax = $maildata['invoice_detail']['tax_amount'];
+                                $sub_total = $maildata['invoice_detail']['sub_total'];
+                                $tax_amount = ($sub_total * $tax )/100;
+                                } else {
+                                    $tax_amount = 0;
+                                }
+                                
+                                    
+                                @endphp
+                                <td
+                                    style="font-size: 16px; color: #000; line-height: 14px; text-align: right; vertical-align: top; padding: 10px; font-weight: 400; background: #e6f3ff;">{{ $tax_amount }}   
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td colspan="2"
+                                    style="font-size: 16px; color: #000; line-height: 14px; text-align: left; vertical-align: top; padding: 10px; font-weight: 600; background: #cce7ff; border-top:2px solid #000">
+                                    TOTAL
+                                </td>
+                                <td
+                                    style="font-size: 16px; color: #000; line-height: 14px; text-align: right; vertical-align: top; padding: 10px; font-weight: 600; background: #e6f3ff;  border-top:2px solid #000">
+                                    ${{ $maildata['invoice_detail']['total'] }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="1" colspan="4" style="border-bottom:3px solid #000"></td>
+                            </tr>
+
                         </tbody>
                     </table>
                 </td>
@@ -185,129 +273,31 @@
                 <td style="padding:0 30px">
                     <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
                         <tbody>
-                            <tr>
-                                @if($maildata['invoice_detail']['tax'] == null)
-                                <td
-                                    style="font-size: 16px;  color: #fff; line-height: 22px; vertical-align: top; text-transform: uppercase; text-align:right; background: #FF7B02; padding: 10px; width: 70%; font-weight: 600;">
-                                    Total
-                                </td>
-                                
-                                @else
-                                <td
-                                    style="font-size: 16px;  color: #fff; line-height: 22px; vertical-align: top; text-transform: uppercase; text-align:right; background: #FF7B02; padding: 10px; width: 70%; font-weight: 600;">
-                                    Total + ({{ $maildata['invoice_detail']['tax']}}% Tax)
-                                </td>
-                                @endif
-                                <td
-                                    style="font-size: 16px;  color: #646a6e; line-height: 22px; vertical-align: top; text-align:right; white-space:nowrap; background: #fff; padding: 10px; border: 3px solid #ff7b02; width: 30%">
-                                    ${{ $maildata['invoice_detail']['total']}}
-                                </td>
-                            </tr>
+
                         </tbody>
                     </table>
                 </td>
             </tr>
-            
-           
-            <tr>
-                <td style="padding:0 30px">
-                    <table width="100%" border="0" cellpadding="0" cellspacing="0" align="">
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <table width="220" border="0" cellpadding="0" cellspacing="0"
-                                        align="right">
-                                        <tbody>
-                                            <tr>
-                                                <td height="20"></td>
-                                            </tr>
-                                            <tr>
-                                                <td
-                                                    style="font-size: 14px;  color: #000; line-height: 1; vertical-align: top; text-align: right;">
-                                                    <strong>Thanks for your business</strong>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td width="100%" height="10"></td>
-                                            </tr>
-                                            <tr>
-                                                <td
-                                                    style="font-size: 14px;  color: #000; line-height: 20px; vertical-align: top; text-align: right;">
-                                                    <strong>Signature</strong>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="text-align: right;">
-                                                    <img src="{{$message->embed(asset('/public/storage/'.$maildata['invoice_detail']['signature']))}}" alt="" srcset="" style="width:300px; height:100px; object-fit:contain;"/>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    
-                                    
-                                    
 
-
-                                    <table width="220" border="0" cellpadding="0" cellspacing="0"
-                                        align="left">
-                                        <tbody>
-                                            <tr>
-                                                <td height="20"></td>
-                                            </tr>
-                                            <tr>
-                                                <td
-                                                    style="font-size: 14px;  color: #000; line-height: 1; vertical-align: top; text-align: left;">
-                                                    <strong>Note</strong>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td width="100%" height="10"></td>
-                                            </tr>
-                                            <tr>
-                                                <td
-                                                    style="font-size: 14px;  color: #000; line-height: 20px; vertical-align: top; ">
-                                                    {{ $maildata['invoice_detail']['notes']}}
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </td>
-            </tr>
             <tr>
                 <td>
                     <table width="600" border="0" cellpadding="0" cellspacing="0" align="center"
                         bgcolor="#ffffff" style="border-radius: 0 0 10px 10px;">
-
                         <tr>
-                            <td height="50"></td>
+                            <td height="20"></td>
                         </tr>
-                        <tr bgcolor="#000" style="text-align: center;">
-                            <td height="50" style="color: #fff; padding: 10px;">
-                                <p>lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                    Ipsum has
-                                    been the industry's standard dummy text ever since the 1500s, when an unknown
-                                    printer took a
-                                    galley of type and scrambled it to make a type specimen book.</p>
+                        <tr bgcolor="#fff" style="text-align: center;">
+                            <td height="50">
+                                <p style="color: #606060; padding: 0px; margin: 0;">Powered by xTriam.com</p>
+                                <p style="color: #000; padding: 10px; margin: 0;font-style: italic; font-weight: 600;">
+                                    Empowering Window and Door Contractors to Be More Profitable</p>
                             </td>
                         </tr>
-
                     </table>
                 </td>
             </tr>
         </tbody>
     </table>
-
-
 </body>
 
 </html>
-
-{{-- 
-
-Thanks,<br>
-{{ config('app.name') }}
-@endcomponent --}}

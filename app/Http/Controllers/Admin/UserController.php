@@ -38,7 +38,7 @@ class UserController extends Controller
 
         // Fetch records
         $records = User::query();
-        $columns = ['name','email','phone','status'];
+        $columns = ['first_name','email','phone','status'];
         foreach($columns as $column){
             $records->where($column, 'like', '%' . $searchValue . '%');
         }
@@ -52,13 +52,13 @@ class UserController extends Controller
 
         foreach($records as $record){
             $id = $record->id;
-            $name = $record->name;
+            $first_name = $record->first_name;
             $email = $record->email;
             $phone = $record->phone;
             $no_of_invoice = Invoice::where('user_id',$id)->get()->count();
 
             $data_arr[] = array(
-               "name" => $name,
+               "first_name" => $first_name,
                "email" => $email,
                "phone" => $phone,
                "invoice" =>$no_of_invoice,

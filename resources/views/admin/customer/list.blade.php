@@ -83,8 +83,8 @@
             serverSide: true,
             ajax: "{{ route('user.ajax.list') }}",
             columns: [{
-                    data: 'name',
-                    name: 'name'
+                    data: 'first_name',
+                    name: 'first_name'
                 },
                 {
                     data: 'email',
@@ -131,3 +131,4 @@
     });
 </script>
 @endpush
+ 
