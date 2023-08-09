@@ -59,6 +59,7 @@ Route::group(['prefix' => 'user'], function () {
     
     Route::get('download-invoice/{id}', [InvoiceController::class, 'downloadInvoice'])->name('download.invoice');
     Route::get('invoiceChangeStatus', [InvoiceController::class, 'invoiceChangeStatus'])->name('invoice.change-status');
+    Route::get('numberCheck', [InvoiceController::class, 'numberCheck'])->name('invoice.number-check');
     
 });
 

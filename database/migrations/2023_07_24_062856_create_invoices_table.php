@@ -24,6 +24,7 @@ class CreateInvoicesTable extends Migration
             
             $table->string('from_city')->nullable();
             $table->string('type')->nullable();
+            $table->string('from_company')->nullable();
             
             $table->string('from_phone')->nullable();
             $table->string('from_gst')->nullable();

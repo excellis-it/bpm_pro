@@ -172,13 +172,13 @@
                                 <tr>
                                     <td
                                     style="font-size: 14px; font-weight: 800;  color: #000;  line-height: 18px;  vertical-align: top; padding:10px; display: flex; align-item: center;">
-                                    @if($vall->image)
+                                    {{-- @if($vall->image)
                                    
                                     <img style="object-fit: contain; width: 20px; height: 20px; padding: 10px; border: 1px solid #000; margin-right: 5px;" src="{{ 'data:image/png;base64,' . base64_encode(file_get_contents(public_path('storage/' . $vall->image))) }}">
                                   
                                     @else
                                     <img style="object-fit: contain; width: 20px; height: 20px; padding: 10px; border: 1px solid #000; margin-right: 5px;" src="{{'data:image/png;base64,'.base64_encode(file_get_contents('admin_assets/images/image.png'))}}">
-                                    @endif
+                                    @endif --}}
                                     {{ $vall->item_description }}
                                     
                                 </td>
@@ -272,7 +272,31 @@
                             <tr>
                                 <td height="1" colspan="4" style="border-bottom:3px solid #000"></td>
                             </tr>
-
+                            <tr>
+                                <td colspan="4"
+                                    style="font-size: 16px; font-weight: 600; color: #2f75b5;  line-height: 14px;  vertical-align: top; padding:10px">
+                                    Additional Information:
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">
+                                    <div  style="columns: 4; display:block;">
+                                    @foreach ($maildata['invoice_detail']['items'] as $vall)
+                                        @if ($vall->image)
+                                            <img style="object-fit: cover; width: 150px; height: 150px; padding: 5px; display: inherit;" 
+                                                src="{{ 'data:image/png;base64,' . base64_encode(file_get_contents(public_path('storage/' . $vall->image))) }}">
+                                        @else
+                                            <img style="object-fit: cover; width: 150px; height: 150px; padding: 5px; display: inherit;"
+                                                src="{{ 'data:image/png;base64,' . base64_encode(file_get_contents('admin_assets/images/image.png')) }}">
+                                        @endif
+                                    @endforeach
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="1" colspan="4" style="border-bottom:3px solid #000">
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </td>

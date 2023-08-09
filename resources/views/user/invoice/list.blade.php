@@ -61,6 +61,7 @@
                                     <th>Send In</th>
                                     <td>Stop Sending</td>
                                     <th>Invoice</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -93,6 +94,10 @@
                                         @endif
                                     </td>
                                     <td><a href="{{ route('download.invoice', $invoice->id) }}" ><i class="fas fa-download"></i></a></td>
+                                    <td>
+                                        <a href="{{ route('invoice.edit', $invoice->id) }}" ><i class="fas fa-edit"></i></a> &nbsp; &nbsp; 
+                                        <a href="{{ route('invoice.show', $invoice->id) }}" ><i class="fas fa-eye"></i></a>
+                                    </td>
                                 </tr>
                                 @endforeach
                                
