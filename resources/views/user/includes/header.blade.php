@@ -20,7 +20,7 @@
         <a id="mobile_btn" class="mobile_btn" href="#sidebar"><i class="fa fa-bars"></i></a>
         <ul class="nav user-menu">
              <li class="nav-item dropdown has-arrow main-drop bdr_1">
-                <a href="{{ route('invoice.index') }}" class="nav-link">Invoice </a>
+                <a href="{{ route('invoice.index') }}" class="nav-link">List of Invoices </a>
             </li>      
             <li class="nav-item dropdown has-arrow main-drop">
                 <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">

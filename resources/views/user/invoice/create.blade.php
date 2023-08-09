@@ -111,8 +111,8 @@
         }
 
         /* .signature input {
-                                                                                                                                                                                        display: none;
-                                                                                                                                                                                    } */
+                                                                                                                                                                                                                                            display: none;
+                                                                                                                                                                                                                                        } */
 
         .signature label span {
             width: 100%;
@@ -324,6 +324,10 @@
             border-radius: 3px;
         }
 
+        .inv-number .form-select {
+            margin-bottom: 15px;
+        }
+
         /* Responsive */
         @media (max-width:768px) {
             .sign-box {
@@ -331,29 +335,35 @@
                 .inv-number-div
             }
         }
-         @media (max-width:767px) {
-            .form-right{
+
+        @media (max-width:767px) {
+            .form-right {
                 position: inherit;
                 width: 100%;
             }
+
             .inv-head h2 {
-              font-size: 20px;
-              line-height: 24px;
+                font-size: 20px;
+                line-height: 24px;
             }
+
             .form-left .form-group {
-              padding: 0px 0px;
-             }
-             .form-left{
-               margin-top: 0!important;
-             }
-             .form-div-wrap {
-               padding: 10px 5px 10px 5px;
+                padding: 0px 0px;
             }
+
+            .form-left {
+                margin-top: 0 !important;
+            }
+
+            .form-div-wrap {
+                padding: 10px 5px 10px 5px;
+            }
+
             .add-item-wrap {
-              padding: 10px 10px 10px;
-              margin-bottom: 0px;
+                padding: 10px 10px 10px;
+                margin-bottom: 0px;
             }
-         }
+        }
     </style>
     <style>
         .box {
@@ -416,21 +426,29 @@
 
 
 @section('content')
-@php
-$invoice_number = 'BPM-'.rand(0000000,99999999);
-@endphp
+    @php
+            $chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            $ret = '';
+            for ($i = 0; $i < 12; ++$i) {
+                $random = str_shuffle($chars);
+                $ret .= $random[0];
+            }
+        $invoice_number = 'BPM-' . $ret;
+    @endphp
     <div class="page-wrapper invoice_page">
         <section class="form-div">
             <div class="container-fluid">
                 <div class="form-div-main">
-                    <form method="post" id="payment-form" data-parsley-validate action="{{ route('invoice.store') }}">
+                    <form method="post" id="payment-form" data-parsley-validate action="{{ route('invoice.store') }}"
+                        enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-xl-9 col-md-9 col-12">
 
                                 <div class="inv-head-wrap d-flex justify-content-between">
                                     <div class="inv-head">
-                                        <h2>New Invoice - <span id="invoice_show" style="color: #ff7c04">{{ $invoice_number }}</span></h2>
+                                        <h2>New Invoice - <span id="invoice_show"
+                                                style="color: #ff7c04">{{ $invoice_number }}</span></h2>
                                     </div>
 
                                     <div class="pre-view-wrap d-flex justify-content-end align-items-center">
@@ -540,6 +558,25 @@ $invoice_number = 'BPM-'.rand(0000000,99999999);
                                                     <div class="col-sm-10">
                                                         <div class="form-floating">
                                                             <input type="text" class="form-control"
+                                                                id="floatingInputValue" required
+                                                                data-parsley-trigger="keyup"
+                                                                value="{{ Auth::user()->company }}"
+                                                                name="bill_from_company">
+                                                            <label for="floatingInputValue"
+                                                                class="col-sm-2 col-form-label">Company<span
+                                                                    style="color: red;">*</span></label>
+                                                            @if ($errors->has('bill_from_company'))
+                                                                <div class="error" style="color:red;">
+                                                                    {{ $errors->first('bill_from_company') }}</div>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+
+                                                    <div class="col-sm-10">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control"
                                                                 id="bill_from_email" placeholder="name@business.com"
                                                                 name="from_email" value="{{ Auth::user()->email }}"
                                                                 required data-parsley-type="email"
@@ -560,6 +597,7 @@ $invoice_number = 'BPM-'.rand(0000000,99999999);
                                                         <div class="form-floating">
                                                             <select class="form-control" name="bill_from_state" required
                                                                 data-parsley-trigger="keyup">
+                                                                <option value=""> Select State</option>
                                                                 @foreach ($states as $state)
                                                                     <option value="{{ $state->name }}"
                                                                         {{ Auth::user()->state == $state->name ? 'selected' : '' }}>
@@ -667,25 +705,7 @@ $invoice_number = 'BPM-'.rand(0000000,99999999);
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="form-group row">
 
-                                                    <div class="col-sm-10">
-                                                        <div class="form-floating">
-                                                            <input type="text" class="form-control"
-                                                                id="floatingInputValue" required
-                                                                data-parsley-trigger="keyup"
-                                                                value="{{ Auth::user()->company }}"
-                                                                name="bill_from_company">
-                                                            <label for="floatingInputValue"
-                                                                class="col-sm-2 col-form-label">Company<span
-                                                                    style="color: red;">*</span></label>
-                                                            @if ($errors->has('bill_from_company'))
-                                                                <div class="error" style="color:red;">
-                                                                    {{ $errors->first('bill_from_company') }}</div>
-                                                            @endif
-                                                        </div>
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-xl-6">
@@ -712,14 +732,31 @@ $invoice_number = 'BPM-'.rand(0000000,99999999);
                                                         <div class="form-floating">
                                                             <input type="text" class="form-control" name="last_name"
                                                                 required data-parsley-trigger="keyup" id="billto_last_nm" ">
-                                                                                                                            <label for="floatingInputValue"
-                                                                                                                                class="col-sm-12 col-form-label">Last Name<span
-                                                                                                                                    style="color: red;">*</span></label>
-                                                                                                                                  
-                                                                                                         
-                                                                               @if ($errors->has('last_name'))
+                                                                                                                <label for="floatingInputValue"
+                                                                                                                    class="col-sm-12 col-form-label">Last Name<span
+                                                                                                                        style="color: red;">*</span></label>
+                                                                                                                     
+                                                                                             
+                                                                @if ($errors->has('last_name'))
                                                             <div class="error" style="color:red;">
                                                                 {{ $errors->first('last_name') }}</div>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+
+                                                    <div class="col-sm-12">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control"
+                                                                id="bil_to_company" required data-parsley-trigger="keyup"
+                                                                name="bil_to_company">
+                                                            <label for="bil_to_company"
+                                                                class="col-sm-2 col-form-label">Company<span
+                                                                    style="color: red;">*</span></label>
+                                                            @if ($errors->has('bil_to_company'))
+                                                                <div class="error" style="color:red;">
+                                                                    {{ $errors->first('bil_to_company') }}</div>
                                                             @endif
                                                         </div>
                                                     </div>
@@ -731,12 +768,12 @@ $invoice_number = 'BPM-'.rand(0000000,99999999);
                                                             <input type="text" class="form-control"
                                                                 name="bil_to_email" required data-parsley-type="email"
                                                                 data-parsley-trigger="keyup" id="bill_to_email" ">
-                                                                                                                                        <label for="floatingInputValue"
-                                                                                                                                        class="col-sm-2 col-form-label">Email<span
-                                                                                                                                            style="color: red;">*</span></label>
-                                                                                                                                           
-                                                                                                                 
-                                                                                         @if ($errors->has('bil_to_email'))
+                                                                                                                <label for="floatingInputValue"
+                                                                                                                class="col-sm-2 col-form-label">Email<span
+                                                                                                                    style="color: red;">*</span></label>
+                                                                                                                     
+                                                                                             
+                                                                @if ($errors->has('bil_to_email'))
                                                             <div class="error" style="color:red;">
                                                                 {{ $errors->first('bil_to_email') }}</div>
                                                             @endif
@@ -786,6 +823,7 @@ $invoice_number = 'BPM-'.rand(0000000,99999999);
                                                         <div class="form-floating">
                                                             <select class="form-control ms-0" name="bil_to_state" required
                                                                 data-parsley-trigger="keyup">
+                                                                <option value=""> Select State</option>
                                                                 @foreach ($states as $state)
                                                                     <option value="{{ $state->name }}">
                                                                         {{ $state->name }}
@@ -844,7 +882,6 @@ $invoice_number = 'BPM-'.rand(0000000,99999999);
                                                     <div class="col-sm-12">
                                                         <div class="form-floating">
                                                             <input type="text" class="form-control phone-format"
-                                                                 
                                                                 id="floatingInputValue" name="bil_to_mobile">
                                                             <label for="floatingInputValue"
                                                                 class="col-sm-2 col-form-label">Mobile</label>
@@ -855,26 +892,10 @@ $invoice_number = 'BPM-'.rand(0000000,99999999);
                                                         </div>
                                                     </div>
                                                 </div>
+
                                                 <div class="form-group row">
 
-                                                    <div class="col-sm-12">
-                                                        <div class="form-floating">
-                                                            <input type="text" class="form-control"
-                                                                id="bil_to_company" required data-parsley-trigger="keyup"
-                                                                name="bil_to_company">
-                                                            <label for="bil_to_company"
-                                                                class="col-sm-2 col-form-label">Company<span
-                                                                    style="color: red;">*</span></label>
-                                                            @if ($errors->has('bil_to_company'))
-                                                                <div class="error" style="color:red;">
-                                                                    {{ $errors->first('bil_to_company') }}</div>
-                                                            @endif
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-
-                                                    <div class="col-sm-12">
+                                                    {{-- <div class="col-sm-12">
                                                         <div class="form-floating">
                                                             <input type="text" class="form-control"
                                                                 name="bil_to_faxNo" data-parsley-required="false"
@@ -887,7 +908,7 @@ $invoice_number = 'BPM-'.rand(0000000,99999999);
                                                                     {{ $errors->first('bil_to_faxNo') }}</div>
                                                             @endif
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
                                             </div>
                                         </div>
@@ -899,9 +920,6 @@ $invoice_number = 'BPM-'.rand(0000000,99999999);
                                 </div>
                                 <div class="form-div-wrap add_item_box">
                                     <div class="add-item-wrap">
-                                        {{-- <div class="cross-btn">
-                                        <a href=""><i class="fa-solid fa-xmark"></i></a>
-                                    </div> --}}
                                         <div class="row justify-content-between">
                                             <div class="col-xl-12">
                                                 <div class="item-head">
@@ -909,16 +927,12 @@ $invoice_number = 'BPM-'.rand(0000000,99999999);
                                                 </div>
                                                 <div class="form-left form-item">
                                                     <div class="row justify-content-between">
-                                                        <div class="col-xl-6 col-12">
+                                                        <div class="col-xl-4 col-12">
                                                             <div class="form-group">
-                                                                <textarea class="form-control data-field" name="item_description[]" required data-parsley-trigger="keyup"
-                                                                    placeholder="Item Description" rows="2"></textarea>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xl-6 col-12">
-                                                            <div class="form-group">
-                                                                <textarea class="form-control" name="additional_details[]" data-parsley-required="false" data-parsley-trigger="keyup"
-                                                                    placeholder="Additional Description" rows="2"></textarea>
+                                                                <input type="number"
+                                                                    class="form-control quantity data-field"
+                                                                    name="quantity[]" placeholder="Quantity" required
+                                                                    data-parsley-trigger="keyup" min="1">
                                                             </div>
                                                         </div>
                                                         <div class="col-xl-4 col-12">
@@ -930,18 +944,34 @@ $invoice_number = 'BPM-'.rand(0000000,99999999);
                                                         </div>
                                                         <div class="col-xl-4 col-12">
                                                             <div class="form-group">
-                                                                <input type="number"
-                                                                    class="form-control quantity data-field"
-                                                                    name="quantity[]" placeholder="Quantity" required
-                                                                    data-parsley-trigger="keyup">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xl-4 col-12">
-                                                            <div class="form-group">
                                                                 <input type="text"
                                                                     class="form-control amount data-field" name="amount[]"
                                                                     id="amount_1" placeholder="Amount" required
                                                                     data-parsley-trigger="keyup" readonly>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-xl-6 col-12">
+                                                            <div class="form-group">
+                                                                <input type="text"
+                                                                    class="form-control data-field item_description"
+                                                                    name="item_description[]" required
+                                                                    data-parsley-trigger="keyup" placeholder="Item Name">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-6 col-12">
+                                                            <div class="form-group">
+                                                                <input type="file"
+                                                                    class="form-control image data-field" name="image[]"
+                                                                    accept="image/*" id="image" placeholder="Amount"
+                                                                    data-parsley-required="false"
+                                                                    data-parsley-trigger="keyup">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-12 col-12">
+                                                            <div class="form-group">
+                                                                <textarea class="form-control additional_details" name="additional_details[]" data-parsley-required="false"
+                                                                    data-parsley-trigger="keyup" placeholder="Item Description" rows="2"></textarea>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -995,9 +1025,10 @@ $invoice_number = 'BPM-'.rand(0000000,99999999);
                                 </div> --}}
                                     <div class="row">
                                         <div class="add-item">
-                                            <div class="col-xl-3 col-12 mt-3">
-                                              <a class="btn add-btn" id="add_more_item">Add Item</a>
-                                           </div>
+
+                                        </div>
+                                        <div class="col-xl-3 col-12 mt-3">
+                                            <a class="btn add-btn" id="add_more_item">Add Item</a>
                                         </div>
                                     </div>
                                 </div>
@@ -1005,23 +1036,22 @@ $invoice_number = 'BPM-'.rand(0000000,99999999);
                                 <div class="form-div-wrap">
                                     <div class="form-group row">
                                         <div class="col-sm-12">
-                                          <div class="form-floating">
-                                            <textarea class="form-control" name="notes" id="notes" required data-parsley-trigger="keyup"></textarea>
-                                            <label for="floatingInputValue" class="col-sm-12 col-form-label">Notes<span
-                                                style="color: red;">*</span></label>
-                                           </div>
+                                            <div class="form-floating">
+                                                <textarea class="form-control" name="notes" id="notes" data-parsley-trigger="keyup"
+                                                    data-parsley-required="false"></textarea>
+                                                <label for="floatingInputValue"
+                                                    class="col-sm-12 col-form-label">Notes</label>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group row">
 
                                         <div class="col-sm-12">
                                             <div class="form-floating">
-                                                <input type="text" class="form-control"
-                                                    id="project_name" required data-parsley-trigger="keyup"
-                                                    name="project_name">
-                                                <label for="project_name"
-                                                    class="col-sm-2 col-form-label">Project Name<span
-                                                        style="color: red;">*</span></label>
+                                                <input type="text" class="form-control" id="project_name" required
+                                                    data-parsley-trigger="keyup" name="project_name">
+                                                <label for="project_name" class="col-sm-2 col-form-label">Project
+                                                    Name<span style="color: red;">*</span></label>
                                                 @if ($errors->has('project_name'))
                                                     <div class="error" style="color:red;">
                                                         {{ $errors->first('project_name') }}</div>
@@ -1033,13 +1063,10 @@ $invoice_number = 'BPM-'.rand(0000000,99999999);
 
                                         <div class="col-sm-12">
                                             <div class="form-floating">
-                                                <input type="text" class="form-control"
-                                                    name="project_address" required
-                                                    data-parsley-trigger="keyup" 
-                                                    id="project_address">
-                                                <label for="project_address"
-                                                    class="col-sm-2 col-form-label">Project Address<span
-                                                    style="color: red;">*</span></label>
+                                                <input type="text" class="form-control" name="project_address"
+                                                    required data-parsley-trigger="keyup" id="project_address">
+                                                <label for="project_address" class="col-sm-2 col-form-label">Project
+                                                    Address<span style="color: red;">*</span></label>
                                                 @if ($errors->has('project_address'))
                                                     <div class="error" style="color:red;">
                                                         {{ $errors->first('project_address') }}</div>
@@ -1071,14 +1098,15 @@ $invoice_number = 'BPM-'.rand(0000000,99999999);
                                             <h3>{{ Auth::user()->company }}</h3>
                                         </div>
                                     </div>
-                                  
+
                                     <div class="inv-number-div">
                                         <div class="row">
                                             <div class="col-xl-12">
                                                 <div class="inv-number">
                                                     <div class="form-floating">
                                                         <input type="text" name="invoice_no" class="form-control"
-                                                            id="invoice_no" required data-parsley-trigger="keyup" value="{{ $invoice_number }}" readonly>
+                                                            id="invoice_no" required data-parsley-trigger="keyup"
+                                                            value="{{ $invoice_number }}" readonly>
                                                         <label for="floatingInputValue">Invoice Number</label>
                                                         @if ($errors->has('invoice_no'))
                                                             <div class="error" style="color:red;">
@@ -1089,7 +1117,8 @@ $invoice_number = 'BPM-'.rand(0000000,99999999);
                                                 <div class="inv-number">
                                                     <div class="form-floating">
                                                         <input type="date" name="invoice_date" class="form-control"
-                                                            required data-parsley-trigger="keyup" id="invoice_date">
+                                                            required data-parsley-trigger="keyup" id="invoice_date"
+                                                            value="{{ date('Y-m-d') }}">
                                                         <label for="floatingInputValue">Invoice Date</label>
                                                         @if ($errors->has('invoice_date'))
                                                             <div class="error" style="color:red;">
@@ -1108,7 +1137,8 @@ $invoice_number = 'BPM-'.rand(0000000,99999999);
                                                         </select>
                                                         <label for="floatingSelect">Due</label>
                                                         <input type="date" name="due_date" id="date"
-                                                            class="form-control" min="{{ date('Y-m-d') }}">
+                                                            class="form-control" min="{{ date('Y-m-d') }}"
+                                                            value="{{ date('Y-m-d') }}">
                                                         @if ($errors->has('due'))
                                                             <div class="error" style="color:red;">
                                                                 {{ $errors->first('due') }}</div>
@@ -1365,13 +1395,15 @@ $invoice_number = 'BPM-'.rand(0000000,99999999);
                                                                                             display: table-cell;
                                                                                             text-align: center;">
                                                                                             Project Name and Address</span>
-                                                                                            <span
-                                                                            style="display: block; text-align: left; padding-top: 5px;"
-                                                                            id="popup_project_name">Project name : ABCD Project</span>
-                                                                            <span
-                                                                            style="display: block; text-align: left; padding-top: 5px;"
-                                                                            id="popup_project_address">Address : STKK RD, New Ali Pur, 700001
-                                                                            Address</span>
+                                                                                        <span
+                                                                                            style="display: block; text-align: left; padding-top: 5px;"
+                                                                                            id="popup_project_name">Project
+                                                                                            name : ABCD Project</span>
+                                                                                        <span
+                                                                                            style="display: block; text-align: left; padding-top: 5px;"
+                                                                                            id="popup_project_address">Address
+                                                                                            : STKK RD, New Ali Pur, 700001
+                                                                                            Address</span>
                                                                                     </td>
                                                                                 </tr>
                                                                             </tbody>
@@ -1397,7 +1429,7 @@ $invoice_number = 'BPM-'.rand(0000000,99999999);
                                                 <tr>
                                                     <th style="background: #2f75b5; font-size: 16px; font-weight: 800;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;"
                                                         width="52%" align="left">
-                                                        Description
+                                                        Item Name
                                                     </th>
                                                     <th style="background: #2f75b5; font-size: 16px;  font-weight: 800;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;"
                                                         align="left">
@@ -1420,7 +1452,10 @@ $invoice_number = 'BPM-'.rand(0000000,99999999);
                                                 </tr>
                                                 <tr>
                                                     <td height="10" colspan="4">
-                                                        <table id="tableVal" width="100%"></table>
+                                                        <table id="tableVal" width="100%">
+
+
+                                                        </table>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -1607,13 +1642,13 @@ $invoice_number = 'BPM-'.rand(0000000,99999999);
                     i++;
 
                     $(".add-item").append('<div class="add-item-wrap" id="addMoreInputFields_' + i +
-                        '"><div class="cross-btn"><a href="javascript:void(0)"><i class="fa-solid fa-xmark"></i></a></div><div class="row justify-content-between"><div class="col-xl-12"><div class="item-head"><h2>Item Description</h2></div><div class="form-left form-item"><div class="row justify-content-between"><div class="col-xl-6 col-12"><div class="form-group"><textarea class="form-control data-field" name="item_description[]" required data-parsley-trigger="keyup" placeholder="Item Description" rows="2"></textarea></div></div><div class="col-xl-6 col-12"><div class="form-group"><textarea class="form-control" data-parsley-required="false" data-parsley-trigger="keyup" name="additional_details[]" placeholder="Additional Description" rows="2"></textarea></div></div><div class="col-xl-4 col-12"><div class="form-group"><input type="text" class="form-control rate data-field" required  data-parsley-trigger="keyup" name="rate[]" id="rate_' +
+                        '"><div class="cross-btn"><a href="javascript:void(0)"><i class="fa-solid fa-xmark"></i></a></div><div class="row justify-content-between"><div class="col-xl-12"><div class="item-head"><h2>Item Description</h2></div><div class="form-left form-item"><div class="row justify-content-between"><div class="col-xl-4 col-12"><div class="form-group"><input type="number" class="form-control quantity data-field" min="1"  name="quantity[]" id="quan_' +
                         i +
-                        '"  placeholder="Rate" ></div></div><div class="col-xl-4 col-12"><div class="form-group"><input type="number" class="form-control quantity data-field"  name="quantity[]" id="quan_' +
+                        '"  placeholder="Quantity" required data-parsley-trigger="keyup"></div></div><div class="col-xl-4 col-12"><div class="form-group"><input type="text" class="form-control rate data-field" required  data-parsley-trigger="keyup" name="rate[]" id="rate_' +
                         i +
-                        '"  placeholder="Quantity" required data-parsley-trigger="keyup"></div></div><div class="col-xl-4 col-12"><div class="form-group"><input type="text" class="form-control amount data-field" id="' +
+                        '"  placeholder="Rate" ></div></div><div class="col-xl-4 col-12"><div class="form-group"><input type="text" class="form-control amount data-field" id="' +
                         i +
-                        '" placeholder="Amount" name="amount[]" readonly></div></div></div></div></div></div></div>'
+                        '" placeholder="Amount" name="amount[]" readonly></div></div><div class="col-xl-6 col-12"><div class="form-group"><input type="text" class="form-control item_description data-field" name="item_description[]" required data-parsley-trigger="keyup" placeholder="Item Name" ></div></div><div class="col-xl-6 col-12"><div class="form-group"><input type="file" class="form-control image data-field" name="image[]" id="image" placeholder="Amount" data-parsley-required="false" data-parsley-trigger="keyup" ></div></div><div class="col-xl-12 col-12"><div class="form-group"><textarea class="form-control additional_details" data-parsley-required="false" data-parsley-trigger="keyup" name="additional_details[]" placeholder="Item Description" rows="2"></textarea></div></div></div></div></div></div></div>'
                     );
                 });
                 $(document).on('click', '.cross-btn', function() {
@@ -1740,47 +1775,51 @@ $invoice_number = 'BPM-'.rand(0000000,99999999);
             $(document).ready(function() {
                 $('#invoice-modal').click(function() {
 
-                    var dataArray = "";
-                    var i = 1;
+                    var names = $("input.item_description");
+                    var rates = $("input.rate");
+                    var quantities = $("input.quantity");
+                    var amounts = $("input.amount");
+                    var images = $("input.image");
+                    // console.log(names);
+                    $('#tableVal').html('');
+                    // }
 
-                    // // Loop through each input field with the class "data-field"
-                    $(".data-field").each(function() {
-
-                        fieldValue = $(this).val(); // Get the value of the input field
-                        dataArray += fieldValue + ","; // Push the value into the dataArray
-                        if (i % 4 == 0) {
-                            dataArray += "@#@";
-                        }
-                        i++;
-                    });
-
-                    splitVal = dataArray.split("@#@");
-                    var outputString = "";
-                    for (var i = 0; i < splitVal.length; i++) {
-                        if (splitVal[i] != '') {
-                            outputString += "<tr>";
-                            getAllVal = splitVal[i].trim();
-                            var getSplitVal = getAllVal.split(",");
-                            for (var j = 0; j < getSplitVal.length; j++) {
-                                if (getSplitVal[j] != '') {
-                                    if (j == 0) {
-                                        outputString +=
-                                            '<td style="font-size: 14px; font-weight: 800;  color: #000;  line-height: 18px;  vertical-align: top; padding:10px;" width="52%">' +
-                                            getSplitVal[j] + '</td>';
-                                    } else {
-                                        outputString +=
-                                            '<td style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px;">' +
-                                            getSplitVal[j] + '</td>';
-                                    }
-
-                                }
-                            }
-                            outputString +=
-                                '</tr> <tr><td height="1" colspan="4" style="border-bottom:1px solid #e4e4e4"></td></tr>';
+                    for (var i = 0; i < names.length; i++) {
+                        var name = $(names[i]).val();
+                        var rate = $(rates[i]).val();
+                        var quantity = $(quantities[i]).val();
+                        var amount = $(amounts[i]).val();
+                        var image = $(images[i]).prop('files')[0];
+                        var reader = new FileReader();
+                        if (image) {
+                            var new_image = URL.createObjectURL(image);
+                        } else {
+                            var new_image = "{{ asset('admin_assets/images/image.png') }}";
                         }
 
+
+                        if (name) {
+                            var newRow = '<tr>' +
+                                '<td style="font-size: 14px; font-weight: 800;  color: #000;  line-height: 18px;  vertical-align: top; padding: 5px; display: flex; align-item: center;">' +
+                                '<img style="object-fit: contain; color:black; width: 50px; height: 50px; padding: 5px; border: 1px solid #000; margin-right: 5px;" src="' +
+                                new_image + '">' +
+                                name +
+                                '</td>' +
+                                '<td style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px;">' +
+                                rate + '</td>' +
+                                '<td style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px;" align="center">' +
+                                quantity + '</td>' +
+                                '<td style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px;" align="right">$' +
+                                amount + '</td>' +
+                                '</tr>' +
+                                '<tr>' +
+                                '<td height="1" colspan="4" style="border-bottom:1px solid #e4e4e4"></td>' +
+                                '</tr>';
+                            $('#tableVal').append(newRow);
+                        }
                     }
-                    $("#tableVal").html(outputString);
+
+
 
                     $('#pdfModal').modal('show');
                     var type = $('.types').val();
@@ -1809,10 +1848,10 @@ $invoice_number = 'BPM-'.rand(0000000,99999999);
                     var project_name = $('#project_name').val();
                     var project_address = $('#project_address').val();
 
-                    
+
                     // console.log(type, bill_from_add);
-                    $('#popup_project_address').text('Project Name : ' +project_name);
-                    $('#popup_project_name').text('Project Address : ' +project_address);
+                    $('#popup_project_address').text('Project Name : ' + project_name);
+                    $('#popup_project_name').text('Project Address : ' + project_address);
                     $('#popup_type').text(type);
                     $('#popup_add').text('Address: ' + bill_from_add);
                     $('#popup_phone').text('Phone: ' + bill_from_phone);
@@ -1820,7 +1859,7 @@ $invoice_number = 'BPM-'.rand(0000000,99999999);
                     if (invoice_date != '') {
                         $('#popup_date').text(invoice_date);
                     }
-                   
+
                     $('#popup_billto_name').text(bill_to_name);
                     $('#popup_billto_email').text(bill_to_email);
                     $('#popup_billto_add').text(bill_to_add);

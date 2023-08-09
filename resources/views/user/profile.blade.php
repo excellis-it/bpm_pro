@@ -68,7 +68,7 @@
                                         <div class="card-body">
                                             <div class="form-body">
                                                 <div class="row justify-content-center">
-                                                    <div class="col-6 col-lg-6 border-right mt-3">
+                                                    <div class="col-lg-6 col-12 border-right mt-3">
                                                       <div class="profile-form-wrap">
                                                           <h2>My Profile</h2>
                                                           <div class="d-md-flex align-items-center">
@@ -94,7 +94,7 @@
                                                             @csrf
 
                                                             <div class="row mt-2">
-                                                                <div class="col-6 my-1">
+                                                                <div class="col-lg-6 col-12 my-1">
                                                                     <div class="form-floating">
                                                                       <input type="text" value="{{ Auth::user()->first_name }}"
                                                                         name="first_name" class="form-control"
@@ -106,7 +106,7 @@
                                                                     @endif
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-6 my-1">
+                                                                <div class="col-lg-6 col-12 my-1">
                                                                     <div class="form-floating">
                                                                       <input type="text" value="{{ Auth::user()->last_name }}"
                                                                         name="last_name" class="form-control"
@@ -166,7 +166,7 @@
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="col-6 my-1">
+                                                                <div class="col-lg-6 col-12 my-1">
                                                                       <div class="form-floating">
                                                                     <input type="text" class="form-control"
                                                                         id="inputPassword3" name="city"
@@ -179,7 +179,7 @@
                                                                     @endif
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-6 my-1">
+                                                                <div class="col-lg-6 col-12 my-1">
                                                                   <div class="form-floating">
                                                                     <select class="form-select" name="state" id="floatingSelect" aria-label="Floating label select example">
                                                                         @foreach ($states as $state)
@@ -206,7 +206,7 @@
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="col-6 my-1">
+                                                                <div class="col-lg-6 col-12 my-1">
                                                                   <div class="form-floating">
                                                                     <input type="text"
                                                                         value="{{ Auth::user()->company }}"
@@ -219,7 +219,7 @@
                                                                  </div>
                                                                 </div>
                                                                 
-                                                                <div class="col-6  my-1">
+                                                                <div class="col-lg-6 col-12  my-1">
                                                                     <div class="form-floating">
                                                                     <input type="text" value="{{ Auth::user()->gst }}"
                                                                         name="gst" class="form-control">
@@ -231,7 +231,7 @@
                                                                     </div>
                                                                 </div>
                                                                 
-                                                                <div class="col-6 my-1">
+                                                                <div class="col-lg-6 col-12 my-1">
                                                                     <label class="form-label">Company Logo</label>
                                                                     <input type="file" name="logo"
                                                                         class="form-control">
@@ -242,21 +242,26 @@
                                                                 </div>
                                                                 <div  class="col-12 my-1">
                                                                     <div class="sign-box">
-                                                                        <div class="sign-box">
+                                                                        <div class="sign-box_1">
                                                                             <div class="signature">
                                                                                 <h2>Signature</h2>
                                                                                 <div id="signature"></div>
                                                                                 <br><br>
+                                                                              <div class="update-btn-div">
                                                                                 <button id="reset" class="btn btn-danger">Clear Signature</button>
+                                                                                <button type="submit" class="btn btn-primary update-btn">Update</button> 
+                                                                              </div>
                                                                                 <textarea id="signature_capture" name="signed" hidden></textarea>
                                                                             </div>
                                     
                                                                     </div>
                                                                 </div>
 
-                                                            <div class="col-6 my-1">
-                                                                <button type="submit" class="btn btn-primary update-btn">Update</button>
-                                                            </div>
+                                                            <!--<div class="update-btn-div">-->
+                                                            <!--    <div class="col-3 my-1 d-flex justify-content-end">-->
+                                                            <!--    <button type="submit" class="btn btn-primary update-btn">Update</button>-->
+                                                            <!--  </div>-->
+                                                            <!--</div>-->
                                                         </form>  
                                                          </div>
                                                       </div>

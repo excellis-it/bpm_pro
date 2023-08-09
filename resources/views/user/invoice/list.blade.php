@@ -17,16 +17,16 @@
     <section id="loading">
         <div id="loading-content"></div>
     </section>
-    <div class="page-wrapper">
+    <div class="page-wrapper invoice_page">
 
         <div class="content container-fluid">
 
             <div class="page-header">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h3 class="page-title">Users Invoice</h3>
+                        <h3 class="page-title">List of Invoices</h3>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="">Users Invoice</a></li>
+                            <li class="breadcrumb-item"><a href="">List of Invoices</a></li>
                             <li class="breadcrumb-item active">List</li>
                         </ul>
                     </div>
@@ -42,7 +42,7 @@
                     <div class="card-title">
                         <div class="row">
                             <div class="col-md-6">
-                                <h4 class="mb-0">Users Invoices</h4>
+                                <h4 class="mb-0">List of Invoicess</h4>
                             </div>
 
                         </div>

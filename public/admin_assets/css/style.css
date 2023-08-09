@@ -11628,7 +11628,7 @@ body {
 
         .signature {
             margin: 20px 0px;
-            display: inline-block;
+            display: block;
         }
 
         .signature h2 {
@@ -11750,8 +11750,8 @@ body {
         }
 
         .sign-box {
-            display: flex;
-            justify-content: space-between;
+            display: block;
+            /*justify-content: space-between;*/
         }
 
         .sign-box-warp {
@@ -11860,8 +11860,33 @@ body {
       .profile-img-1 img{
         width: 100%;
        height: 100%;
-        object-fit: cover;
+       object-fit: contain;
       }
+      #signature{
+          border: 2px solid rgb(0 0 0 / 18%);
+          padding: 20px 20px 0px 20px;
+         border-radius: 10px;
+      }
+      /*08-08-2023*/
+      .update-btn-div{
+          display: flex;
+        justify-content: space-between;
+      }
+      /*Responsive*/
+      @media (max-width:767px){ 
+        .tab-content{
+            padding: 0!important;
+            margin: 0!important;
+        } 
+        .tab-content-wrap .card-body{
+            padding: 0!important;
+        }
+        .header .mobile_btn{
+            display: none;
+        }
+          
+      }
+      
         
         
         

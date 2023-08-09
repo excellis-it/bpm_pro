@@ -147,7 +147,7 @@
                             <tr>
                                 <th style="background: #2f75b5; font-size: 16px; font-weight: 800;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;"
                                     width="52%" align="left">
-                                    Description
+                                    Item Name
                                 </th>
                                 <th style="background: #2f75b5; font-size: 16px;  font-weight: 800;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;"
                                     align="left">
@@ -171,9 +171,17 @@
                             @foreach ($maildata['items'] as $vall)
                                 <tr>
                                     <td
-                                        style="font-size: 14px; font-weight: 800;  color: #000;  line-height: 18px;  vertical-align: top; padding:10px;">
-                                        {{ $vall->item_description }}
-                                    </td>
+                                    style="font-size: 14px; font-weight: 800;  color: #000;  line-height: 18px;  vertical-align: top; padding:10px; display: flex; align-item: center;">
+                                    @if($vall->image)
+                                   
+                                    <img style="object-fit: contain; width: 20px; height: 20px; padding: 10px; border: 1px solid #000; margin-right: 5px;" src="{{ 'data:image/png;base64,' . base64_encode(file_get_contents(public_path('storage/' . $vall->image))) }}">
+                                  
+                                    @else
+                                    <img style="object-fit: contain; width: 20px; height: 20px; padding: 10px; border: 1px solid #000; margin-right: 5px;" src="{{'data:image/png;base64,'.base64_encode(file_get_contents('admin_assets/images/image.png'))}}">
+                                    @endif
+                                    {{ $vall->item_description }}
+                                    
+                                </td>
                                     <td
                                         style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px;">
                                         ${{ $vall->item_rate }}</td>

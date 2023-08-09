@@ -11,6 +11,7 @@ use App\Models\Item;
 use App\Models\State;
 use App\Mail\InvoiceMail;
 use App\Models\File;
+use App\Traits\ImageTrait;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
@@ -19,7 +20,7 @@ use PDF;
 
 class InvoiceController extends Controller
 {
-    //
+    use ImageTrait;
 
     public function index()
     {
@@ -133,15 +134,23 @@ class InvoiceController extends Controller
         //items add
         foreach ($request->item_description as $key => $item) {
             if ($item != null) {
-                $add_items = Item::create([
-                    'user_id' => Auth::user()->id,
-                    'invoice_id' => $invoice->id,
-                    'item_description' => $item,
-                    'item_additional_details' => $request->additional_details[$key],
-                    'item_rate' => $request->rate[$key],
-                    'item_quantity' => $request->quantity[$key],
-                    'item_amount' => $request->amount[$key] ?? ''
-                ]);
+                $add_items = new Item();
+                $add_items->user_id = Auth::user()->id; 
+                $add_items->invoice_id = $invoice->id;   
+                $add_items->item_description = $item;               
+                $add_items->item_additional_details = $request->additional_details[$key];
+                $add_items->item_rate = $request->rate[$key];
+                $add_items->item_quantity = $request->quantity[$key];
+                $add_items->item_amount = $request->amount[$key] ?? '';
+                if ($request->hasFile('image')) {
+                    $image =  $request->image[$key] ?? '';
+                    if ($image != '') {
+                        $fileData = $this->imageUpload($request->image[$key], 'items');
+                        $add_items->image = $fileData['filePath'] ?? null;
+                    }
+                    
+                }
+                $add_items->save();
             }
 
         }
