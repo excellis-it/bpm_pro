@@ -111,8 +111,8 @@
         }
 
         /* .signature input {
-                                                                                                                                                                                                                                                display: none;
-                                                                                                                                                                                                                                            } */
+                                                                                                                                                                                                                                                            display: none;
+                                                                                                                                                                                                                                                        } */
 
         .signature label span {
             width: 100%;
@@ -426,13 +426,12 @@
 
 
 @section('content')
-   
     <div class="page-wrapper invoice_page">
         <section class="form-div">
             <div class="container-fluid">
                 <div class="form-div-main">
-                    <form method="POST" id="payment-form" data-parsley-validate action="{{ route('invoice.update', $invoice->id) }}"
-                        enctype="multipart/form-data">
+                    <form method="POST" id="payment-form" data-parsley-validate
+                        action="{{ route('invoice.update', $invoice->id) }}" enctype="multipart/form-data">
                         @method('PUT')
                         @csrf
                         <div class="row">
@@ -440,8 +439,8 @@
 
                                 <div class="inv-head-wrap d-flex justify-content-between">
                                     <div class="inv-head">
-                                        <h2>New Invoice - <span id="invoice_show"
-                                                style="color: #ff7c04"> {{ $invoice['invoice_no'] }} </span></h2>
+                                        <h2>New Invoice - <span id="invoice_show" style="color: #ff7c04">
+                                                {{ $invoice['invoice_no'] }} </span></h2>
                                     </div>
 
                                     <div class="pre-view-wrap d-flex justify-content-end align-items-center">
@@ -464,8 +463,12 @@
                                                             <select class="form-select types" name="type"
                                                                 id="floatingSelect"
                                                                 aria-label="Floating label select example">
-                                                                <option selected value="Invoice" @if($invoice['type'] == "Invoice") selected @endif>Invoice</option>
-                                                                <option value="Estimate" @if($invoice['type'] == "Estimate") selected @endif>Estimate</option>
+                                                                <option selected value="Invoice"
+                                                                    @if ($invoice['type'] == 'Invoice') selected @endif>
+                                                                    Invoice</option>
+                                                                <option value="Estimate"
+                                                                    @if ($invoice['type'] == 'Estimate') selected @endif>
+                                                                    Estimate</option>
                                                             </select>
                                                             <label for="floatingSelect">Type</label>
                                                             @if ($errors->has('type'))
@@ -484,7 +487,9 @@
                                                         <div class="form-floating">
                                                             <select class="form-select" name="currency" id="floatingSelect"
                                                                 aria-label="Floating label select example">
-                                                                <option selected value="USD" @if($invoice['currency'] == "USD") selected @endif>USD</option>
+                                                                <option selected value="USD"
+                                                                    @if ($invoice['currency'] == 'USD') selected @endif>USD
+                                                                </option>
                                                             </select>
                                                             <label for="floatingSelect">Curency</label>
                                                             @if ($errors->has('currency'))
@@ -503,9 +508,15 @@
                                                         <div class="form-floating">
                                                             <select class="form-select" name="send_in" id="floatingSelect"
                                                                 aria-label="Floating label select example">
-                                                                <option selected value="1" @if($invoice['send_in'] == "1") selected @endif>One time</option>
-                                                                <option value="2" @if($invoice['send_in'] == "2") selected @endif>Weekly</option>
-                                                                <option value="3" @if($invoice['send_in'] == "3") selected @endif>Monthly</option>
+                                                                <option selected value="1"
+                                                                    @if ($invoice['send_in'] == '1') selected @endif>One
+                                                                    time</option>
+                                                                <option value="2"
+                                                                    @if ($invoice['send_in'] == '2') selected @endif>Weekly
+                                                                </option>
+                                                                <option value="3"
+                                                                    @if ($invoice['send_in'] == '3') selected @endif>
+                                                                    Monthly</option>
                                                             </select>
                                                             <label for="floatingSelect">Send in</label>
                                                             @if ($errors->has('send_in'))
@@ -534,8 +545,8 @@
                                                         <div class="form-floating">
                                                             <input type="text" class="form-control" id="inputEmail3"
                                                                 name="from_name" placeholder="Business Name"
-                                                                value="{{ $invoice['from_name'] }}"
-                                                                required data-parsley-trigger="keyup">
+                                                                value="{{ $invoice['from_name'] }}" required
+                                                                data-parsley-trigger="keyup">
                                                             <label for="floatingInputValue"
                                                                 class="col-sm-2 col-form-label">Name<span
                                                                     style="color: red;">*</span></label>
@@ -593,7 +604,7 @@
                                                                 <option value=""> Select State</option>
                                                                 @foreach ($states as $state)
                                                                     <option value="{{ $state->name }}"
-                                                                        {{ ($invoice['from_state'] == $state->name) ? 'selected' : '' }}>
+                                                                        {{ $invoice['from_state'] == $state->name ? 'selected' : '' }}>
                                                                         {{ $state->name }}
                                                                     </option>
                                                                 @endforeach
@@ -613,7 +624,7 @@
                                                     <div class="col-sm-10">
                                                         <div class="form-floating">
                                                             <input type="text" class="form-control"
-                                                                id="floatingInputValue" 
+                                                                id="floatingInputValue"
                                                                 value="{{ $invoice['from_zipcode'] }}" required
                                                                 data-parsley-trigger="keyup" name="from_zipcode">
                                                             <label for="floatingInputValue"
@@ -651,7 +662,8 @@
                                                             <input type="text" class="form-control"
                                                                 id="bill_from_address" id="" required
                                                                 data-parsley-trigger="keyup" placeholder="Street"
-                                                                value="{{ $invoice['from_address'] }}" name="from_address">
+                                                                value="{{ $invoice['from_address'] }}"
+                                                                name="from_address">
                                                             <label for="bill_from_address"
                                                                 class="col-sm-2 col-form-label">Address<span
                                                                     style="color: red;">*</span></label>
@@ -669,7 +681,8 @@
                                                             <input type="text" class="form-control"
                                                                 id="bill_from_phone" required data-parsley-trigger="keyup"
                                                                 placeholder="(123) 456 789"
-                                                                value="{{ $invoice['from_phone'] }}" name="bill_from_phone">
+                                                                value="{{ $invoice['from_phone'] }}"
+                                                                name="bill_from_phone">
                                                             <label for="bill_from_phone"
                                                                 class="col-sm-2 col-form-label">Phone<span
                                                                     style="color: red;">*</span></label>
@@ -689,8 +702,9 @@
                                                                 data-parsley-trigger="keyup" placeholder="123456789 RT"
                                                                 value="{{ $invoice['from_gst'] }}" name="bill_from_gst">
                                                             <label for="floatingInputValue"
-                                                                class="col-sm-12 col-form-label">GST
-                                                                #<span style="color: red;">*</span></label>
+                                                                class="col-sm-12 col-form-label">Annual Resale Certificate
+                                                                for Sales Tax #
+                                                                <span style="color: red;">*</span></label>
                                                             @if ($errors->has('bill_from_gst'))
                                                                 <div class="error" style="color:red;">
                                                                     {{ $errors->first('bill_from_gst') }}</div>
@@ -707,13 +721,13 @@
 
                                                 <div class="form-group row">
                                                     @php
-                                                        $explode = explode(' ', $invoice['bil_to_name'])
+                                                        $explode = explode(' ', $invoice['bil_to_name']);
                                                     @endphp
                                                     <div class="col-xl-6 col-md-6 col-12">
                                                         <div class="form-floating">
                                                             <input type="text" class="form-control" name="first_name"
-                                                                required data-parsley-trigger="keyup" value="{{ $explode[0] ?? '' }}"
-                                                                id="billto_first_nm">
+                                                                required data-parsley-trigger="keyup"
+                                                                value="{{ $explode[0] ?? '' }}" id="billto_first_nm">
                                                             <label for="floatingInputValue"
                                                                 class="col-sm-12 col-form-label">First Name<span
                                                                     style="color: red;">*</span></label>
@@ -725,14 +739,15 @@
                                                     </div>
                                                     <div class="col-xl-6 col-md-6 col-12">
                                                         <div class="form-floating">
-                                                            <input type="text" class="form-control" name="last_name" value="{{ $explode[1] ?? '' }}"
-                                                                required data-parsley-trigger="keyup" id="billto_last_nm" ">
-                                                                                                                    <label for="floatingInputValue"
-                                                                                                                        class="col-sm-12 col-form-label">Last Name<span
-                                                                                                                            style="color: red;">*</span></label>
-                                                                                                                         
-                                                                                                 
-                                                                     @if ($errors->has('last_name'))
+                                                            <input type="text" class="form-control" name="last_name"
+                                                                value="{{ $explode[1] ?? '' }}" required
+                                                                data-parsley-trigger="keyup" id="billto_last_nm" ">
+                                                                                                                                <label for="floatingInputValue"
+                                                                                                                                    class="col-sm-12 col-form-label">Last Name<span
+                                                                                                                                        style="color: red;">*</span></label>
+                                                                                                                                     
+                                                                                                             
+                                                                                    @if ($errors->has('last_name'))
                                                             <div class="error" style="color:red;">
                                                                 {{ $errors->first('last_name') }}</div>
                                                             @endif
@@ -744,8 +759,8 @@
                                                     <div class="col-sm-12">
                                                         <div class="form-floating">
                                                             <input type="text" class="form-control"
-                                                                id="bil_to_company" required data-parsley-trigger="keyup" value="{{ $invoice['company'] }}"
-                                                                name="bil_to_company">
+                                                                id="bil_to_company" required data-parsley-trigger="keyup"
+                                                                value="{{ $invoice['company'] }}" name="bil_to_company">
                                                             <label for="bil_to_company"
                                                                 class="col-sm-2 col-form-label">Company<span
                                                                     style="color: red;">*</span></label>
@@ -761,14 +776,15 @@
                                                     <div class="col-xl-12">
                                                         <div class="form-floating">
                                                             <input type="text" class="form-control"
-                                                                name="bil_to_email" required data-parsley-type="email" value="{{ $invoice['bil_to_email'] }}"
+                                                                name="bil_to_email" required data-parsley-type="email"
+                                                                value="{{ $invoice['bil_to_email'] }}"
                                                                 data-parsley-trigger="keyup" id="bill_to_email" ">
-                                                                                                                    <label for="floatingInputValue"
-                                                                                                                    class="col-sm-2 col-form-label">Email<span
-                                                                                                                        style="color: red;">*</span></label>
-                                                                                                                         
-                                                                                                 
-                                                                     @if ($errors->has('bil_to_email'))
+                                                                                                                                <label for="floatingInputValue"
+                                                                                                                                class="col-sm-2 col-form-label">Email<span
+                                                                                                                                    style="color: red;">*</span></label>
+                                                                                                                                     
+                                                                                                             
+                                                                                    @if ($errors->has('bil_to_email'))
                                                             <div class="error" style="color:red;">
                                                                 {{ $errors->first('bil_to_email') }}</div>
                                                             @endif
@@ -781,7 +797,8 @@
                                                     <div class="col-sm-12">
                                                         <div class="form-floating">
                                                             <input type="text" class="form-control"
-                                                                id="bill_to_address" required data-parsley-trigger="keyup" value="{{ $invoice['bil_to_address'] }}"
+                                                                id="bill_to_address" required data-parsley-trigger="keyup"
+                                                                value="{{ $invoice['bil_to_address'] }}"
                                                                 name="bil_to_address">
                                                             <label for="floatingInputValue"
                                                                 class="col-sm-12 col-form-label">Street
@@ -799,7 +816,8 @@
                                                     <div class="col-sm-12">
                                                         <div class="form-floating">
                                                             <input type="text" class="form-control"
-                                                                id="floatingInputValue" required value="{{ $invoice['bil_to_city'] }}"
+                                                                id="floatingInputValue" required
+                                                                value="{{ $invoice['bil_to_city'] }}"
                                                                 data-parsley-trigger="keyup" name="bil_to_city">
                                                             <label for="floatingInputValue"
                                                                 class="col-sm-2 col-form-label">City<span
@@ -820,7 +838,8 @@
                                                                 data-parsley-trigger="keyup">
                                                                 <option value=""> Select State</option>
                                                                 @foreach ($states as $state)
-                                                                    <option value="{{ $state->name }}" {{ ($invoice['bil_to_state'] == $state->name) ? 'selected' : '' }}>
+                                                                    <option value="{{ $state->name }}"
+                                                                        {{ $invoice['bil_to_state'] == $state->name ? 'selected' : '' }}>
                                                                         {{ $state->name }}
                                                                     </option>
                                                                 @endforeach
@@ -842,7 +861,8 @@
                                                     <div class="col-sm-12">
                                                         <div class="form-floating">
                                                             <input type="text" class="form-control"
-                                                                id="bil_to_zipcode" required data-parsley-trigger="keyup" value="{{ $invoice['bil_to_zipcode'] }}"
+                                                                id="bil_to_zipcode" required data-parsley-trigger="keyup"
+                                                                value="{{ $invoice['bil_to_zipcode'] }}"
                                                                 name="bil_to_zipcode">
                                                             <label for="bil_to_zipcode"
                                                                 class="col-sm-2 col-form-label">Zipcode<span
@@ -860,7 +880,8 @@
                                                     <div class="col-sm-12">
                                                         <div class="form-floating">
                                                             <input type="text" class="form-control phone-format"
-                                                                required data-parsley-trigger="keyup" id="bill_to_phone" value="{{ $invoice['bil_to_phone'] }}"
+                                                                required data-parsley-trigger="keyup" id="bill_to_phone"
+                                                                value="{{ $invoice['bil_to_phone'] }}"
                                                                 name="bil_to_phone">
                                                             <label for="floatingInputValue"
                                                                 class="col-sm-2 col-form-label">Phone<span
@@ -876,7 +897,8 @@
 
                                                     <div class="col-sm-12">
                                                         <div class="form-floating">
-                                                            <input type="text" class="form-control phone-format" value="{{ $invoice['bil_to_mobile'] }}"
+                                                            <input type="text" class="form-control phone-format"
+                                                                value="{{ $invoice['bil_to_mobile'] }}"
                                                                 id="floatingInputValue" name="bil_to_mobile">
                                                             <label for="floatingInputValue"
                                                                 class="col-sm-2 col-form-label">Mobile</label>
@@ -914,70 +936,83 @@
                                     <h2>Item Description</h2>
                                 </div>
                                 <div class="form-div-wrap add_item_box">
-                                    @foreach($invoice['items'] as $key=>$value)
-                                    <div class="add-item-wrap">
-                                        @if($key != 0)
-                                        <div class="cross-btn"><a href="javascript:void(0)"><i class="fa-solid fa-xmark"></i></a></div>
-                                        @endif
-                                        <div class="row justify-content-between">
-                                            <div class="col-xl-12">
-                                                <div class="item-head">
-                                                    <h2>Item Description</h2>
-                                                </div>
-                                                <div class="form-left form-item">
-                                                    <div class="row justify-content-between">
-                                                        <div class="col-xl-4 col-12">
-                                                            <div class="form-group">
-                                                                <input type="number"
-                                                                    class="form-control quantity data-field" value="{{ $value['item_quantity'] }}"
-                                                                    name="quantity[]" placeholder="Quantity" required
-                                                                    data-parsley-trigger="keyup" min="1">
+                                    @foreach ($invoice['items'] as $key => $value)
+                                        <div class="add-item-wrap">
+                                            @if ($key != 0)
+                                                <div class="cross-btn"><a href="javascript:void(0)"><i
+                                                            class="fa-solid fa-xmark"></i></a></div>
+                                            @endif
+                                            <div class="row justify-content-between">
+                                                <div class="col-xl-12">
+                                                    <div class="item-head">
+                                                        <h2>Item Description</h2>
+                                                    </div>
+                                                    <div class="form-left form-item">
+                                                        <div class="row justify-content-between">
+                                                            <div class="col-xl-4 col-12">
+                                                                <div class="form-group">
+                                                                    <input type="number"
+                                                                        class="form-control quantity data-field"
+                                                                        value="{{ $value['item_quantity'] }}"
+                                                                        name="quantity[]" placeholder="Quantity" required
+                                                                        data-parsley-trigger="keyup" min="1">
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-xl-4 col-12">
-                                                            <div class="form-group">
-                                                                <input type="text" class="form-control rate data-field"
-                                                                    name="rate[]" placeholder="Rate" required value="{{ $value['item_rate'] }}"
-                                                                    data-parsley-trigger="keyup">
+                                                            <div class="col-xl-4 col-12">
+                                                                <div class="form-group">
+                                                                    <input type="text"
+                                                                        class="form-control rate data-field"
+                                                                        name="rate[]" placeholder="Rate" required
+                                                                        value="{{ $value['item_rate'] }}"
+                                                                        data-parsley-trigger="keyup">
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-xl-4 col-12">
-                                                            <div class="form-group">
-                                                                <input type="text"
-                                                                    class="form-control amount data-field" name="amount[]" value="{{ $value['item_amount'] }}"
-                                                                    id="amount_1" placeholder="Amount" required
-                                                                    data-parsley-trigger="keyup" readonly>
+                                                            <div class="col-xl-4 col-12">
+                                                                <div class="form-group">
+                                                                    <input type="text"
+                                                                        class="form-control amount data-field"
+                                                                        name="amount[]"
+                                                                        value="{{ $value['item_amount'] }}"
+                                                                        id="amount_1" placeholder="Amount" required
+                                                                        data-parsley-trigger="keyup" readonly>
+                                                                </div>
                                                             </div>
-                                                        </div>
 
-                                                        <div class="col-xl-6 col-12">
-                                                            <div class="form-group">
-                                                                <input type="text"
-                                                                    class="form-control data-field item_description" value="{{ $value['item_description'] }}"
-                                                                    name="item_description[]" required
-                                                                    data-parsley-trigger="keyup" placeholder="Item Name">
+                                                            <div class="col-xl-6 col-12">
+                                                                <div class="form-group">
+                                                                    <input type="text"
+                                                                        class="form-control data-field item_description"
+                                                                        value="{{ $value['item_description'] }}"
+                                                                        name="item_description[]" required
+                                                                        data-parsley-trigger="keyup"
+                                                                        placeholder="Item Name">
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-xl-6 col-12">
-                                                            <div class="form-group">
-                                                                <input type="file"
-                                                                    class="form-control image data-field" name="image[]" value="{{ $value['image'] }}"
-                                                                    accept="image/*" id="image" placeholder="Amount"
-                                                                    data-parsley-required="false"
-                                                                    data-parsley-trigger="keyup">
+                                                            <div class="col-xl-6 col-12">
+                                                                <div class="form-group">
+                                                                    <input type="hidden" value="{{ $value['image'] }}"
+                                                                        name="image_field[]" class="image_field"
+                                                                        data-image="{{ Storage::url($value['image']) }}">
+                                                                    <input type="file"
+                                                                        class="form-control image data-field"
+                                                                        name="image[]" value="{{ $value['image'] }}"
+                                                                        accept="image/*" id="image"
+                                                                        placeholder="Amount" data-parsley-required="false"
+                                                                        data-parsley-trigger="keyup">
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-xl-12 col-12">
-                                                            <div class="form-group">
-                                                                <textarea class="form-control additional_details" name="additional_details[]" data-parsley-required="false" value="{{ $value['item_additional_details'] }}"
-                                                                    data-parsley-trigger="keyup" placeholder="Item Description" rows="2"></textarea>
+                                                            <div class="col-xl-12 col-12">
+                                                                <div class="form-group">
+                                                                    <textarea class="form-control additional_details" name="additional_details[]" data-parsley-required="false"
+                                                                        value="{{ $value['item_additional_details'] }}" data-parsley-trigger="keyup" placeholder="Item Description"
+                                                                        rows="2"></textarea>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
                                     @endforeach
                                     {{-- <div class="add-item-wrap">
                                     <div class="cross-btn">
@@ -1048,8 +1083,9 @@
 
                                         <div class="col-sm-12">
                                             <div class="form-floating">
-                                                <input type="text" class="form-control" id="project_name" required value="{{ $invoice['project_name'] }}"
-                                                    data-parsley-trigger="keyup" name="project_name">
+                                                <input type="text" class="form-control" id="project_name" required
+                                                    value="{{ $invoice['project_name'] }}" data-parsley-trigger="keyup"
+                                                    name="project_name">
                                                 <label for="project_name" class="col-sm-2 col-form-label">Project
                                                     Name<span style="color: red;">*</span></label>
                                                 @if ($errors->has('project_name'))
@@ -1063,8 +1099,9 @@
 
                                         <div class="col-sm-12">
                                             <div class="form-floating">
-                                                <input type="text" class="form-control" name="project_address" value="{{ $invoice['project_address'] }}"
-                                                    required data-parsley-trigger="keyup" id="project_address">
+                                                <input type="text" class="form-control" name="project_address"
+                                                    value="{{ $invoice['project_address'] }}" required
+                                                    data-parsley-trigger="keyup" id="project_address">
                                                 <label for="project_address" class="col-sm-2 col-form-label">Project
                                                     Address<span style="color: red;">*</span></label>
                                                 @if ($errors->has('project_address'))
@@ -1105,7 +1142,8 @@
                                                 <div class="inv-number">
                                                     <div class="form-floating">
                                                         <input type="text" name="invoice_no" class="form-control"
-                                                            id="invoice_no" required data-parsley-trigger="keyup" value="{{ $invoice['invoice_no'] }}" readonly>
+                                                            id="invoice_no" required data-parsley-trigger="keyup"
+                                                            value="{{ $invoice['invoice_no'] }}" readonly>
                                                         <label for="floatingInputValue">Invoice Number</label>
                                                         @if ($errors->has('invoice_no'))
                                                             <div class="error" style="color:red;">
@@ -1115,8 +1153,9 @@
                                                 </div>
                                                 <div class="inv-number">
                                                     <div class="form-floating">
-                                                        <input type="date" name="invoice_date" class="form-control" value="{{ $invoice['invoice_date'] }}"
-                                                            required data-parsley-trigger="keyup" id="invoice_date">
+                                                        <input type="date" name="invoice_date" class="form-control"
+                                                            value="{{ $invoice['invoice_date'] }}" required
+                                                            data-parsley-trigger="keyup" id="invoice_date">
                                                         <label for="floatingInputValue">Invoice Date</label>
                                                         @if ($errors->has('invoice_date'))
                                                             <div class="error" style="color:red;">
@@ -1129,14 +1168,20 @@
                                                         <select class="form-select" name="due"
                                                             id="due_floatingSelect" required data-parsley-trigger="keyup"
                                                             aria-label="Floating label select example">
-                                                            <option selected value="On Receipt" {{ ($invoice['due'] == 'On Receipt') ? 'selected' : '' }}>On Receipt</option>
-                                                            <option value="No due date" {{ ($invoice['due'] == 'No due date') ? 'selected' : '' }}>No due date</option>
-                                                            <option value="On specific date" {{ ($invoice['due'] == 'On specific date') ? 'selected' : '' }}>On specific date</option>
+                                                            <option selected value="On Receipt"
+                                                                {{ $invoice['due'] == 'On Receipt' ? 'selected' : '' }}>
+                                                                On Receipt</option>
+                                                            <option value="No due date"
+                                                                {{ $invoice['due'] == 'No due date' ? 'selected' : '' }}>
+                                                                No due date</option>
+                                                            <option value="On specific date"
+                                                                {{ $invoice['due'] == 'On specific date' ? 'selected' : '' }}>
+                                                                On specific date</option>
                                                         </select>
                                                         <label for="floatingSelect">Due</label>
                                                         <input type="date" name="due_date" id="date"
                                                             class="form-control" min="{{ date('Y-m-d') }}"
-                                                            value="{{ ($invoice['due'] == 'On specific date') ? date('Y-m-d') : $invoice['due_date'] }}">
+                                                            value="{{ $invoice['due'] == 'On specific date' ? date('Y-m-d') : $invoice['due_date'] }}">
                                                         @if ($errors->has('due'))
                                                             <div class="error" style="color:red;">
                                                                 {{ $errors->first('due') }}</div>
@@ -1155,9 +1200,10 @@
                                                         <h3>Subtotal</h3>
                                                     </div>
                                                     <div>
-                                                        <input type="hidden" id="total_amount" name="sub_amount" 
+                                                        <input type="hidden" id="total_amount" name="sub_amount"
                                                             value="{{ $invoice['sub_total'] }}">
-                                                        <h4><span class="total_amount">{{ $invoice['sub_total'] }}</span></h4>
+                                                        <h4><span class="total_amount">{{ $invoice['sub_total'] }}</span>
+                                                        </h4>
                                                     </div>
                                                 </div>
                                                 {{-- <div class="sub d-flex justify-content-between">
@@ -1190,7 +1236,8 @@
                                                 <div class="d-flex justify-content-between">
                                                     <div class="me-2 show-dis">
                                                         <div class="form-floating">
-                                                            <input type="text" name="discount_price" value="{{ $invoice['discount_price'] }}"
+                                                            <input type="text" name="discount_price"
+                                                                value="{{ $invoice['discount_price'] }}"
                                                                 class="form-control discount_price">
                                                             <label for="floatingInputValue">Other Discount</label>
                                                         </div>
@@ -1200,8 +1247,12 @@
                                                             <select class="form-select currency-select"
                                                                 name="discount_type" id="floatingSelect"
                                                                 aria-label="Floating label select example">
-                                                                <option selected="" value="1" {{ ($invoice['discount_type'] == 1) ? 'selected' : '' }}>%</option>
-                                                                <option value="2" {{ ($invoice['discount_type'] == 2) ? 'selected' : '' }}>$</option>
+                                                                <option selected="" value="1"
+                                                                    {{ $invoice['discount_type'] == 1 ? 'selected' : '' }}>
+                                                                    %</option>
+                                                                <option value="2"
+                                                                    {{ $invoice['discount_type'] == 2 ? 'selected' : '' }}>
+                                                                    $</option>
                                                             </select>
                                                             <!--<label for="floatingSelect">Send in</label>-->
 
@@ -1223,8 +1274,9 @@
                                                         <h4 style="color: blue; font-weight: 600;" id="tax_amount">Add
                                                         </h4>
                                                         <input type="text" name="tax_amount" id="tax_amount_input"
-                                                            class="form-control" placeholder="Tax amount" min="1" value="{{ $invoice['tax_amount'] }}"
-                                                            max="100" style="display:none;">
+                                                            class="form-control" placeholder="Tax amount" min="1"
+                                                            value="{{ $invoice['tax_amount'] }}" max="100"
+                                                            style="display:none;">
                                                     </div>
                                                 </div>
                                                 <hr />
@@ -1233,8 +1285,8 @@
                                                         <h3 style="font-weight: 600; color: #000;">Total</h3>
                                                     </div>
                                                     <div>
-                                                        <input type="hidden" id="sum_amount" name="sum_amount" value="{{ $invoice['total'] }}"
-                                                            value="0">
+                                                        <input type="hidden" id="sum_amount" name="sum_amount"
+                                                            value="{{ $invoice['total'] }}" value="0">
                                                         <h4><span class="sum_amount">{{ $invoice['total'] }}</span></h4>
                                                     </div>
                                                 </div>
@@ -1500,6 +1552,25 @@
                                                     <td height="1" colspan="4"
                                                         style="border-bottom:3px solid #000"></td>
                                                 </tr>
+                                                <tr>
+                                                    <td colspan="4"
+                                                        style="font-size: 16px; font-weight: 600; color: #2f75b5;  line-height: 14px;  vertical-align: top; padding:10px;">
+                                                        Additional Information:
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="4">
+                                                        <div id="item-image" style="columns: 4; display:block;">
+
+                                                        </div>
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="1" colspan="4"
+                                                        style="border-bottom:3px solid #000">
+                                                    </td>
+                                                </tr>
                                         </table>
                                     </td>
                                 </tr>
@@ -1580,10 +1651,10 @@
 
         <script>
             $(document).ready(function() {
-                @if($invoice['discount_price'] != null)
-                $('.show-dis').show();
+                @if ($invoice['discount_price'] != null)
+                    $('.show-dis').show();
                 @else
-                $('.show-dis').hide();
+                    $('.show-dis').hide();
                 @endif
                 $('#button-add').on('click', function() {
                     $('.show-dis').show();
@@ -1593,10 +1664,10 @@
         </script>
         <script>
             $(document).ready(function() {
-                @if($invoice['due'] == 'On specific date')
-                $('#date').show();
+                @if ($invoice['due'] == 'On specific date')
+                    $('#date').show();
                 @else
-                $('#date').hide();
+                    $('#date').hide();
                 @endif
                 // Attach change event to the select element
                 $('#due_floatingSelect').on('change', function() {
@@ -1654,7 +1725,7 @@
                         i +
                         '"  placeholder="Rate" ></div></div><div class="col-xl-4 col-12"><div class="form-group"><input type="text" class="form-control amount data-field" id="' +
                         i +
-                        '" placeholder="Amount" name="amount[]" readonly></div></div><div class="col-xl-6 col-12"><div class="form-group"><input type="text" class="form-control item_description data-field" name="item_description[]" required data-parsley-trigger="keyup" placeholder="Item Name" ></div></div><div class="col-xl-6 col-12"><div class="form-group"><input type="file" class="form-control image data-field" name="image[]" id="image" placeholder="Amount" data-parsley-required="false" data-parsley-trigger="keyup" ></div></div><div class="col-xl-12 col-12"><div class="form-group"><textarea class="form-control additional_details" data-parsley-required="false" data-parsley-trigger="keyup" name="additional_details[]" placeholder="Item Description" rows="2"></textarea></div></div></div></div></div></div></div>'
+                        '" placeholder="Amount" name="amount[]" readonly></div></div><div class="col-xl-6 col-12"><div class="form-group"><input type="text" class="form-control item_description data-field" name="item_description[]" required data-parsley-trigger="keyup" placeholder="Item Name" ></div></div><div class="col-xl-6 col-12"><div class="form-group"><input type="hidden" value="" name="image_field[]" class="image_field" data-image=""><input type="file" class="form-control image data-field" name="image[]" id="image" placeholder="Amount" data-parsley-required="false" data-parsley-trigger="keyup" ></div></div><div class="col-xl-12 col-12"><div class="form-group"><textarea class="form-control additional_details" data-parsley-required="false" data-parsley-trigger="keyup" name="additional_details[]" placeholder="Item Description" rows="2"></textarea></div></div></div></div></div></div></div>'
                     );
                 });
                 $(document).on('click', '.cross-btn', function() {
@@ -1713,6 +1784,15 @@
                         calculateResult();
                     });
 
+                // Attach click event to the "remove" buttons
+                $(document).on('click', '.cross-btn', function() {
+                    $(this).prevAll('.amount').val('');
+                    $(this).prevAll('.quantity').val('');
+                    $(this).prevAll('.rate').val('');
+                    calculateTotalAmount();
+                    calculateResult();
+                });
+
                 // Initialize the total amount and result on page load
                 calculateTotalAmount();
                 calculateResult();
@@ -1751,9 +1831,9 @@
                 var inputValue = parseInt($(this).val());
 
                 // Check if the entered value is within the valid range (0 to 100)
-                if (isNaN(inputValue) || inputValue < 1) {
+                if (isNaN(inputValue) || inputValue < 0) {
                     // Reset to 0 if the value is less than 0
-                    $(this).val(1);
+                    $(this).val('');
                 } else if (inputValue > 100) {
                     // Reset to 100 if the value is greater than 100
                     $(this).val(100);
@@ -1771,8 +1851,8 @@
                 $('#invoice_show').html('(' + invoice + ')');
 
             });
-            @if($invoice['tax_amount'] != null)
-            $('#tax_amount_input').show();
+            @if ($invoice['tax_amount'] != null)
+                $('#tax_amount_input').show();
                 $('#tax_amount').hide();
             @endif
             $('#tax_amount').click(function() {
@@ -1789,29 +1869,46 @@
                     var quantities = $("input.quantity");
                     var amounts = $("input.amount");
                     var images = $("input.image");
-                    // console.log(names);
+                    var image_fields = $("input.image_field");
+
                     $('#tableVal').html('');
+                    $('#item-image').html('');
                     // }
+                    for (var i = 0; i < images.length; i++) {
+                        var image_field = $(image_fields[i]).data('image') ?? '';
+                        var image = $(images[i]).prop('files')[0] ?? '';
+                        var reader = new FileReader();
+                        if (image) {
+                            var new_image = URL.createObjectURL(image);
+                        } else {
+                            var new_image = "";
+                        }
+                        console.log(new_image);
+                        if (new_image) {
+                            var newImage =
+                                '<img style="object-fit: cover; width: 150px; height: 150px; padding: 5px;display: inherit;" src="' +
+                                new_image + '">';
+                        } else {
+                            var newImage =
+                                '<img style="object-fit: cover; width: 150px; height: 150px; padding: 5px;display: inherit;" src="' +
+                                image_field + '">';
+                        }
+
+
+                        $('#item-image').append(newImage);
+                    }
 
                     for (var i = 0; i < names.length; i++) {
                         var name = $(names[i]).val();
                         var rate = $(rates[i]).val();
                         var quantity = $(quantities[i]).val();
                         var amount = $(amounts[i]).val();
-                        var image = $(images[i]).prop('files')[0];
-                        var reader = new FileReader();
-                        if (image) {
-                            var new_image = URL.createObjectURL(image);
-                        } else {
-                            var new_image = "{{ asset('admin_assets/images/image.png') }}";
-                        }
+
 
 
                         if (name) {
                             var newRow = '<tr>' +
                                 '<td style="font-size: 14px; font-weight: 800;  color: #000;  line-height: 18px;  vertical-align: top; padding: 5px; display: flex; align-item: center;">' +
-                                '<img style="object-fit: contain; color:black; width: 50px; height: 50px; padding: 5px; border: 1px solid #000; margin-right: 5px;" src="' +
-                                new_image + '">' +
                                 name +
                                 '</td>' +
                                 '<td style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px;">' +
@@ -1826,6 +1923,8 @@
                                 '</tr>';
                             $('#tableVal').append(newRow);
                         }
+
+
                     }
 
 
@@ -1883,7 +1982,7 @@
                         $('#popup_tax_percentage').text(0);
                     }
                     $('#popup_logo').attr('src', logo);
-                    $('#popup_tax_amount').text('$' + tax_amount);
+                    $('#popup_tax_amount').text('$' + tax_amount.toFixed(2));
                     $('#popup_sum').text('$' + sum_amount);
                     $('#popup_notes').text(notes);
 

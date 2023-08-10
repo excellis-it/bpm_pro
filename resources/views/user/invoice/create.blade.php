@@ -686,8 +686,8 @@
                                                                 data-parsley-trigger="keyup" placeholder="123456789 RT"
                                                                 value="{{ Auth::user()->gst }}" name="bill_from_gst">
                                                             <label for="floatingInputValue"
-                                                                class="col-sm-12 col-form-label">GST
-                                                                #<span style="color: red;">*</span></label>
+                                                                class="col-sm-12 col-form-label">Annual Resale Certificate for Sales Tax #
+                                                                <span style="color: red;">*</span></label>
                                                             @if ($errors->has('bill_from_gst'))
                                                                 <div class="error" style="color:red;">
                                                                     {{ $errors->first('bill_from_gst') }}</div>

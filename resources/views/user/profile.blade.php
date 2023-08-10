@@ -223,7 +223,7 @@
                                                                     <div class="form-floating">
                                                                     <input type="text" value="{{ Auth::user()->gst }}"
                                                                         name="gst" class="form-control">
-                                                                          <label for="floatingInputValue">Gst</label>
+                                                                          <label for="floatingInputValue">Annual Resale Certificate for Sales Tax #</label>
                                                                     @if ($errors->has('gst'))
                                                                         <div class="error" style="color:red;">
                                                                             {{ $errors->first('gst') }}</div>

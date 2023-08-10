@@ -184,7 +184,7 @@ class InvoiceController extends Controller
             'invoice_id' => '',
         ];
 
-        // Mail::to($request->bil_to_email)->send(new InvoiceMail($maildata));
+        Mail::to($request->bil_to_email)->send(new InvoiceMail($maildata));
 
         return redirect()->route('invoice.index')->with('message', 'Invoice created successfully');
         } catch (\Throwable $th) {
@@ -235,7 +235,7 @@ class InvoiceController extends Controller
     {
         try {
           
-
+            // dd( $request->all());
             $currentDate = Carbon::now();
     
     
@@ -337,14 +337,17 @@ class InvoiceController extends Controller
                     $add_items->item_rate = $request->rate[$key];
                     $add_items->item_quantity = $request->quantity[$key];
                     $add_items->item_amount = $request->amount[$key] ?? '';
-                    if ($request->hasFile('image')) {
+                    // if ($request->hasFile('image')) {
                         $image =  $request->image[$key] ?? '';
+                        $image_field =  $request->image_field[$key] ?? '';
                         if ($image != '') {
                             $fileData = $this->imageUpload($request->image[$key], 'items');
                             $add_items->image = $fileData['filePath'] ?? null;
+                        } else {
+                            $add_items->image = $image_field;
                         }
                         
-                    }
+                    // }
                     $add_items->save();
                 }
     
