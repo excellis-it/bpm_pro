@@ -111,8 +111,8 @@
         }
 
         /* .signature input {
-                                                                                                                                                                                                                                                            display: none;
-                                                                                                                                                                                                                                                        } */
+                                                                                                                                                                                                                                                                                                                            display: none;
+                                                                                                                                                                                                                                                                                                                        } */
 
         .signature label span {
             width: 100%;
@@ -421,6 +421,41 @@
         .modal-content {
             width: 130%;
         }
+
+        .edit_cancel_btn {
+            font-size: 16px;
+            padding: 5px 35px;
+            font-weight: 600;
+            color: #fff;
+            border-radius: 30px;
+            background: red;
+            text-align: center;
+            margin: 0px 5px;
+        }
+
+        .edit_cancel_btn:hover {
+            color: #fff;
+        }
+
+        .send-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0px 10px;
+        }
+
+        #add_more_item {
+            float: left !important;
+        }
+
+        @media (max-width: 767px) {
+
+            .inv-head-wrap {
+                display: block !important;
+                text-align: center;
+            }
+
+        }
     </style>
 @endpush
 
@@ -450,6 +485,7 @@
                                         <div class="send-btn">
                                             <button type="submit" class="btn add-btn btn-order"
                                                 id="add submitBtn">Send</button>
+                                            <a class="edit_cancel_btn" href="{{ route('invoice.index') }}">Cancel</a>
                                         </div>
                                     </div>
                                 </div>
@@ -742,12 +778,15 @@
                                                             <input type="text" class="form-control" name="last_name"
                                                                 value="{{ $explode[1] ?? '' }}" required
                                                                 data-parsley-trigger="keyup" id="billto_last_nm" ">
-                                                                                                                                <label for="floatingInputValue"
-                                                                                                                                    class="col-sm-12 col-form-label">Last Name<span
-                                                                                                                                        style="color: red;">*</span></label>
-                                                                                                                                     
-                                                                                                             
-                                                                                    @if ($errors->has('last_name'))
+                                                                                                                                                                                                <label for="floatingInputValue"
+                                                                                                                                                                                                    class="col-sm-12 col-form-label">Last Name<span
+                                                                                                                                                                                                        style="color: red;">*</span></label>
+                                                                                                                                                                                                     
+                                                                                                                                                                             
+                                                                                                                                                     
+                                                                                                                             
+                                                                                                     
+                                                                          @if ($errors->has('last_name'))
                                                             <div class="error" style="color:red;">
                                                                 {{ $errors->first('last_name') }}</div>
                                                             @endif
@@ -779,12 +818,15 @@
                                                                 name="bil_to_email" required data-parsley-type="email"
                                                                 value="{{ $invoice['bil_to_email'] }}"
                                                                 data-parsley-trigger="keyup" id="bill_to_email" ">
-                                                                                                                                <label for="floatingInputValue"
-                                                                                                                                class="col-sm-2 col-form-label">Email<span
-                                                                                                                                    style="color: red;">*</span></label>
-                                                                                                                                     
-                                                                                                             
-                                                                                    @if ($errors->has('bil_to_email'))
+                                                                                                                                                                                                <label for="floatingInputValue"
+                                                                                                                                                                                                class="col-sm-2 col-form-label">Email<span
+                                                                                                                                                                                                    style="color: red;">*</span></label>
+                                                                                                                                                                                                     
+                                                                                                                                                                             
+                                                                                                                                                     
+                                                                                                                             
+                                                                                                     
+                                                                          @if ($errors->has('bil_to_email'))
                                                             <div class="error" style="color:red;">
                                                                 {{ $errors->first('bil_to_email') }}</div>
                                                             @endif
@@ -945,7 +987,7 @@
                                             <div class="row justify-content-between">
                                                 <div class="col-xl-12">
                                                     <div class="item-head">
-                                                        <h2>Item Description</h2>
+                                                        <h2>{{ $key + 1 }}. Item Description</h2>
                                                     </div>
                                                     <div class="form-left form-item">
                                                         <div class="row justify-content-between">
@@ -1058,7 +1100,7 @@
                                         </div>
                                     </div>
                                 </div> --}}
-                                    <div class="row">
+                                    <div class="row justify-content-start">
                                         <div class="add-item">
 
                                         </div>
@@ -1714,12 +1756,14 @@
         <script>
             $(document).ready(function() {
 
-                var i = 1;
+                var i = {{ count($invoice['items']) }};
                 $("#add_more_item").click(function() {
                     i++;
 
                     $(".add-item").append('<div class="add-item-wrap" id="addMoreInputFields_' + i +
-                        '"><div class="cross-btn"><a href="javascript:void(0)"><i class="fa-solid fa-xmark"></i></a></div><div class="row justify-content-between"><div class="col-xl-12"><div class="item-head"><h2>Item Description</h2></div><div class="form-left form-item"><div class="row justify-content-between"><div class="col-xl-4 col-12"><div class="form-group"><input type="number" class="form-control quantity data-field" min="1"  name="quantity[]" id="quan_' +
+                        '"><div class="cross-btn"><a href="javascript:void(0)"><i class="fa-solid fa-xmark"></i></a></div><div class="row justify-content-between"><div class="col-xl-12"><div class="item-head"><h2>' +
+                        i +
+                        '. Item Description</h2></div><div class="form-left form-item"><div class="row justify-content-between"><div class="col-xl-4 col-12"><div class="form-group"><input type="number" class="form-control quantity data-field" min="1"  name="quantity[]" id="quan_' +
                         i +
                         '"  placeholder="Quantity" required data-parsley-trigger="keyup"></div></div><div class="col-xl-4 col-12"><div class="form-group"><input type="text" class="form-control rate data-field" required  data-parsley-trigger="keyup" name="rate[]" id="rate_' +
                         i +

@@ -1,7 +1,7 @@
 <div class="main-wrapper">
     <div class="header">
         <div class="header-left">
-            <div class="logo"><a href="{{ route('home') }}"><img src="{{ asset('frontend_assets/img/logo.png') }}" alt=""/></a></div>
+            <div class="logo"><a href="{{ route('home') }}"><img src="{{ asset('frontend_assets/img/logo3.png') }}" alt=""/></a></div>
             
         </div>
         <a id="toggle_btn" href="javascript:void(0);">

@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\User\ProfileController as UserProfileController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\Homecontroller;
 use App\Http\Controllers\User\InvoiceController;
 use Illuminate\Support\Facades\Artisan;
@@ -27,7 +28,10 @@ Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/register-store', [AuthController::class, 'registerStore'])->name('register.store');
 Route::post('/user-login-check', [AuthController::class, 'loginCheck'])->name('login.check');
 Route::get('/form',[Homecontroller::class, 'form'])->name('form');
-
+Route::post('forget-password', [ForgotPasswordController::class, 'forgetPassword'])->name('forget.password');
+Route::post('change-password', [ForgotPasswordController::class, 'changePassword'])->name('change.password');
+Route::get('forget-password/show', [ForgotPasswordController::class, 'forgetPasswordShow'])->name('forget.password.show');
+Route::get('reset-password/{id}/{token}', [ForgotPasswordController::class, 'resetPassword'])->name('reset.password');
 /* ----------------- Admin Routes -----------------*/
 
 Route::get('/admin', [AdminController::class, 'admin'])->name('admin');

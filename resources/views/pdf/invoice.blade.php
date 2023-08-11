@@ -101,8 +101,7 @@
                                                         {{ $data['invoice_detail']['bil_to_city'] }},
                                                         {{ $data['invoice_detail']['bil_to_state'] }},
                                                         {{ $data['invoice_detail']['bil_to_zipcode'] }}</span>
-                                                    <span
-                                                        style="display: block; text-align: left; padding-top: 5px;">{{ $data['invoice_detail']['bil_to_zipcode'] }}</span>
+                                                   
                                                     <span
                                                         style="display: block; text-align: left; padding-top: 5px;">Phone:
                                                         {{ $data['invoice_detail']['bil_to_phone'] }}</span>
@@ -283,6 +282,7 @@
                             <tr>
                                 <td height="1" colspan="4" style="border-bottom:3px solid #000"></td>
                             </tr>
+                            @if(isset($data['invoice_detail']['items'][0]->image))
                             <tr>
                                 <td colspan="4"
                                     style="font-size: 16px; font-weight: 600; color: #2f75b5;  line-height: 14px;  vertical-align: top; padding:10px">
@@ -312,6 +312,7 @@
                                 <td height="1" colspan="4" style="border-bottom:3px solid #000">
                                 </td>
                             </tr>
+                            @endif
                         </tbody>
                     </table>
                 </td>

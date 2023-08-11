@@ -95,8 +95,7 @@
                                                         <span
                                                         style="display: block; text-align: left; padding-top: 5px;">
                                                         {{ $maildata['invoice_detail']['bil_to_city'] }}, {{ $maildata['invoice_detail']['bil_to_state'] }}, {{ $maildata['invoice_detail']['bil_to_zipcode'] }}</span>
-                                                    <span
-                                                        style="display: block; text-align: left; padding-top: 5px;">{{ $maildata['invoice_detail']['bil_to_zipcode'] }}</span>
+                                                 
                                                     <span
                                                         style="display: block; text-align: left; padding-top: 5px;">Phone:
                                                         {{ $maildata['invoice_detail']['bil_to_phone'] }}</span>
@@ -272,6 +271,7 @@
                             <tr>
                                 <td height="1" colspan="4" style="border-bottom:3px solid #000"></td>
                             </tr>
+                            @if(isset($maildata['invoice_detail']['items'][0]->image))
                             <tr>
                                 <td colspan="4"
                                     style="font-size: 16px; font-weight: 600; color: #2f75b5;  line-height: 14px;  vertical-align: top; padding:10px">
@@ -297,6 +297,7 @@
                                 <td height="1" colspan="4" style="border-bottom:3px solid #000">
                                 </td>
                             </tr>
+                            @endif
                         </tbody>
                     </table>
                 </td>

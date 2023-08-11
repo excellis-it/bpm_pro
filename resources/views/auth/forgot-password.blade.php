@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <title>{{ env('APP_NAME') }} | Forgot Password</title>
     <link rel="stylesheet" href="{{ asset('frontend_assets/auth/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
@@ -30,8 +31,8 @@
         <div class="forms">
             <div class="form-content">
                 <div class="login-form">
-                    <div class="title">Login</div>
-                    <form action="{{ route('login.check') }}" method="post">
+                    <div class="title">Forgot Password</div>
+                    <form action="{{ route('forget.password') }}" method="post">
                         @csrf
                         <div class="input-boxes">
                             <div class="input-box">
@@ -41,21 +42,8 @@
                             @if ($errors->has('email'))
                                 <div class="error" style="color:red;">{{ $errors->first('email') }}</div>
                             @endif
-
-                            <div class="input-box">
-                                <i class="fas fa-lock"></i>
-                                <input type="password" name="password" placeholder="Enter password">
-                            </div>
-                            @if ($errors->has('password'))
-                                <div class="error" style="color:red;">{{ $errors->first('password') }}</div>
-                            @endif
-                            {{-- <div class="text"><a href="#">Forgot password?</a></div> --}}
                             <div class="button input-box">
-                                <input type="submit" class="submit" value="Submit">
-                            </div>
-                            <div class="col-md-12 text-center">
-                                <a href="{{ route('forget.password.show') }}" class="forgot_pass">forgot Your
-                                    Password?</a>
+                                <input type="submit" class="submit" value="Send">
                             </div>
                             <div class="text sign-up-text">Don't have an account? <a href="{{ route('register') }}"
                                     class="sign">Signup now</a></div>

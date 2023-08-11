@@ -230,6 +230,9 @@
             justify-content: space-between;
         }
 
+        #add_more_item {
+            float: left !important;
+        }
         .sign-box-warp {
             background: rgb(204 204 204 / 31%);
             padding: 20px 100px;
@@ -421,6 +424,14 @@
         .modal-content {
             width: 130%;
         }
+        @media (max-width: 767px) {
+
+.inv-head-wrap {
+    display: block !important;
+    text-align: center;
+}
+
+}
     </style>
 @endpush
 
@@ -913,7 +924,7 @@
                                         <div class="row justify-content-between">
                                             <div class="col-xl-12">
                                                 <div class="item-head">
-                                                    <h2>Item Description</h2>
+                                                    <h2>1. Item Description</h2>
                                                 </div>
                                                 <div class="form-left form-item">
                                                     <div class="row justify-content-between">
@@ -1650,7 +1661,7 @@
                     i++;
 
                     $(".add-item").append('<div class="add-item-wrap" id="addMoreInputFields_' + i +
-                        '"><div class="cross-btn"><a href="javascript:void(0)"><i class="fa-solid fa-xmark"></i></a></div><div class="row justify-content-between"><div class="col-xl-12"><div class="item-head"><h2>Item Description</h2></div><div class="form-left form-item"><div class="row justify-content-between"><div class="col-xl-4 col-12"><div class="form-group"><input type="number" class="form-control quantity data-field" min="1"  name="quantity[]" id="quan_' +
+                        '"><div class="cross-btn"><a href="javascript:void(0)"><i class="fa-solid fa-xmark"></i></a></div><div class="row justify-content-between"><div class="col-xl-12"><div class="item-head"><h2>'+i+'. Item Description</h2></div><div class="form-left form-item"><div class="row justify-content-between"><div class="col-xl-4 col-12"><div class="form-group"><input type="number" class="form-control quantity data-field" min="1"  name="quantity[]" id="quan_' +
                         i +
                         '"  placeholder="Quantity" required data-parsley-trigger="keyup"></div></div><div class="col-xl-4 col-12"><div class="form-group"><input type="text" class="form-control rate data-field" required  data-parsley-trigger="keyup" name="rate[]" id="rate_' +
                         i +

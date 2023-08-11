@@ -17,10 +17,10 @@
                 <img src="{{ asset('frontend_assets/images/frontImg.jpg') }}" alt="">
                 <div class="text">
                     <div class="login_logo">
-                        <a href="{{ url('/') }}"
-                        ><img src="https://excellis.co.in/bpm_pro/frontend_assets/img/logo.png" alt="">
+                        <a href="{{ url('/') }}"><img src="{{ asset('frontend_assets/img/logo3.png') }}"
+                                alt="">
                         </a>
-                    </div> 
+                    </div>
                     <!--<h2 class="text-head">BPM PRO</h2>-->
                     <span class="text-1">Quality Service At An</span>
                     <span class="text-2"> Affordable Price</span>
@@ -32,7 +32,7 @@
                 <div class="signup-form">
                     <div class="title">Signup</div>
                     <form action="{{ route('register.store') }}" method="post">
-                      @csrf
+                        @csrf
                         <div class="input-boxes">
                             <div class="input-box">
                                 <i class="fas fa-user"></i>
@@ -47,24 +47,24 @@
                                 <input type="text" name="lname" placeholder="Enter last name">
                             </div>
                             @if ($errors->has('lname'))
-                            <div class="error" style="color:red;">{{ $errors->first('lname') }}</div>
+                                <div class="error" style="color:red;">{{ $errors->first('lname') }}</div>
                             @endif
 
                             <div class="input-box">
                                 <i class="fas fa-envelope"></i>
-                                <input type="text" name="email" placeholder="Enter email" >
+                                <input type="text" name="email" placeholder="Enter email">
                             </div>
                             @if ($errors->has('email'))
                                 <div class="error" style="color:red;">{{ $errors->first('email') }}</div>
                             @endif
 
                             <div class="input-box">
-                              <i class="fas fa-phone"></i>
-                              <input type="text" name="phone" placeholder="+1 123 456 7890"  class="phone-format">
-                          </div>
-                          @if ($errors->has('phone'))
-                              <div class="error" style="color:red;">{{ $errors->first('phone') }}</div>
-                          @endif
+                                <i class="fas fa-phone"></i>
+                                <input type="text" name="phone" placeholder="+1 123 456 7890" class="phone-format">
+                            </div>
+                            @if ($errors->has('phone'))
+                                <div class="error" style="color:red;">{{ $errors->first('phone') }}</div>
+                            @endif
 
                             <div class="input-box">
                                 <i class="fas fa-lock"></i>
@@ -75,17 +75,18 @@
                             @endif
 
                             <div class="input-box">
-                              <i class="fas fa-lock"></i>
-                              <input type="password" name="confirm_password" placeholder="Enter confirm password">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" name="confirm_password" placeholder="Enter confirm password">
                             </div>
                             @if ($errors->has('confirm_password'))
                                 <div class="error" style="color:red;">{{ $errors->first('confirm_password') }}</div>
                             @endif
 
                             <div class="button input-box">
-                              <input type="submit" class="submit" value="Submit">
+                                <input type="submit" class="submit" value="Submit">
                             </div>
-                            <div class="text sign-up-text">Already have an account? <a href="{{ route('login') }}" class="sign">Login
+                            <div class="text sign-up-text">Already have an account? <a href="{{ route('login') }}"
+                                    class="sign">Login
                                     now</a></div>
                         </div>
                     </form>
