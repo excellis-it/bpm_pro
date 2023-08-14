@@ -55,7 +55,7 @@
 
                                                         <div class="col-12">
                                                             <label class="form-label">Name</label>
-                                                            <input type="text" value="{{ Auth::user()->name }}"
+                                                            <input type="text" value="{{ Auth::user()->first_name }}"
                                                                 name="name" class="form-control">
                                                             @if ($errors->has('name'))
                                                                 <div class="error" style="color:red;">
@@ -74,7 +74,7 @@
                                                         <div class="col-12">
                                                             <label class="form-label">Phone</label>
                                                             <input type="text" value="{{ Auth::user()->phone }}"
-                                                                name="phone" class="form-control">
+                                                                name="phone" class="form-control phone-format" placeholder="+1 123 456 7890">
                                                             @if ($errors->has('phone'))
                                                                 <div class="error" style="color:red;">
                                                                     {{ $errors->first('phone') }}</div>
@@ -104,4 +104,10 @@
 @endsection
 
 @push('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.phone-format').mask('+1 999 999 9999');
+        });
+    </script>
 @endpush

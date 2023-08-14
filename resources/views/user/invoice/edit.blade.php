@@ -55,7 +55,7 @@
         .form-div-wrap {
             padding: 20px 20px 50px 20px;
             box-shadow: 0px 0px 42px rgb(0 0 0 / 10%);
-            margin: 20px 0px;
+            margin: 60px 0px 20px 0px;
             border-radius: 10px;
         }
 
@@ -448,11 +448,28 @@
             float: left !important;
         }
 
+        .inv-head-wrap {
+            position: fixed;
+            width: 68.5%;
+            top: 7%;
+            z-index: 99;
+            padding: 20px;
+            box-shadow: 0px 0px 42px rgb(0 0 0 / 10%);
+            margin-bottom: 10px;
+            border-radius: 10px;
+            background: #fff;
+        }
+
         @media (max-width: 767px) {
 
+            
             .inv-head-wrap {
-                display: block !important;
                 text-align: center;
+                width: 92%;
+                padding: 15px;
+            }
+            .form-div-wrap {
+                margin: 75px 0px 20px 0px;
             }
 
         }
@@ -990,48 +1007,55 @@
                                                         <h2>{{ $key + 1 }}. Item Description</h2>
                                                     </div>
                                                     <div class="form-left form-item">
-                                                        <div class="row justify-content-between">
-                                                            <div class="col-xl-4 col-12">
-                                                                <div class="form-group">
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-4">
+                                                                <div class="form-floating">
                                                                     <input type="number"
                                                                         class="form-control quantity data-field"
                                                                         value="{{ $value['item_quantity'] }}"
-                                                                        name="quantity[]" placeholder="Quantity" required
+                                                                        name="quantity[]" required
                                                                         data-parsley-trigger="keyup" min="1">
+                                                                        <label for="floatingInputValue"
+                                                                    class="col-sm-2 col-form-label">Quantity</label>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-xl-4 col-12">
-                                                                <div class="form-group">
+                                                            <div class="col-sm-4">
+                                                                <div class="form-floating">
                                                                     <input type="text"
                                                                         class="form-control rate data-field"
-                                                                        name="rate[]" placeholder="Rate" required
+                                                                        name="rate[]"  required
                                                                         value="{{ $value['item_rate'] }}"
                                                                         data-parsley-trigger="keyup">
+                                                                        <label for="floatingInputValue"
+                                                                    class="col-sm-2 col-form-label">Rate</label>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-xl-4 col-12">
-                                                                <div class="form-group">
+                                                            <div class="col-sm-4">
+                                                                <div class="form-floating">
                                                                     <input type="text"
                                                                         class="form-control amount data-field"
                                                                         name="amount[]"
                                                                         value="{{ $value['item_amount'] }}"
-                                                                        id="amount_1" placeholder="Amount" required
+                                                                        id="amount_1"  required
                                                                         data-parsley-trigger="keyup" readonly>
+                                                                        <label for="floatingInputValue"
+                                                                    class="col-sm-2 col-form-label">Amount</label>
                                                                 </div>
                                                             </div>
-
-                                                            <div class="col-xl-6 col-12">
-                                                                <div class="form-group">
+                                                        </div>
+                                                        <div class="form-group row">    
+                                                            <div class="col-sm-6">
+                                                                <div class="form-floating">
                                                                     <input type="text"
                                                                         class="form-control data-field item_description"
                                                                         value="{{ $value['item_description'] }}"
                                                                         name="item_description[]" required
                                                                         data-parsley-trigger="keyup"
-                                                                        placeholder="Item Name">
+                                                                        ><label for="floatingInputValue"
+                                                                        class="col-sm-2 col-form-label">Name</label>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-xl-6 col-12">
-                                                                <div class="form-group">
+                                                            <div class="col-sm-6">
                                                                     <input type="hidden" value="{{ $value['image'] }}"
                                                                         name="image_field[]" class="image_field"
                                                                         data-image="{{ Storage::url($value['image']) }}">
@@ -1041,13 +1065,18 @@
                                                                         accept="image/*" id="image"
                                                                         placeholder="Amount" data-parsley-required="false"
                                                                         data-parsley-trigger="keyup">
-                                                                </div>
+                                                                       
                                                             </div>
-                                                            <div class="col-xl-12 col-12">
-                                                                <div class="form-group">
+                                                        </div>
+
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-12">
+                                                                <div class="form-floating">
                                                                     <textarea class="form-control additional_details" name="additional_details[]" data-parsley-required="false"
-                                                                        value="{{ $value['item_additional_details'] }}" data-parsley-trigger="keyup" placeholder="Item Description"
-                                                                        rows="2"></textarea>
+                                                                        value="{{ $value['item_additional_details'] }}" data-parsley-trigger="keyup" 
+                                                                        rows="2">{{ $value['item_additional_details'] }}</textarea>
+                                                                        <label for="floatingInputValue"
+                                                                    class="col-sm-2 col-form-label">Description</label>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1763,13 +1792,13 @@
                     $(".add-item").append('<div class="add-item-wrap" id="addMoreInputFields_' + i +
                         '"><div class="cross-btn"><a href="javascript:void(0)"><i class="fa-solid fa-xmark"></i></a></div><div class="row justify-content-between"><div class="col-xl-12"><div class="item-head"><h2>' +
                         i +
-                        '. Item Description</h2></div><div class="form-left form-item"><div class="row justify-content-between"><div class="col-xl-4 col-12"><div class="form-group"><input type="number" class="form-control quantity data-field" min="1"  name="quantity[]" id="quan_' +
+                        '. Item Description</h2></div><div class="form-left form-item"><div class="form-group row"><div class="col-sm-4"><div class="form-floating"><input type="number" class="form-control quantity data-field" min="1"  name="quantity[]" id="quan_' +
                         i +
-                        '"  placeholder="Quantity" required data-parsley-trigger="keyup"></div></div><div class="col-xl-4 col-12"><div class="form-group"><input type="text" class="form-control rate data-field" required  data-parsley-trigger="keyup" name="rate[]" id="rate_' +
+                        '"  required data-parsley-trigger="keyup"><label for="floatingInputValue" class="col-sm-2 col-form-label">Quantity</label></div></div><div class="col-sm-4"><div class="form-floating"><input type="text" class="form-control rate data-field" required  data-parsley-trigger="keyup" name="rate[]" id="rate_' +
                         i +
-                        '"  placeholder="Rate" ></div></div><div class="col-xl-4 col-12"><div class="form-group"><input type="text" class="form-control amount data-field" id="' +
+                        '"  ><label for="floatingInputValue" class="col-sm-2 col-form-label">Rate</label></div></div><div class="col-sm-4"><div class="form-floating"><input type="text" class="form-control amount data-field" id="' +
                         i +
-                        '" placeholder="Amount" name="amount[]" readonly></div></div><div class="col-xl-6 col-12"><div class="form-group"><input type="text" class="form-control item_description data-field" name="item_description[]" required data-parsley-trigger="keyup" placeholder="Item Name" ></div></div><div class="col-xl-6 col-12"><div class="form-group"><input type="hidden" value="" name="image_field[]" class="image_field" data-image=""><input type="file" class="form-control image data-field" name="image[]" id="image" placeholder="Amount" data-parsley-required="false" data-parsley-trigger="keyup" ></div></div><div class="col-xl-12 col-12"><div class="form-group"><textarea class="form-control additional_details" data-parsley-required="false" data-parsley-trigger="keyup" name="additional_details[]" placeholder="Item Description" rows="2"></textarea></div></div></div></div></div></div></div>'
+                        '"  name="amount[]" readonly><label for="floatingInputValue" class="col-sm-2 col-form-label">Amount</label></div></div></div><div class="form-group row"><div class="col-sm-6"><div class="form-floating"><input type="text" class="form-control item_description data-field" name="item_description[]" required data-parsley-trigger="keyup" ><label for="floatingInputValue" class="col-sm-2 col-form-label">Name</label></div></div><div class="col-sm-6"><input type="file" class="form-control image data-field" name="image[]" id="image" placeholder="Amount" data-parsley-required="false" data-parsley-trigger="keyup" ></div></div><div class="form-group row"><div class="col-sm-12"><div class="form-floating"><textarea class="form-control additional_details" data-parsley-required="false" data-parsley-trigger="keyup" name="additional_details[]"  rows="2"></textarea><label for="floatingInputValue" class="col-sm-2 col-form-label"> description</label></div></div></div></div></div></div></div>'
                     );
                 });
                 $(document).on('click', '.cross-btn', function() {
@@ -1927,15 +1956,14 @@
                         } else {
                             var new_image = "";
                         }
-                        console.log(new_image);
+                        
                         if (new_image) {
                             var newImage =
                                 '<img style="object-fit: cover; width: 150px; height: 150px; padding: 5px;display: inherit;" src="' +
                                 new_image + '">';
                         } else {
-                            var newImage =
-                                '<img style="object-fit: cover; width: 150px; height: 150px; padding: 5px;display: inherit;" src="' +
-                                image_field + '">';
+                           
+                            var newImage = 'No image';
                         }
 
 

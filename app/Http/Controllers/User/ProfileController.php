@@ -31,11 +31,11 @@ class ProfileController extends Controller
             'email'    => 'required|regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix|unique:users,email,'.Auth::user()->id,
             'phone'    => 'required',
             'address'  => 'required',
-            'gst'      => 'required',
             'state'    => 'required',
             'city'     => 'required',
             'company'  => 'required',
             'zipcode'  => 'required',
+            'logo' => 'required|image|mimes:jpg,png,jpeg|max:2048',
         ]);
 
         $data = User::find(Auth::user()->id);
@@ -52,9 +52,6 @@ class ProfileController extends Controller
         $data->zipcode = $request->zipcode;
         
         if ($request->hasFile('logo')) {
-            $request->validate([
-                'logo' => 'required|image|mimes:jpg,png,jpeg|max:2048',
-            ]);
             
             $file= $request->file('logo');
             $filename= date('YmdHi').$file->getClientOriginalName();

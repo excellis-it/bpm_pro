@@ -99,7 +99,8 @@
                                                                       <input type="text" value="{{ Auth::user()->first_name }}"
                                                                         name="first_name" class="form-control"
                                                                         >
-                                                                       <label for="floatingInputValue">First Name</label>
+                                                                       <label for="floatingInputValue">First Name<span
+                                                                        style="color: red;">*</span></label>
                                                                         @if ($errors->has('first_name'))
                                                                         <div class="error" style="color:red;">
                                                                             {{ $errors->first('first_name') }}</div>
@@ -111,7 +112,8 @@
                                                                       <input type="text" value="{{ Auth::user()->last_name }}"
                                                                         name="last_name" class="form-control"
                                                                         >
-                                                                       <label for="floatingInputValue">Last Name</label>
+                                                                       <label for="floatingInputValue">Last Name<span
+                                                                        style="color: red;">*</span></label>
                                                                         @if ($errors->has('last_name'))
                                                                         <div class="error" style="color:red;">
                                                                             {{ $errors->last('last_name') }}</div>
@@ -122,7 +124,8 @@
                                                                   <div class="form-floating">
                                                                     <input type="text" value="{{ Auth::user()->email }}"
                                                                         name="email" class="form-control">
-                                                                    <label for="floatingInputValue">Email Adress</label>        
+                                                                    <label for="floatingInputValue">Email Adress<span
+                                                                        style="color: red;">*</span></label>        
                                                                     @if ($errors->has('email'))
                                                                         <div class="error" style="color:red;">
                                                                             {{ $errors->first('email') }}</div>
@@ -135,7 +138,8 @@
                                                                     <input type="text" value="{{ Auth::user()->phone }}"
                                                                         name="phone" class="form-control phone-format"
                                                                         >
-                                                                        <label for="floatingInputValue">Phone</label>
+                                                                        <label for="floatingInputValue">Phone<span
+                                                                            style="color: red;">*</span></label>
                                                                     @if ($errors->has('phone'))
                                                                         <div class="error" style="color:red;">
                                                                             {{ $errors->first('phone') }}</div>
@@ -147,7 +151,8 @@
                                                                 <div class="col-12 my-1">
                                                                   <div class="form-floating">
                                                                     <input name="address" class="form-control" value="{{ Auth::user()->address }}">
-                                                                      <label for="floatingInputValue">Street address</label>
+                                                                      <label for="floatingInputValue">Street address<span
+                                                                        style="color: red;">*</span></label>
                                                                     @if ($errors->has('address'))
                                                                         <div class="error" style="color:red;">
                                                                             {{ $errors->first('address') }}</div>
@@ -172,7 +177,8 @@
                                                                         id="inputPassword3" name="city"
                                                                         value="{{ Auth::user()->city }}"
                                                                         >
-                                                                        <label for="floatingInputValue">City</label>
+                                                                        <label for="floatingInputValue">City<span
+                                                                            style="color: red;">*</span></label>
                                                                     @if ($errors->has('city'))
                                                                         <div class="error" style="color:red;">
                                                                             {{ $errors->first('city') }}</div>
@@ -189,7 +195,8 @@
                                                                             </option>
                                                                         @endforeach
                                                                     </select>
-                                                                     <label for="floatingInputValue">State</label>
+                                                                     <label for="floatingInputValue">State<span
+                                                                        style="color: red;">*</span></label>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-12 my-1">
@@ -198,7 +205,8 @@
                                                                         id="inputPassword3" name="zipcode"
                                                                         value="{{ Auth::user()->zipcode }}"
                                                                         >
-                                                                        <label for="floatingInputValue">Zip Code</label>
+                                                                        <label for="floatingInputValue">Zip Code<span
+                                                                            style="color: red;">*</span></label>
                                                                     @if ($errors->has('zipcode'))
                                                                         <div class="error" style="color:red;">
                                                                             {{ $errors->first('zipcode') }}</div>
@@ -211,7 +219,8 @@
                                                                     <input type="text"
                                                                         value="{{ Auth::user()->company }}"
                                                                         name="company" class="form-control">
-                                                                    <label for="floatingInputValue">Company</label>
+                                                                    <label for="floatingInputValue">Company<span
+                                                                        style="color: red;">*</span></label>
                                                                     @if ($errors->has('company'))
                                                                         <div class="error" style="color:red;">
                                                                             {{ $errors->first('company') }}</div>
@@ -232,7 +241,8 @@
                                                                 </div>
                                                                 
                                                                 <div class="col-lg-6 col-12 my-1">
-                                                                    <label class="form-label">Company Logo</label>
+                                                                    <label class="form-label">Company Logo<span
+                                                                        style="color: red;">*</span></label>
                                                                     <input type="file" name="logo"
                                                                         class="form-control">
                                                                     @if ($errors->has('logo'))

@@ -55,7 +55,7 @@
         .form-div-wrap {
             padding: 20px 20px 50px 20px;
             box-shadow: 0px 0px 42px rgb(0 0 0 / 10%);
-            margin: 20px 0px;
+            margin: 60px 0px 20px 0px;
             border-radius: 10px;
         }
 
@@ -111,8 +111,8 @@
         }
 
         /* .signature input {
-                                                                                                                                                                                                                                                                display: none;
-                                                                                                                                                                                                                                                            } */
+                                                                                                                                                                                                                                                                                display: none;
+                                                                                                                                                                                                                                                                            } */
 
         .signature label span {
             width: 100%;
@@ -233,6 +233,7 @@
         #add_more_item {
             float: left !important;
         }
+
         .sign-box-warp {
             background: rgb(204 204 204 / 31%);
             padding: 20px 100px;
@@ -424,14 +425,35 @@
         .modal-content {
             width: 130%;
         }
+
+        .form-div {
+            position: relative;
+        }
+
+        .inv-head-wrap {
+            position: fixed;
+            width: 68.5%;
+            top: 7%;
+            z-index: 99;
+            padding: 20px;
+            box-shadow: 0px 0px 42px rgb(0 0 0 / 10%);
+            margin-bottom: 10px;
+            border-radius: 10px;
+            background: #fff;
+        }
+
         @media (max-width: 767px) {
 
-.inv-head-wrap {
-    display: block !important;
-    text-align: center;
-}
+            .inv-head-wrap {
+                text-align: center;
+                width: 92%;
+                padding: 15px;
+            }
+            .form-div-wrap {
+                margin: 75px 0px 20px 0px;
+            }
 
-}
+        }
     </style>
 @endpush
 
@@ -697,7 +719,8 @@
                                                                 data-parsley-trigger="keyup" placeholder="123456789 RT"
                                                                 value="{{ Auth::user()->gst }}" name="bill_from_gst">
                                                             <label for="floatingInputValue"
-                                                                class="col-sm-12 col-form-label">Annual Resale Certificate for Sales Tax #
+                                                                class="col-sm-12 col-form-label">Annual Resale Certificate
+                                                                for Sales Tax #
                                                                 <span style="color: red;">*</span></label>
                                                             @if ($errors->has('bill_from_gst'))
                                                                 <div class="error" style="color:red;">
@@ -733,12 +756,13 @@
                                                         <div class="form-floating">
                                                             <input type="text" class="form-control" name="last_name"
                                                                 required data-parsley-trigger="keyup" id="billto_last_nm" ">
-                                                                                                                                    <label for="floatingInputValue"
-                                                                                                                                        class="col-sm-12 col-form-label">Last Name<span
-                                                                                                                                            style="color: red;">*</span></label>
-                                                                                                                                         
-                                                                                                                 
-                                                                                         @if ($errors->has('last_name'))
+                                                                                                                                                    <label for="floatingInputValue"
+                                                                                                                                                        class="col-sm-12 col-form-label">Last Name<span
+                                                                                                                                                            style="color: red;">*</span></label>
+                                                                                                                                                         
+                                                                                                                                 
+                                                                                                         
+                                                                               @if ($errors->has('last_name'))
                                                             <div class="error" style="color:red;">
                                                                 {{ $errors->first('last_name') }}</div>
                                                             @endif
@@ -769,12 +793,13 @@
                                                             <input type="text" class="form-control"
                                                                 name="bil_to_email" required data-parsley-type="email"
                                                                 data-parsley-trigger="keyup" id="bill_to_email" ">
-                                                                                                                                    <label for="floatingInputValue"
-                                                                                                                                    class="col-sm-2 col-form-label">Email<span
-                                                                                                                                        style="color: red;">*</span></label>
-                                                                                                                                         
-                                                                                                                 
-                                                                                         @if ($errors->has('bil_to_email'))
+                                                                                                                                                    <label for="floatingInputValue"
+                                                                                                                                                    class="col-sm-2 col-form-label">Email<span
+                                                                                                                                                        style="color: red;">*</span></label>
+                                                                                                                                                         
+                                                                                                                                 
+                                                                                                         
+                                                                               @if ($errors->has('bil_to_email'))
                                                             <div class="error" style="color:red;">
                                                                 {{ $errors->first('bil_to_email') }}</div>
                                                             @endif
@@ -927,55 +952,71 @@
                                                     <h2>1. Item Description</h2>
                                                 </div>
                                                 <div class="form-left form-item">
-                                                    <div class="row justify-content-between">
-                                                        <div class="col-xl-4 col-12">
-                                                            <div class="form-group">
-                                                                <input type="number"
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-4">
+                                                            <div class="form-floating">
+                                                                <input type="number" id="floatingInputValue"
                                                                     class="form-control quantity data-field"
-                                                                    name="quantity[]" placeholder="Quantity" required
+                                                                    name="quantity[]" required
                                                                     data-parsley-trigger="keyup" min="1">
+                                                                <label for="floatingInputValue"
+                                                                    class="col-sm-2 col-form-label">Quantity</label>
                                                             </div>
                                                         </div>
-                                                        <div class="col-xl-4 col-12">
-                                                            <div class="form-group">
-                                                                <input type="text" class="form-control rate data-field"
-                                                                    name="rate[]" placeholder="Rate" required
-                                                                    data-parsley-trigger="keyup">
+                                                        <div class="col-sm-4">
+                                                            <div class="form-floating">
+                                                                <input type="text" id="floatingInputValue"
+                                                                    class="form-control rate data-field" name="rate[]"
+                                                                    required data-parsley-trigger="keyup">
+                                                                <label for="floatingInputValue"
+                                                                    class="col-sm-2 col-form-label">Rate</label>
                                                             </div>
                                                         </div>
-                                                        <div class="col-xl-4 col-12">
-                                                            <div class="form-group">
+                                                        <div class="col-sm-4">
+                                                            <div class="form-floating">
                                                                 <input type="text"
                                                                     class="form-control amount data-field" name="amount[]"
-                                                                    id="amount_1" placeholder="Amount" required
-                                                                    data-parsley-trigger="keyup" readonly>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-xl-6 col-12">
-                                                            <div class="form-group">
-                                                                <input type="text"
-                                                                    class="form-control data-field item_description"
-                                                                    name="item_description[]" required
-                                                                    data-parsley-trigger="keyup" placeholder="Item Name">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xl-6 col-12">
-                                                            <div class="form-group">
-                                                                <input type="file"
-                                                                    class="form-control image data-field" name="image[]"
-                                                                    accept="image/*" id="image" placeholder="Amount"
-                                                                    data-parsley-required="false"
-                                                                    data-parsley-trigger="keyup">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xl-12 col-12">
-                                                            <div class="form-group">
-                                                                <textarea class="form-control additional_details" name="additional_details[]" data-parsley-required="false"
-                                                                    data-parsley-trigger="keyup" placeholder="Item Description" rows="2"></textarea>
+                                                                    id="amount_1" required data-parsley-trigger="keyup"
+                                                                    readonly>
+                                                                <label for="floatingInputValue"
+                                                                    class="col-sm-2 col-form-label">Amount</label>
                                                             </div>
                                                         </div>
                                                     </div>
+
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-6">
+                                                            <div class="form-floating">
+                                                                <input type="text"
+                                                                    class="form-control data-field item_description"
+                                                                    name="item_description[]" required
+                                                                    data-parsley-trigger="keyup">
+                                                                <label for="floatingInputValue"
+                                                                    class="col-sm-2 col-form-label">Name</label>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-sm-6">
+                                                            <input type="file" class="form-control image data-field"
+                                                                name="image[]" accept="image/*" id="image"
+                                                                data-parsley-required="false"
+                                                                data-parsley-trigger="keyup">
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <div class="col-sm-12">
+                                                            <div class="form-floating">
+                                                                <textarea class="form-control additional_details" name="additional_details[]" data-parsley-required="false"
+                                                                    data-parsley-trigger="keyup" rows="2"></textarea>
+                                                                <label for="floatingInputValue"
+                                                                    class="col-sm-2 col-form-label">
+                                                                    Description</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -1510,15 +1551,16 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td colspan="4" >
-                                                        <div id="item-image"  style="columns: 4; display:block;">
+                                                    <td colspan="4">
+                                                        <div id="item-image" style="columns: 4; display:block;">
 
                                                         </div>
-                                                         
+
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td height="1" colspan="4" style="border-bottom:3px solid #000">
+                                                    <td height="1" colspan="4"
+                                                        style="border-bottom:3px solid #000">
                                                     </td>
                                                 </tr>
                                         </table>
@@ -1661,13 +1703,15 @@
                     i++;
 
                     $(".add-item").append('<div class="add-item-wrap" id="addMoreInputFields_' + i +
-                        '"><div class="cross-btn"><a href="javascript:void(0)"><i class="fa-solid fa-xmark"></i></a></div><div class="row justify-content-between"><div class="col-xl-12"><div class="item-head"><h2>'+i+'. Item Description</h2></div><div class="form-left form-item"><div class="row justify-content-between"><div class="col-xl-4 col-12"><div class="form-group"><input type="number" class="form-control quantity data-field" min="1"  name="quantity[]" id="quan_' +
+                        '"><div class="cross-btn"><a href="javascript:void(0)"><i class="fa-solid fa-xmark"></i></a></div><div class="row justify-content-between"><div class="col-xl-12"><div class="item-head"><h2>' +
                         i +
-                        '"  placeholder="Quantity" required data-parsley-trigger="keyup"></div></div><div class="col-xl-4 col-12"><div class="form-group"><input type="text" class="form-control rate data-field" required  data-parsley-trigger="keyup" name="rate[]" id="rate_' +
+                        '. Item Description</h2></div><div class="form-left form-item"><div class="form-group row"><div class="col-sm-4"><div class="form-floating"><input type="number" class="form-control quantity data-field" min="1"  name="quantity[]" id="quan_' +
                         i +
-                        '"  placeholder="Rate" ></div></div><div class="col-xl-4 col-12"><div class="form-group"><input type="text" class="form-control amount data-field" id="' +
+                        '"   required data-parsley-trigger="keyup"><label for="floatingInputValue" class="col-sm-2 col-form-label">Quantity</label></div></div><div class="col-sm-4"><div class="form-floating"><input type="text" class="form-control rate data-field" required  data-parsley-trigger="keyup" name="rate[]" id="rate_' +
                         i +
-                        '" placeholder="Amount" name="amount[]" readonly></div></div><div class="col-xl-6 col-12"><div class="form-group"><input type="text" class="form-control item_description data-field" name="item_description[]" required data-parsley-trigger="keyup" placeholder="Item Name" ></div></div><div class="col-xl-6 col-12"><div class="form-group"><input type="file" accept="image/*" class="form-control image data-field" name="image[]" id="image" placeholder="Amount" data-parsley-required="false" data-parsley-trigger="keyup" ></div></div><div class="col-xl-12 col-12"><div class="form-group"><textarea class="form-control additional_details" data-parsley-required="false" data-parsley-trigger="keyup" name="additional_details[]" placeholder="Item Description" rows="2"></textarea></div></div></div></div></div></div></div>'
+                        '"   ><label for="floatingInputValue" class="col-sm-2 col-form-label">Rate</label></div></div><div class="col-sm-4"><div class="form-floating"><input type="text" class="form-control amount data-field" id="' +
+                        i +
+                        '"  name="amount[]" readonly><label for="floatingInputValue" class="col-sm-2 col-form-label">Amount</label></div></div></div><div class="form-group row"><div class="col-sm-6"><div class="form-floating"><input type="text" class="form-control item_description data-field" name="item_description[]" required data-parsley-trigger="keyup"  ><label for="floatingInputValue" class="col-sm-2 col-form-label">Name</label></div></div><div class="col-sm-6"><input type="file" accept="image/*" class="form-control image data-field" name="image[]" id="image" placeholder="Amount" data-parsley-required="false" data-parsley-trigger="keyup" ></div></div><div class="form-group row"><div class="col-sm-12"><div class="form-floating"><textarea class="form-control additional_details" data-parsley-required="false" data-parsley-trigger="keyup" name="additional_details[]" rows="2"></textarea><label for="floatingInputValue" class="col-sm-2 col-form-label">Description</label></div></div></div></div></div></div></div>'
                     );
                 });
                 $(document).on('click', '.cross-btn', function() {
@@ -1836,9 +1880,11 @@
                         var image = $(images[i]).prop('files')[0];
                         var reader = new FileReader();
                         if (image) {
+                            
                             var new_image = URL.createObjectURL(image);
                         } else {
-                            var new_image = "{{ asset('admin_assets/images/image.png') }}";
+                           
+                            var new_image = "";
                         }
 
 
@@ -1859,13 +1905,19 @@
                                 '</tr>';
                             $('#tableVal').append(newRow);
                         }
+                        
 
                         if (new_image) {
-                            var newImage = '<img style="object-fit: cover; width: 150px; height: 150px; padding: 5px;display: inherit;" src="'+new_image+'">';
+                            
+                            var newImage =
+                                '<img style="object-fit: cover; width: 150px; height: 150px; padding: 5px;display: inherit;" src="' +
+                                new_image + '">';
+                        }else{
+                            var newImage = '<p>No information here</p>';
                         }
 
                         $('#item-image').append(newImage);
-                        
+
                     }
 
 

@@ -23,7 +23,13 @@
                                 <h1>Quality Service At An<br> Affordable Price</h1>  
                             </div>
                             <div class="btn-get">
+                              @if(Auth::check() && Auth::user()->hasRole('USER'))
+                                <a href="{{ route('invoice.index') }}" class="btn get-btn">Dashboard</a>
+                              @elseif(Auth::check() && Auth::user()->hasRole('ADMIN'))
+                                <a href="{{ route('user.list') }}" class="btn get-btn">Dashboard</a>
+                              @else
                                 <a href="{{ route('register') }}" class="btn get-btn">Registration</a>
+                              @endif
                             </div>
                         </div>
                     </div>
@@ -42,7 +48,13 @@
                                 <h1>Quality Service At An<br> Affordable Price</h1>  
                             </div>
                             <div class="btn-get">
+                              @if(Auth::check() && Auth::user()->hasRole('USER'))
+                                <a href="{{ route('invoice.index') }}" class="btn get-btn">Dashboard</a>
+                              @elseif(Auth::check() && Auth::user()->hasRole('ADMIN'))
+                                <a href="{{ route('user.list') }}" class="btn get-btn">Dashboard</a>
+                              @else
                                 <a href="{{ route('register') }}" class="btn get-btn">Registration</a>
+                              @endif
                             </div>
                         </div>
                     </div>
@@ -61,7 +73,13 @@
                                 <h1>Quality Service At An<br> Affordable Price</h1>  
                             </div>
                             <div class="btn-get">
+                              @if(Auth::check() && Auth::user()->hasRole('USER'))
+                                <a href="{{ route('invoice.index') }}" class="btn get-btn">Dashboard</a>
+                              @elseif(Auth::check() && Auth::user()->hasRole('ADMIN'))
+                                <a href="{{ route('user.list') }}" class="btn get-btn">Dashboard</a>
+                              @else
                                 <a href="{{ route('register') }}" class="btn get-btn">Registration</a>
+                              @endif
                             </div>
                         </div>
                     </div>
@@ -197,7 +215,7 @@
        <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
          <div class="our-approach-text">
           <div class="services-head">
-            <h2 class="text-center h-blk mb-3">Our Approach to SEO</h2>
+            <h2 class="text-center h-blk mb-3">Lorem Ipsum Dolor Sit Amet</h2>
             <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pulvinar aliquet quam magnis arcu ipsum ullamcorper consectetur. Aenean habitant accumsan, nulla placerat quisque. Egestas venenatis tortor sed pharetra tortor pellentesque dictum eget. Nunc, neque ac aliquet dolor. Sem lobortis venenatis, augue vivamus volutpat. </p>
           </div>   
          </div>

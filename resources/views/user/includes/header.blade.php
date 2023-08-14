@@ -2,7 +2,7 @@
     <div class="container">
     <div class="header">
         <div class="header-left">
-            <div class="logo"><a href="{{ route('home') }}"><img src="{{ asset('frontend_assets/img/logo3.png') }}" alt=""/></a></div>
+            <div class="logo"><a href="{{ route('home') }}"><img src="{{ asset('frontend_assets/img/logo.png') }}" alt=""/></a></div>
             
         </div>
         <!--<a id="toggle_btn" href="javascript:void(0);">-->
@@ -35,6 +35,7 @@
                 </a>
                 <div class="dropdown-menu">
                 <a class="dropdown-item" href="{{ route('user.profile') }}">My Profile</a>
+                <a class="dropdown-item invoice-list-1 d-none d-sm-block d-md-none" href="{{ route('invoice.index') }}">Invoice List</a>
                 <a class="dropdown-item" href="{{ route('user.logout') }}">Logout</a>
                 </div>
             </li>
@@ -45,6 +46,7 @@
                     class="fa fa-ellipsis-v"></i></a>
             <div class="dropdown-menu dropdown-menu-right">
                 <a class="dropdown-item" href="{{ route('user.profile') }}">My Profile</a>
+                <a class="dropdown-item" href="{{ route('invoice.index') }}">Invoice List</a>
                 <a class="dropdown-item" href="{{ route('user.logout') }}">Logout</a>
             </div>
         </div>
