@@ -54,7 +54,7 @@
                                 <input type="submit" class="submit" value="Submit">
                             </div>
                             <div class="col-md-12 text-center">
-                                <a href="{{ route('forget.password.show') }}" class="forgot_pass">forgot Your
+                                <a href="{{ route('forget.password.show') }}" class="forgot_pass">Forgot Your
                                     Password?</a>
                             </div>
                             <div class="text sign-up-text">Don't have an account? <a href="{{ route('register') }}"

@@ -74,8 +74,8 @@
                                                           <div class="d-md-flex align-items-center">
                                                             <div class="profile-img-1 my-3">
                                                                 @if (!Auth::user()->logo)
-                                                                                                                <a href="{{ asset('frontend_assets/img/logo.png') }}" target="_blank">
-                                                                        <img src="{{ asset('frontend_assets/img/logo.png') }}" class="rounded-circle shadow" width="130" height="130" alt=""></a>
+                                                                                                                <a href="{{ asset('frontend_assets/img/logo3.png') }}" target="_blank">
+                                                                        <img src="{{ asset('frontend_assets/img/logo3.png') }}" class="rounded-circle shadow" width="130" height="130" alt=""></a>
                                                                         @else
                                                                         <a href="{{ Storage::url(Auth::user()->logo) }}" target="_blank">
                                                                             <img src="{{ Storage::url(Auth::user()->logo) }}" class="rounded-circle shadow" width="130" height="130" alt=""></a>
