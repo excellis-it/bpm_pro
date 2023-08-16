@@ -23,7 +23,9 @@
                                                         alt="logo" border="0"
                                                         style="object-fit: contain; width 100px; height: 50px;" />
                                                     <span style="display: block; text-align: left; padding-top: 5px;">
-                                                        {{ $data['invoice_detail']['from_address'] }}</span>
+                                                        {{ $data['invoice_detail']['from_company'] }}</span>
+                                                        <span style="display: block; text-align: left; padding-top: 5px;">
+                                                            {{ $data['invoice_detail']['from_address'] }}</span>
                                                     <span
                                                         style="display: block; text-align: left; padding-top: 5px;">Adress:
                                                         {{ $data['invoice_detail']['from_city'] }},
@@ -65,6 +67,7 @@
                                                                         style="color: #000; text-align: center; display: inline-block; width: 100%; font-size: 14px; font-weight: 600; display: flex; justify-content: space-between">
                                                                         <span>{{ $data['invoice_detail']['invoice_no'] }}
                                                                         </span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                        
                                                                         <span>{{ $data['invoice_detail']['invoice_date'] }}</span>
                                                                     </span>
                                                                 </td>

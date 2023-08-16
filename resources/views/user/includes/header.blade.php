@@ -13,9 +13,9 @@
         <!--    </span>-->
         <!--</a>-->
 
-        <div class="page-title-box">
+        {{-- <div class="page-title-box">
             <h3>Welcome to user panel</h3>
-        </div>
+        </div> --}}
 
         <a id="mobile_btn" class="mobile_btn" href="#sidebar"><i class="fa fa-bars"></i></a>
         <ul class="nav user-menu">

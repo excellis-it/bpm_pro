@@ -1065,8 +1065,14 @@
                                                                         accept="image/*" id="image"
                                                                         placeholder="Amount" data-parsley-required="false"
                                                                         data-parsley-trigger="keyup">
+                                                                        @if($value['image'])
+                                                                        <img src="{{ Storage::url($value['image']) }}" alt=""
+                                                                        class="image_preview" width="100px" height="100px">
+                                                                        
+                                                                        @endif
                                                                        
                                                             </div>
+                                                            
                                                         </div>
 
                                                         <div class="form-group row">
