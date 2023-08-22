@@ -23,10 +23,12 @@
     <link href="{{ asset('admin_assets/assets/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('admin_assets/assets/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('admin_assets/assets/css/responsive.css') }}" rel="stylesheet">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
 
     <!-- Custom styles for this template -->
 
@@ -116,8 +118,8 @@
         }
 
         /* .signature input {
-                                                                                                                                                                                                                                                                                                                            display: none;
-                                                                                                                                                                                                                                                                                                                        } */
+                                                                                                                                                                                                                                                                                                                                                display: none;
+                                                                                                                                                                                                                                                                                                                                            } */
 
         .signature label span {
             width: 100%;
@@ -467,12 +469,13 @@
 
         @media (max-width: 767px) {
 
-            
+
             .inv-head-wrap {
                 text-align: center;
                 width: 92%;
                 padding: 15px;
             }
+
             .form-div-wrap {
                 margin: 75px 0px 20px 0px;
             }
@@ -614,7 +617,7 @@
                                                             @endif
                                                         </div>
                                                     </div>
-                                                     <div class="col-sm-5">
+                                                    <div class="col-sm-5">
                                                         <div class="form-floating">
                                                             <input type="text" class="form-control" id="inputEmail3"
                                                                 name="from_last_name" placeholder="Business Name"
@@ -686,7 +689,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                 <div class="form-group row">
+                                                <div class="form-group row">
                                                     <div class="col-sm-10">
                                                         <div class="form-floating">
                                                             <input type="text" class="form-control"
@@ -743,8 +746,8 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                               
-                                                
+
+
                                                 <div class="form-group row">
 
                                                     <div class="col-sm-10">
@@ -769,13 +772,13 @@
                                                     <div class="col-sm-10">
                                                         <div class="form-floating">
                                                             <input type="text" class="form-control"
-                                                                id="floatingInputValue"
-                                                                data-parsley-trigger="keyup" placeholder="123456789 RT"
+                                                                id="floatingInputValue" data-parsley-trigger="keyup"
+                                                                placeholder="123456789 RT"
                                                                 value="{{ $invoice['from_gst'] }}" name="bill_from_gst">
                                                             <label for="floatingInputValue"
                                                                 class="col-sm-12 col-form-label">Annual Resale Certificate
                                                                 for Sales Tax #
-                                                                </label>
+                                                            </label>
                                                             @if ($errors->has('bill_from_gst'))
                                                                 <div class="error" style="color:red;">
                                                                     {{ $errors->first('bill_from_gst') }}</div>
@@ -813,13 +816,13 @@
                                                             <input type="text" class="form-control" name="last_name"
                                                                 value="{{ $explode[1] ?? '' }}" required
                                                                 data-parsley-trigger="keyup" id="billto_last_nm">
-                                                                <label for="floatingInputValue"
-                                                                    class="col-sm-12 col-form-label">Last Name<span
-                                                                        style="color: red;">*</span></label>
-                                                                                                             
-                                                                          @if ($errors->has('last_name'))
-                                                            <div class="error" style="color:red;">
-                                                                {{ $errors->first('last_name') }}</div>
+                                                            <label for="floatingInputValue"
+                                                                class="col-sm-12 col-form-label">Last Name<span
+                                                                    style="color: red;">*</span></label>
+
+                                                            @if ($errors->has('last_name'))
+                                                                <div class="error" style="color:red;">
+                                                                    {{ $errors->first('last_name') }}</div>
                                                             @endif
                                                         </div>
                                                     </div>
@@ -849,11 +852,11 @@
                                                                 name="bil_to_email" required data-parsley-type="email"
                                                                 value="{{ $invoice['bil_to_email'] }}"
                                                                 data-parsley-trigger="keyup" id="bill_to_email" ">
-                                                                <label for="floatingInputValue"
-                                                                class="col-sm-2 col-form-label">Email<span
-                                                                    style="color: red;">*</span></label>
-                                                                                                            
-                                                             @if ($errors->has('bil_to_email'))
+                                                                                    <label for="floatingInputValue"
+                                                                                    class="col-sm-2 col-form-label">Email<span
+                                                                                        style="color: red;">*</span></label>
+                                                                                                                                
+                                                                                      @if ($errors->has('bil_to_email'))
                                                             <div class="error" style="color:red;">
                                                                 {{ $errors->first('bil_to_email') }}</div>
                                                             @endif
@@ -1010,19 +1013,21 @@
                                                                         value="{{ $value['item_quantity'] }}"
                                                                         name="quantity[]" required
                                                                         data-parsley-trigger="keyup" min="1">
-                                                                        <label for="floatingInputValue"
-                                                                    class="col-sm-2 col-form-label">Quantity</label>
+                                                                    <label for="floatingInputValue"
+                                                                        class="col-sm-2 col-form-label">Quantity</label>
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-4">
                                                                 <div class="form-floating">
                                                                     <input type="text"
                                                                         class="form-control rate data-field priceformat"
-                                                                        name="rate[]"  required
-                                                                        value="{{$value['item_rate'] }}"
+                                                                        name="rate[]" required
+                                                                        value="{{ $value['item_rate'] }}"
                                                                         data-parsley-trigger="keyup">
-                                                                        <label for="floatingInputValue"
-                                                                    class="col-sm-12 col-form-label">Unit Price ($)</label>
+                                                                    <label for="floatingInputValue"
+                                                                        class="col-sm-12 col-form-label">Unit Price
+                                                                        ($)
+                                                                    </label>
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-4">
@@ -1030,42 +1035,43 @@
                                                                     <input type="text"
                                                                         class="form-control amount data-field"
                                                                         name="amount[]"
-                                                                        value="{{$value['item_amount']}}"
-                                                                        id="amount_1"  required
+                                                                        value="{{ $value['item_amount'] }}"
+                                                                        id="amount_1" required
                                                                         data-parsley-trigger="keyup" readonly>
-                                                                        <label for="floatingInputValue"
-                                                                    class="col-sm-12 col-form-label">Extended Price ($)</label>
+                                                                    <label for="floatingInputValue"
+                                                                        class="col-sm-12 col-form-label">Extended Price
+                                                                        ($)</label>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="form-group row">    
+                                                        <div class="form-group row">
                                                             <div class="col-sm-6">
                                                                 <div class="form-floating">
                                                                     <input type="text"
                                                                         class="form-control data-field item_description"
                                                                         value="{{ $value['item_description'] }}"
                                                                         name="item_description[]" required
-                                                                        data-parsley-trigger="keyup"
-                                                                        ><label for="floatingInputValue"
+                                                                        data-parsley-trigger="keyup"><label
+                                                                        for="floatingInputValue"
                                                                         class="col-sm-2 col-form-label">Name</label>
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-6">
-                                                                    <input type="hidden" value="{{ $value['image'] }}"
-                                                                        name="image_field[]" class="image_field"
-                                                                        data-image="{{ Storage::url($value['image']) }}">
-                                                                    <input type="file"
-                                                                        class="form-control image data-field"
-                                                                        name="image[]" value="{{ $value['image'] }}"
-                                                                        accept="image/*" id="image"
-                                                                        placeholder="Amount" data-parsley-required="false"
-                                                                        data-parsley-trigger="keyup">
-                                                                        @if($value['image'])
-                                                                        <img src="{{ Storage::url($value['image']) }}" alt=""
-                                                                        class="image_preview" width="100px" height="100px">
-                                                                        
-                                                                        @endif
-                                                                       
+                                                                <input type="hidden" value="{{ $value['image'] }}"
+                                                                    name="image_field[]" class="image_field"
+                                                                    data-image="{{ Storage::url($value['image']) }}">
+                                                                <input type="file"
+                                                                    class="form-control image data-field" name="image[]"
+                                                                    value="{{ $value['image'] }}" accept="image/*"
+                                                                    id="image" placeholder="Amount"
+                                                                    data-parsley-required="false"
+                                                                    data-parsley-trigger="keyup">
+                                                                @if ($value['image'])
+                                                                    <img src="{{ Storage::url($value['image']) }}"
+                                                                        alt="" class="image_preview"
+                                                                        width="100px" height="100px">
+                                                                @endif
+
                                                             </div>
                                                         </div>
 
@@ -1073,10 +1079,9 @@
                                                             <div class="col-sm-12">
                                                                 <div class="form-floating">
                                                                     <textarea class="form-control additional_details" name="additional_details[]" data-parsley-required="false"
-                                                                        value="{{ $value['item_additional_details'] }}" data-parsley-trigger="keyup" 
-                                                                        rows="2">{{ $value['item_additional_details'] }}</textarea>
-                                                                        <label for="floatingInputValue"
-                                                                    class="col-sm-2 col-form-label">Description</label>
+                                                                        value="{{ $value['item_additional_details'] }}" data-parsley-trigger="keyup" rows="2">{{ $value['item_additional_details'] }}</textarea>
+                                                                    <label for="floatingInputValue"
+                                                                        class="col-sm-2 col-form-label">Description</label>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1300,7 +1305,8 @@
                                                         <h3>Discount Amount</h3>
                                                     </div>
                                                     <div>
-                                                        <h4 style="color: #007DD9; font-weight: 600;cursor: pointer;" id="button-add">Add
+                                                        <h4 style="color: #007DD9; font-weight: 600;cursor: pointer;"
+                                                            id="button-add">Add
                                                         </h4>
                                                     </div>
                                                 </div>
@@ -1333,20 +1339,21 @@
                                                 <hr />
                                                 <div class="sub d-flex justify-content-between">
                                                     <div>
-                                                       
+
                                                     </div>
 
                                                 </div>
                                                 <div class="sub d-flex justify-content-between">
                                                     <div>
-                                                         <h3>Tax (%)</h3>
+                                                        <h3>Tax (%)</h3>
                                                     </div>
                                                     <div>
-                                                        <h4 style="color: blue; font-weight: 600;cursor: pointer;" id="tax_amount">Add
+                                                        <h4 style="color: blue; font-weight: 600;cursor: pointer;"
+                                                            id="tax_amount">Add
                                                         </h4>
                                                         <input type="text" name="tax_amount" id="tax_amount_input"
                                                             class="form-control" placeholder="Tax amount" min="1"
-                                                            value="{{ $invoice['tax_amount']}}" max="100"
+                                                            value="{{ $invoice['tax_amount'] }}" max="100"
                                                             style="display:none;">
                                                     </div>
                                                 </div>
@@ -1357,8 +1364,8 @@
                                                     </div>
                                                     <div>
                                                         <input type="hidden" id="sum_amount" name="sum_amount"
-                                                            value="{{$invoice['total']}}" value="0">
-                                                        <h4><span class="sum_amount">{{$invoice['total']}}</span></h4>
+                                                            value="{{ $invoice['total'] }}" value="0">
+                                                        <h4><span class="sum_amount">{{ $invoice['total'] }}</span></h4>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1398,12 +1405,22 @@
                                                                         <img src="webex.png" alt="logo"
                                                                             id="popup_logo" border="0"
                                                                             style="object-fit: contain; width: 100px; height: 50px;font-family: Montserrat, sans-serif;" />
-                                                                        <span style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;" id="popup_comp"></span>
-                                                                        <span style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;" id="popup_add"> </span>
-                                                                        <span style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;" id="popup_citystate"></span>
-                                                                        <span style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;" id="popup_phone"> </span>
-                                                                        <span style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;" id="popup_email"></span>
-                                                                        
+                                                                        <span
+                                                                            style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
+                                                                            id="popup_comp"></span>
+                                                                        <span
+                                                                            style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
+                                                                            id="popup_add"> </span>
+                                                                        <span
+                                                                            style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
+                                                                            id="popup_citystate"></span>
+                                                                        <span
+                                                                            style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
+                                                                            id="popup_phone"> </span>
+                                                                        <span
+                                                                            style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
+                                                                            id="popup_email"></span>
+
                                                                     </td>
 
                                                                     <td
@@ -1445,8 +1462,9 @@
                                                                                             justify-content: center;font-family: Montserrat, sans-serif;">
                                                                                             TERMS</span>
                                                                                         <span
-                                                                                            style="color: #000; text-align: center; display: inline-block; width: 100%; font-size: 14px; font-weight: 600;font-family: Montserrat, sans-serif;"  id="popup_term">
-                                                                                           </span>
+                                                                                            style="color: #000; text-align: center; display: inline-block; width: 100%; font-size: 14px; font-weight: 600;font-family: Montserrat, sans-serif;"
+                                                                                            id="popup_term">
+                                                                                        </span>
                                                                                     </td>
                                                                                 </tr>
                                                                             </tbody>
@@ -1508,7 +1526,7 @@
                                                                                             display: table-cell;
                                                                                             text-align: center;font-family: Montserrat, sans-serif; font-weight:800">
                                                                                             PROJECT NAME AND ADDRESS</span>
-                                                                                                
+
                                                                                         <span
                                                                                             style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
                                                                                             id="popup_project_name"></span>
@@ -1572,7 +1590,9 @@
                                                 <tr>
                                                     <td
                                                         style="font-size: 16px; font-weight: 600; color: #007DD9;  line-height: 14px;  vertical-align: top; padding:10px;font-family: Montserrat, sans-serif;">
-                                                        Notes: <span id="popup_notes" style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px;font-family: Montserrat, sans-serif;" align="right"></span>
+                                                        Notes: <span id="popup_notes"
+                                                            style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px;font-family: Montserrat, sans-serif;"
+                                                            align="right"></span>
                                                     </td>
                                                     <td colspan="2"
                                                         style="font-size: 16px; color: #000; line-height: 14px; text-align: left; vertical-align: top; padding: 10px; font-weight: 400; background: #cce7ff;font-family: Montserrat, sans-serif;">
@@ -1615,8 +1635,9 @@
                                                 </tr>
                                                 <tr>
                                                     <td colspan="4"
-                                                        style="font-size: 16px; font-weight: 600; color: #007DD9;  line-height: 14px;  vertical-align: top; padding:10px;font-family: Montserrat, sans-serif;"><span id="additional_info">Additional Information:</span>
-                                                       
+                                                        style="font-size: 16px; font-weight: 600; color: #007DD9;  line-height: 14px;  vertical-align: top; padding:10px;font-family: Montserrat, sans-serif;">
+                                                        <span id="additional_info">Additional Information:</span>
+
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -1675,7 +1696,8 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn modal-close" data-dismiss="modal" style="background: #007DD9; color: #fff;font-family: Montserrat, sans-serif;">Cancel</button>
+                        <button type="button" class="btn modal-close" data-dismiss="modal"
+                            style="background: #007DD9; color: #fff;font-family: Montserrat, sans-serif;">Cancel</button>
 
                     </div>
                 </div>
@@ -1799,10 +1821,13 @@
 
                 function calculateTotalAmount() {
                     $('.rate').each(function(index) {
-                        const rateValue = parseFloat($(this).val()) || 0;
+                        const rateValue = parseFloat($(this).val().replace(/,/g, '')) || 0;
                         const quantityValue = parseFloat($('.quantity').eq(index).val()) || 0;
                         const totalAmount = rateValue * quantityValue;
-                        $('.amount').eq(index).val(totalAmount.toFixed(2));
+                        const formatAmount = totalAmount.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                        $('.amount').eq(index).val(formatAmount);
+                        // not change rate decimal value only replace preg
+                        $('.rate').eq(index).val($(this).val().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
                     });
                 }
 
@@ -1813,9 +1838,11 @@
                     var rs = 0;
                     var result = 0;
                     $('.amount').each(function() {
-                        const totalAmountValue = parseFloat($(this).val()) || 0;
-                        result += totalAmountValue;
-                        rs += totalAmountValue;
+                        // Get the value of the current formatted amount
+                        const amountValue = parseFloat($(this).val().replace(/,/g, '')) || 0;
+                        // Add the value to the result
+                        result += amountValue;
+                        rs += amountValue;
                     });
                     var sub_total = rs;
                     const selectedOption = $('.currency-select').val();
@@ -1832,15 +1859,15 @@
                     const taxPercentage = parseFloat($('#tax_amount_input').val()) || 0;
                     const taxAmount = (taxPercentage / 100) * result;
                     result += taxAmount;
-            
+
 
                     // alert(main_result);
-                    $('.total_amount').text('$' + sub_total.toFixed(2));
-                    $('.sum_amount').text('$' + result.toFixed(2));
+                    $('.total_amount').text('$' + sub_total.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+                    $('.sum_amount').text('$' + result.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
                     $('#total_amount').val(sub_total.toFixed(2));
                     $('#sum_amount').val(result.toFixed(2));
-                    
-                    
+
+
                 }
 
                 // Attach keyup event to the rate and quantity fields
@@ -1869,16 +1896,12 @@
 
         <script>
             $(document).on('keyup', '.rate', function() {
+                // input field take only numbre
                 var inputValue = $(this).val();
-
-                // Use a regular expression to match only numbers with two digits after the decimal point
-                var regex = /^\d+(\.\d{0,2})?$/;
-
-                // Test if the input value matches the pattern
-                if (!regex.test(inputValue)) {
-                    // If the input doesn't match the pattern, remove the last character (invalid input)
-                    $(this).val(inputValue.slice(0, -1));
-                }
+                
+                var numericValue = inputValue.replace(/\D/g, '');
+                $(this).val(numericValue);
+                
             });
 
             $(document).on('keyup', '.quantity', function() {
@@ -1893,17 +1916,14 @@
             });
         </script>
         <script>
-            $(document).on('keyup', '#tax_amount_input', function() {
+             $(document).on('keyup', '#tax_amount_input', function() {
                 // Get the entered value
-                var inputValue = parseInt($(this).val());
+                var inputValue = $(this).val();
 
-                // Check if the entered value is within the valid range (0 to 100)
-                if (isNaN(inputValue) || inputValue < 0) {
-                    // Reset to 0 if the value is less than 0
+                // Check if the entered value is within the valid range (0 to 100) no floating point numbers allowed
+                if (inputValue < 0 || inputValue > 100 || inputValue % 1 !== 0) {
+                    // Reset the value if it's invalid
                     $(this).val('');
-                } else if (inputValue > 100) {
-                    // Reset to 100 if the value is greater than 100
-                    $(this).val(100);
                 }
             });
         </script>
@@ -1937,8 +1957,8 @@
                     var amounts = $("input.amount");
                     var images = $("input.image");
                     var image_fields = $("input.image_field");
-                
-                    
+
+
 
                     $('#tableVal').html('');
                     $('#item-image').html('');
@@ -1947,26 +1967,26 @@
                         var image_field = $(image_fields[i]).data('image') ?? '';
                         var image = $(images[i]).prop('files')[0] ?? '';
                         var reader = new FileReader();
-                   
-                        
+
+
                         if (image) {
-                            
+
                             var new_image = URL.createObjectURL(image);
-                            
+
                         } else {
                             var new_image = "";
                         }
-                        
+
                         console.log(new_image);
-                        
+
                         if (new_image) {
-                            
-                           
+
+
                             var newImage =
                                 '<img style="object-fit: cover; width: 150px; height: 150px; padding: 5px;display: inherit;" src="' +
                                 new_image + '">';
-                                $('#additional_info').show();
-                        }else{
+                            $('#additional_info').show();
+                        } else {
                             $('#additional_info').hide();
                         }
 
@@ -1998,7 +2018,7 @@
                                 '</tr>';
                             $('#tableVal').append(newRow);
                         }
-                        
+
 
 
                     }
@@ -2050,7 +2070,7 @@
                     if (invoice_date != '') {
                         $('#popup_date').text(invoice_date);
                     }
-                    
+
                     $('#popup_term').text(term);
 
                     $('#popup_billto_name').text(bill_to_name);
@@ -2078,14 +2098,13 @@
                 });
             })
         </script>
-        
-        <script>
-            $('.amount').each(function( index ) {
-    $(this).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-});
+        <script>
+            // // Select all elements with class "t_amount"
+            // $('.amount').each(function() {
+            //     var value = parseFloat($(this).val()) || 0;
+            //     const formatAmount = value.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            //     $('.amount').eq(index).val(formatAmount);
+            // });
         </script>
-        
-       
-       
     @endpush

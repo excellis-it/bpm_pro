@@ -138,9 +138,10 @@ class InvoiceController extends Controller
                 $add_items->invoice_id = $invoice->id;   
                 $add_items->item_description = $item;               
                 $add_items->item_additional_details = $request->additional_details[$key];
-                $add_items->item_rate = $request->rate[$key];
+                $rate = str_replace(',', '', $request->rate[$key]);
                 $add_items->item_quantity = $request->quantity[$key];
-                $add_items->item_amount = $request->amount[$key] ?? '';
+                $add_items->item_amount = str_replace(',', '', $request->amount[$key]);
+                $add_items->item_rate = $rate;
                 if ($request->hasFile('image')) {
                     $image =  $request->image[$key] ?? '';
                     if ($image != '') {
@@ -335,9 +336,13 @@ class InvoiceController extends Controller
                     $add_items->invoice_id = $id;   
                     $add_items->item_description = $item;               
                     $add_items->item_additional_details = $request->additional_details[$key];
-                    $add_items->item_rate = $request->rate[$key];
+                    // remove ',' from rate
+                    $rate = str_replace(',', '', $request->rate[$key]);
+                    $add_items->item_rate = $rate;
                     $add_items->item_quantity = $request->quantity[$key];
-                    $add_items->item_amount = $request->amount[$key] ?? '';
+                    // remove ',' from amount
+                    $amount = str_replace(',', '', $request->amount[$key]);
+                    $add_items->item_amount = $amount;
                     // if ($request->hasFile('image')) {
                         $image =  $request->image[$key] ?? '';
                         $image_field =  $request->image_field[$key] ?? '';
