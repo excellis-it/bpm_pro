@@ -174,7 +174,7 @@
                                
                                 <th style="background: #2f75b5; font-size: 16px;  font-weight: 800;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px; font-family: 'Poppins', sans-serif;"
                                     align="right">
-                                    AMOUNT
+                                    EXTENDED PRICE
                                 </th>
                             </tr>
                             <tr>
@@ -201,10 +201,10 @@
                                         align="center">{{ $vall->item_quantity }}</td>
                                     <td
                                         style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px; font-family: 'Poppins', sans-serif;">
-                                        ${{ $vall->item_rate }}</td>
+                                        ${{number_format( $vall->item_rate, 2, '.', ',');  }}</td>
                                     
                                     <td style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px; font-family: 'Poppins', sans-serif;"
-                                        align="right">$ {{ $vall->item_amount }}</td>
+                                        align="right">${{number_format($vall->item_amount, 2, '.', ',');  }}</td>
                                 </tr>
                                 <tr>
                                     <td height="1" colspan="4" style="border-bottom:1px solid #e4e4e4"></td>
@@ -245,7 +245,7 @@
                                 </td>
                                 <td
                                     style="font-size: 16px; color: #000; line-height: 14px; text-align: right; vertical-align: top; padding: 10px; font-weight: 400; background: #e6f3ff; font-family: 'Poppins', sans-serif;">
-                                    ${{ $data['invoice_detail']['sub_total'] }}  
+                                    ${{number_format($data['invoice_detail']['sub_total'], 2, '.', ',');  }}
                                 </td>
                             </tr>
                             <tr>
@@ -271,7 +271,7 @@
                                     
                                 @endphp
                                 <td
-                                    style="font-size: 16px; color: #000; line-height: 14px; text-align: right; vertical-align: top; padding: 10px; font-weight: 400; background: #e6f3ff; font-family: 'Poppins', sans-serif;">${{ $tax_amount }}   
+                                    style="font-size: 16px; color: #000; line-height: 14px; text-align: right; vertical-align: top; padding: 10px; font-weight: 400; background: #e6f3ff; font-family: 'Poppins', sans-serif;">${{number_format($tax_amount, 2, '.', ',');  }}  
                                 </td>
                             </tr>
                             <tr>
@@ -282,7 +282,8 @@
                                 </td>
                                 <td
                                     style="font-size: 16px; color: #000; line-height: 14px; text-align: right; vertical-align: top; padding: 10px; font-weight: 600; background: #e6f3ff;  border-top:2px solid #000; font-family: 'Poppins', sans-serif;">
-                                    ${{$data['invoice_detail']['total'] }}
+                                    $ {{number_format($data['invoice_detail']['total'], 2, '.', ',');  }}
+                                    
                                 </td>
                             </tr>
                             <tr>
@@ -299,13 +300,13 @@
                                 <td colspan="4">
                                     <div  style="columns: 4; display:block;">
                                     @foreach ($data['invoice_detail']['items'] as $vall)
-                                                                                           @if ($vall->image)
-                                                        <img style="object-fit: cover; width: 150px; height: 150px; padding: 5px; display: inherit;"
-                                                            src="{{ 'data:image/png;base64,' . base64_encode(file_get_contents(public_path('storage/' . $vall->image))) }}">
-                                                    @else
-                                                        <img style="object-fit: cover; width: 150px; height: 150px; padding: 5px; display: inherit;"
-                                                            src="{{ 'data:image/png;base64,' . base64_encode(file_get_contents('admin_assets/images/image.png')) }}">
-                                                    @endif
+                                    @if ($vall->image)
+                                        <img style="object-fit: cover; width: 150px; height: 150px; padding: 5px; display: inherit;"
+                                            src="{{ 'data:image/png;base64,' . base64_encode(file_get_contents(public_path('storage/' . $vall->image))) }}">
+                                    @else
+                                        <img style="object-fit: cover; width: 150px; height: 150px; padding: 5px; display: inherit;"
+                                            src="{{ 'data:image/png;base64,' . base64_encode(file_get_contents('admin_assets/images/image.png')) }}">
+                                    @endif
                                     @endforeach
                                     </div>
                                 </td>

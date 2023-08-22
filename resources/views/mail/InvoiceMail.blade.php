@@ -204,10 +204,10 @@
                                         align="center">{{ $vall->item_quantity }}</td>
                                     <td
                                         style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px; font-family: Montserrat, sans-serif;">
-                                        ${{ $vall->item_rate }}</td>
+                                        ${{number_format( $vall->item_rate, 2, '.', ',');  }}</td>
                                     
                                     <td style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px; font-family: Montserrat, sans-serif;"
-                                        align="right">$ {{ $vall->item_amount }}</td>
+                                        align="right">$ {{number_format($vall->item_amount, 2, '.', ',');  }}</td>
                                 </tr>
                                 <tr>
                                     <td height="1" colspan="4" style="border-bottom:1px solid #e4e4e4"></td>
@@ -248,7 +248,7 @@
                                 </td>
                                 <td
                                     style="font-size: 16px; color: #000; line-height: 14px; text-align: right; vertical-align: top; padding: 10px; font-weight: 400; background: #e6f3ff; font-family: Montserrat, sans-serif;">
-                                    ${{ $maildata['invoice_detail']['sub_total'] }}  
+                                    ${{number_format($maildata['invoice_detail']['sub_total'], 2, '.', ',');  }}
                                 </td>
                             </tr>
                             <tr>
@@ -274,7 +274,7 @@
                                     
                                 @endphp
                                 <td
-                                    style="font-size: 16px; color: #000; line-height: 14px; text-align: right; vertical-align: top; padding: 10px; font-weight: 400; background: #e6f3ff; font-family: Montserrat, sans-serif;">${{ $tax_amount }}   
+                                    style="font-size: 16px; color: #000; line-height: 14px; text-align: right; vertical-align: top; padding: 10px; font-weight: 400; background: #e6f3ff; font-family: Montserrat, sans-serif;">${{number_format($tax_amount, 2, '.', ',');  }}  
                                 </td>
                             </tr>
                             <tr>
@@ -285,7 +285,7 @@
                                 </td>
                                 <td
                                     style="font-size: 16px; color: #000; line-height: 14px; text-align: right; vertical-align: top; padding: 10px; font-weight: 600; background: #e6f3ff;  border-top:2px solid #000; font-family: Montserrat, sans-serif;">
-                                    ${{$maildata['invoice_detail']['total'] }}
+                                    ${{number_format($maildata['invoice_detail']['total'], 2, '.', ',');  }}
                                 </td>
                             </tr>
                             <tr>

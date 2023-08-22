@@ -311,6 +311,16 @@
             color: #497bac;
         }
 
+        .tax-amt-div{
+          position: relative;
+        }
+        .tax-amt-icon{
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            font-size: 14px;
+        }
+
         .logo-text h3 {
             font-size: 15px;
             line-height: 19px;
@@ -465,6 +475,17 @@
             margin-bottom: 10px;
             border-radius: 10px;
             background: #fff;
+        }
+
+        .dollar-icon {
+            position: absolute;
+            top: 27px;
+            left: 14px;
+            font-size: 14px;
+        }
+
+        .dollar-icon-div .form-control {
+            padding-left: 28px !important;
         }
 
         @media (max-width: 767px) {
@@ -1005,45 +1026,7 @@
                                                         <h2>{{ $key + 1 }}. Item Description</h2>
                                                     </div>
                                                     <div class="form-left form-item">
-                                                        <div class="form-group row">
-                                                            <div class="col-sm-4">
-                                                                <div class="form-floating">
-                                                                    <input type="number"
-                                                                        class="form-control quantity data-field"
-                                                                        value="{{ $value['item_quantity'] }}"
-                                                                        name="quantity[]" required
-                                                                        data-parsley-trigger="keyup" min="1">
-                                                                    <label for="floatingInputValue"
-                                                                        class="col-sm-2 col-form-label">Quantity</label>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-4">
-                                                                <div class="form-floating">
-                                                                    <input type="text"
-                                                                        class="form-control rate data-field priceformat"
-                                                                        name="rate[]" required
-                                                                        value="{{ $value['item_rate'] }}"
-                                                                        data-parsley-trigger="keyup">
-                                                                    <label for="floatingInputValue"
-                                                                        class="col-sm-12 col-form-label">Unit Price
-                                                                        ($)
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-4">
-                                                                <div class="form-floating">
-                                                                    <input type="text"
-                                                                        class="form-control amount data-field"
-                                                                        name="amount[]"
-                                                                        value="{{ $value['item_amount'] }}"
-                                                                        id="amount_1" required
-                                                                        data-parsley-trigger="keyup" readonly>
-                                                                    <label for="floatingInputValue"
-                                                                        class="col-sm-12 col-form-label">Extended Price
-                                                                        ($)</label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                        
                                                         <div class="form-group row">
                                                             <div class="col-sm-6">
                                                                 <div class="form-floating">
@@ -1072,6 +1055,50 @@
                                                                         width="100px" height="100px">
                                                                 @endif
 
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group row">
+                                                            <div class="col-sm-4">
+                                                                <div class="form-floating">
+                                                                    <input type="number"
+                                                                        class="form-control quantity data-field"
+                                                                        value="{{ $value['item_quantity'] }}"
+                                                                        name="quantity[]" required
+                                                                        data-parsley-trigger="keyup" min="1">
+                                                                    <label for="floatingInputValue"
+                                                                        class="col-sm-2 col-form-label">Quantity</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <div class="form-floating dollar-icon-div">
+                                                                    <span class="dollar-icon"><i
+                                                                        class="fa-solid fa-dollar-sign"></i></span>
+                                                                    <input type="text"
+                                                                        class="form-control rate data-field priceformat"
+                                                                        name="rate[]" required
+                                                                        value="{{ $value['item_rate'] }}"
+                                                                        data-parsley-trigger="keyup">
+                                                                    <label for="floatingInputValue"
+                                                                        class="col-sm-12 col-form-label">Unit Price
+                                                                        ($)
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <div class="form-floating dollar-icon-div">
+                                                                    <span class="dollar-icon"><i
+                                                                        class="fa-solid fa-dollar-sign"></i></span>
+                                                                    <input type="text"
+                                                                        class="form-control amount data-field"
+                                                                        name="amount[]"
+                                                                        value="{{ $value['item_amount'] }}"
+                                                                        id="amount_1" required
+                                                                        data-parsley-trigger="keyup" readonly>
+                                                                    <label for="floatingInputValue"
+                                                                        class="col-sm-12 col-form-label">Extended Price
+                                                                        ($)</label>
+                                                                </div>
                                                             </div>
                                                         </div>
 
@@ -1344,13 +1371,14 @@
 
                                                 </div>
                                                 <div class="sub d-flex justify-content-between">
-                                                    <div>
-                                                        <h3>Tax (%)</h3>
+                                                    <div class="d-flex align-items-center">
+                                                        <h3 >Tax (%)</h3>
                                                     </div>
-                                                    <div>
+                                                    <div class="tax-amt-div">
                                                         <h4 style="color: blue; font-weight: 600;cursor: pointer;"
                                                             id="tax_amount">Add
                                                         </h4>
+                                                        <span class="tax-amt-icon" style="display:none" id="tax-arrow"><i class="fa-solid fa-arrow-right"></i></span>
                                                         <input type="text" name="tax_amount" id="tax_amount_input"
                                                             class="form-control" placeholder="Tax amount" min="1"
                                                             value="{{ $invoice['tax_amount'] }}" max="100"
@@ -1805,13 +1833,13 @@
                     $(".add-item").append('<div class="add-item-wrap" id="addMoreInputFields_' + i +
                         '"><div class="cross-btn"><a href="javascript:void(0)"><i class="fa-solid fa-xmark"></i></a></div><div class="row justify-content-between"><div class="col-xl-12"><div class="item-head"><h2>' +
                         i +
-                        '. Item Description</h2></div><div class="form-left form-item"><div class="form-group row"><div class="col-sm-4"><div class="form-floating"><input type="number" class="form-control quantity data-field" min="1"  name="quantity[]" id="quan_' +
+                        '. Item Description</h2></div><div class="form-left form-item"><div class="form-group row"><div class="col-sm-6"><div class="form-floating"><input type="text" class="form-control item_description data-field" name="item_description[]" required data-parsley-trigger="keyup" ><label for="floatingInputValue" class="col-sm-2 col-form-label">Name</label></div></div><div class="col-sm-6"><input type="file" class="form-control image data-field" name="image[]"  placeholder="Amount" data-parsley-required="false" data-parsley-trigger="keyup" ></div></div><div class="form-group row"><div class="col-sm-4"><div class="form-floating"><input type="number" class="form-control quantity data-field" min="1"  name="quantity[]" id="quan_' +
                         i +
-                        '"  required data-parsley-trigger="keyup"><label for="floatingInputValue" class="col-sm-2 col-form-label">Quantity</label></div></div><div class="col-sm-4"><div class="form-floating"><input type="text" class="form-control rate data-field" required  data-parsley-trigger="keyup" name="rate[]" id="rate_' +
+                        '"  required data-parsley-trigger="keyup"><label for="floatingInputValue" class="col-sm-2 col-form-label">Quantity</label></div></div><div class="col-sm-4"><div class="form-floating dollar-icon-div"><span class="dollar-icon"><i class="fa-solid fa-dollar-sign"></i></span><input type="text" class="form-control rate data-field" required  data-parsley-trigger="keyup" name="rate[]" id="rate_' +
                         i +
-                        '"  ><label for="floatingInputValue" class="col-sm-12 col-form-label">Unit Price ($)</label></div></div><div class="col-sm-4"><div class="form-floating"><input type="text" class="form-control amount data-field" id="' +
+                        '"  ><label for="floatingInputValue" class="col-sm-12 col-form-label">Unit Price ($)</label></div></div><div class="col-sm-4"><div class="form-floating dollar-icon-div"><span class="dollar-icon"><i class="fa-solid fa-dollar-sign"></i></span><input type="text" class="form-control amount data-field" id="' +
                         i +
-                        '"  name="amount[]" readonly><label for="floatingInputValue" class="col-sm-12 col-form-label">Extended Price ($)</label></div></div></div><div class="form-group row"><div class="col-sm-6"><div class="form-floating"><input type="text" class="form-control item_description data-field" name="item_description[]" required data-parsley-trigger="keyup" ><label for="floatingInputValue" class="col-sm-2 col-form-label">Name</label></div></div><div class="col-sm-6"><input type="file" class="form-control image data-field" name="image[]"  placeholder="Amount" data-parsley-required="false" data-parsley-trigger="keyup" ></div></div><div class="form-group row"><div class="col-sm-12"><div class="form-floating"><textarea class="form-control additional_details" data-parsley-required="false" data-parsley-trigger="keyup" name="additional_details[]"  rows="2"></textarea><label for="floatingInputValue" class="col-sm-2 col-form-label"> description</label></div></div></div></div></div></div></div>'
+                        '"  name="amount[]" readonly><label for="floatingInputValue" class="col-sm-12 col-form-label">Extended Price ($)</label></div></div></div><div class="form-group row"><div class="col-sm-12"><div class="form-floating"><textarea class="form-control additional_details" data-parsley-required="false" data-parsley-trigger="keyup" name="additional_details[]"  rows="2"></textarea><label for="floatingInputValue" class="col-sm-2 col-form-label"> description</label></div></div></div></div></div></div></div>'
                     );
                 });
                 $(document).on('click', '.cross-btn', function() {
@@ -1918,12 +1946,15 @@
         <script>
              $(document).on('keyup', '#tax_amount_input', function() {
                 // Get the entered value
+                
                 var inputValue = $(this).val();
+                $('#tax-arrow').show();
 
                 // Check if the entered value is within the valid range (0 to 100) no floating point numbers allowed
                 if (inputValue < 0 || inputValue > 100 || inputValue % 1 !== 0) {
                     // Reset the value if it's invalid
                     $(this).val('');
+                    $('#tax-arrow').hide();
                 }
             });
         </script>
@@ -2080,7 +2111,7 @@
                     $('#popup_billto_zip').text(bill_to_zip);
                     $('#popup_billto_ph').text(bill_to_ph);
                     $('#popup_invoice_number').text(invoice_no);
-                    $('#popup_total').text('$' + t_amt);
+                    $('#popup_total').text('$' + t_amt.replace(/\B(?=(\d{3})+(?!\d))/g, ","));
                     if (tax_percentage != '') {
                         $('#popup_tax_percentage').text(tax_percentage + '%');
                     } else {
@@ -2088,7 +2119,7 @@
                     }
                     $('#popup_logo').attr('src', logo);
                     $('#popup_tax_amount').text('$' + tax_amount.toFixed(2));
-                    $('#popup_sum').text('$' + sum_amount);
+                    $('#popup_sum').text('$' + sum_amount.replace(/\B(?=(\d{3})+(?!\d))/g, ","));
                     $('#popup_notes').text(notes);
 
                     $('.modal-close').click(function() {

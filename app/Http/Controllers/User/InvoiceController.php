@@ -370,7 +370,7 @@ class InvoiceController extends Controller
     
             $pdf = PDF::loadView('pdf.invoice', [
                     'data' => $data,
-                ])->setOptions(['defaultFont' => 'Verdana']);
+                ]);
             $pdf_file = new File();
             $content = $pdf->download()->getOriginalContent();
             $filename = 'en' . $invoice->id . date('YmdHi') . '.pdf';
