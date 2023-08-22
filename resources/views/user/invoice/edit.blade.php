@@ -1931,17 +1931,14 @@
             });
         </script>
         <script>
-            $(document).on('keyup', '#tax_amount_input', function() {
+             $(document).on('keyup', '#tax_amount_input', function() {
                 // Get the entered value
-                var inputValue = parseInt($(this).val());
+                var inputValue = $(this).val();
 
-                // Check if the entered value is within the valid range (0 to 100)
-                if (isNaN(inputValue) || inputValue < 0) {
-                    // Reset to 0 if the value is less than 0
+                // Check if the entered value is within the valid range (0 to 100) no floating point numbers allowed
+                if (inputValue < 0 || inputValue > 100 || inputValue % 1 !== 0) {
+                    // Reset the value if it's invalid
                     $(this).val('');
-                } else if (inputValue > 100) {
-                    // Reset to 100 if the value is greater than 100
-                    $(this).val(100);
                 }
             });
         </script>
