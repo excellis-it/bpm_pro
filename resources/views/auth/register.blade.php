@@ -7,6 +7,7 @@
     <!-- Fontawesome CDN Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    
 </head>
 
 <body>
@@ -17,7 +18,7 @@
                 <img src="{{ asset('frontend_assets/images/frontImg.jpg') }}" alt="">
                 <div class="text">
                     <div class="login_logo">
-                        <a href="{{ url('/') }}"><img src="{{ asset('frontend_assets/img/logo3.png') }}"
+                        <a href="{{ url('/') }}"><img src="{{ asset('frontend_assets/img/invoice_logo2.png') }}"
                                 alt="">
                         </a>
                     </div>
@@ -31,12 +32,12 @@
             <div class="form-content">
                 <div class="signup-form">
                     <div class="title">Signup</div>
-                    <form action="{{ route('register.store') }}" method="post">
+                    <form action="{{ route('register.store') }}"  method="post">
                         @csrf
                         <div class="input-boxes">
-                            <div class="input-box">
+                            <div class="input-box" data-parsley-input-file>
                                 <i class="fas fa-user"></i>
-                                <input type="text" name="fname" placeholder="Enter first name">
+                                <input type="text" name="fname" placeholder="Enter first name" >
                             </div>
                             @if ($errors->has('fname'))
                                 <div class="error" style="color:red;">{{ $errors->first('fname') }}</div>
@@ -44,7 +45,7 @@
 
                             <div class="input-box">
                                 <i class="fas fa-user"></i>
-                                <input type="text" name="lname" placeholder="Enter last name">
+                                <input type="text" name="lname" placeholder="Enter last name" >
                             </div>
                             @if ($errors->has('lname'))
                                 <div class="error" style="color:red;">{{ $errors->first('lname') }}</div>
@@ -52,7 +53,7 @@
 
                             <div class="input-box">
                                 <i class="fas fa-envelope"></i>
-                                <input type="text" name="email" placeholder="Enter email">
+                                <input type="text" name="email" placeholder="Enter email" >
                             </div>
                             @if ($errors->has('email'))
                                 <div class="error" style="color:red;">{{ $errors->first('email') }}</div>
@@ -60,7 +61,7 @@
 
                             <div class="input-box">
                                 <i class="fas fa-phone"></i>
-                                <input type="text" name="phone" placeholder="+1 123 456 7890" class="phone-format">
+                                <input type="text" name="phone" placeholder="+1 123 456 7890" class="phone-format" >
                             </div>
                             @if ($errors->has('phone'))
                                 <div class="error" style="color:red;">{{ $errors->first('phone') }}</div>
@@ -68,7 +69,7 @@
 
                             <div class="input-box">
                                 <i class="fas fa-lock"></i>
-                                <input type="password" name="password" placeholder="Enter password">
+                                <input type="password" name="password" placeholder="Enter password" >
                             </div>
                             @if ($errors->has('password'))
                                 <div class="error" style="color:red;">{{ $errors->first('password') }}</div>
@@ -76,7 +77,7 @@
 
                             <div class="input-box">
                                 <i class="fas fa-lock"></i>
-                                <input type="password" name="confirm_password" placeholder="Enter confirm password">
+                                <input type="password" name="confirm_password" placeholder="Enter confirm password" >
                             </div>
                             @if ($errors->has('confirm_password'))
                                 <div class="error" style="color:red;">{{ $errors->first('confirm_password') }}</div>
@@ -97,6 +98,7 @@
 </body>
 
 </html>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
@@ -140,3 +142,7 @@
         $('.phone-format').mask('+1 999 999 9999');
     });
 </script>
+
+
+
+

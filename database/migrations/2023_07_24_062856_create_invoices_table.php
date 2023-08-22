@@ -16,7 +16,8 @@ class CreateInvoicesTable extends Migration
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->string('from_name')->nullable();
+            $table->string('from_first_name')->nullable();
+            $table->string('from_last_name')->nullable();
             $table->string('from_email')->nullable();
             $table->string('from_address')->nullable();
             $table->string('from_state')->nullable();

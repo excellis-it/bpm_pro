@@ -34,7 +34,7 @@ class InvoiceMail extends Mailable
         $path = Storage::url($this->maildata['pdf_file']);
         
         return $this->view('mail.InvoiceMail')
-            ->subject('Invoice for bpm-pro')
+            ->subject('Invoice for Invoiceticket')
             ->attach($path);
 
         

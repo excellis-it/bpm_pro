@@ -26,8 +26,8 @@
                     <div class="col">
                         <h3 class="page-title">List of Invoices</h3>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="">List of Invoices</a></li>
-                            <li class="breadcrumb-item active">List</li>
+                            <li class="breadcrumb-item"><a href="">List </a></li>
+                            
                         </ul>
                     </div>
                     <div class="col-auto float-end ms-auto">
@@ -39,14 +39,14 @@
 
             <div class="card">
                 <div class="card-body">
-                    <div class="card-title">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h4 class="mb-0">List of Invoicess</h4>
-                            </div>
+                    <!--<div class="card-title">-->
+                    <!--    <div class="row">-->
+                    <!--        <div class="col-md-6">-->
+                    <!--            <h4 class="mb-0">List of Invoicess</h4>-->
+                    <!--        </div>-->
 
-                        </div>
-                    </div>
+                    <!--    </div>-->
+                    <!--</div>-->
 
                     <hr />
                     <div class="table-responsive">
@@ -71,7 +71,7 @@
                                     <td>{{ $invoice->bil_to_email }}</td>
                                     <td>{{ $invoice->bil_to_address }}</td>
                                     <td>{{ $invoice->bil_to_phone }}</td>
-                                    <td>{{ $invoice->total }}</td>
+                                    <td>${{ number_format($invoice->total, 2) }}</td>
                                     <td>
                                         @if($invoice->send_id == 1)
                                          One Time

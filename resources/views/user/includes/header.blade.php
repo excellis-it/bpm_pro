@@ -2,7 +2,7 @@
     <div class="container">
     <div class="header">
         <div class="header-left">
-            <div class="logo"><a href="{{ route('home') }}"><img src="{{ asset('frontend_assets/img/logo.png') }}" alt=""/></a></div>
+            <div class="logo"><a href="{{ route('home') }}"><img src="{{ asset('frontend_assets/img/invoice_logo2.png') }}" alt=""/></a></div>
             
         </div>
         <!--<a id="toggle_btn" href="javascript:void(0);">-->
@@ -13,9 +13,7 @@
         <!--    </span>-->
         <!--</a>-->
 
-        {{-- <div class="page-title-box">
-            <h3>Welcome to user panel</h3>
-        </div> --}}
+
 
         <a id="mobile_btn" class="mobile_btn" href="#sidebar"><i class="fa fa-bars"></i></a>
         <ul class="nav user-menu">

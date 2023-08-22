@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\User\ProfileController as UserProfileController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\HomeCmsController;
+use App\Http\Controllers\Admin\ManagerController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\Homecontroller;
 use App\Http\Controllers\User\InvoiceController;
@@ -43,9 +45,17 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/status-change',[UserController::class, 'userStatusChange'])->name('user.status.change');
         Route::get('profile', [ProfileController::class, 'index'])->name('admin.profile');
         Route::post('profile/update', [ProfileController::class, 'profileUpdate'])->name('admin.profile.update');
+        Route::get('/home-cms',[HomeCmsController::class, 'homeCms'])->name('home.cms');
+        Route::post('/home-cms-update',[HomeCmsController::class, 'homeCmsUpdate'])->name('home.cms.update');
+        
+        Route::resources([
+            'managers' => ManagerController::class,
+        ]);
+        
+         Route::get('managers/edit/{id}', [ManagerController::class, 'editManager'])->name('edit.manager');
+         Route::post('/updateManager',[ManagerController::class, 'updateManager'])->name('update.managers');
         Route::get('logout', [AuthController::class, 'logout'])->name('admin.logout');
         
-      
     });
 });
 

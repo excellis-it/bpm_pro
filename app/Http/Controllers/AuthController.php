@@ -67,18 +67,25 @@ class AuthController extends Controller
     
     public function loginCheck(Request $request)
     {
+       
         $request->validate([
             'email'    => 'required|email|regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix',
             'password' => 'required|min:8'
         ]);
         
+       
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password] )) {
+            
             $user = User::where('email', $request->email)->first();
+            
             if ($user->hasRole('ADMIN')) {
                 return redirect()->route('user.list');
             } else if($user->hasRole('USER') && $user->status == 1){
                 return redirect()->route('invoice.index');
+            } else if($user->hasRole('MANAGER') && $user->status == 1){
+                 return redirect()->route('user.list');
             }else{
+               
                 Auth::logout();
                 return redirect()->back()->with('error', 'Your account is not active yet!');
             }

@@ -22,7 +22,6 @@ class CreateItemsTable extends Migration
             $table->string('item_rate')->nullable();
             $table->string('item_quantity')->nullable();
             $table->string('item_amount')->nullable();
-            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

@@ -64,7 +64,8 @@ class InvoiceController extends Controller
         }
 
         $invoice->send_id = $request->send_in;
-        $invoice->from_name = $request->from_name;
+        $invoice->from_first_name = $request->from_first_name;
+        $invoice->from_last_name = $request->from_last_name;
         $invoice->from_email = $request->from_email;
         $invoice->from_state = $request->bill_from_state;
         $invoice->from_city = $request->bill_from_city;
@@ -166,7 +167,7 @@ class InvoiceController extends Controller
 
         $pdf = PDF::loadView('pdf.invoice', [
                 'data' => $data,
-            ])->setOptions(['defaultFont' => 'sans-serif']);
+            ])->setOptions(['defaultFont' => 'Verdana']);
         $pdf_file = new File();
         $content = $pdf->download()->getOriginalContent();
         $filename = 'en' . $invoice->id . date('YmdHi') . '.pdf';
@@ -185,6 +186,7 @@ class InvoiceController extends Controller
         ];
 
         Mail::to($request->bil_to_email)->send(new InvoiceMail($maildata));
+       
 
         return redirect()->route('invoice.index')->with('message', 'Invoice created successfully');
         } catch (\Throwable $th) {
@@ -257,7 +259,8 @@ class InvoiceController extends Controller
             }
     
             $invoice->send_id = $request->send_in;
-            $invoice->from_name = $request->from_name;
+            $invoice->from_first_name = $request->from_first_name;
+            $invoice->from_last_name = $request->from_last_name;
             $invoice->from_email = $request->from_email;
             $invoice->from_state = $request->bill_from_state;
             $invoice->from_city = $request->bill_from_city;
@@ -364,7 +367,7 @@ class InvoiceController extends Controller
     
             $pdf = PDF::loadView('pdf.invoice', [
                     'data' => $data,
-                ])->setOptions(['defaultFont' => 'sans-serif']);
+                ])->setOptions(['defaultFont' => 'Verdana']);
             $pdf_file = new File();
             $content = $pdf->download()->getOriginalContent();
             $filename = 'en' . $invoice->id . date('YmdHi') . '.pdf';

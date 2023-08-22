@@ -35,7 +35,7 @@ class ProfileController extends Controller
             'city'     => 'required',
             'company'  => 'required',
             'zipcode'  => 'required',
-            'logo' => 'required|image|mimes:jpg,png,jpeg|max:2048',
+            
         ]);
 
         $data = User::find(Auth::user()->id);

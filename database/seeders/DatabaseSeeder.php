@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             assignRoleSeeder::class,
             assignAdminSeeder::class,
             stateSeeder::class,
+            homeCmsSeeder::class,
         ]);
     }
 }

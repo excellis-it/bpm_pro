@@ -52,7 +52,7 @@ class UserController extends Controller
 
         foreach($records as $record){
             $id = $record->id;
-            $first_name = $record->first_name;
+            $first_name = $record->first_name. ' ' .$record->last_name;
             $email = $record->email;
             $phone = $record->phone;
             $no_of_invoice = Invoice::where('user_id',$id)->get()->count();

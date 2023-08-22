@@ -17,7 +17,7 @@
     </section>
     <div class="page-wrapper invoice_page">
 
-        <div class="content container-fluid">
+        <div class="content container">
 
             <div class="page-header">
                 <div class="row align-items-center">
@@ -52,7 +52,7 @@
                                                         <tbody>
                                                             <tr>
                                                                 <td
-                                                                    style="font-size: 14px; color: #000; font-weight: 800; line-height: 18px; vertical-align: top; text-align: left;">
+                                                                    style="font-size: 14px; color: #000; font-weight: 800; line-height: 18px; vertical-align: top; text-align: left; width:40%;">
                                                                     <img src="{{ 'data:image/png;base64,' . base64_encode(file_get_contents(public_path('storage/' . $data['invoice_detail']['image']))) }}"
                                                                         alt="logo" border="0"
                                                                         style="object-fit: contain; width 100px; height: 50px;" />
@@ -74,14 +74,13 @@
                                                                 </td>
 
                                                                 <td
-                                                                    style="font-size: 14px; font-weight: 800; color: #000; line-height: 20px; vertical-align: top; text-align: left;">
-                                                                    <table border="0" cellpadding="0" cellspacing="0"
-                                                                        align="right">
+                                                                    style="font-size: 14px; font-weight: 800; color: #000; line-height: 20px; vertical-align: top; text-align: left; width: 40%;">
+                                                                    <table border="0" cellpadding="0" cellspacing="0" align="right" style="width:90%;">
                                                                         <tbody>
                                                                             <tr>
                                                                                 <td>
                                                                                     <span
-                                                                                        style="color: #2f75b5;
+                                                                                        style="color: #007DD9;
                                                                                     padding: 3px 0px;
                                                                                     text-align: right;
                                                                                     font-size: 36px;
@@ -93,7 +92,7 @@
                                                                             </tr>
                                                                             <tr>
                                                                                 <td><span
-                                                                                        style="background: #2f75b5; margin: 10px 0px; padding: 5px; color: #fff;  display: flex;
+                                                                                        style="background: #007DD9; margin: 10px 0px; padding: 5px; color: #fff;  display: flex;
                                                                                     justify-content: space-between">
                                                                                         <span>Invoice#</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                                         <span>Date</span></span>
@@ -122,7 +121,7 @@
                                                                 <td
                                                                     style="font-size: 14px; color: #000; font-weight: 800; line-height: 18px; vertical-align: top; text-align: right;">
                                                                     <span
-                                                                        style="display: block; text-align: left; background: #2f75b5; padding: 5px; color: #fff;">Bill
+                                                                        style="display: block; text-align: left; background: #007DD9; padding: 5px; color: #fff;">Bill
                                                                         To</span>
                                                                     <span
                                                                         style="display: block; text-align: left; padding-top: 5px;">Name:
@@ -156,7 +155,7 @@
                                                                                 <td
                                                                                     style="font-size: 14px; color: #000; font-weight: 800; line-height: 18px; vertical-align: top; text-align: right;">
                                                                                     <span
-                                                                                        style="background: #2f75b5;
+                                                                                        style="background: #007DD9;
                                                                                     margin: 10px 0px;
                                                                                     padding: 5px;
                                                                                     color: #fff;
@@ -192,19 +191,19 @@
                                     <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
                                         <tbody>
                                             <tr>
-                                                <th style="background: #2f75b5; font-size: 16px; font-weight: 800;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;"
+                                                <th style="background: #007DD9; font-size: 16px; font-weight: 800;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;"
                                                     width="52%" align="left">
                                                     Item name
                                                 </th>
-                                                <th style="background: #2f75b5; font-size: 16px;  font-weight: 800;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;"
+                                                <th style="background: #007DD9; font-size: 16px;  font-weight: 800;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;"
                                                     align="left">
                                                     Rate
                                                 </th>
-                                                <th style="background: #2f75b5; font-size: 16px;  font-weight: 800; color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px"
+                                                <th style="background: #007DD9; font-size: 16px;  font-weight: 800; color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px"
                                                     align="center">
                                                     Quantity
                                                 </th>
-                                                <th style="background: #2f75b5; font-size: 16px;  font-weight: 800;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px"
+                                                <th style="background: #007DD9; font-size: 16px;  font-weight: 800;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px"
                                                     align="right">
                                                     Amount
                                                 </th>
@@ -270,7 +269,7 @@
                                             </tr>
                                             <tr>
                                                 <td
-                                                    style="font-size: 16px; font-weight: 600; color: #2f75b5;  line-height: 14px;  vertical-align: top; padding:10px">
+                                                    style="font-size: 16px; font-weight: 600; color: #007DD9;  line-height: 14px;  vertical-align: top; padding:10px">
                                                     Notes:
                                                 </td>
                                                 <td colspan="2"
@@ -328,7 +327,7 @@
                                             @if(isset($data['invoice_detail']['items'][0]->image))
                                             <tr>
                                                 <td colspan="4"
-                                                    style="font-size: 16px; font-weight: 600; color: #2f75b5;  line-height: 14px;  vertical-align: top; padding:10px">
+                                                    style="font-size: 16px; font-weight: 600; color: #007DD9;  line-height: 14px;  vertical-align: top; padding:10px">
                                                     Additional Information:
                                                 </td>
                                             </tr>

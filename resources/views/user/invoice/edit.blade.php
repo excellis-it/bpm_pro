@@ -23,6 +23,11 @@
     <link href="{{ asset('admin_assets/assets/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('admin_assets/assets/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('admin_assets/assets/css/responsive.css') }}" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
     <!-- Custom styles for this template -->
 
     <style>
@@ -149,7 +154,7 @@
         .form-right {
             padding: 20px;
             box-shadow: 0px 0px 42px rgb(0 0 0 / 10%);
-            margin: 20px 0px;
+            margin: 10px 0px 20px;
             border-radius: 10px;
             position: fixed;
             top: 6%;
@@ -197,7 +202,7 @@
 
         .cross-btn a {
             padding: 5px 10px;
-            background: #497bac;
+            background: #007DD9;
             border-radius: 5px;
             color: #fff;
             font-size: 16px;
@@ -209,7 +214,7 @@
             font-weight: 600;
             color: #fff;
             border-radius: 30px;
-            background: #497bac;
+            background: #007DD9;
             text-align: center;
         }
 
@@ -263,7 +268,7 @@
             line-height: 24px;
             font-weight: 600;
             color: #fff;
-            background: #497bac;
+            background: #007DD9;
             padding: 10px 20px;
             border-radius: 10px;
         }
@@ -544,7 +549,7 @@
                                                                     @if ($invoice['currency'] == 'USD') selected @endif>USD
                                                                 </option>
                                                             </select>
-                                                            <label for="floatingSelect">Curency</label>
+                                                            <label for="floatingSelect">Currency</label>
                                                             @if ($errors->has('currency'))
                                                                 <div class="error" style="color:red;">
                                                                     {{ $errors->first('currency') }}</div>
@@ -594,18 +599,33 @@
                                             <div class="form-left mt-5">
                                                 <div class="form-group row">
 
-                                                    <div class="col-sm-10">
+                                                    <div class="col-sm-5">
                                                         <div class="form-floating">
                                                             <input type="text" class="form-control" id="inputEmail3"
-                                                                name="from_name" placeholder="Business Name"
-                                                                value="{{ $invoice['from_name'] }}" required
+                                                                name="from_first_name" placeholder="Business Name"
+                                                                value="{{ $invoice['from_first_name'] }}" required
                                                                 data-parsley-trigger="keyup">
                                                             <label for="floatingInputValue"
-                                                                class="col-sm-2 col-form-label">Name<span
+                                                                class="col-sm-12 col-form-label">First Name<span
                                                                     style="color: red;">*</span></label>
-                                                            @if ($errors->has('from_name'))
+                                                            @if ($errors->has('from_first_name'))
                                                                 <div class="error" style="color:red;">
-                                                                    {{ $errors->first('from_name') }}</div>
+                                                                    {{ $errors->first('from_first_name') }}</div>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                     <div class="col-sm-5">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control" id="inputEmail3"
+                                                                name="from_last_name" placeholder="Business Name"
+                                                                value="{{ $invoice['from_last_name'] }}" required
+                                                                data-parsley-trigger="keyup">
+                                                            <label for="floatingInputValue"
+                                                                class="col-sm-12 col-form-label">Last Name<span
+                                                                    style="color: red;">*</span></label>
+                                                            @if ($errors->has('from_last_name'))
+                                                                <div class="error" style="color:red;">
+                                                                    {{ $errors->first('from_last_name') }}</div>
                                                             @endif
                                                         </div>
                                                     </div>
@@ -615,7 +635,7 @@
                                                     <div class="col-sm-10">
                                                         <div class="form-floating">
                                                             <input type="text" class="form-control"
-                                                                id="floatingInputValue" required
+                                                                id="bill_from_company" required
                                                                 data-parsley-trigger="keyup"
                                                                 value="{{ $invoice['from_company'] }}"
                                                                 name="bill_from_company">
@@ -649,11 +669,45 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-
+                                                    <div class="col-sm-10">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control"
+                                                                id="bill_from_address" id="" required
+                                                                data-parsley-trigger="keyup" placeholder="Street"
+                                                                value="{{ $invoice['from_address'] }}"
+                                                                name="from_address">
+                                                            <label for="bill_from_address"
+                                                                class="col-sm-2 col-form-label">Address<span
+                                                                    style="color: red;">*</span></label>
+                                                            @if ($errors->has('from_address'))
+                                                                <div class="error" style="color:red;">
+                                                                    {{ $errors->first('from_address') }}</div>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                 <div class="form-group row">
+                                                    <div class="col-sm-10">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control"
+                                                                id="bill_from_city" placeholder="City"
+                                                                value="{{ $invoice['from_city'] }}" required
+                                                                data-parsley-trigger="keyup" name="bill_from_city">
+                                                            <label for="floatingInputValue"
+                                                                class="col-sm-2 col-form-label">City<span
+                                                                    style="color: red;">*</span></label>
+                                                            @if ($errors->has('bill_from_city'))
+                                                                <div class="error" style="color:red;">
+                                                                    {{ $errors->first('bill_from_city') }}</div>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
                                                     <div class="col-sm-10">
                                                         <div class="form-floating">
                                                             <select class="form-control" name="bill_from_state" required
-                                                                data-parsley-trigger="keyup">
+                                                                data-parsley-trigger="keyup" id="bill_from_state">
                                                                 <option value=""> Select State</option>
                                                                 @foreach ($states as $state)
                                                                     <option value="{{ $state->name }}"
@@ -673,15 +727,14 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-
                                                     <div class="col-sm-10">
                                                         <div class="form-floating">
                                                             <input type="text" class="form-control"
-                                                                id="floatingInputValue"
+                                                                id="bill_from_zipcode"
                                                                 value="{{ $invoice['from_zipcode'] }}" required
                                                                 data-parsley-trigger="keyup" name="from_zipcode">
                                                             <label for="floatingInputValue"
-                                                                class="col-sm-2 col-form-label">Zipcode<span
+                                                                class="col-sm-12 col-form-label">Zip Code<span
                                                                     style="color: red;">*</span></label>
                                                             @if ($errors->has('from_zipcode'))
                                                                 <div class="error" style="color:red;">
@@ -690,43 +743,8 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="form-group row">
-
-                                                    <div class="col-sm-10">
-                                                        <div class="form-floating">
-                                                            <input type="text" class="form-control"
-                                                                id="floatingInputValue" placeholder="City"
-                                                                value="{{ $invoice['from_city'] }}" required
-                                                                data-parsley-trigger="keyup" name="bill_from_city">
-                                                            <label for="floatingInputValue"
-                                                                class="col-sm-2 col-form-label">City<span
-                                                                    style="color: red;">*</span></label>
-                                                            @if ($errors->has('bill_from_city'))
-                                                                <div class="error" style="color:red;">
-                                                                    {{ $errors->first('bill_from_city') }}</div>
-                                                            @endif
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-
-                                                    <div class="col-sm-10">
-                                                        <div class="form-floating">
-                                                            <input type="text" class="form-control"
-                                                                id="bill_from_address" id="" required
-                                                                data-parsley-trigger="keyup" placeholder="Street"
-                                                                value="{{ $invoice['from_address'] }}"
-                                                                name="from_address">
-                                                            <label for="bill_from_address"
-                                                                class="col-sm-2 col-form-label">Address<span
-                                                                    style="color: red;">*</span></label>
-                                                            @if ($errors->has('from_address'))
-                                                                <div class="error" style="color:red;">
-                                                                    {{ $errors->first('from_address') }}</div>
-                                                            @endif
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                               
+                                                
                                                 <div class="form-group row">
 
                                                     <div class="col-sm-10">
@@ -751,13 +769,13 @@
                                                     <div class="col-sm-10">
                                                         <div class="form-floating">
                                                             <input type="text" class="form-control"
-                                                                id="floatingInputValue" required
+                                                                id="floatingInputValue"
                                                                 data-parsley-trigger="keyup" placeholder="123456789 RT"
                                                                 value="{{ $invoice['from_gst'] }}" name="bill_from_gst">
                                                             <label for="floatingInputValue"
                                                                 class="col-sm-12 col-form-label">Annual Resale Certificate
                                                                 for Sales Tax #
-                                                                <span style="color: red;">*</span></label>
+                                                                </label>
                                                             @if ($errors->has('bill_from_gst'))
                                                                 <div class="error" style="color:red;">
                                                                     {{ $errors->first('bill_from_gst') }}</div>
@@ -794,15 +812,11 @@
                                                         <div class="form-floating">
                                                             <input type="text" class="form-control" name="last_name"
                                                                 value="{{ $explode[1] ?? '' }}" required
-                                                                data-parsley-trigger="keyup" id="billto_last_nm" ">
-                                                                                                                                                                                                <label for="floatingInputValue"
-                                                                                                                                                                                                    class="col-sm-12 col-form-label">Last Name<span
-                                                                                                                                                                                                        style="color: red;">*</span></label>
-                                                                                                                                                                                                     
-                                                                                                                                                                             
-                                                                                                                                                     
-                                                                                                                             
-                                                                                                     
+                                                                data-parsley-trigger="keyup" id="billto_last_nm">
+                                                                <label for="floatingInputValue"
+                                                                    class="col-sm-12 col-form-label">Last Name<span
+                                                                        style="color: red;">*</span></label>
+                                                                                                             
                                                                           @if ($errors->has('last_name'))
                                                             <div class="error" style="color:red;">
                                                                 {{ $errors->first('last_name') }}</div>
@@ -835,15 +849,11 @@
                                                                 name="bil_to_email" required data-parsley-type="email"
                                                                 value="{{ $invoice['bil_to_email'] }}"
                                                                 data-parsley-trigger="keyup" id="bill_to_email" ">
-                                                                                                                                                                                                <label for="floatingInputValue"
-                                                                                                                                                                                                class="col-sm-2 col-form-label">Email<span
-                                                                                                                                                                                                    style="color: red;">*</span></label>
-                                                                                                                                                                                                     
-                                                                                                                                                                             
-                                                                                                                                                     
-                                                                                                                             
-                                                                                                     
-                                                                          @if ($errors->has('bil_to_email'))
+                                                                <label for="floatingInputValue"
+                                                                class="col-sm-2 col-form-label">Email<span
+                                                                    style="color: red;">*</span></label>
+                                                                                                            
+                                                             @if ($errors->has('bil_to_email'))
                                                             <div class="error" style="color:red;">
                                                                 {{ $errors->first('bil_to_email') }}</div>
                                                             @endif
@@ -924,7 +934,7 @@
                                                                 value="{{ $invoice['bil_to_zipcode'] }}"
                                                                 name="bil_to_zipcode">
                                                             <label for="bil_to_zipcode"
-                                                                class="col-sm-2 col-form-label">Zipcode<span
+                                                                class="col-sm-12 col-form-label">Zip Code<span
                                                                     style="color: red;">*</span></label>
                                                             @if ($errors->has('bil_to_zipcode'))
                                                                 <div class="error" style="color:red;">
@@ -1022,12 +1032,12 @@
                                                             <div class="col-sm-4">
                                                                 <div class="form-floating">
                                                                     <input type="text"
-                                                                        class="form-control rate data-field"
+                                                                        class="form-control rate data-field priceformat"
                                                                         name="rate[]"  required
-                                                                        value="{{ $value['item_rate'] }}"
+                                                                        value="{{$value['item_rate'] }}"
                                                                         data-parsley-trigger="keyup">
                                                                         <label for="floatingInputValue"
-                                                                    class="col-sm-2 col-form-label">Rate</label>
+                                                                    class="col-sm-12 col-form-label">Unit Price ($)</label>
                                                                 </div>
                                                             </div>
                                                             <div class="col-sm-4">
@@ -1035,11 +1045,11 @@
                                                                     <input type="text"
                                                                         class="form-control amount data-field"
                                                                         name="amount[]"
-                                                                        value="{{ $value['item_amount'] }}"
+                                                                        value="{{$value['item_amount']}}"
                                                                         id="amount_1"  required
                                                                         data-parsley-trigger="keyup" readonly>
                                                                         <label for="floatingInputValue"
-                                                                    class="col-sm-2 col-form-label">Amount</label>
+                                                                    class="col-sm-12 col-form-label">Extended Price ($)</label>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1072,7 +1082,6 @@
                                                                         @endif
                                                                        
                                                             </div>
-                                                            
                                                         </div>
 
                                                         <div class="form-group row">
@@ -1296,7 +1305,7 @@
                                                         <h3>Shipping</h3>
                                                     </div>
                                                     <div>
-                                                        <h4 style="color: blue; font-weight: 600;">Add</h4>
+                                                        <h4 style="color: blue; font-weight: 600;cursor: pointer;">Add</h4>
                                                     </div>
                                                 </div> --}}
                                                 <hr />
@@ -1306,7 +1315,7 @@
                                                         <h3>Discount Amount</h3>
                                                     </div>
                                                     <div>
-                                                        <h4 style="color: blue; font-weight: 600;" id="button-add">Add
+                                                        <h4 style="color: #007DD9; font-weight: 600;cursor: pointer;" id="button-add">Add
                                                         </h4>
                                                     </div>
                                                 </div>
@@ -1339,20 +1348,20 @@
                                                 <hr />
                                                 <div class="sub d-flex justify-content-between">
                                                     <div>
-                                                        <h3>Tax(%)</h3>
+                                                       
                                                     </div>
 
                                                 </div>
                                                 <div class="sub d-flex justify-content-between">
                                                     <div>
-                                                        <h3>Tax Amount</h3>
+                                                         <h3>Tax (%)</h3>
                                                     </div>
                                                     <div>
-                                                        <h4 style="color: blue; font-weight: 600;" id="tax_amount">Add
+                                                        <h4 style="color: blue; font-weight: 600;cursor: pointer;" id="tax_amount">Add
                                                         </h4>
                                                         <input type="text" name="tax_amount" id="tax_amount_input"
                                                             class="form-control" placeholder="Tax amount" min="1"
-                                                            value="{{ $invoice['tax_amount'] }}" max="100"
+                                                            value="{{ $invoice['tax_amount']}}" max="100"
                                                             style="display:none;">
                                                     </div>
                                                 </div>
@@ -1363,8 +1372,8 @@
                                                     </div>
                                                     <div>
                                                         <input type="hidden" id="sum_amount" name="sum_amount"
-                                                            value="{{ $invoice['total'] }}" value="0">
-                                                        <h4><span class="sum_amount">{{ $invoice['total'] }}</span></h4>
+                                                            value="{{$invoice['total']}}" value="0">
+                                                        <h4><span class="sum_amount">{{$invoice['total']}}</span></h4>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1400,52 +1409,44 @@
                                                             <tbody>
                                                                 <tr>
                                                                     <td
-                                                                        style="font-size: 14px; color: #000; font-weight: 800; line-height: 18px; vertical-align: top; text-align: left;">
+                                                                        style="font-size: 14px; color: #000; font-weight: 800; line-height: 18px; vertical-align: top; text-align: left;font-family: Montserrat, sans-serif;">
                                                                         <img src="webex.png" alt="logo"
                                                                             id="popup_logo" border="0"
-                                                                            style="object-fit: contain; width: 100px; height: 50px;" />
-                                                                        <span
-                                                                            style="display: block; text-align: left; padding-top: 5px;"
-                                                                            id="popup_add">Adress:
-                                                                            sfc fsf gdg g d g</span>
-                                                                        <span
-                                                                            style="display: block; text-align: left; padding-top: 5px;"
-                                                                            id="popup_phone">Phone:
-                                                                            0123456789</span>
-                                                                        <span
-                                                                            style="display: block; text-align: left; padding-top: 5px;"
-                                                                            id="popup_email">Email: demo@gmail.com</span>
-                                                                        <span
-                                                                            style="display: block; text-align: left; padding-top: 5px;">Website:
-                                                                            https://www.BPM.com</span>
+                                                                            style="object-fit: contain; width: 100px; height: 50px;font-family: Montserrat, sans-serif;" />
+                                                                        <span style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;" id="popup_comp"></span>
+                                                                        <span style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;" id="popup_add"> </span>
+                                                                        <span style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;" id="popup_citystate"></span>
+                                                                        <span style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;" id="popup_phone"> </span>
+                                                                        <span style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;" id="popup_email"></span>
+                                                                        
                                                                     </td>
 
                                                                     <td
-                                                                        style="font-size: 14px; font-weight: 800; color: #000; line-height: 20px; vertical-align: top; text-align: left;">
+                                                                        style="font-size: 14px; font-weight: 800; color: #000; line-height: 20px; vertical-align: top; text-align: left;font-family: Montserrat, sans-serif;">
                                                                         <table border="0" cellpadding="0"
                                                                             cellspacing="0" align="right">
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <td>
                                                                                         <span
-                                                                                            style="color: #2f75b5;
+                                                                                            style="color: #007DD9;
                                                                                             padding: 3px 0px;
                                                                                             text-align: right;
                                                                                             font-size: 36px;
                                                                                             line-height: 1;
                                                                                             font-weight: 500;
                                                                                             display: inline-block;
-                                                                                            width:219px;">INVOICE</span><br>
+                                                                                            width:219px;font-family: Montserrat, sans-serif;">INVOICE</span><br>
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td><span
-                                                                                            style="background: #2f75b5; margin: 10px 0px; padding: 5px; color: #fff;  display: flex;
-                                                                                            justify-content: space-between">
-                                                                                            <span>Invoice#</span>
-                                                                                            <span>Date</span></span>
+                                                                                            style="background: #007DD9; margin: 10px 0px; padding: 5px; color: #fff;  display: flex;
+                                                                                            justify-content: space-between;font-family: Montserrat, sans-serif;">
+                                                                                            <span>INVOICE#</span>
+                                                                                            <span>DATE</span></span>
                                                                                         <span
-                                                                                            style="color: #000; text-align: center; display: inline-block; width: 100%; font-size: 14px; font-weight: 600; display: flex; justify-content: space-between">
+                                                                                            style="color: #000; text-align: center; display: inline-block; width: 100%; font-size: 14px; font-weight: 600; display: flex; justify-content: space-between;font-family: Montserrat, sans-serif;">
                                                                                             <span
                                                                                                 id="popup_invoice_number">2034</span>
                                                                                             <span
@@ -1455,12 +1456,12 @@
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td><span
-                                                                                            style="background: #2f75b5; margin: 10px 0px;  padding: 5px; color: #fff;  display: flex;
-                                                                                            justify-content: center">
-                                                                                            Terms</span>
+                                                                                            style="background: #007DD9; margin: 10px 0px;  padding: 5px; color: #fff;  display: flex;
+                                                                                            justify-content: center;font-family: Montserrat, sans-serif;">
+                                                                                            TERMS</span>
                                                                                         <span
-                                                                                            style="color: #000; text-align: center; display: inline-block; width: 100%; font-size: 14px; font-weight: 600;">
-                                                                                            Due Upon Receipt</span>
+                                                                                            style="color: #000; text-align: center; display: inline-block; width: 100%; font-size: 14px; font-weight: 600;font-family: Montserrat, sans-serif;"  id="popup_term">
+                                                                                           </span>
                                                                                     </td>
                                                                                 </tr>
                                                                             </tbody>
@@ -1480,57 +1481,55 @@
                                                             <tbody>
                                                                 <tr>
                                                                     <td
-                                                                        style="font-size: 14px; color: #000; font-weight: 800; line-height: 18px; vertical-align: top; text-align: right;">
+                                                                        style="font-size: 14px; color: #000; font-weight: 400; line-height: 18px; vertical-align: top; text-align: right;font-family: Montserrat, sans-serif;">
                                                                         <span
-                                                                            style="display: block; text-align: left; background: #2f75b5; padding: 5px; color: #fff;">Bill
+                                                                            style="display: block; text-align: left; background: #007DD9; padding: 5px; color: #fff;font-family: Montserrat, sans-serif;font-weight:400">Bill
                                                                             To</span>
                                                                         <span
-                                                                            style="display: block; text-align: left; padding-top: 5px;"
+                                                                            style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
                                                                             id="popup_billto_name">Name:
                                                                             Pritam Maity</span>
                                                                         <span
-                                                                            style="display: block; text-align: left; padding-top: 5px;"
+                                                                            style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
                                                                             id="popup_billto_com">Company
                                                                             Name</span>
                                                                         <span
-                                                                            style="display: block; text-align: left; padding-top: 5px;"
+                                                                            style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
                                                                             id="popup_billto_add">Address</span>
                                                                         <span
-                                                                            style="display: block; text-align: left; padding-top: 5px;"
+                                                                            style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
                                                                             id="popup_billto_zip">Zip
                                                                             Code</span>
                                                                         <span
-                                                                            style="display: block; text-align: left; padding-top: 5px;"
+                                                                            style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
                                                                             id="popup_billto_ph">Phone</span>
                                                                         <span
-                                                                            style="display: block; text-align: left; padding-top: 5px;"
+                                                                            style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
                                                                             id="popup_billto_email">Email
                                                                             Address</span>
                                                                     </td>
                                                                     <td style="vertical-align: top;">
                                                                         <table border="0" cellpadding="0"
                                                                             cellspacing="0" align="right"
-                                                                            style="vertical-align: top;">
+                                                                            style="vertical-align: top;font-family: Montserrat, sans-serif;">
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <td><span
-                                                                                            style="    background: #2f75b5;
+                                                                                            style="background: #007DD9;
                                                                                             margin: 10px 0px;
                                                                                             padding: 5px;
                                                                                             color: #fff;
                                                                                             width: 211px;
                                                                                             display: table-cell;
-                                                                                            text-align: center;">
-                                                                                            Project Name and Address</span>
+                                                                                            text-align: center;font-family: Montserrat, sans-serif; font-weight:800">
+                                                                                            PROJECT NAME AND ADDRESS</span>
+                                                                                                
                                                                                         <span
-                                                                                            style="display: block; text-align: left; padding-top: 5px;"
-                                                                                            id="popup_project_name">Project
-                                                                                            name : ABCD Project</span>
+                                                                                            style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
+                                                                                            id="popup_project_name"></span>
                                                                                         <span
-                                                                                            style="display: block; text-align: left; padding-top: 5px;"
-                                                                                            id="popup_project_address">Address
-                                                                                            : STKK RD, New Ali Pur, 700001
-                                                                                            Address</span>
+                                                                                            style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
+                                                                                            id="popup_project_address"></span>
                                                                                     </td>
                                                                                 </tr>
                                                                             </tbody>
@@ -1554,21 +1553,21 @@
                                             align="center">
                                             <tbody>
                                                 <tr>
-                                                    <th style="background: #2f75b5; font-size: 16px; font-weight: 800;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;"
+                                                    <th style="background: #007DD9; font-size: 16px; font-weight: 800;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;font-family: Montserrat, sans-serif;"
                                                         width="52%" align="left">
-                                                        Item Name
+                                                        ITEM NAME
                                                     </th>
-                                                    <th style="background: #2f75b5; font-size: 16px;  font-weight: 800;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;"
+                                                    <th style="background: #007DD9; font-size: 16px;  font-weight: 800;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;font-family: Montserrat, sans-serif;"
                                                         align="left">
-                                                        Rate
+                                                        RATE
                                                     </th>
-                                                    <th style="background: #2f75b5; font-size: 16px;  font-weight: 800; color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px"
+                                                    <th style="background: #007DD9; font-size: 16px;  font-weight: 800; color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;font-family: Montserrat, sans-serif;"
                                                         align="center">
-                                                        Quantity
+                                                        QUANTITY
                                                     </th>
-                                                    <th style="background: #2f75b5; font-size: 16px;  font-weight: 800;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px"
+                                                    <th style="background: #007DD9; font-size: 16px;  font-weight: 800;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;font-family: Montserrat, sans-serif;"
                                                         align="right">
-                                                        Amount
+                                                        AMOUNT
                                                     </th>
                                                 </tr>
                                                 <tr>
@@ -1587,41 +1586,41 @@
                                                 </tr>
                                                 <tr>
                                                     <td
-                                                        style="font-size: 16px; font-weight: 600; color: #2f75b5;  line-height: 14px;  vertical-align: top; padding:10px">
-                                                        Notes:
+                                                        style="font-size: 16px; font-weight: 600; color: #007DD9;  line-height: 14px;  vertical-align: top; padding:10px;font-family: Montserrat, sans-serif;">
+                                                        Notes: <span id="popup_notes" style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px;font-family: Montserrat, sans-serif;" align="right"></span>
                                                     </td>
                                                     <td colspan="2"
-                                                        style="font-size: 16px; color: #000; line-height: 14px; text-align: left; vertical-align: top; padding: 10px; font-weight: 400; background: #cce7ff;">
+                                                        style="font-size: 16px; color: #000; line-height: 14px; text-align: left; vertical-align: top; padding: 10px; font-weight: 400; background: #cce7ff;font-family: Montserrat, sans-serif;">
                                                         Subtotal:
                                                     </td>
                                                     <td id="popup_total"
-                                                        style="font-size: 16px; color: #000; line-height: 14px; text-align: right; vertical-align: top; padding: 10px; font-weight: 400; background: #e6f3ff;">
+                                                        style="font-size: 16px; color: #000; line-height: 14px; text-align: right; vertical-align: top; padding: 10px; font-weight: 400; background: #e6f3ff;font-family: Montserrat, sans-serif;">
                                                         $390.00
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td></td>
                                                     <td
-                                                        style="font-size: 16px; color: #000; line-height: 14px; text-align: left; vertical-align: top; padding: 10px; font-weight: 400; background: #cce7ff;">
+                                                        style="font-size: 16px; color: #000; line-height: 14px; text-align: left; vertical-align: top; padding: 10px; font-weight: 400; background: #cce7ff;font-family: Montserrat, sans-serif;">
                                                         Tax:
                                                     </td>
                                                     <td id="popup_tax_percentage"
-                                                        style="font-size: 16px; color: #000; line-height: 14px; text-align: left; vertical-align: top; padding: 10px; font-weight: 400; background: #cce7ff;">
+                                                        style="font-size: 16px; color: #000; line-height: 14px; text-align: left; vertical-align: top; padding: 10px; font-weight: 400; background: #cce7ff;font-family: Montserrat, sans-serif;">
                                                         7.00%
                                                     </td>
                                                     <td id="popup_tax_amount"
-                                                        style="font-size: 16px; color: #000; line-height: 14px; text-align: right; vertical-align: top; padding: 10px; font-weight: 400; background: #e6f3ff;">
+                                                        style="font-size: 16px; color: #000; line-height: 14px; text-align: right; vertical-align: top; padding: 10px; font-weight: 400; background: #e6f3ff;font-family: Montserrat, sans-serif;">
                                                         $27.30
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td></td>
                                                     <td colspan="2"
-                                                        style="font-size: 16px; color: #000; line-height: 14px; text-align: left; vertical-align: top; padding: 10px; font-weight: 600; background: #cce7ff; border-top:2px solid #000">
+                                                        style="font-size: 16px; color: #000; line-height: 14px; text-align: left; vertical-align: top; padding: 10px; font-weight: 600; background: #cce7ff; border-top:2px solid #000;font-family: Montserrat, sans-serif;">
                                                         TOTAL
                                                     </td>
                                                     <td id="popup_sum"
-                                                        style="font-size: 16px; color: #000; line-height: 14px; text-align: right; vertical-align: top; padding: 10px; font-weight: 600; background: #e6f3ff;  border-top:2px solid #000">
+                                                        style="font-size: 16px; color: #000; line-height: 14px; text-align: right; vertical-align: top; padding: 10px; font-weight: 600; background: #e6f3ff;  border-top:2px solid #000;font-family: Montserrat, sans-serif;">
                                                         $417.30
                                                     </td>
                                                 </tr>
@@ -1631,8 +1630,8 @@
                                                 </tr>
                                                 <tr>
                                                     <td colspan="4"
-                                                        style="font-size: 16px; font-weight: 600; color: #2f75b5;  line-height: 14px;  vertical-align: top; padding:10px;">
-                                                        Additional Information:
+                                                        style="font-size: 16px; font-weight: 600; color: #007DD9;  line-height: 14px;  vertical-align: top; padding:10px;font-family: Montserrat, sans-serif;"><span id="additional_info">Additional Information:</span>
+                                                       
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -1643,11 +1642,11 @@
 
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td height="1" colspan="4"
-                                                        style="border-bottom:3px solid #000">
-                                                    </td>
-                                                </tr>
+                                                <!--<tr>-->
+                                                <!--    <td height="1" colspan="4"-->
+                                                <!--        style="border-bottom:3px solid #000">-->
+                                                <!--    </td>-->
+                                                <!--</tr>-->
                                         </table>
                                     </td>
                                 </tr>
@@ -1678,7 +1677,7 @@
                                             <p style="color: #606060; padding: 0px; margin: 0;">Powered by
                                                 xTriam.com</p>
                                             <p
-                                                style="color: #000; padding: 10px; margin: 0;font-style: italic; font-weight: 600;">
+                                                style="color: #000; padding: 10px; margin: 0;font-style: italic; font-weight: 600;font-family: Montserrat, sans-serif;">
                                                 Empowering Window and Door Contractors to Be More Profitable</p>
                                         </td>
                                     </tr>
@@ -1691,7 +1690,7 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary modal-close" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn modal-close" data-dismiss="modal" style="background: #007DD9; color: #fff;font-family: Montserrat, sans-serif;">Cancel</button>
 
                     </div>
                 </div>
@@ -1710,6 +1709,7 @@
         <script type="text/javascript" src="https://cdn.rawgit.com/willowsystems/jSignature/master/libs/jSignature.min.js">
         </script>
         <script src="http://parsleyjs.org/dist/parsley.js"></script>
+        <script src="number-divider.js"></script>
         <script>
             $(document).ready(function() {
                 $('#payment-form').parsley();
@@ -1802,9 +1802,9 @@
                         i +
                         '"  required data-parsley-trigger="keyup"><label for="floatingInputValue" class="col-sm-2 col-form-label">Quantity</label></div></div><div class="col-sm-4"><div class="form-floating"><input type="text" class="form-control rate data-field" required  data-parsley-trigger="keyup" name="rate[]" id="rate_' +
                         i +
-                        '"  ><label for="floatingInputValue" class="col-sm-2 col-form-label">Rate</label></div></div><div class="col-sm-4"><div class="form-floating"><input type="text" class="form-control amount data-field" id="' +
+                        '"  ><label for="floatingInputValue" class="col-sm-12 col-form-label">Unit Price ($)</label></div></div><div class="col-sm-4"><div class="form-floating"><input type="text" class="form-control amount data-field" id="' +
                         i +
-                        '"  name="amount[]" readonly><label for="floatingInputValue" class="col-sm-2 col-form-label">Amount</label></div></div></div><div class="form-group row"><div class="col-sm-6"><div class="form-floating"><input type="text" class="form-control item_description data-field" name="item_description[]" required data-parsley-trigger="keyup" ><label for="floatingInputValue" class="col-sm-2 col-form-label">Name</label></div></div><div class="col-sm-6"><input type="file" class="form-control image data-field" name="image[]" id="image" placeholder="Amount" data-parsley-required="false" data-parsley-trigger="keyup" ></div></div><div class="form-group row"><div class="col-sm-12"><div class="form-floating"><textarea class="form-control additional_details" data-parsley-required="false" data-parsley-trigger="keyup" name="additional_details[]"  rows="2"></textarea><label for="floatingInputValue" class="col-sm-2 col-form-label"> description</label></div></div></div></div></div></div></div>'
+                        '"  name="amount[]" readonly><label for="floatingInputValue" class="col-sm-12 col-form-label">Extended Price ($)</label></div></div></div><div class="form-group row"><div class="col-sm-6"><div class="form-floating"><input type="text" class="form-control item_description data-field" name="item_description[]" required data-parsley-trigger="keyup" ><label for="floatingInputValue" class="col-sm-2 col-form-label">Name</label></div></div><div class="col-sm-6"><input type="file" class="form-control image data-field" name="image[]"  placeholder="Amount" data-parsley-required="false" data-parsley-trigger="keyup" ></div></div><div class="form-group row"><div class="col-sm-12"><div class="form-floating"><textarea class="form-control additional_details" data-parsley-required="false" data-parsley-trigger="keyup" name="additional_details[]"  rows="2"></textarea><label for="floatingInputValue" class="col-sm-2 col-form-label"> description</label></div></div></div></div></div></div></div>'
                     );
                 });
                 $(document).on('click', '.cross-btn', function() {
@@ -1847,12 +1847,15 @@
                     const taxPercentage = parseFloat($('#tax_amount_input').val()) || 0;
                     const taxAmount = (taxPercentage / 100) * result;
                     result += taxAmount;
+            
 
                     // alert(main_result);
                     $('.total_amount').text('$' + sub_total.toFixed(2));
                     $('.sum_amount').text('$' + result.toFixed(2));
                     $('#total_amount').val(sub_total.toFixed(2));
                     $('#sum_amount').val(result.toFixed(2));
+                    
+                    
                 }
 
                 // Attach keyup event to the rate and quantity fields
@@ -1949,6 +1952,8 @@
                     var amounts = $("input.amount");
                     var images = $("input.image");
                     var image_fields = $("input.image_field");
+                
+                    
 
                     $('#tableVal').html('');
                     $('#item-image').html('');
@@ -1957,21 +1962,28 @@
                         var image_field = $(image_fields[i]).data('image') ?? '';
                         var image = $(images[i]).prop('files')[0] ?? '';
                         var reader = new FileReader();
+                   
+                        
                         if (image) {
+                            
                             var new_image = URL.createObjectURL(image);
+                            
                         } else {
                             var new_image = "";
                         }
                         
+                        console.log(new_image);
+                        
                         if (new_image) {
+                            
+                           
                             var newImage =
                                 '<img style="object-fit: cover; width: 150px; height: 150px; padding: 5px;display: inherit;" src="' +
                                 new_image + '">';
-                        } else {
-                           
-                            var newImage = 'No image';
+                                $('#additional_info').show();
+                        }else{
+                            $('#additional_info').hide();
                         }
-
 
                         $('#item-image').append(newImage);
                     }
@@ -1986,10 +1998,10 @@
 
                         if (name) {
                             var newRow = '<tr>' +
-                                '<td style="font-size: 14px; font-weight: 800;  color: #000;  line-height: 18px;  vertical-align: top; padding: 5px; display: flex; align-item: center;">' +
+                                '<td style="font-size: 14px;  color: #000;  line-height: 18px;  vertical-align: top; padding: 5px; display: flex; align-item: center;">' +
                                 name +
                                 '</td>' +
-                                '<td style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px;">' +
+                                '<td style="font-size: 16px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px;">' +
                                 rate + '</td>' +
                                 '<td style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px;" align="center">' +
                                 quantity + '</td>' +
@@ -2001,6 +2013,7 @@
                                 '</tr>';
                             $('#tableVal').append(newRow);
                         }
+                        
 
 
                     }
@@ -2011,11 +2024,16 @@
                     var type = $('.types').val();
 
                     var logo = $('#logo').data('id');
+                    var from_company = $('#bill_from_company').val();
                     var bill_from_add = $('#bill_from_address').val();
+                    var bill_from_city = $('#bill_from_city').val();
+                    var bill_from_state = $('#bill_from_state').val();
+                    var bill_from_zip = $('#bill_from_zipcode').val();
                     var bill_from_phone = $('#bill_from_phone').val();
                     var bill_from_email = $('#bill_from_email').val();
                     var invoice_date = $('#invoice_date').val();
                     console.log(invoice_date);
+                    var term = $('#due_floatingSelect').val();
                     var bill_to_fnm = $('#billto_first_nm').val();
                     var bill_to_lnm = $('#billto_last_nm').val();
                     var bill_to_name = (bill_to_fnm + ' ' + bill_to_lnm);
@@ -2039,12 +2057,16 @@
                     $('#popup_project_address').text('Project Name : ' + project_name);
                     $('#popup_project_name').text('Project Address : ' + project_address);
                     $('#popup_type').text(type);
-                    $('#popup_add').text('Address: ' + bill_from_add);
+                    $('#popup_comp').text(from_company);
+                    $('#popup_add').text(bill_from_add);
+                    $('#popup_citystate').text(bill_from_city + ',' + bill_from_state + ',' + bill_from_zip);
                     $('#popup_phone').text('Phone: ' + bill_from_phone);
                     $('#popup_email').text('Email: ' + bill_from_email);
                     if (invoice_date != '') {
                         $('#popup_date').text(invoice_date);
                     }
+                    
+                    $('#popup_term').text(term);
 
                     $('#popup_billto_name').text(bill_to_name);
                     $('#popup_billto_email').text(bill_to_email);
@@ -2071,4 +2093,14 @@
                 });
             })
         </script>
+        
+        <script>
+            $('.amount').each(function( index ) {
+    $(this).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+});
+        </script>
+        
+       
+       
     @endpush

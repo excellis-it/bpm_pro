@@ -17,7 +17,7 @@
                 <img src="{{ asset('frontend_assets/images/frontImg.jpg') }}" alt="">
                 <div class="text">
                     <div class="login_logo">
-                        <a href="{{ url('/') }}"><img src="{{ asset('frontend_assets/img/logo3.png') }}"
+                        <a href="{{ url('/') }}"><img src="{{ asset('frontend_assets/img/invoice_logo2.png') }}"
                                 alt="">
                         </a>
                     </div>
@@ -54,7 +54,7 @@
                                 <input type="submit" class="submit" value="Submit">
                             </div>
                             <div class="col-md-12 text-center">
-                                <a href="{{ route('forget.password.show') }}" class="forgot_pass">Forgot Your
+                                <a href="{{ route('forget.password.show') }}" class="forgot_pass" style="color: #007DD9; text-decoration: none;">Forgot Your
                                     Password?</a>
                             </div>
                             <div class="text sign-up-text">Don't have an account? <a href="{{ route('register') }}"
@@ -104,4 +104,13 @@
         }
         toastr.warning("{{ session('warning') }}");
     @endif
+</script>
+<script>
+   $(document).ready(function() {
+    $('.submit').click(function() {
+        $(this).prop('disabled', true);
+         $(this).parents('form').submit();
+        
+    });
+});
 </script>
