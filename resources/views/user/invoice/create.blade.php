@@ -1853,11 +1853,9 @@
 
                     for (var i = 0; i < names.length; i++) {
                         var name = $(names[i]).val();
-                        var rate1 = $(rates[i]).val();
-                        var rate = parseInt(rate1).toLocaleString(); 
+                        var rate = $(rates[i]).val();     
                         var quantity = $(quantities[i]).val();
-                        var amount1 = $(amounts[i]).val();
-                        var amount = parseInt(amount1).toLocaleString(); 
+                        var amount = $(amounts[i]).val(); 
                         var image = $(images[i]).prop('files')[0];
                         var reader = new FileReader();
                         if (image) {
@@ -1922,17 +1920,15 @@
                     var bill_to_com = $('#bil_to_company').val();
                     var bill_to_zip = $('#bil_to_zipcode').val();
                     var bill_to_ph = $('#bill_to_phone').val();
-                    var total_amt = $('#total_amount').val();
-                    var t_amt = parseInt(amount1).toLocaleString(); 
+                    var t_amt = $('#total_amount').val();
+
                     var tax_percentage = $('#tax_amount_input').val();
                     console.log(tax_percentage);
                     var invoice_no = $('#invoice_no').val();
                     var term = $('#due_floatingSelect').val();
-                    var sum_amount1 = $('#sum_amount').val();
-                    var sum_amount = parseInt(sum_amount1).toLocaleString(); 
+                    var sum_amount = $('#sum_amount').val();
                     var notes = $('#notes').val();
-                    var tax_amount1 = (sum_amount1 * tax_percentage) / 100;
-                    var tax_amount = parseInt(tax_amount1).toLocaleString(); 
+                    var tax_amount = (sum_amount * tax_percentage) / 100; 
                     var project_name = $('#project_name').val();
                     var project_address = $('#project_address').val();
                 
