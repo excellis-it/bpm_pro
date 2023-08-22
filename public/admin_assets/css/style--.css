@@ -1668,8 +1668,8 @@ button.bg-danger:hover {
 .btn-primary:active,
 .btn-primary.active {
     color: #fff;
-    background-color: #007DD9;
-    border-color: #007DD9;
+    background-color: #1075ab;
+    border-color: #1075ab;
 }
 
 .btn-primary:focus .open > .dropdown-toggle.btn-primary,
@@ -3572,7 +3572,7 @@ input[type="file"].form-control {
 .sidebar .sidebar-menu ul li.active a,
 .two-col-bar .sidebar-menu ul li.active a {
     color: #fff;
-    background-color:#007DD9 ;
+    background-color:#003087 ;
 }
 
 .sidebar .sidebar-menu ul ul,
@@ -6239,7 +6239,7 @@ input[type="file"].form-control {
 }
 
 [data-topbar="light"] body .header {
-    background: #003087;
+    background: #fff;
     border-color: transparent;
 }
 
@@ -6262,7 +6262,7 @@ input[type="file"].form-control {
 }
 
 [data-topbar="light"] body .header .user-menu.nav > li > a {
-    color: #fff;
+    color: #333;
 }
 
 [data-sidebar="light"] body .sidebar-twocol.sidebar .sidebar-right {
@@ -6391,7 +6391,7 @@ input[type="file"].form-control {
 }
 
 [data-layout-mode="orange"] body .header {
-    background: #007DD9;
+    background: #003087;
     /*background: linear-gradient(to right, #F5F5F5 0%, #FF7B02 100%);*/
 }
 
@@ -11511,7 +11511,7 @@ button.close {
 /* End Toogle   */
 
 .submit-btn {
-    background: #007DD9;
+    background: #008000bf;
     border: 0;
     border-radius: 2px;
     color: #fff;
@@ -11531,9 +11531,6 @@ button.close {
     transition: background-color 0.3s;
     will-change: box-shadow, transform;
     border-radius: 20px;
-}
-.submit-btn:hover{
-  color: #fff;    
 }
 
 .error {
@@ -11735,7 +11732,7 @@ body {
             font-weight: 600;
             color: #fff;
             border-radius: 30px;
-            background: #007DD9;
+            background: #003087;
             text-align: center;
           border: none;
         }
@@ -11806,7 +11803,7 @@ body {
             font-weight: 600;
             color: #fff;
             border-radius: 30px;
-            background: #FF9D00;
+            background: #003087;
             text-align: center;
             border: none;
         }
@@ -11816,7 +11813,7 @@ body {
             font-weight: 600;
             color: #fff;
             border-radius: 30px;
-            background: #007DD9;
+            background: #003087;
             text-align: center;
             border: none;
         }

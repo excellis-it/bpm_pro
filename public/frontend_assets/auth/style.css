@@ -17,7 +17,7 @@ body{
 }
 
 .sign{
-  color:#FF7B02;
+  color:#FF9D00;
 }
 .container{
   position: relative;
@@ -128,7 +128,7 @@ body{
   bottom: 0;
   height: 3px;
   width: 25px;
-  background: #FF7B02;
+  background: #FF9D00;
 }
 .forms .signup-form  .title:before{
   width: 20px;
@@ -161,7 +161,7 @@ body{
 }
 .form-content .input-box i{
   position: absolute;
-  color: #FF7B02;
+  color: #FF9D00;
   font-size: 17px;
 }
 .forms .form-content .text{
@@ -181,7 +181,7 @@ body{
 }
 .forms .form-content .button input{
   color: #fff;
-  background: #FF7B02;
+  background: #FF9D00;
   border-radius: 6px;
   padding: 0;
   cursor: pointer;

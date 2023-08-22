@@ -45,7 +45,7 @@ a:hover {
 /* Header */
 #main-menu{
   background: #fff;
-  padding: 20px 0px;
+  padding: 10px 0px;
 }
 .core-menu{
     text-align: center;
@@ -95,7 +95,6 @@ a:hover {
 }
 #main-menu .navbar{
 	padding:0;
-	justify-content: center;
 }
 
 /* banner-sec */
@@ -172,12 +171,6 @@ a:hover {
   color: var(--white-color);
   font-weight: 700;
   margin-bottom: 20px;
-}
-.bn-text h2{
-  font-size: 26px;
-  line-height: 32px;
-  color: var(--white-color);
-  font-weight: 500;
 }
 .bn-text span{
   font-size: 20px;
@@ -262,81 +255,18 @@ a:hover {
   font-weight: 400;
 }
 .btn.get-btn{
-    padding: 8px 25px;
-    border-radius: 10px;
-    background: rgb(15,80,178);
-    background: #FF9D00;
-    color: #fff;
-    letter-spacing: 2px;
-    font-size: 16px;
-    font-weight: 600;
-    margin-right: 25px;
-}
-.btn-get-2 .btn.get-btn{
-  background: #007dd9;  
+  padding: 15px 20px;
+  border-radius: 10px;
+  background: rgb(15,80,178);
+  background: linear-gradient(90deg, #FF7B02 0%, #ff8719 35%);
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 14px;
 }
 .btn.get-btn.sent-btn{
   width: 100%;
   border-radius: 30px;
-}
-/*invoice-sample*/
-.invoice-sample{
-    background: #FF9D00;
-    padding: 50px 0px;
-}
-.invoice-sample-head{
-    text-align: center;
-    color: #fff; 
-}
-.invoice-sample-head h2{
-    font-size: 50px;
-    line-height: 54px;
-    font-weight: 300;
-}
-.invoice-sample-text{
-    text-align: center;
-    color: #fff;   
-    padding: 30px 0px 0px;
-}
-.invoice-sample-text h3{
-    font-size: 22px;
-    line-height: 26px;
-    font-weight: 500;
-}
-.invoice-sample-text p{
-    font-size: 22px;
-    line-height: 26px;
-    font-weight: 300;
-}
-.sign_up_1_sec{
-    background: #007dd9;
-    padding: 100px 0px;
-}
-.invoice-sample-head h2 {
-    font-size: 40px;
-    line-height: 54px;
-}
-.invoice-ticket a{
-     color: #fff;
-    font-size: 40px;
-    line-height: 54px;
-    font-weight: 300;
-}
-.invoice-ticket a span{
-    font-weight: 500;
-}
-.invoice-ticket{
-    text-align: center;
-}
-.make-bill h2{
-     font-size: 50px;
-    line-height: 54px;
-    font-weight: 300;
-}
-.sign-up-head h2{
-     font-size: 40px;
-    line-height: 44px;
-    font-weight: 300;   
 }
 /* services-sec */
 .services{
@@ -504,19 +434,13 @@ a:hover {
 .ftr-sec{
   padding: 0px 0px 0px;
   position: relative;
-  background: #303030;
 }
 .copy-text{
   padding: 30px 0px;
 }
 .copy-text h4{
-    font-size: 16px;
-    color: #fff;
-    font-weight: 300;
-}
-
-.sign-btn{
-    background: #007dd9!important; 
+  font-size: 14px;
+  color: #1E1E1E;
 }
 /*28-07-2023*/
 /*.login_logo {*/
