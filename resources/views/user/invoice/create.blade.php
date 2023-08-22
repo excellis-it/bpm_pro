@@ -1700,10 +1700,13 @@
 
                 function calculateTotalAmount() {
                     $('.rate').each(function(index) {
-                        const rateValue = parseFloat($(this).val()) || 0;
+                        const rateValue = parseFloat($(this).val().replace(/,/g, '')) || 0;
                         const quantityValue = parseFloat($('.quantity').eq(index).val()) || 0;
                         const totalAmount = rateValue * quantityValue;
-                        $('.amount').eq(index).val(totalAmount.toFixed(2));
+                        const formatAmount = totalAmount.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                        $('.amount').eq(index).val(formatAmount);
+                        // not change rate decimal value only replace preg
+                        $('.rate').eq(index).val($(this).val().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
                     });
                 }
 
@@ -1714,9 +1717,9 @@
                     var rs = 0;
                     var result = 0;
                     $('.amount').each(function() {
-                        const totalAmountValue = parseFloat($(this).val()) || 0;
-                        result += totalAmountValue;
-                        rs += totalAmountValue;
+                        const amountValue = parseFloat($(this).val().replace(/,/g, '')) || 0;
+                        result += amountValue;
+                        rs += amountValue;
                     });
                     var sub_total = rs;
                     const selectedOption = $('.currency-select').val();
@@ -1735,8 +1738,8 @@
                     result += taxAmount;
 
                     // alert(main_result);
-                    $('.total_amount').text('$' + sub_total.toFixed(2));
-                    $('.sum_amount').text('$' + result.toFixed(2));
+                    $('.total_amount').text('$' + sub_total.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+                    $('.sum_amount').text('$' + result.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
                     $('#total_amount').val(sub_total.toFixed(2));
                     $('#sum_amount').val(result.toFixed(2));
                 }
@@ -1759,15 +1762,9 @@
         <script>
             $(document).on('keyup', '.rate', function() {
                 var inputValue = $(this).val();
-
-                // Use a regular expression to match only numbers with two digits after the decimal point
-                var regex = /^\d+(\.\d{0,2})?$/;
-
-                // Test if the input value matches the pattern
-                if (!regex.test(inputValue)) {
-                    // If the input doesn't match the pattern, remove the last character (invalid input)
-                    $(this).val(inputValue.slice(0, -1));
-                }
+                
+                var numericValue = inputValue.replace(/\D/g, '');
+                $(this).val(numericValue);
             });
 
             $(document).on('keyup', '.quantity', function() {
