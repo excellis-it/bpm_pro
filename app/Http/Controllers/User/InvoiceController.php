@@ -24,7 +24,7 @@ class InvoiceController extends Controller
 
     public function index()
     {
-        if (!Auth::user()->logo) {
+        if (!Auth::user()->company) {
             return redirect()->route('user.profile')->with('error', 'please update your profile first');
         } else {
             $user_invoices = Invoice::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get();
@@ -42,10 +42,7 @@ class InvoiceController extends Controller
     {
         try {
           
-
         $currentDate = Carbon::now();
-
-
         $invoice = new Invoice;
         $invoice->user_id = Auth::user()->id;
         if ($request->send_in == 1) {
@@ -165,9 +162,10 @@ class InvoiceController extends Controller
             'items' => $items,
         ];
 
+     
         $pdf = PDF::loadView('pdf.invoice', [
-                'data' => $data,
-            ])->setOptions(['defaultFont' => 'Verdana']);
+            'data' => $data,
+        ]);
         $pdf_file = new File();
         $content = $pdf->download()->getOriginalContent();
         $filename = 'en' . $invoice->id . date('YmdHi') . '.pdf';
