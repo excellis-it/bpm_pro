@@ -1506,7 +1506,7 @@
                                                                                             color: #fff;
                                                                                             width: 211px;
                                                                                             display: table-cell;
-                                                                                            text-align: center;font-family: Montserrat, sans-serif; font-weight:800;">
+                                                                                            text-align: center;font-family: Montserrat, sans-serif; font-weight:800">
                                                                                             PROJECT NAME AND ADDRESS</span>
                                                                                                 
                                                                                         <span
