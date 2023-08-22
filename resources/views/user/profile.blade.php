@@ -241,8 +241,7 @@
                                                                 </div>
                                                                 
                                                                 <div class="col-lg-6 col-12 my-1">
-                                                                    <label class="form-label">Company Logo<span
-                                                                        style="color: red;">*</span></label>
+                                                                    <label class="form-label">Company Logo</label>
                                                                     <input type="file" name="logo"
                                                                         class="form-control">
                                                                     @if ($errors->has('logo'))

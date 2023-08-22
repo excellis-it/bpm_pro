@@ -1847,9 +1847,11 @@
 
                     for (var i = 0; i < names.length; i++) {
                         var name = $(names[i]).val();
-                        var rate = $(rates[i]).val();
+                        var rate1 = $(rates[i]).val();
+                        var rate = parseInt(rate1).toLocaleString(); 
                         var quantity = $(quantities[i]).val();
-                        var amount = $(amounts[i]).val();
+                        var amount1 = $(amounts[i]).val();
+                        var amount = parseInt(amount1).toLocaleString(); 
                         var image = $(images[i]).prop('files')[0];
                         var reader = new FileReader();
                         if (image) {
@@ -1861,10 +1863,10 @@
 
                         if (name) {
                             var newRow = '<tr>' +
-                                '<td style="font-size: 14px; font-weight: 800;  color: #000;  line-height: 18px;  vertical-align: top; padding: 5px; display: flex; align-item: center;">' +
+                                '<td style="font-size: 14px;  color: #000;  line-height: 18px;  vertical-align: top; padding: 5px; display: flex; align-item: center;">' +
                                 name +
                                 '</td>' +
-                                '<td style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px;">' +
+                                '<td style="font-size: 16px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px;">$' +
                                 rate + '</td>' +
                                 '<td style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px;" align="center">' +
                                 quantity + '</td>' +
@@ -1914,14 +1916,17 @@
                     var bill_to_com = $('#bil_to_company').val();
                     var bill_to_zip = $('#bil_to_zipcode').val();
                     var bill_to_ph = $('#bill_to_phone').val();
-                    var t_amt = $('#total_amount').val();
+                    var total_amt = $('#total_amount').val();
+                    var t_amt = parseInt(amount1).toLocaleString(); 
                     var tax_percentage = $('#tax_amount_input').val();
                     console.log(tax_percentage);
                     var invoice_no = $('#invoice_no').val();
                     var term = $('#due_floatingSelect').val();
-                    var sum_amount = $('#sum_amount').val();
+                    var sum_amount1 = $('#sum_amount').val();
+                    var sum_amount = parseInt(sum_amount1).toLocaleString(); 
                     var notes = $('#notes').val();
-                    var tax_amount = (sum_amount * tax_percentage) / 100;
+                    var tax_amount1 = (sum_amount1 * tax_percentage) / 100;
+                    var tax_amount = parseInt(tax_amount1).toLocaleString(); 
                     var project_name = $('#project_name').val();
                     var project_address = $('#project_address').val();
                 
@@ -1954,7 +1959,7 @@
                         $('#popup_tax_percentage').text(0);
                     }
                     $('#popup_logo').attr('src', logo);
-                    $('#popup_tax_amount').text('$' + tax_amount.toFixed(2));
+                    $('#popup_tax_amount').text('$' + tax_amount);
                     $('#popup_sum').text('$' + sum_amount);
                     $('#popup_notes').text(notes);
 

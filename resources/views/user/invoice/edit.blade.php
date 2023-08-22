@@ -1,6 +1,6 @@
 @extends('user.layouts.master')
 @section('title')
-    {{ env('APP_NAME') }} | Create Invoice
+    {{ env('APP_NAME') }} | Edit Invoice
 @endsection
 <!--<link rel="stylesheet" type="text/css" href="http://keith-wood.name/css/jquery.signature.css">-->
 
@@ -982,22 +982,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="form-group row">
-
-                                                    {{-- <div class="col-sm-12">
-                                                        <div class="form-floating">
-                                                            <input type="text" class="form-control"
-                                                                name="bil_to_faxNo" data-parsley-required="false"
-                                                                data-parsley-trigger="keyup" data-parsley-type="digits"
-                                                                id="floatingInputValue">
-                                                            <label for="floatingInputValue"
-                                                                class="col-sm-2 col-form-label">Fax</label>
-                                                            @if ($errors->has('bil_to_faxNo'))
-                                                                <div class="error" style="color:red;">
-                                                                    {{ $errors->first('bil_to_faxNo') }}</div>
-                                                            @endif
-                                                        </div>
-                                                    </div> --}}
+                                                <div class="form-group row">                                           
                                                 </div>
                                             </div>
                                         </div>
@@ -1539,7 +1524,7 @@
                                                                                             color: #fff;
                                                                                             width: 211px;
                                                                                             display: table-cell;
-                                                                                            text-align: center;font-family: Montserrat, sans-serif; font-weight:800">
+                                                                                            text-align: center;font-family: Montserrat, sans-serif; font-weight:800;">
                                                                                             PROJECT NAME AND ADDRESS</span>
 
                                                                                         <span
@@ -1577,7 +1562,7 @@
                                                     </th>
                                                     <th style="background: #007DD9; font-size: 16px;  font-weight: 800;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;font-family: Montserrat, sans-serif;"
                                                         align="left">
-                                                        RATE
+                                                        UNIT PRICE
                                                     </th>
                                                     <th style="background: #007DD9; font-size: 16px;  font-weight: 800; color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;font-family: Montserrat, sans-serif;"
                                                         align="center">
@@ -1585,7 +1570,7 @@
                                                     </th>
                                                     <th style="background: #007DD9; font-size: 16px;  font-weight: 800;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;font-family: Montserrat, sans-serif;"
                                                         align="right">
-                                                        AMOUNT
+                                                        EXTENDED PRICE
                                                     </th>
                                                 </tr>
                                                 <tr>
