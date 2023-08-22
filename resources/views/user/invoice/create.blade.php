@@ -1840,7 +1840,7 @@
                     var quantities = $("input.quantity");
                     var amounts = $("input.amount");
                     var images = $("input.image");
-                    // console.log(names);
+                    // console.log(names); 
                     $('#tableVal').html('');
                     $('#item-image').html('');
                     // }
