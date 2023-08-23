@@ -903,7 +903,6 @@
                                                 </div>
 
                                                 <div class="form-group row">
-
                                                     <div class="col-sm-12">
                                                         <div class="form-floating">
                                                             <input type="text" class="form-control"
@@ -922,7 +921,6 @@
                                                 </div>
 
                                                 <div class="form-group row">
-
                                                     <div class="col-sm-12">
                                                         <div class="form-floating">
                                                             <select class="form-control ms-0" name="bil_to_state" required
@@ -948,7 +946,6 @@
 
 
                                                 <div class="form-group row">
-
                                                     <div class="col-sm-12">
                                                         <div class="form-floating">
                                                             <input type="text" class="form-control"
@@ -1430,7 +1427,7 @@
                                                                         style="font-size: 14px; color: #000; font-weight: 500; line-height: 18px; vertical-align: top; text-align: left;font-family: Montserrat, sans-serif;">
                                                                         <img src="webex.png" alt="logo"
                                                                             id="popup_logo" border="0"
-                                                                            style="object-fit: contain; width: 100px; height: 50px;font-family: Montserrat, sans-serif;" />
+                                                                            style="object-fit: contain; width: 100px; height: 50px;font-family: Montserrat, sans-serif; display:inline-block; />
                                                                         <span
                                                                             style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
                                                                             id="popup_comp"></span>
@@ -1551,13 +1548,13 @@
                                                                                             width: 250px;
                                                                                             display: inline-block;
                                                                                             text-align: center;font-family: Montserrat, sans-serif; font-weight:500;font-size: 14px;">
-                                                                                            PROJECT NAME AND ADDRESS</span>
+                                                                                            PROJECT NAME AND ADDRESS</span></br>
 
                                                                                         <span
-                                                                                            style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
-                                                                                            id="popup_project_name"></span>
+                                                                                            style="display: inline-block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;width:250px;"
+                                                                                            id="popup_project_name"></span></br>
                                                                                         <span
-                                                                                            style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
+                                                                                            style="display: inline-block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;width:250px;"
                                                                                             id="popup_project_address"></span>
                                                                                     </td>
                                                                                 </tr>
@@ -1580,10 +1577,10 @@
                                     <td style="padding:0 30px">
                                         <table width="100%" border="0" cellpadding="0" cellspacing="0"
                                             align="center">
-                                            <tbody>
+                                            <thead>
                                                 <tr>
                                                     <th style="background: #007DD9; font-size: 16px; font-weight: 500;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;font-family: Montserrat, sans-serif;"
-                                                        width="52%" align="left">
+                                                        width="32%" align="left">
                                                         ITEM NAME
                                                     </th>
                                                     <th style="background: #007DD9; font-size: 16px;  font-weight: 500;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;font-family: Montserrat, sans-serif;"
@@ -1602,17 +1599,11 @@
                                                 <tr>
                                                     <td height="1" style="background: #bebebe;" colspan="4"></td>
                                                 </tr>
-                                                <tr>
-                                                    <td height="10" colspan="4"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td height="10" colspan="4">
-                                                        <table id="tableVal" width="100%">
-
-
-                                                        </table>
-                                                    </td>
-                                                </tr>
+                                                </thead>
+                                                <tbody id="tableVal">
+                                                
+                                                </tbody>
+                                                <tfoot>
                                                 <tr>
                                                     <td
                                                         style="font-size: 16px; font-weight: 600; color: #007DD9;  line-height: 14px;  vertical-align: top; padding:10px;font-family: Montserrat, sans-serif;">
@@ -1683,7 +1674,7 @@
                                     </td>
                                 </tr>
 
-                            </tbody>
+                            </tfoot>
                         </table>
                         </td>
                         </tr>
@@ -1699,7 +1690,7 @@
 
                         <tr>
                             <td>
-                                <table width="600" border="0" cellpadding="0" cellspacing="0" align="center"
+                                <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center"
                                     bgcolor="#ffffff" style="border-radius: 0 0 10px 10px;">
                                     <tr>
                                         <td height="20"></td>
@@ -2030,7 +2021,7 @@
 
 
 
-                        if (name) {
+                      if (name) {
                             var newRow = '<tr>' +
                                 '<td style="font-size: 14px;  color: #000;  line-height: 18px;  vertical-align: top; padding: 5px; display: flex; align-item: center;">' +
                                 name +
@@ -2088,8 +2079,8 @@
 
 
                     // console.log(type, bill_from_add);
-                    $('#popup_project_address').text('Project Name : ' + project_name);
-                    $('#popup_project_name').text('Project Address : ' + project_address);
+                    $('#popup_project_address').text(project_name);
+                    $('#popup_project_name').text(project_address);
                     $('#popup_type').text(type);
                     $('#popup_comp').text(from_company);
                     $('#popup_add').text(bill_from_add);

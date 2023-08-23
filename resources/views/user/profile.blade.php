@@ -18,7 +18,7 @@
             <div class="page-content">
                 <!--breadcrumb-->
                 <div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
-                    {{-- <div class="breadcrumb-title pe-3">Admin Profile</div> --}}
+                   <!--<div class="breadcrumb-title pe-3">Admin Profile</div>-->
                     <div class="ps-3">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb mb-0 p-0">
@@ -188,6 +188,7 @@
                                                                 <div class="col-lg-6 col-12 my-1">
                                                                   <div class="form-floating">
                                                                     <select class="form-select" name="state" id="floatingSelect" aria-label="Floating label select example">
+                                                                       <option value=""> Select State</option>
                                                                         @foreach ($states as $state)
                                                                             <option value="{{ $state->name }}"
                                                                                 @if (Auth::user()->state == $state->name) selected @endif>
@@ -197,6 +198,10 @@
                                                                     </select>
                                                                      <label for="floatingInputValue">State<span
                                                                         style="color: red;">*</span></label>
+                                                                        @if ($errors->has('state'))
+                                                                        <div class="error" style="color:red;">
+                                                                            {{ $errors->first('state') }}</div>
+                                                                    @endif
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-12 my-1">
