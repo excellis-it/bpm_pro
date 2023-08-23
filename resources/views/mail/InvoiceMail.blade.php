@@ -24,7 +24,7 @@
                                                     style="font-size: 14px; color: #000; font-weight: 500; line-height: 18px; vertical-align: top; text-align: left; font-family: Montserrat;">
                                                     
                                                     <img src="{{ URL::asset('public/storage') }}/{{ $maildata['invoice_detail']['image'] }}" alt="logo" border="0"
-                                                        style="object-fit: contain; width: 100px; height: 50px;" />
+                                                        style="object-fit: contain; width: 100px; height: 50px;font-family: Montserrat, sans-serif; display:inline-block;" />
                                                         <span
                                                         style="display: block; text-align: left; padding-top: 5px;">
                                                         {{ $maildata['invoice_detail']['from_company'] }}</span>
@@ -101,7 +101,7 @@
                                                         style="display: block; text-align: left; background: #007DD9; padding: 5px; color: #fff; font-weight:500; font-family: Montserrat;">Bill
                                                         To</span>
                                                     <span
-                                                        style="display: block; text-align: left; padding-top: 5px; font-family: Montserrat;">
+                                                        style="display: block; text-align: left; padding-top: 5px; font-family: Montserrat;font-weight:400;">
                                                         {{ $maildata['invoice_detail']['bil_to_name'] }}</span>
                                                     <span
                                                         style="display: block; text-align: left; padding-top: 5px; font-family: Montserrat;">{{ $maildata['invoice_detail']['company'] }}</span>
@@ -163,7 +163,7 @@
                         <tbody>
                             <tr>
                                 <th style="background: #007DD9; font-size: 16px; font-weight: 500;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px; font-family: Montserrat;"
-                                    width="52%" align="left">
+                                    width="32%" align="left">
                                     ITEM NAME
                                 </th>
                                  <th style="background: #007DD9; font-size: 16px;  font-weight: 500; color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px; font-family: Montserrat;"
@@ -177,7 +177,7 @@
                                
                                 <th style="background: #007DD9; font-size: 16px;  font-weight: 500;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px; font-family: Montserrat;"
                                     align="right">
-                                    AMOUNT
+                                    EXTENDED PRICE
                                 </th>
                             </tr>
                             <tr>

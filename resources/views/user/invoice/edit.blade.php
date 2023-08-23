@@ -65,6 +65,11 @@
             margin: 60px 0px 20px 0px;
             border-radius: 10px;
         }
+        
+        .description_box{
+           margin: 20px 0px; 
+        }
+
 
         /*.form-left .form-group {*/
         /*    padding: 10px 0px;*/
@@ -1008,7 +1013,7 @@
                                 <div class="Item-div">
                                     <h2>Item Description</h2>
                                 </div>
-                                <div class="form-div-wrap add_item_box">
+                                <div class="form-div-wrap add_item_box description_box">
                                     @foreach ($invoice['items'] as $key => $value)
                                         <div class="add-item-wrap">
                                             @if ($key != 0)
@@ -1166,7 +1171,7 @@
                                     </div>
                                 </div>
 
-                                <div class="form-div-wrap">
+                                <div class="form-div-wrap description_box">
                                     <div class="form-group row">
                                         <div class="col-sm-12">
                                             <div class="form-floating">
@@ -1225,9 +1230,11 @@
                                 <div class="form-right">
                                     <div class="logo-div-wrap d-flex align-items-center justify-content-between mt-3">
                                         <div class="logo-div">
-                                            <a href="https://excellis.co.in/bpm_pro"><img
-                                                    src="{{ Storage::url(Auth::user()->logo) }}" alt=""
-                                                    id="logo" data-id="{{ Storage::url(Auth::user()->logo) }}"></a>
+                                            @if(Auth::user()->logo)
+                                            <a href="https://excellis.co.in/bpm_pro">
+                                                <img src="{{ Storage::url(Auth::user()->logo) }}" alt="" id="logo" data-id="{{ Storage::url(Auth::user()->logo) }}">
+                                            </a>
+                                            @endif
                                         </div>
                                         <div class="logo-text">
                                             <h3>{{ Auth::user()->company }}</h3>
@@ -1427,7 +1434,7 @@
                                                                         style="font-size: 14px; color: #000; font-weight: 500; line-height: 18px; vertical-align: top; text-align: left;font-family: Montserrat, sans-serif;">
                                                                         <img src="webex.png" alt="logo"
                                                                             id="popup_logo" border="0"
-                                                                            style="object-fit: contain; width: 100px; height: 50px;font-family: Montserrat, sans-serif; display:inline-block; />
+                                                                            style="object-fit: contain; width: 100px; height: 50px;font-family: Montserrat, sans-serif; display:inline-block;" />
                                                                         <span
                                                                             style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
                                                                             id="popup_comp"></span>
@@ -1987,21 +1994,14 @@
                         var image_field = $(image_fields[i]).data('image') ?? '';
                         var image = $(images[i]).prop('files')[0] ?? '';
                         var reader = new FileReader();
-
-
+                        
                         if (image) {
-
                             var new_image = URL.createObjectURL(image);
-
                         } else {
                             var new_image = "";
                         }
-
                         console.log(new_image);
-
                         if (new_image) {
-
-
                             var newImage =
                                 '<img style="object-fit: cover; width: 150px; height: 150px; padding: 5px;display: inherit;" src="' +
                                 new_image + '">';
@@ -2019,14 +2019,12 @@
                         var quantity = $(quantities[i]).val();
                         var amount = $(amounts[i]).val();
 
-
-
                       if (name) {
                             var newRow = '<tr>' +
                                 '<td style="font-size: 14px;  color: #000;  line-height: 18px;  vertical-align: top; padding: 5px; display: flex; align-item: center;">' +
                                 name +
                                 '</td>' +
-                                '<td style="font-size: 16px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px;">' +
+                                '<td style="font-size: 16px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px;">$' +
                                 rate + '</td>' +
                                 '<td style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px;" align="center">' +
                                 quantity + '</td>' +
@@ -2039,11 +2037,7 @@
                             $('#tableVal').append(newRow);
                         }
 
-
-
                     }
-
-
 
                     $('#pdfModal').modal('show');
                     var type = $('.types').val();
@@ -2079,8 +2073,9 @@
 
 
                     // console.log(type, bill_from_add);
-                    $('#popup_project_address').text(project_name);
-                    $('#popup_project_name').text(project_address);
+                    
+                    $('#popup_project_name').text(project_name);
+                    $('#popup_project_address').text(project_address);
                     $('#popup_type').text(type);
                     $('#popup_comp').text(from_company);
                     $('#popup_add').text(bill_from_add);

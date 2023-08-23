@@ -4,25 +4,6 @@
 <head>
 <style type="text/css">
 
-/* latin-ext */
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Hw3aXpsog.woff2) format('woff2');
-  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Hw5aXo.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-body {
-    font-family: Montserrat, sans-serif;
- }
 </style>
 </head>
 <body style="background: #f2f2f2;">
@@ -42,9 +23,10 @@ body {
                                             <tr>
                                                 <td
                                                     style="font-size: 14px; color: #000; font-weight: 500; line-height: 18px; vertical-align: top; text-align: left; ">
-                                                    
+                                                    @if($data['invoice_detail']['image']) 
                                                     <img src="{{ 'data:image/png;base64,' . base64_encode(file_get_contents(public_path('storage/' . $data['invoice_detail']['image']))) }}" alt="logo" border="0"
                                                         style="object-fit: contain; width: 100px; height: 50px;" />
+                                                    @endif        
                                                         <span
                                                         style="display: block; text-align: left; padding-top: 5px;">
                                                         {{ $data['invoice_detail']['from_company'] }}</span>

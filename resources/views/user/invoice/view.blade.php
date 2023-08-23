@@ -52,10 +52,13 @@
                                                         <tbody>
                                                             <tr>
                                                                 <td
-                                                                    style="font-size: 14px; color: #000; font-weight: 500; line-height: 18px; vertical-align: top; text-align: left; width:40%;">
+                                                                    style="font-size: 14px; color: #000; font-weight: 500; line-height: 18px; vertical-align: top; text-align: left;font-family: Montserrat, sans-serif;">
+                                                                    @if($data['invoice_detail']['image'])
                                                                     <img src="{{ 'data:image/png;base64,' . base64_encode(file_get_contents(public_path('storage/' . $data['invoice_detail']['image']))) }}"
                                                                         alt="logo" border="0"
-                                                                        style="object-fit: contain; width 100px; height: 50px;" />
+                                                                        style="object-fit: contain; width: 100px; height: 50px;font-family: Montserrat, sans-serif; display:inline-block;" />
+                                                                    @endif
+
                                                                     <span
                                                                         style="display: block; text-align: left; padding-top: 5px;">
                                                                         {{ $data['invoice_detail']['from_address'] }}</span>
@@ -67,10 +70,8 @@
                                                                     <span
                                                                         style="display: block; text-align: left; padding-top: 5px;">Phone:{{ $data['invoice_detail']['from_phone'] }}</span>
                                                                     <span
-                                                                        style="display: block; text-align: left; padding-top: 5px;">Email
-                                                                        :
+                                                                        style="display: block; text-align: left; padding-top: 5px;">Email:
                                                                         {{ $data['invoice_detail']['from_email'] }}</span>
-
                                                                 </td>
 
                                                                 <td
@@ -173,11 +174,10 @@
                                                                     text-align: left; ">
                                                                                         PROJECT NAME AND ADDRESS</span>
                                                                                     <span
-                                                                                        style="display: block; text-align: left; padding-top: 5px;">Project
-                                                                                        Name:
+                                                                                        style="display: block; text-align: left; padding-top: 5px;">
                                                                                         {{ $data['invoice_detail']['project_name'] }}</span>
                                                                                     <span
-                                                                                        style="display: block; text-align: left; padding-top: 5px;">Address:
+                                                                                        style="display: block; text-align: left; padding-top: 5px;">
                                                                                         {{ $data['invoice_detail']['project_address'] }}</span>
                                                                                 </td>
                                                                             </tr>
@@ -348,9 +348,6 @@
                                                         @if ($vall->image)
                                                             <img style="object-fit: cover; width: 150px; height: 150px; padding: 5px; display: inherit;" 
                                                                 src="{{ 'data:image/png;base64,' . base64_encode(file_get_contents(public_path('storage/' . $vall->image))) }}">
-                                                        @else
-                                                            <img style="object-fit: cover; width: 150px; height: 150px; padding: 5px; display: inherit;"
-                                                                src="{{ 'data:image/png;base64,' . base64_encode(file_get_contents('admin_assets/images/image.png')) }}">
                                                         @endif
                                                     @endforeach
                                                     </div>
@@ -378,7 +375,7 @@
 
                             <tr>
                                 <td>
-                                    <table width="600" border="0" cellpadding="0" cellspacing="0" align="center"
+                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center"
                                         bgcolor="#ffffff" style="border-radius: 0 0 10px 10px;">
                                         <tr>
                                             <td height="20"></td>

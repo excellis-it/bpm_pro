@@ -34,7 +34,7 @@ class InvoiceMail extends Mailable
         $path = Storage::url($this->maildata['pdf_file']);
         
         return $this->view('mail.InvoiceMail')
-            ->subject('Invoice for Invoiceticket')
+            ->subject('Invoice for '.$this->maildata['invoice_detail']['company'])
             ->attach($path);
 
         

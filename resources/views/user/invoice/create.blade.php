@@ -357,6 +357,9 @@
             right: 14px;
             font-size: 14px;
         }
+        .description_box{
+           margin: 20px 0px; 
+        }
 
 
         /* Responsive */
@@ -973,7 +976,7 @@
                                 <div class="Item-div">
                                     <h2>Item Description</h2>
                                 </div>
-                                <div class="form-div-wrap add_item_box">
+                                <div class="form-div-wrap add_item_box description_box">
                                     <div class="add-item-wrap">
                                         <div class="row justify-content-between">
                                             <div class="col-xl-12">
@@ -1110,7 +1113,7 @@
                                     </div>
                                 </div>
 
-                                <div class="form-div-wrap">
+                                <div class="form-div-wrap description_box">
                                     <div class="form-group row">
                                         <div class="col-sm-12">
                                             <div class="form-floating">
@@ -1167,9 +1170,11 @@
                                 <div class="form-right">
                                     <div class="logo-div-wrap d-flex align-items-center justify-content-between mt-3">
                                         <div class="logo-div">
+                                            @if(Auth::user()->logo)
                                             <a href="https://excellis.co.in/bpm_pro"><img
                                                     src="{{ Storage::url(Auth::user()->logo) }}" alt=""
                                                     id="logo" data-id="{{ Storage::url(Auth::user()->logo) }}"></a>
+                                            @endif
                                         </div>
                                         <div class="logo-text">
                                             <h3>{{ Auth::user()->company }}</h3>
@@ -1341,7 +1346,7 @@
                                                                         style="font-size: 14px; color: #000; font-weight: 500; line-height: 18px; vertical-align: top; text-align: left;font-family: Montserrat, sans-serif;">
                                                                         <img src="webex.png" alt="logo"
                                                                             id="popup_logo" border="0"
-                                                                            style="object-fit: contain; width: 100px; height: 50px;" />
+                                                                            style="object-fit: contain; width: 100px; height: 50px;font-family: Montserrat, sans-serif; display:inline-block;" />
                                                                         <span
                                                                             style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
                                                                             id="popup_comp"></span>
@@ -1375,7 +1380,7 @@
                                                                                             line-height: 1;
                                                                                             font-weight: 500;
                                                                                             display: inline-block;
-                                                                                            width:219px;font-family: Montserrat, sans-serif;">INVOICE</span><br>
+                                                                                            width:219px;font-family: Montserrat, sans-serif;" id="popup_type"></span><br>
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>
@@ -1415,7 +1420,7 @@
                                                     <td>
                                                         <table border="0" cellpadding="0" cellspacing="0"
                                                             align="left"
-                                                            style="width: 100%; vertical-align: top; margin-top: 18px;font-family: Montserrat, sans-serif;">
+                                                            style="width: 100%; vertical-align: top; margin-top: 18px;">
                                                             <tbody>
                                                                 <tr>
                                                                     <td
@@ -1460,16 +1465,13 @@
                                                                                             width: 250px;
                                                                                             display: inline-block;
                                                                                             text-align: center;font-family: Montserrat, sans-serif; font-weight:500;font-size: 14px;">
-                                                                                            Project Name and Address</span>
+                                                                                            PROJECT NAME AND ADDRESS</span>
                                                                                         <span
                                                                                             style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
-                                                                                            id="popup_project_name">Project
-                                                                                            name : ABCD Project</span>
+                                                                                            id="popup_project_name"></span>
                                                                                         <span
                                                                                             style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
-                                                                                            id="popup_project_address">Address
-                                                                                            : STKK RD, New Ali Pur, 700001
-                                                                                            Address</span>
+                                                                                            id="popup_project_address"></span>
                                                                                     </td>
                                                                                 </tr>
                                                                             </tbody>
@@ -1491,39 +1493,34 @@
                                     <td style="padding:0 30px">
                                         <table width="100%" border="0" cellpadding="0" cellspacing="0"
                                             align="center">
-                                            <tbody>
+                                            <thead>
                                                 <tr>
                                                     <th style="background: #007DD9; font-size: 16px; font-weight: 500;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;font-family: Montserrat, sans-serif;"
-                                                        width="52%" align="left">
+                                                    width="32%" align="left">
                                                         ITEM NAME
                                                     </th>
                                                     <th style="background: #007DD9; font-size: 16px;  font-weight: 500;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;font-family: Montserrat, sans-serif;"
-                                                        align="left">
-                                                        RATE
+                                                    align="left">
+                                                        UNIT PRICE
                                                     </th>
                                                     <th style="background: #007DD9; font-size: 16px;  font-weight: 500; color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;font-family: Montserrat, sans-serif;"
-                                                        align="center">
+                                                    align="center">
                                                         QUANTITY
                                                     </th>
                                                     <th style="background: #007DD9; font-size: 16px;  font-weight: 500;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;font-family: Montserrat, sans-serif;"
-                                                        align="right">
-                                                        AMOUNT
+                                                    align="right">
+                                                        EXTENDED PRICE
                                                     </th>
                                                 </tr>
                                                 <tr>
                                                     <td height="1" style="background: #bebebe;" colspan="4"></td>
                                                 </tr>
-                                                <tr>
-                                                    <td height="10" colspan="4"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td height="10" colspan="4">
-                                                        <table id="tableVal" width="100%">
-
-
-                                                        </table>
-                                                    </td>
-                                                </tr>
+                                            </thead>
+                                                
+                                            <tbody id="tableVal">
+                                                
+                                            </tbody>
+                                            <tfoot>
                                                 <tr>
                                                     <td
                                                         style="font-size: 16px; font-weight: 600; color: #007DD9;  line-height: 14px;  vertical-align: top; padding:10px;font-family: Montserrat, sans-serif;">
@@ -1592,7 +1589,7 @@
                                         </table>
                                     </td>
                                 </tr>
-
+                            </tfoot>
                             </tbody>
                         </table>
                         </td>
@@ -1609,7 +1606,7 @@
 
                         <tr>
                             <td>
-                                <table width="600" border="0" cellpadding="0" cellspacing="0" align="center"
+                                <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center"
                                     bgcolor="#ffffff" style="border-radius: 0 0 10px 10px;">
                                     <tr>
                                         <td height="20"></td>
@@ -1908,7 +1905,7 @@
                         } else {
                             var new_image = "";
                         }
-
+                        
 
                         if (name) {
                             var newRow = '<tr>' +
@@ -1980,8 +1977,8 @@
 
 
                     // console.log(type, bill_from_add);
-                    $('#popup_project_address').text('Project Name : ' + project_name);
-                    $('#popup_project_name').text('Project Address : ' + project_address);
+                    $('#popup_project_name').text(project_name);
+                    $('#popup_project_address').text(project_address);
                     $('#popup_type').text(type);
                     $('#popup_add').text(bill_from_add);
                     $('#popup_citystate').text(bill_from_city + ',' + bill_from_state + ',' + bill_from_zip);
