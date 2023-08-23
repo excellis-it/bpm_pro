@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
     <!-- font -->
     <!--<link-->
-    <!--    href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"-->
+    <!--    href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,500;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,500;1,900&display=swap"-->
     <!--    rel="stylesheet">-->
     <link rel="stylesheet" href="{{ asset('admin_assets/assets/css/bootstrap.min.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -449,9 +449,7 @@
             color: #ff0000;
         }
 
-        .modal-content {
-            width: 130%;
-        }
+       
 
         .form-div {
             position: relative;
@@ -1321,10 +1319,10 @@
 
         {{-- invoice view modal --}}
         <div id="pdfModal" class="modal fade">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-body">
-                        <table width="600" border="0" cellpadding="0" cellspacing="0" bgcolor="#ffffff"
+                        <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#ffffff"
                             style="border-radius: 0px; margin: 0 auto;">
                             <tbody>
 
@@ -1340,7 +1338,7 @@
                                                             <tbody>
                                                                 <tr>
                                                                     <td
-                                                                        style="font-size: 14px; color: #000; font-weight: 800; line-height: 18px; vertical-align: top; text-align: left;font-family: Montserrat, sans-serif;">
+                                                                        style="font-size: 14px; color: #000; font-weight: 500; line-height: 18px; vertical-align: top; text-align: left;font-family: Montserrat, sans-serif;">
                                                                         <img src="webex.png" alt="logo"
                                                                             id="popup_logo" border="0"
                                                                             style="object-fit: contain; width: 100px; height: 50px;" />
@@ -1363,7 +1361,7 @@
                                                                     </td>
 
                                                                     <td
-                                                                        style="font-size: 14px; font-weight: 800; color: #000; line-height: 20px; vertical-align: top; text-align: left;font-family: Montserrat, sans-serif;">
+                                                                        style="font-size: 14px; font-weight: 500; color: #000; line-height: 20px; vertical-align: top; text-align: left;font-family: Montserrat, sans-serif;">
                                                                         <table border="0" cellpadding="0"
                                                                             cellspacing="0" align="right">
                                                                             <tbody>
@@ -1383,7 +1381,7 @@
                                                                                 <tr>
                                                                                     <td><span
                                                                                             style="background: #007DD9; margin: 10px 0px; padding: 5px; color: #fff;  display: flex;
-                                                                                            justify-content: space-between;font-family: Montserrat, sans-serif;">
+                                                                                            justify-content: space-between;font-family: Montserrat, sans-serif; width:250px;">
                                                                                             <span>INVOICE#</span>
                                                                                             <span>DATE</span></span>
                                                                                         <span
@@ -1397,10 +1395,10 @@
                                                                                 <tr>
                                                                                     <td><span
                                                                                             style="background: #007DD9; margin: 10px 0px;  padding: 5px; color: #fff;  display: flex;
-                                                                                            justify-content: center;font-family: Montserrat, sans-serif;">
+                                                                                            justify-content: start;font-family: Montserrat, sans-serif; width:250px;text-align: left;">
                                                                                             TERMS</span>
                                                                                         <span
-                                                                                            style="color: #000; text-align: center; display: inline-block; width: 100%; font-size: 14px; font-weight: 600;font-family: Montserrat, sans-serif;"
+                                                                                            style="color: #000; text-align: left; display: inline-block; width: 100%; font-size: 14px; font-weight: 400;font-family: Montserrat, sans-serif;"
                                                                                             id="popup_term"> </span>
                                                                                     </td>
                                                                                 </tr>
@@ -1423,7 +1421,7 @@
                                                                     <td
                                                                         style="font-size: 14px; color: #000; font-weight: 400; line-height: 18px; vertical-align: top; text-align: right;font-family: Montserrat, sans-serif;">
                                                                         <span
-                                                                            style="display: block; text-align: left; background: #007DD9; padding: 5px; color: #fff;font-family: Montserrat, sans-serif;font-weight: 800;">Bill
+                                                                            style="display: block; text-align: left; background: #007DD9; padding: 5px; color: #fff;font-family: Montserrat, sans-serif;font-weight:400">Bill
                                                                             To</span>
                                                                         <span
                                                                             style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
@@ -1455,13 +1453,13 @@
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <td><span
-                                                                                            style="    background: #007DD9;
-                                                                                            margin: 10px 0px;
+                                                                                            style="background: #007DD9;
+                                                                                            margin: 0 0 10px;
                                                                                             padding: 5px;
                                                                                             color: #fff;
-                                                                                            width: 211px;
-                                                                                            display: table-cell;
-                                                                                            text-align: center;font-family: Montserrat, sans-serif; font-weight:800">
+                                                                                            width: 250px;
+                                                                                            display: inline-block;
+                                                                                            text-align: center;font-family: Montserrat, sans-serif; font-weight:500;font-size: 14px;">
                                                                                             Project Name and Address</span>
                                                                                         <span
                                                                                             style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
@@ -1495,19 +1493,19 @@
                                             align="center">
                                             <tbody>
                                                 <tr>
-                                                    <th style="background: #007DD9; font-size: 16px; font-weight: 800;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;font-family: Montserrat, sans-serif;"
+                                                    <th style="background: #007DD9; font-size: 16px; font-weight: 500;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;font-family: Montserrat, sans-serif;"
                                                         width="52%" align="left">
                                                         ITEM NAME
                                                     </th>
-                                                    <th style="background: #007DD9; font-size: 16px;  font-weight: 800;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;font-family: Montserrat, sans-serif;"
+                                                    <th style="background: #007DD9; font-size: 16px;  font-weight: 500;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;font-family: Montserrat, sans-serif;"
                                                         align="left">
                                                         RATE
                                                     </th>
-                                                    <th style="background: #007DD9; font-size: 16px;  font-weight: 800; color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;font-family: Montserrat, sans-serif;"
+                                                    <th style="background: #007DD9; font-size: 16px;  font-weight: 500; color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;font-family: Montserrat, sans-serif;"
                                                         align="center">
                                                         QUANTITY
                                                     </th>
-                                                    <th style="background: #007DD9; font-size: 16px;  font-weight: 800;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;font-family: Montserrat, sans-serif;"
+                                                    <th style="background: #007DD9; font-size: 16px;  font-weight: 500;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;font-family: Montserrat, sans-serif;"
                                                         align="right">
                                                         AMOUNT
                                                     </th>

@@ -98,34 +98,6 @@ class InvoiceController extends Controller
         $invoice->discount_type = $request->discount_type ?? '';
         $invoice->tax_amount = $request->tax_amount ?? '';
         $invoice->image = Auth::user()->logo;
-
-        //image upload
-        // if ($request->hasFile('photo')) {
-        //     $request->validate([
-        //         'photo' => 'required|image|mimes:jpg,png,jpeg|max:2048',
-        //     ]);
-
-        //     $file= $request->file('photo');
-        //     $filename= date('YmdHi').$file->getClientOriginalName();
-        //     $image_path = $request->file('photo')->store('users', 'public');
-        //     $invoice->image = $image_path;
-        // }
-        //signature upload
-        // $folderPath = public_path('upload/');
-
-        // $image_parts = explode(";base64,", $request->signed);
-        // $image_type_aux = explode("image/", $image_parts[0]);
-        // $image_type = $image_type_aux[1];
-        // $image_base64 = base64_decode($image_parts[1]);
-        // $file = uniqid() . '.' . $image_type;
-        // $data_uri = $request->signed;
-        // $encoded_image = explode(",", $data_uri)[1];
-        // $decoded_image = base64_decode($encoded_image);
-        // Storage::put($file, $decoded_image);
-        // $invoice->signature = $file;
-
-        // file_put_contents($file, $image_base64);
-
         $invoice->save();
 
 

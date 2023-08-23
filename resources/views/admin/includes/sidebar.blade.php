@@ -17,7 +17,7 @@
                
                 <li class="submenu">
                     <li class="{{ request()->is('admin/managers*') ? 'active' : '' }}">
-                    <a href="{{ route('managers.index') }}" ><i class="la la-user"></i> <span>Manage Managers </span></a>     
+                    <a href="{{ route('managers.index') }}" ><i class="la la-user-friends"></i> <span>Manage Managers </span></a>     
                 </li>
                 
                 <li class="submenu">

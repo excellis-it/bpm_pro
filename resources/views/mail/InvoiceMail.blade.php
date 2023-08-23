@@ -5,7 +5,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-<body style="background: #f2f2f2; font-family: Montserrat, sans-serif;">
+<body style="background: #f2f2f2; font-family: Montserrat;">
     <table width="600" border="0" cellpadding="0" cellspacing="0" bgcolor="#ffffff"
         style="border-radius: 0px; margin: 0 auto;">
         <tbody>
@@ -21,7 +21,7 @@
                                         <tbody>
                                             <tr>
                                                 <td
-                                                    style="font-size: 14px; color: #000; font-weight: 800; line-height: 18px; vertical-align: top; text-align: left; font-family: Montserrat, sans-serif;">
+                                                    style="font-size: 14px; color: #000; font-weight: 500; line-height: 18px; vertical-align: top; text-align: left; font-family: Montserrat;">
                                                     
                                                     <img src="{{ URL::asset('public/storage') }}/{{ $maildata['invoice_detail']['image'] }}" alt="logo" border="0"
                                                         style="object-fit: contain; width: 100px; height: 50px;" />
@@ -42,30 +42,30 @@
                                                 </td>
 
                                                 <td
-                                                    style="font-size: 14px; font-weight: 800; color: #000; line-height: 20px; vertical-align: top; text-align: left; font-family: Montserrat, sans-serif;">
+                                                    style="font-size: 14px; font-weight: 500; color: #000; line-height: 20px; vertical-align: top; text-align: left; font-family: Montserrat;">
                                                     <table border="0" cellpadding="0" cellspacing="0"
                                                         align="right">
                                                         <tbody>
                                                             <tr>
                                                                 <td>
                                                                     <span
-                                                                        style="color: #2f75b5;
+                                                                        style="color: #007DD9;
                                                                     padding: 3px 0px;
                                                                     text-align: right;
                                                                     font-size: 36px;
                                                                     line-height: 1;
                                                                     font-weight: 500;
                                                                     display: inline-block;
-                                                                    width:219px;text-transform: uppercase;font-family: Montserrat, sans-serif;">{{ $maildata['invoice_detail']['type'] }}</span>
+                                                                    width:250px;text-transform: uppercase;">{{ $maildata['invoice_detail']['type'] }}</span>
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <td><span
-                                                                        style="background: #2f75b5; margin: 10px 0px; padding: 5px; color: #fff;  display: flex;
-                                                                    justify-content: space-between;font-family: Montserrat, sans-serif;">
+                                                                        style="background: #007DD9; margin: 10px 0px; padding: 5px; color: #fff;  display: flex;
+                                                                    justify-content: space-between;font-family: Montserrat;">
                                                                         <span>INVOICE#</span> <span>DATE</span></span>
                                                                     <span
-                                                                        style="color: #000; text-align: center; display: inline-block; width: 100%; font-size: 14px; font-weight: 600; display: flex; justify-content: space-between;font-family: Montserrat, sans-serif;">
+                                                                        style="color: #000; text-align: center; display: inline-block; width: 100%; font-size: 14px; font-weight: 600; display: flex; justify-content: space-between;font-family: Montserrat;">
                                                                         <span>@if($maildata['invoice_id'])  {{ $maildata['invoice_id'] }}  @else {{ $maildata['invoice_detail']['invoice_no'] }} @endif</span>
                                                                         <span>{{ date('d/m/Y', strtotime($maildata['invoice_detail']['invoice_date'])) }}</span>
                                                                         
@@ -75,10 +75,10 @@
                                                             </tr>
                                                             <tr>
                                                                 <td><span
-                                                                        style="background: #2f75b5; margin: 10px 0px;  padding: 5px; color: #fff;  display: flex;
-                                                                        justify-content: center;font-family: Montserrat, sans-serif;">
+                                                                        style="background: #007DD9; margin: 10px 0px;  padding: 5px; color: #fff;  display: flex;
+                                                                        justify-content: start;font-family: Montserrat;text-align: left;">
                                                                         TERMS</span>
-                                                                        <span style="color: #000; text-align: center; display: inline-block; width: 100%; font-size: 14px; font-weight: 600;font-family: Montserrat, sans-serif;">{{ $maildata['invoice_detail']['due'] }}</span>
+                                                                        <span style="color: #000; text-align: left; display: inline-block; width: 100%; font-size: 14px; font-weight: 400;font-family: Montserrat;">{{ $maildata['invoice_detail']['due'] }}</span>
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -96,27 +96,27 @@
                                         <tbody>
                                             <tr>
                                                 <td
-                                                    style="font-size: 14px; color: #000; font-weight: 400; line-height: 18px; vertical-align: top; text-align: right; font-family: Montserrat, sans-serif;">
+                                                    style="font-size: 14px; color: #000; font-weight: 400; line-height: 18px; vertical-align: top; text-align: right; font-family: Montserrat;">
                                                     <span
-                                                        style="display: block; text-align: left; background: #2f75b5; padding: 5px; color: #fff; font-weight:800; font-family: Montserrat, sans-serif;">Bill
+                                                        style="display: block; text-align: left; background: #007DD9; padding: 5px; color: #fff; font-weight:500; font-family: Montserrat;">Bill
                                                         To</span>
                                                     <span
-                                                        style="display: block; text-align: left; padding-top: 5px; font-family: Montserrat, sans-serif;">
+                                                        style="display: block; text-align: left; padding-top: 5px; font-family: Montserrat;">
                                                         {{ $maildata['invoice_detail']['bil_to_name'] }}</span>
                                                     <span
-                                                        style="display: block; text-align: left; padding-top: 5px; font-family: Montserrat, sans-serif;">{{ $maildata['invoice_detail']['company'] }}</span>
+                                                        style="display: block; text-align: left; padding-top: 5px; font-family: Montserrat;">{{ $maildata['invoice_detail']['company'] }}</span>
                                                     <span
-                                                        style="display: block; text-align: left; padding-top: 5px; font-family: Montserrat, sans-serif;">
+                                                        style="display: block; text-align: left; padding-top: 5px; font-family: Montserrat;">
                                                         {{ $maildata['invoice_detail']['bil_to_address'] }}</span>
                                                         <span
-                                                        style="display: block; text-align: left; padding-top: 5px; font-family: Montserrat, sans-serif;">
+                                                        style="display: block; text-align: left; padding-top: 5px; font-family: Montserrat;">
                                                         {{ $maildata['invoice_detail']['bil_to_city'] }}, {{ $maildata['invoice_detail']['bil_to_state'] }}, {{ $maildata['invoice_detail']['bil_to_zipcode'] }}</span>
                                                  
                                                     <span
-                                                        style="display: block; text-align: left; padding-top: 5px; font-family: Montserrat, sans-serif;">
+                                                        style="display: block; text-align: left; padding-top: 5px; font-family: Montserrat;">
                                                         {{ $maildata['invoice_detail']['bil_to_phone'] }}</span>
                                                     <span
-                                                        style="display: block; text-align: left; padding-top: 5px; font-family: Montserrat, sans-serif;"> {{ $maildata['invoice_detail']['bil_to_email'] }}</span>
+                                                        style="display: block; text-align: left; padding-top: 5px; font-family: Montserrat;"> {{ $maildata['invoice_detail']['bil_to_email'] }}</span>
                                                         
                                                        
                                                 </td>
@@ -125,20 +125,20 @@
                                                         style="vertical-align: top;">
                                                         <tbody>
                                                             <tr>
-                                                                <td style="font-size: 14px; color: #000; font-weight: 800; line-height: 18px; vertical-align: top; text-align: right; font-family: Montserrat, sans-serif;"
-                                                                ><span
-                                                                        style="background: #2f75b5;
-                                                                    margin: 10px 0px;
+                                                                <td style="font-size: 14px; color: #000; font-weight: 500; line-height: 18px; vertical-align: top; text-align: right; font-family: Montserrat;"
+                                                                ><span style="background: #007DD9;
+                                                                    margin: 0 0 10px;
                                                                     padding: 5px;
                                                                     color: #fff;
-                                                                    width: 211px;
-                                                                    text-align: center; font-family: Montserrat, sans-serif;">
+                                                                    width:240px;
+                                                                    display:inline-block;
+                                                                    text-align: left;">
                                                                         PROJECT NAME AND ADDRESS</span>
                                                                         <span
-                                                                        style="display: block; text-align: left; padding-top: 5px; font-family: Montserrat, sans-serif;">Project name:
+                                                                        style="display: block; text-align: left; padding-top: 5px; font-family: Montserrat;">Project name:
                                                                         {{ $maildata['invoice_detail']['project_name'] }}</span>
                                                                         <span
-                                                                        style="display: block; text-align: left; padding-top: 5px; font-family: Montserrat, sans-serif;">Address:
+                                                                        style="display: block; text-align: left; padding-top: 5px; font-family: Montserrat;">Address:
                                                                         {{ $maildata['invoice_detail']['project_address'] }}</span>
                                                                 </td>
                                                             </tr>
@@ -162,20 +162,20 @@
                     <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
                         <tbody>
                             <tr>
-                                <th style="background: #2f75b5; font-size: 16px; font-weight: 800;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px; font-family: Montserrat, sans-serif;"
+                                <th style="background: #007DD9; font-size: 16px; font-weight: 500;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px; font-family: Montserrat;"
                                     width="52%" align="left">
                                     ITEM NAME
                                 </th>
-                                 <th style="background: #2f75b5; font-size: 16px;  font-weight: 800; color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px; font-family: Montserrat, sans-serif;"
+                                 <th style="background: #007DD9; font-size: 16px;  font-weight: 500; color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px; font-family: Montserrat;"
                                     align="center">
                                     QTY
                                 </th>
-                                <th style="background: #2f75b5; font-size: 16px;  font-weight: 800;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px; font-family: Montserrat, sans-serif;"
+                                <th style="background: #007DD9; font-size: 16px;  font-weight: 500;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px; font-family: Montserrat;"
                                     align="left">
                                     UNIT PRICE
                                 </th>
                                
-                                <th style="background: #2f75b5; font-size: 16px;  font-weight: 800;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px; font-family: Montserrat, sans-serif;"
+                                <th style="background: #007DD9; font-size: 16px;  font-weight: 500;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px; font-family: Montserrat;"
                                     align="right">
                                     AMOUNT
                                 </th>
@@ -189,7 +189,7 @@
                             @foreach ($maildata['items'] as $vall)
                                 <tr>
                                     <td
-                                    style="font-size: 14px;  color: #000;  line-height: 18px;  vertical-align: top; padding:10px; display: flex; align-item: center; font-family: Montserrat, sans-serif;">
+                                    style="font-size: 14px;  color: #000;  line-height: 18px;  vertical-align: top; padding:10px; display: flex; align-item: center; font-family: Montserrat;">
                                     {{-- @if($vall->image)
                                    
                                     <img style="object-fit: contain; width: 20px; height: 20px; padding: 10px; border: 1px solid #000; margin-right: 5px;" src="{{ 'data:image/png;base64,' . base64_encode(file_get_contents(public_path('storage/' . $vall->image))) }}">
@@ -200,13 +200,13 @@
                                     {{ $vall->item_description }}
                                     
                                 </td>
-                                <td style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px; font-family: Montserrat, sans-serif;"
+                                <td style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px; font-family: Montserrat;"
                                         align="center">{{ $vall->item_quantity }}</td>
                                     <td
-                                        style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px; font-family: Montserrat, sans-serif;">
+                                        style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px; font-family: Montserrat;">
                                         ${{number_format( $vall->item_rate, 2, '.', ',');  }}</td>
                                     
-                                    <td style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px; font-family: Montserrat, sans-serif;"
+                                    <td style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px; font-family: Montserrat;"
                                         align="right">$ {{number_format($vall->item_amount, 2, '.', ',');  }}</td>
                                 </tr>
                                 <tr>
@@ -216,7 +216,7 @@
 
                             {{-- <tr>
                                 <td
-                                    style="font-size: 14px; font-weight: 800;  color: #000;  line-height: 18px;  vertical-align: top; padding:10px; font-family: Montserrat, sans-serif;">
+                                    style="font-size: 14px; font-weight: 500;  color: #000;  line-height: 18px;  vertical-align: top; padding:10px; font-family: Montserrat;">
                                     Web Design
                                 </td>
                                 <td
@@ -239,26 +239,26 @@
                             </tr>
                             <tr>
                                 <td
-                                    style="font-size: 16px; font-weight: 600; color: #2f75b5;  line-height: 14px;  vertical-align: top; padding:10px; font-family: Montserrat, sans-serif;">
-                                    Notes: <span style="font-size: 14px;  color: #000;  line-height: 18px;  vertical-align: top; padding:10px; display: flex; align-item: center; font-family: Montserrat, sans-serif;">{{ $maildata['invoice_detail']['notes'] }}</span>
+                                    style="font-size: 16px; font-weight: 600; color: #007DD9;  line-height: 14px;  vertical-align: top; padding:10px; font-family: Montserrat;">
+                                    Notes: <span style="font-size: 14px;  color: #000;  line-height: 18px;  vertical-align: top; padding:10px; display: flex; align-item: center; font-family: Montserrat;">{{ $maildata['invoice_detail']['notes'] }}</span>
                                 </td>
                                 <td colspan="2"
-                                    style="font-size: 16px; color: #000; line-height: 14px; text-align: left; vertical-align: top; padding: 10px; font-weight: 400; background: #cce7ff; font-family: Montserrat, sans-serif;">
+                                    style="font-size: 16px; color: #000; line-height: 14px; text-align: left; vertical-align: top; padding: 10px; font-weight: 400; background: #cce7ff; font-family: Montserrat;">
                                     Subtotal:
                                 </td>
                                 <td
-                                    style="font-size: 16px; color: #000; line-height: 14px; text-align: right; vertical-align: top; padding: 10px; font-weight: 400; background: #e6f3ff; font-family: Montserrat, sans-serif;">
+                                    style="font-size: 16px; color: #000; line-height: 14px; text-align: right; vertical-align: top; padding: 10px; font-weight: 400; background: #e6f3ff; font-family: Montserrat;">
                                     ${{number_format($maildata['invoice_detail']['sub_total'], 2, '.', ',');  }}
                                 </td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td
-                                    style="font-size: 16px; color: #000; line-height: 14px; text-align: left; vertical-align: top; padding: 10px; font-weight: 400; background: #cce7ff; font-family: Montserrat, sans-serif;">
+                                    style="font-size: 16px; color: #000; line-height: 14px; text-align: left; vertical-align: top; padding: 10px; font-weight: 400; background: #cce7ff; font-family: Montserrat;">
                                     Tax:
                                 </td>
                                 <td
-                                    style="font-size: 16px; color: #000; line-height: 14px; text-align: left; vertical-align: top; padding: 10px; font-weight: 400; background: #cce7ff; font-family: Montserrat, sans-serif;">
+                                    style="font-size: 16px; color: #000; line-height: 14px; text-align: left; vertical-align: top; padding: 10px; font-weight: 400; background: #cce7ff; font-family: Montserrat;">
                                    
                                   @if($maildata['invoice_detail']['tax_amount'] )  {{ $maildata['invoice_detail']['tax_amount'] }}% @endif
                                 </td>
@@ -274,17 +274,17 @@
                                     
                                 @endphp
                                 <td
-                                    style="font-size: 16px; color: #000; line-height: 14px; text-align: right; vertical-align: top; padding: 10px; font-weight: 400; background: #e6f3ff; font-family: Montserrat, sans-serif;">${{number_format($tax_amount, 2, '.', ',');  }}  
+                                    style="font-size: 16px; color: #000; line-height: 14px; text-align: right; vertical-align: top; padding: 10px; font-weight: 400; background: #e6f3ff; font-family: Montserrat;">${{number_format($tax_amount, 2, '.', ',');  }}  
                                 </td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td colspan="2"
-                                    style="font-size: 16px; color: #000; line-height: 14px; text-align: left; vertical-align: top; padding: 10px; font-weight: 600; background: #cce7ff; border-top:2px solid #000; font-family: Montserrat, sans-serif;">
+                                    style="font-size: 16px; color: #000; line-height: 14px; text-align: left; vertical-align: top; padding: 10px; font-weight: 600; background: #cce7ff; border-top:2px solid #000; font-family: Montserrat;">
                                     TOTAL
                                 </td>
                                 <td
-                                    style="font-size: 16px; color: #000; line-height: 14px; text-align: right; vertical-align: top; padding: 10px; font-weight: 600; background: #e6f3ff;  border-top:2px solid #000; font-family: Montserrat, sans-serif;">
+                                    style="font-size: 16px; color: #000; line-height: 14px; text-align: right; vertical-align: top; padding: 10px; font-weight: 600; background: #e6f3ff;  border-top:2px solid #000; font-family: Montserrat;">
                                     ${{number_format($maildata['invoice_detail']['total'], 2, '.', ',');  }}
                                 </td>
                             </tr>
@@ -294,7 +294,7 @@
                             @if(isset($maildata['invoice_detail']['items'][0]->image))
                             <tr>
                                 <td colspan="4"
-                                    style="font-size: 16px; font-weight: 600; color: #2f75b5;  line-height: 14px;  vertical-align: top; padding:10px; font-family: Montserrat, sans-serif;">
+                                    style="font-size: 16px; font-weight: 600; color: #007DD9;  line-height: 14px;  vertical-align: top; padding:10px; font-family: Montserrat;">
                                     Additional Information:
                                 </td>
                             </tr>
@@ -341,7 +341,7 @@
                         </tr>
                         <tr bgcolor="#fff" style="text-align: center;">
                             <td height="50">
-                                <p style="color: #606060; padding: 0px; margin: 0; font-family: Montserrat, sans-serif;">Powered by xTriam.com</p>
+                                <p style="color: #606060; padding: 0px; margin: 0; font-family: Montserrat;">Powered by xTriam.com</p>
                                 <p style="color: #000; padding: 10px; margin: 0;font-style: italic; font-weight: 600;">
                                     Empowering Window and Door Contractors to Be More Profitable</p>
                             </td>
