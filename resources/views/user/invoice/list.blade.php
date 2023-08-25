@@ -59,7 +59,7 @@
                                     <th>Bill To Phone </th>
                                     <th>Total Amount</th>
                                     <th>Send In</th>
-                                    <td>Stop Sending</td>
+                                    <th>Stop Sending</th>
                                     <th>Invoice</th>
                                     <th>Action</th>
                                 </tr>

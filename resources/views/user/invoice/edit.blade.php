@@ -593,7 +593,7 @@
                                                         <div class="form-floating">
                                                             <select class="form-select" name="send_in" id="floatingSelect"
                                                                 aria-label="Floating label select example">
-                                                                <option selected value="1"
+                                                                <option value="1"
                                                                     @if ($invoice['send_in'] == '1') selected @endif>One
                                                                     time</option>
                                                                 <option value="2"
@@ -1478,7 +1478,7 @@
                                                                                             <span>INVOICE#</span>
                                                                                             <span>DATE</span></span>
                                                                                         <span
-                                                                                            style="color: #000; text-align: center; display: inline-block; width: 100%; font-size: 14px; font-weight: 600; display: flex; justify-content: space-between;font-family: Montserrat, sans-serif;">
+                                                                                            style="color: #000; text-align: center; display: inline-block; width: 100%; font-size: 14px;display: flex; justify-content: space-between;font-family: Montserrat, sans-serif;">
                                                                                             <span
                                                                                                 id="popup_invoice_number">2034</span>
                                                                                             <span
@@ -1615,7 +1615,7 @@
                                                     <td
                                                         style="font-size: 16px; font-weight: 600; color: #007DD9;  line-height: 14px;  vertical-align: top; padding:10px;font-family: Montserrat, sans-serif;">
                                                         Notes: <span id="popup_notes"
-                                                            style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px;font-family: Montserrat, sans-serif;"
+                                                            style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; font-weight: 400;  padding:10px;font-family: Montserrat, sans-serif;"
                                                             align="right"></span>
                                                     </td>
                                                     <td colspan="2"

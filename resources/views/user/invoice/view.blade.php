@@ -11,7 +11,7 @@
 @endpush
 
 @section('content')
-    =
+    
     <section id="loading">
         <div id="loading-content"></div>
     </section>
@@ -60,22 +60,22 @@
                                                                     @endif
 
                                                                     <span
-                                                                        style="display: block; text-align: left; padding-top: 5px;">
+                                                                        style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;">
                                                                         {{ $data['invoice_detail']['from_address'] }}</span>
                                                                     <span
-                                                                        style="display: block; text-align: left; padding-top: 5px;">Adress:
+                                                                        style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;">Adress:
                                                                         {{ $data['invoice_detail']['from_city'] }},
                                                                         {{ $data['invoice_detail']['from_state'] }},
                                                                         {{ $data['invoice_detail']['from_zipcode'] }}</span>
                                                                     <span
                                                                         style="display: block; text-align: left; padding-top: 5px;">Phone:{{ $data['invoice_detail']['from_phone'] }}</span>
                                                                     <span
-                                                                        style="display: block; text-align: left; padding-top: 5px;">Email:
+                                                                        style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;">Email:
                                                                         {{ $data['invoice_detail']['from_email'] }}</span>
                                                                 </td>
 
                                                                 <td
-                                                                    style="font-size: 14px; font-weight: 500; color: #000; line-height: 20px; vertical-align: top; text-align: left;">
+                                                                    style="font-size: 14px;  color: #000; line-height: 20px; vertical-align: top; text-align: left;">
                                                                     <table border="0" cellpadding="0" cellspacing="0" align="right" >
                                                                         <tbody>
                                                                             <tr>
@@ -86,23 +86,20 @@
                                                                                     text-align: center;
                                                                                     font-size: 36px;
                                                                                     line-height: 1;
-                                                                                    font-weight: 500;
                                                                                     text-transform:uppercase;
                                                                                     display: inline-block;
-                                                                                    width:219px;">{{ $data['invoice_detail']['type'] }}</span>
+                                                                                    width:219px;font-family: Montserrat, sans-serif;">{{ $data['invoice_detail']['type'] }}</span>
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <td><span
-                                                                                        style="background: #007DD9; margin: 10px 0px; padding: 5px; color: #fff;  display: flex;  width:250px;
-                                                                    justify-content: space-between;font-family: 'Montserrat', sans-serif;">
-                                                                                        <span>Invoice#</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                                        <span>Date</span></span>
-                                                                                    <span
-                                                                                        style="color: #000; text-align: center; display: inline-block;  width: 100%; font-size: 14px; font-weight: 600; display: flex; justify-content: space-between">
-                                                                                        <span>{{ $data['invoice_detail']['invoice_no'] }}
-                                                                                        </span>&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                                        <span>{{ $data['invoice_detail']['invoice_date'] }}</span>
+                                                                                <td>
+                                                                                    <span style="background: #007DD9; margin: 10px 0px; padding: 5px; color: #fff;  display: inline-block; width:250px; font-family: Montserrat, sans-serif;font-weight: bold;">
+                                                                                        <span style="text-align:left;display: inline-block; width:130px;">{{ $data['invoice_detail']['type'] }}#</span>
+                                                                                        <span style="text-align:right;display: inline-block; width:100px;">DATE</span>
+                                                                                    </span>
+                                                                                    <span style="color: #000; width:100%; font-size: 14px; display: flex; justify-content: space-between;font-family: Montserrat, sans-serif;">
+                                                                                        <span style="text-align:left;display: inline-block; width:130px;">@if(isset($data['invoice_id']))  {{ $data['invoice_id'] }}  @else {{ $data['invoice_detail']['invoice_no'] }} @endif</span>
+                                                                                        <span style="text-align:right;display: inline-block; width:100px;">{{ date('d/m/Y', strtotime($data['invoice_detail']['invoice_date'])) }}</span>
                                                                                     </span>
                                                                                 </td>
                                                                             </tr>
@@ -111,7 +108,7 @@
                                                                                         style="background: #007DD9; margin: 10px 0px;  padding: 5px; color: #fff;  display: flex; width:250px;
                                                                         justify-content: start;font-family: 'Montserrat', sans-serif; text-align: left;">
                                                                                         TERMS</span>
-                                                                                        <span style="color: #000; text-align: left; display: inline-block; width: 100%; font-size: 14px; font-weight: 600;font-family: 'Montserrat', sans-serif;">{{ $data['invoice_detail']['due'] }}</span>
+                                                                                        <span style="color: #000; text-align: left; display: inline-block; width:250px; font-size: 14px; font-weight: 600;font-family: 'Montserrat', sans-serif;">{{ $data['invoice_detail']['due'] }}</span>
                                                                                 </td>
                                                                             </tr>
                                                                         </tbody>
@@ -129,31 +126,31 @@
                                                         <tbody>
                                                             <tr>
                                                                 <td
-                                                                    style="font-size: 14px; color: #000; font-weight: 400; line-height: 18px; vertical-align: top; text-align: right; font-family: 'Montserrat', sans-serif; width:300px; display:inline-block;">
+                                                                    style="font-size: 14px; color: #000;  line-height: 18px; vertical-align: top; text-align: right; font-family: 'Montserrat', sans-serif; width:300px; display:inline-block;">
                                                                     <span
                                                                         style="display: block; text-align: left; background: #007DD9; padding: 5px; color: #fff; font-weight:500; font-family: 'Montserrat', sans-serif;">Bill
                                                                         To</span>
                                                                     <span
-                                                                        style="display: block; text-align: left; padding-top: 5px;">Name:
+                                                                        style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;">Name:
                                                                         {{ $data['invoice_detail']['bil_to_name'] }}</span>
                                                                     <span
-                                                                        style="display: block; text-align: left; padding-top: 5px;">Company
+                                                                        style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;">Company
                                                                         Name:
                                                                         {{ $data['invoice_detail']['company'] }}</span>
                                                                     <span
-                                                                        style="display: block; text-align: left; padding-top: 5px;">Address:
+                                                                        style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;">Address:
                                                                         {{ $data['invoice_detail']['bil_to_address'] }}</span>
                                                                     <span
-                                                                        style="display: block; text-align: left; padding-top: 5px;">
+                                                                        style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;">
                                                                         {{ $data['invoice_detail']['bil_to_city'] }},
                                                                         {{ $data['invoice_detail']['bil_to_state'] }},
                                                                         {{ $data['invoice_detail']['bil_to_zipcode'] }}</span>
                                                                   
                                                                     <span
-                                                                        style="display: block; text-align: left; padding-top: 5px;">Phone:
+                                                                        style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;">Phone:
                                                                         {{ $data['invoice_detail']['bil_to_phone'] }}</span>
                                                                     <span
-                                                                        style="display: block; text-align: left; padding-top: 5px;">Email
+                                                                        style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;">Email
                                                                         :
                                                                         {{ $data['invoice_detail']['bil_to_email'] }}</span>
                                                                 </td>
@@ -166,18 +163,18 @@
                                                                                     style="font-size: 14px; color: #000; font-weight: 500; line-height: 18px; vertical-align: top; text-align: right;">
                                                                                     <span
                                                                                         style="background: #007DD9;
-                                                                    margin:0 0 10px;
-                                                                    padding: 5px;
-                                                                    color: #fff;
-                                                                    width:250px;
-                                                                    display:inline-block;
-                                                                    text-align: left; ">
+                                                                                        margin:0 0 10px;
+                                                                                        padding: 5px;
+                                                                                        color: #fff;
+                                                                                        width:250px;
+                                                                                        display:inline-block;
+                                                                                        text-align: left;font-family: Montserrat, sans-serif; ">
                                                                                         PROJECT NAME AND ADDRESS</span>
                                                                                     <span
-                                                                                        style="display: block; text-align: left; padding-top: 5px;">
+                                                                                        style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;">
                                                                                         {{ $data['invoice_detail']['project_name'] }}</span>
                                                                                     <span
-                                                                                        style="display: block; text-align: left; padding-top: 5px;">
+                                                                                        style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;">
                                                                                         {{ $data['invoice_detail']['project_address'] }}</span>
                                                                                 </td>
                                                                             </tr>
@@ -207,15 +204,15 @@
                                                 </th>
                                                 <th style="background: #007DD9; font-size: 16px;  font-weight: 500;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;"
                                                     align="left">
-                                                    Rate
+                                                    Unit price
                                                 </th>
                                                 <th style="background: #007DD9; font-size: 16px;  font-weight: 500; color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px"
                                                     align="center">
-                                                    Quantity
+                                                    Qty
                                                 </th>
                                                 <th style="background: #007DD9; font-size: 16px;  font-weight: 500;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px"
                                                     align="right">
-                                                    Amount
+                                                    Extended price
                                                 </th>
                                             </tr>
                                             <tr>
@@ -239,11 +236,11 @@
 
                                                     </td>
                                                     <td
-                                                        style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px;">
+                                                        style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px;font-family: Montserrat, sans-serif;">
                                                         ${{number_format($vall->item_rate, 2, '.', ',');  }}</td>
-                                                    <td style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px;"
+                                                    <td style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px;font-family: Montserrat, sans-serif;"
                                                         align="center">{{ $vall->item_quantity }}</td>
-                                                    <td style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px;"
+                                                    <td style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px;font-family: Montserrat, sans-serif;"
                                                         align="right">${{number_format($vall->item_amount, 2, '.', ',');  }}</td>
                                                 </tr>
                                                 <tr>
@@ -279,22 +276,22 @@
                                             </tr>
                                             <tr>
                                                 <td
-                                                    style="font-size: 16px; font-weight: 600; color: #007DD9;  line-height: 14px;  vertical-align: top; padding:10px">
+                                                    style="font-size: 16px; font-weight: 600; color: #007DD9;  line-height: 14px;  vertical-align: top; padding:10px;font-family: Montserrat, sans-serif;">
                                                     Notes:
                                                 </td>
                                                 <td colspan="2"
-                                                    style="font-size: 16px; color: #000; line-height: 14px; text-align: left; vertical-align: top; padding: 10px; font-weight: 400; background: #cce7ff;">
+                                                    style="font-size: 16px; color: #000; line-height: 14px; text-align: left; vertical-align: top; padding: 10px; font-weight: 400; background: #cce7ff;font-family: Montserrat, sans-serif;">
                                                     Subtotal:
                                                 </td>
                                                 <td
-                                                    style="font-size: 16px; color: #000; line-height: 14px; text-align: right; vertical-align: top; padding: 10px; font-weight: 400; background: #e6f3ff;">
+                                                    style="font-size: 16px; color: #000; line-height: 14px; text-align: right; vertical-align: top; padding: 10px; font-weight: 400; background: #e6f3ff;font-family: Montserrat, sans-serif;">
                                                     ${{number_format($data['invoice_detail']['sub_total'], 2, '.', ',');  }}
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td></td>
                                                 <td
-                                                    style="font-size: 16px; color: #000; line-height: 14px; text-align: left; vertical-align: top; padding: 10px; font-weight: 400; background: #cce7ff;">
+                                                    style="font-size: 16px; color: #000; line-height: 14px; text-align: left; vertical-align: top; padding: 10px; font-weight: 400; background: #cce7ff;font-family: Montserrat, sans-serif;">
                                                     Tax:
                                                 </td>
                                                 <td
@@ -315,18 +312,18 @@
                                                     
                                                 @endphp
                                                 <td
-                                                    style="font-size: 16px; color: #000; line-height: 14px; text-align: right; vertical-align: top; padding: 10px; font-weight: 400; background: #e6f3ff;">
+                                                    style="font-size: 16px; color: #000; line-height: 14px; text-align: right; vertical-align: top; padding: 10px; font-weight: 400; background: #e6f3ff;font-family: Montserrat, sans-serif;">
                                                    {{number_format( $tax_amount, 2, '.', ',');  }}
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td></td>
                                                 <td colspan="2"
-                                                    style="font-size: 16px; color: #000; line-height: 14px; text-align: left; vertical-align: top; padding: 10px; font-weight: 600; background: #cce7ff; border-top:2px solid #000">
+                                                    style="font-size: 16px; color: #000; line-height: 14px; text-align: left; vertical-align: top; padding: 10px; font-weight: 600; background: #cce7ff; border-top:2px solid #000;font-family: Montserrat, sans-serif;">
                                                     TOTAL
                                                 </td>
                                                 <td
-                                                    style="font-size: 16px; color: #000; line-height: 14px; text-align: right; vertical-align: top; padding: 10px; font-weight: 600; background: #e6f3ff;  border-top:2px solid #000">
+                                                    style="font-size: 16px; color: #000; line-height: 14px; text-align: right; vertical-align: top; padding: 10px; font-weight: 600; background: #e6f3ff;  border-top:2px solid #000;font-family: Montserrat, sans-serif;">
                                                     ${{number_format($data['invoice_detail']['total'], 2, '.', ',');  }}
                                                 </td>
                                             </tr>
@@ -337,7 +334,7 @@
                                             @if(isset($data['invoice_detail']['items'][0]->image))
                                             <tr>
                                                 <td colspan="4"
-                                                    style="font-size: 16px; font-weight: 600; color: #007DD9;  line-height: 14px;  vertical-align: top; padding:10px">
+                                                    style="font-size: 16px; font-weight: 600; color: #007DD9;  line-height: 14px;  vertical-align: top; padding:10px;font-family: Montserrat, sans-serif;">
                                                     Additional Information:
                                                 </td>
                                             </tr>
@@ -382,10 +379,10 @@
                                         </tr>
                                         <tr bgcolor="#fff" style="text-align: center;">
                                             <td height="50">
-                                                <p style="color: #606060; padding: 0px; margin: 0;">Powered by
+                                                <p style="color: #606060; padding: 0px; margin: 0;font-family: Montserrat, sans-serif;">Powered by
                                                     xTriam.com</p>
                                                 <p
-                                                    style="color: #000; padding: 10px; margin: 0;font-style: italic; font-weight: 600;">
+                                                    style="color: #000; padding: 10px; margin: 0;font-style: italic; font-weight: 600;font-family: Montserrat, sans-serif;">
                                                     Empowering Window and Door Contractors to Be More Profitable</p>
                                             </td>
                                             <td></td>

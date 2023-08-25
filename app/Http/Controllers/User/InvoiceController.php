@@ -330,8 +330,6 @@ class InvoiceController extends Controller
                 }
     
             }
-    
-    
             $items = Item::where('invoice_id', $invoice->id)->get();
             File::where('invoice_id', $id)->delete();
     
@@ -339,6 +337,8 @@ class InvoiceController extends Controller
                 'invoice_detail' => $invoice,
                 'items' => $items,
             ];
+
+            
     
             $pdf = PDF::loadView('pdf.invoice', [
                     'data' => $data,
