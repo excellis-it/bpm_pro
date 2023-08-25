@@ -37,7 +37,7 @@
                         <div class="input-boxes">
                             <div class="input-box" data-parsley-input-file>
                                 <i class="fas fa-user"></i>
-                                <input type="text" name="fname" placeholder="Enter first name" >
+                                <input type="text" name="fname" value="{{ old('fname') }}" placeholder="Enter first name" >
                             </div>
                             @if ($errors->has('fname'))
                                 <div class="error" style="color:red;">{{ $errors->first('fname') }}</div>
@@ -45,7 +45,7 @@
 
                             <div class="input-box">
                                 <i class="fas fa-user"></i>
-                                <input type="text" name="lname" placeholder="Enter last name" >
+                                <input type="text" name="lname" value="{{ old('lname') }}" placeholder="Enter last name" >
                             </div>
                             @if ($errors->has('lname'))
                                 <div class="error" style="color:red;">{{ $errors->first('lname') }}</div>
@@ -53,7 +53,7 @@
 
                             <div class="input-box">
                                 <i class="fas fa-envelope"></i>
-                                <input type="text" name="email" placeholder="Enter email" >
+                                <input type="text" name="email" value="{{ old('email') }}" placeholder="Enter email" >
                             </div>
                             @if ($errors->has('email'))
                                 <div class="error" style="color:red;">{{ $errors->first('email') }}</div>
@@ -61,7 +61,7 @@
 
                             <div class="input-box">
                                 <i class="fas fa-phone"></i>
-                                <input type="text" name="phone" placeholder="+1 123 456 7890" class="phone-format" >
+                                <input type="text" name="phone" value="{{ old('phone') }}" placeholder="+1 123 456 7890" class="phone-format" >
                             </div>
                             @if ($errors->has('phone'))
                                 <div class="error" style="color:red;">{{ $errors->first('phone') }}</div>
@@ -69,7 +69,7 @@
 
                             <div class="input-box">
                                 <i class="fas fa-lock"></i>
-                                <input type="password" name="password" placeholder="Enter password" >
+                                <input type="password" name="password"  placeholder="Enter password" >
                             </div>
                             @if ($errors->has('password'))
                                 <div class="error" style="color:red;">{{ $errors->first('password') }}</div>

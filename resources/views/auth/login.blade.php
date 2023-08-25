@@ -36,7 +36,7 @@
                         <div class="input-boxes">
                             <div class="input-box">
                                 <i class="fas fa-envelope"></i>
-                                <input type="text" name="email" placeholder="Enter email">
+                                <input type="text" name="email" value="{{ old('email') }}" placeholder="Enter email">
                             </div>
                             @if ($errors->has('email'))
                                 <div class="error" style="color:red;">{{ $errors->first('email') }}</div>
