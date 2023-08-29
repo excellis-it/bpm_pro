@@ -379,12 +379,82 @@
 
             .form-div-wrap {
                 padding: 10px 5px 10px 5px;
+                margin: 0px!important;
             }
 
             .add-item-wrap {
                 padding: 10px 10px 10px;
                 margin-bottom: 0px;
             }
+            .inv-head-wrap {
+                text-align: center;
+                width: 100%!important;
+                padding: 15px;
+                display: block!important;
+                position: inherit!important;
+            }
+            .pre-view-wrap{
+                justify-content: center!important
+            }
+            .pre-view {
+              padding-right: 0px;
+            }
+            .inv-number {
+                margin: 0px 0px;
+            }
+
+            .form-floating .form-control {
+                margin-bottom: 15px!important;
+            }
+            .form-group .data-field{
+                margin-bottom: 15px!important;
+            }
+            .form-group{
+                margin: 0px;
+            }
+            .description_box{
+                margin: 20px 0px!important;
+            }
+            .logo-div-wrap{
+                margin-bottom: 10px;
+            }
+            .form-left h2{
+                text-align: center
+            }
+            .  .inv-number {
+                margin: 0px 0px;
+            }
+
+            .form-floating .form-control {
+                margin-bottom: 15px!important;
+            }
+            .form-group .data-field{
+                margin-bottom: 15px!important;
+            }
+            .form-group{
+                margin: 0px;
+            }
+            .description_box{
+                margin: 20px 0px!important;
+            }
+            .logo-div-wrap{
+                margin-bottom: 10px;
+            }
+            .form-left h2{
+                text-align: center
+            }
+            .send-btn .add-btn{
+              font-size: 14px;
+              padding: 5px 10px;
+            }
+            .edit_cancel_btn {
+              font-size: 14px;
+            }
+            .edit_cancel_btn {
+               font-size: 14px!important;
+               padding: 5px 22px!important;
+            }
+
         }
     </style>
     <style>
@@ -489,21 +559,6 @@
 
         .dollar-icon-div .form-control {
             padding-left: 28px !important;
-        }
-
-        @media (max-width: 767px) {
-
-
-            .inv-head-wrap {
-                text-align: center;
-                width: 92%;
-                padding: 15px;
-            }
-
-            .form-div-wrap {
-                margin: 75px 0px 20px 0px;
-            }
-
         }
     </style>
 @endpush

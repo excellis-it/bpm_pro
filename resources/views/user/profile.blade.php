@@ -89,7 +89,7 @@
                                                             </div>
                                                         </div>
                                                          <div class="profile-form">
-                                                               <form class="row g-3" action="{{ route('user.profile.update') }}"
+                                                               <form action="{{ route('user.profile.update') }}"
                                                             method="post" enctype="multipart/form-data">
                                                             @csrf
 

@@ -11887,7 +11887,22 @@ body {
         .header .mobile_btn{
             display: none;
         }
-          
+        .btn-danger {
+            font-size: 14px;
+            padding: 5px 12px;
+            margin-right: 10px;
+        }
+        .update-btn {
+            font-size: 14px;
+            padding: 5px 12px;
+        }
+        .update-btn-div {
+            display: flex;
+            justify-content: center;
+        }
+        .user-profile-page .profile-form-wrap{
+            padding: 10px 20px;
+        }
       }
       
         

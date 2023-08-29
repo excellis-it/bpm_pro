@@ -116,8 +116,8 @@
         }
 
         /* .signature input {
-                                                                                                                                                                                                                                                                                            display: none;
-                                                                                                                                                                                                                                                                                        } */
+                                                                                                                                                                                                                                                                                                display: none;
+                                                                                                                                                                                                                                                                                            } */
 
         .signature label span {
             width: 100%;
@@ -348,17 +348,23 @@
         .dollar-icon-div .form-control {
             padding-left: 28px !important;
         }
-        .tax-amt-div{
-          position: relative;
+
+        .tax-amt-div {
+            position: relative;
         }
-        .tax-amt-icon{
+
+        .tax-amt-icon {
             position: absolute;
             top: 14px;
             right: 14px;
             font-size: 14px;
         }
-        .description_box{
-           margin: 20px 0px; 
+
+        .description_box {
+            margin: 20px 0px;
+        }
+        .invoice-type-top{
+            padding: 0px 12px;
         }
 
 
@@ -383,8 +389,8 @@
 
             .form-left .form-group {
                 padding: 0px 0px;
+                margin-bottom: 0px;
             }
-
             .form-left {
                 margin-top: 0 !important;
             }
@@ -396,6 +402,29 @@
             .add-item-wrap {
                 padding: 10px 10px 10px;
                 margin-bottom: 0px;
+            }
+
+            .inv-number {
+                margin: 0px 0px;
+            }
+
+            .form-floating .form-control {
+                margin-bottom: 15px!important;
+            }
+            .form-group .data-field{
+                margin-bottom: 15px!important;
+            }
+            .form-group{
+                margin: 0px;
+            }
+            .description_box{
+                margin: 20px 0px!important;
+            }
+            .logo-div-wrap{
+                margin-bottom: 10px;
+            }
+            .form-left h2{
+                text-align: center
             }
         }
     </style>
@@ -452,7 +481,7 @@
             color: #ff0000;
         }
 
-       
+
 
         .form-div {
             position: relative;
@@ -476,10 +505,14 @@
                 text-align: center;
                 width: 92%;
                 padding: 15px;
+                display: block!important;
             }
 
             .form-div-wrap {
                 margin: 75px 0px 20px 0px;
+            }
+            .pre-view-wrap{
+                justify-content: center!important
             }
 
         }
@@ -514,6 +547,7 @@
                                     </div>
                                 </div>
                                 <div class="form-div-wrap">
+                                  <div class="invoice-type-top">
                                     <div class="row justify-content-end">
                                         <div class="col-xl-2 co-md-4 col-12">
                                             <div class="temp-box">
@@ -577,6 +611,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                  </div>
                                     <div class="row justify-content-between">
                                         <div class="row justify-content-end">
                                             <div class="col-xl-12 col-12">
@@ -827,11 +862,11 @@
                                                             <input type="text" class="form-control"
                                                                 name="bil_to_email" required data-parsley-type="email"
                                                                 data-parsley-trigger="keyup" id="bill_to_email" ">
-                                                                            <label for="floatingInputValue"
-                                                                            class="col-sm-2 col-form-label">Email<span
-                                                                                style="color: red;">*</span></label>
-                                                                                                                        
-                                                                           @if ($errors->has('bil_to_email'))
+                                                                                <label for="floatingInputValue"
+                                                                                class="col-sm-2 col-form-label">Email<span
+                                                                                    style="color: red;">*</span></label>
+                                                                                                                            
+                                                                                @if ($errors->has('bil_to_email'))
                                                             <div class="error" style="color:red;">
                                                                 {{ $errors->first('bil_to_email') }}</div>
                                                             @endif
@@ -1031,7 +1066,7 @@
                                                         <div class="col-sm-4">
                                                             <div class="form-floating dollar-icon-div">
                                                                 <span class="dollar-icon"><i
-                                                                    class="fa-solid fa-dollar-sign"></i></span>
+                                                                        class="fa-solid fa-dollar-sign"></i></span>
                                                                 <input type="text"
                                                                     class="form-control amount data-field" name="amount[]"
                                                                     id="amount_1" required data-parsley-trigger="keyup"
@@ -1170,10 +1205,11 @@
                                 <div class="form-right">
                                     <div class="logo-div-wrap d-flex align-items-center justify-content-between mt-3">
                                         <div class="logo-div">
-                                            @if(Auth::user()->logo)
-                                            <a href="https://excellis.co.in/bpm_pro"><img
-                                                    src="{{ Storage::url(Auth::user()->logo) }}" alt=""
-                                                    id="logo" data-id="{{ Storage::url(Auth::user()->logo) }}"></a>
+                                            @if (Auth::user()->logo)
+                                                <a href="https://excellis.co.in/bpm_pro"><img
+                                                        src="{{ Storage::url(Auth::user()->logo) }}" alt=""
+                                                        id="logo"
+                                                        data-id="{{ Storage::url(Auth::user()->logo) }}"></a>
                                             @endif
                                         </div>
                                         <div class="logo-text">
@@ -1293,7 +1329,8 @@
                                                         <h4 style="color: #007DD9; font-weight: 600;cursor: pointer;"
                                                             id="tax_amount">Add
                                                         </h4>
-                                                        <span class="tax-amt-icon" style="display:none" id="tax-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+                                                        <span class="tax-amt-icon" style="display:none" id="tax-arrow"><i
+                                                                class="fa-solid fa-arrow-right"></i></span>
                                                         <input type="text" name="tax_amount" id="tax_amount_input"
                                                             class="form-control" placeholder="" min="1"
                                                             max="100" style="display:none;">
@@ -1327,6 +1364,7 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-body">
+                        <div class="table-responsive">
                         <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#ffffff"
                             style="border-radius: 0px; margin: 0 auto;">
                             <tbody>
@@ -1380,7 +1418,8 @@
                                                                                             line-height: 1;
                                                                                             font-weight: 500;
                                                                                             display: inline-block;
-                                                                                            width:219px;font-family: Montserrat, sans-serif;" id="popup_type"></span><br>
+                                                                                            width:219px;font-family: Montserrat, sans-serif;"
+                                                                                            id="popup_type"></span><br>
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>
@@ -1496,19 +1535,19 @@
                                             <thead>
                                                 <tr>
                                                     <th style="background: #007DD9; font-size: 16px; font-weight: 500;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;font-family: Montserrat, sans-serif;"
-                                                    width="32%" align="left">
+                                                        width="32%" align="left">
                                                         ITEM NAME
                                                     </th>
                                                     <th style="background: #007DD9; font-size: 16px;  font-weight: 500;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;font-family: Montserrat, sans-serif;"
-                                                    align="left">
+                                                        align="left">
                                                         UNIT PRICE
                                                     </th>
                                                     <th style="background: #007DD9; font-size: 16px;  font-weight: 500; color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;font-family: Montserrat, sans-serif;"
-                                                    align="center">
+                                                        align="center">
                                                         QUANTITY
                                                     </th>
                                                     <th style="background: #007DD9; font-size: 16px;  font-weight: 500;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;font-family: Montserrat, sans-serif;"
-                                                    align="right">
+                                                        align="right">
                                                         EXTENDED PRICE
                                                     </th>
                                                 </tr>
@@ -1516,9 +1555,9 @@
                                                     <td height="1" style="background: #bebebe;" colspan="4"></td>
                                                 </tr>
                                             </thead>
-                                                
+
                                             <tbody id="tableVal">
-                                                
+
                                             </tbody>
                                             <tfoot>
                                                 <tr>
@@ -1589,7 +1628,7 @@
                                         </table>
                                     </td>
                                 </tr>
-                            </tfoot>
+                                </tfoot>
                             </tbody>
                         </table>
                         </td>
@@ -1625,6 +1664,7 @@
                         </tr>
                         </tbody>
                         </table>
+                        </div>
 
                     </div>
 
@@ -1905,7 +1945,7 @@
                         } else {
                             var new_image = "";
                         }
-                        
+
 
                         if (name) {
                             var newRow = '<tr>' +
