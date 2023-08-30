@@ -1143,7 +1143,7 @@
 
                                         </div>
                                         <div class="col-xl-3 col-12 mt-3">
-                                            <a class="btn add-btn" id="add_more_item">Add Item</a>
+                                            <a class="btn add-btn" id="add_more_item">Add Next Item</a>
                                         </div>
                                     </div>
                                 </div>

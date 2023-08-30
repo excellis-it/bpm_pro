@@ -34,7 +34,7 @@ class InvoiceController extends Controller
 
     public function create()
     {
-        $states = State::orderBy('id', 'desc')->get();
+        $states = State::orderBy('id', 'asc')->get();
         return view('user.invoice.create', compact('states'));
     }
 
@@ -192,7 +192,7 @@ class InvoiceController extends Controller
      */
     public function edit($id)
     {
-        $states = State::orderBy('id', 'desc')->get();
+        $states = State::orderBy('id', 'asc')->get();
         $invoice = Invoice::findOrFail($id);
         return view('user.invoice.edit', compact('invoice','states'));
     }

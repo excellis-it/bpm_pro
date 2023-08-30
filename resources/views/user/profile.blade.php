@@ -147,10 +147,10 @@
                                                                   </div>
                                                                 </div>
 
-
+                                                                
                                                                 <div class="col-12 my-1">
                                                                   <div class="form-floating">
-                                                                    <input name="address" class="form-control" value="{{ Auth::user()->address }}">
+                                                                    <input name="address" class="form-control" value="{{old('address',Auth::user()->address) }}">
                                                                       <label for="floatingInputValue">Street address<span
                                                                         style="color: red;">*</span></label>
                                                                     @if ($errors->has('address'))
@@ -162,27 +162,29 @@
                                                                 
                                                                 <div class="col-12 my-1">
                                                                   <div class="form-floating">
-                                                                    <input name="address1" class="form-control" value="{{ Auth::user()->address1 }}">
+                                                                    <input name="address1" class="form-control" value="{{old('address1',Auth::user()->address1) }}">
                                                                       <label for="floatingInputValue">Apt., ste., bldg.</label>
                                                                     @if ($errors->has('address1'))
                                                                         <div class="error" style="color:red;">
-                                                                            {{ $errors->first('address') }}</div>
+                                                                            {{ $errors->first('address1') }}</div>
                                                                        @endif
                                                                     </div>
                                                                 </div>
+
+                                                                
 
                                                                 <div class="col-lg-6 col-12 my-1">
                                                                       <div class="form-floating">
                                                                     <input type="text" class="form-control"
                                                                         id="inputPassword3" name="city"
-                                                                        value="{{ Auth::user()->city }}"
+                                                                        value="{{old('city',Auth::user()->city) }}"
                                                                         >
                                                                         <label for="floatingInputValue">City<span
                                                                             style="color: red;">*</span></label>
-                                                                    @if ($errors->has('city'))
-                                                                        <div class="error" style="color:red;">
-                                                                            {{ $errors->first('city') }}</div>
-                                                                    @endif
+                                                                            @if ($errors->has('city'))
+                                                                            <div class="error" style="color:red;">
+                                                                                {{ $errors->first('city') }}</div>
+                                                                        @endif
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-lg-6 col-12 my-1">
@@ -204,25 +206,27 @@
                                                                     @endif
                                                                     </div>
                                                                 </div>
+
                                                                 <div class="col-12 my-1">
                                                                   <div class="form-floating">
                                                                     <input type="text" class="form-control"
                                                                         id="inputPassword3" name="zipcode"
-                                                                        value="{{ Auth::user()->zipcode }}"
-                                                                        >
+                                                                        value="{{old('zipcode',Auth::user()->zipcode) }}">
                                                                         <label for="floatingInputValue">Zip Code<span
                                                                             style="color: red;">*</span></label>
-                                                                    @if ($errors->has('zipcode'))
-                                                                        <div class="error" style="color:red;">
-                                                                            {{ $errors->first('zipcode') }}</div>
-                                                                    @endif
+                                                                        @if ($errors->has('zipcode'))
+                                                                            <div class="error" style="color:red;">
+                                                                                {{ $errors->first('zipcode') }}</div>
+                                                                        @endif
                                                                     </div>
                                                                 </div>
+
+                                                                
 
                                                                 <div class="col-lg-6 col-12 my-1">
                                                                   <div class="form-floating">
                                                                     <input type="text"
-                                                                        value="{{ Auth::user()->company }}"
+                                                                        value="{{old('company',Auth::user()->company) }}"
                                                                         name="company" class="form-control">
                                                                     <label for="floatingInputValue">Company<span
                                                                         style="color: red;">*</span></label>
@@ -232,10 +236,12 @@
                                                                     @endif
                                                                  </div>
                                                                 </div>
+
+                                                                
                                                                 
                                                                 <div class="col-lg-6 col-12  my-1">
                                                                     <div class="form-floating">
-                                                                    <input type="text" value="{{ Auth::user()->gst }}"
+                                                                    <input type="text" value="{{old('gst',Auth::user()->gst) }}"
                                                                         name="gst" class="form-control">
                                                                           <label for="floatingInputValue">Annual Resale Certificate for Sales Tax #</label>
                                                                     @if ($errors->has('gst'))
@@ -244,6 +250,8 @@
                                                                     @endif
                                                                     </div>
                                                                 </div>
+
+                                                                
                                                                 
                                                                 <div class="col-lg-6 col-12 my-1">
                                                                     <label class="form-label">Company Logo</label>

@@ -17,7 +17,7 @@ class ProfileController extends Controller
 
     public function index()
     {
-        $states = State::orderBy('id','desc')->get();
+        $states = State::orderBy('id','asc')->get();
         return view('user.profile',compact('states'));
     }
 
