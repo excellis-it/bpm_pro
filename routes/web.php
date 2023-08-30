@@ -52,8 +52,8 @@ Route::group(['prefix' => 'admin'], function () {
             'managers' => ManagerController::class,
         ]);
         
-         Route::get('managers/edit/{id}', [ManagerController::class, 'editManager'])->name('edit.manager');
-         Route::post('/updateManager',[ManagerController::class, 'updateManager'])->name('update.managers');
+        Route::get('managers/edit/{id}', [ManagerController::class, 'editManager'])->name('edit.manager');
+        Route::post('/updateManager',[ManagerController::class, 'updateManager'])->name('update.managers');
         Route::get('logout', [AuthController::class, 'logout'])->name('admin.logout');
         
     });
@@ -69,6 +69,9 @@ Route::group(['prefix' => 'user'], function () {
         Route::resources([
             'invoice' => InvoiceController::class,
         ]); 
+
+        Route::get('invoice-clone/{id}', [InvoiceController::class, 'invoiceClone'])->name('invoice.clone');
+        Route::post('invoice-clone-store', [InvoiceController::class, 'invoiceCloneStore'])->name('invoice.clone.store');
     });
     
     Route::get('download-invoice/{id}', [InvoiceController::class, 'downloadInvoice'])->name('download.invoice');

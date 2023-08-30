@@ -62,6 +62,7 @@
                                     <th>Stop Sending</th>
                                     <th>Invoice</th>
                                     <th>Action</th>
+                                    <th>Clone</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -97,6 +98,9 @@
                                     <td>
                                         <a href="{{ route('invoice.edit', $invoice->id) }}" ><i class="fas fa-edit"></i></a> &nbsp; &nbsp; 
                                         <a href="{{ route('invoice.show', $invoice->id) }}" ><i class="fas fa-eye"></i></a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('invoice.clone', $invoice->id) }}" ><i class="fas fa-clone"></i></a>
                                     </td>
                                 </tr>
                                 @endforeach

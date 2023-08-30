@@ -1437,7 +1437,7 @@
                                                         </h4>
                                                         <span class="tax-amt-icon" style="display:none" id="tax-arrow"><i class="fa-solid fa-arrow-right"></i></span>
                                                         <input type="text" name="tax_amount" id="tax_amount_input"
-                                                            class="form-control" placeholder="Tax amount" min="1"
+                                                            class="form-control" placeholder="Tax amount" min="0"
                                                             value="{{ $invoice['tax_amount'] }}" max="100"
                                                             style="display:none;">
                                                     </div>
@@ -2002,7 +2002,7 @@
                 $('#tax-arrow').show();
 
                 // Check if the entered value is within the valid range (0 to 100) no floating point numbers allowed
-                if (inputValue < 0 || inputValue > 100 || inputValue % 1 !== 0) {
+                if (inputValue < 0 || inputValue > 100 || inputValue % 1 !== 0 || inputValue == '') {
                     // Reset the value if it's invalid
                     $(this).val('');
                     $('#tax-arrow').hide();

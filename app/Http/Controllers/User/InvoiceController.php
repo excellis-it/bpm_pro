@@ -398,4 +398,140 @@ class InvoiceController extends Controller
             return response()->json(['message' => 'Ok.', 'status'=>true]);
         }
     }
+
+    public function invoiceClone($id)
+    {
+        $states = State::orderBy('id', 'asc')->get();
+        $invoice = Invoice::findOrFail($id);
+        return view('user.invoice.clone', compact('invoice','states'));
+
+    }
+
+    public function invoiceCloneStore(Request $request)
+    {
+        try {
+          
+            $currentDate = Carbon::now();
+            $invoice = new Invoice;
+            $invoice->user_id = Auth::user()->id;
+            if ($request->send_in == 1) {
+                $invoice->send_in = '';
+                $invoice->send_in_status = 1;
+            } else if ($request->send_in == 2) {
+                $oneWeekLater = $currentDate->addWeek();
+                $formattedDate = $oneWeekLater->format('Y-m-d');
+                $invoice->send_in = $formattedDate;
+                $invoice->send_in_status = 1;
+            } else {
+                $oneWeekLater = $currentDate->addMonth();
+                $formattedDate = $oneWeekLater->format('Y-m-d');
+                $invoice->send_in = $formattedDate;
+                $invoice->send_in_status = 1;
+            }
+    
+            $invoice->send_id = $request->send_in;
+            $invoice->from_first_name = $request->from_first_name;
+            $invoice->from_last_name = $request->from_last_name;
+            $invoice->from_email = $request->from_email;
+            $invoice->from_state = $request->bill_from_state;
+            $invoice->from_city = $request->bill_from_city;
+            $invoice->from_address = $request->from_address;
+            $invoice->from_zipcode = $request->from_zipcode;
+            $invoice->from_phone = $request->bill_from_phone;
+            $invoice->from_company = $request->bill_from_company;
+            $invoice->project_name = $request->project_name;
+            $invoice->project_address = $request->project_address;
+            $invoice->from_gst = $request->bill_from_gst;
+            $invoice->bil_to_name = $request->first_name . ' ' . $request->last_name;
+            $invoice->bil_to_email = $request->bil_to_email;
+            $invoice->bil_to_state = $request->bil_to_state;
+            $invoice->bil_to_city = $request->bil_to_city;
+            $invoice->bil_to_address = $request->bil_to_address;
+            $invoice->bil_to_zipcode = $request->bil_to_zipcode;
+            $invoice->bil_to_phone = $request->bil_to_phone;
+            $invoice->bil_to_mobile = $request->bil_to_mobile;
+            $invoice->tax = '10';
+            $invoice->type = $request->type;
+            $invoice->bil_to_faxNo = $request->bil_to_faxNo;
+            $invoice->invoice_no = $request->invoice_no;
+            $invoice->notes = $request->notes;
+            $invoice->sub_total = $request->sub_amount;
+            $invoice->total = $request->sum_amount;
+            $invoice->invoice_date = $request->invoice_date;
+            $invoice->company = $request->bil_to_company;
+            $invoice->due = $request->due;
+            if ($request->due == "On specific date") {
+                $invoice->due_date = $request->due_date;
+            }
+            $invoice->discount_price = $request->discount_price ?? '';
+            $invoice->discount_type = $request->discount_type ?? '';
+            $invoice->tax_amount = $request->tax_amount ?? '';
+            $invoice->image = Auth::user()->logo;
+            $invoice->save();
+    
+    
+    
+            //items add
+            foreach ($request->item_description as $key => $item) {
+                if ($item != null) {
+                    $add_items = new Item();
+                    $add_items->user_id = Auth::user()->id; 
+                    $add_items->invoice_id = $invoice->id;   
+                    $add_items->item_description = $item;               
+                    $add_items->item_additional_details = $request->additional_details[$key];
+                    $rate = str_replace(',', '', $request->rate[$key]);
+                    $add_items->item_quantity = $request->quantity[$key];
+                    $add_items->item_amount = str_replace(',', '', $request->amount[$key]);
+                    $add_items->item_rate = $rate;
+                    if ($request->hasFile('image')) {
+                        $image =  $request->image[$key] ?? '';
+                        if ($image != '') {
+                            $fileData = $this->imageUpload($request->image[$key], 'items');
+                            $add_items->image = $fileData['filePath'] ?? null;
+                        }
+                        
+                    }
+                    $add_items->save();
+                }
+    
+            }
+    
+    
+            $items = Item::where('invoice_id', $invoice->id)->get();
+    
+            $data = [
+                'invoice_detail' => $invoice,
+                'items' => $items,
+            ];
+    
+         
+            $pdf = PDF::loadView('pdf.invoice', [
+                'data' => $data,
+            ]);
+            $pdf_file = new File();
+            $content = $pdf->download()->getOriginalContent();
+            $filename = 'en' . $invoice->id . date('YmdHi') . '.pdf';
+            Storage::put('invoice/' . $filename, $content);
+            $pdf_file->file = 'invoice/' . $filename;
+            $pdf_file->user_id = Auth::user()->id;
+            $pdf_file->invoice_id = $invoice->id;
+            $pdf_file->save();
+            
+            $maildata = [
+                'id' => $invoice->id,
+                'invoice_detail' => $invoice,
+                'items' => $items,
+                'pdf_file' => 'invoice/' .$filename ?? '',
+                'invoice_id' => '',
+            ];
+    
+            Mail::to($request->bil_to_email)->send(new InvoiceMail($maildata));
+           
+    
+            return redirect()->route('invoice.index')->with('message', 'Invoice created successfully');
+        } catch (\Throwable $th) {
+            dd($th->getMessage());
+            return redirect()->back()->with('error', $th->getMessage());
+        }
+    }
 }
