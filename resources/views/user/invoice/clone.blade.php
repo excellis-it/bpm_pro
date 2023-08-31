@@ -1303,14 +1303,11 @@
                                                     <div class="form-floating">
                                                         <input type="text" name="invoice_no" class="form-control"
                                                             id="invoice_no" required data-parsley-trigger="keyup"
-                                                            value="{{ $invoice['invoice_no'] }}">
+                                                            >
                                                             <span style="color:red" class="check-invoice"></span>
 
                                                         <label for="floatingInputValue">Invoice Number</label>
-                                                        @if ($errors->has('invoice_no'))
-                                                            <div class="error" style="color:red;">
-                                                                {{ $errors->first('invoice_no') }}</div>
-                                                        @endif
+                                                        
                                                     </div>
                                                 </div>
                                                 <div class="inv-number">
@@ -2015,30 +2012,11 @@
             $(document).ready(function() {
                 $('.phone-format').mask('+1 999 999 9999');
                 // invoice number checking using ajax
-                    var invoice = $('#invoice_no').val();
+                    
 
                    
             });
 
-            // $('#invoice_no').keyup(function() {
-            //     var invoice = $('#invoice_no').val();
-            //     $.ajax({
-            //         type: "GET",
-            //         dataType: "json",
-            //         url: '{{ route('invoice.number-check') }}',
-            //         data: {
-            //             'invoice_no': invoice
-            //         },
-            //         success: function(resp) {
-            //             if (resp.status == false) {
-            //                 $('.check-invoice').text(resp.message);
-            //             } else {
-            //                 $('#invoice_show').html('(' + invoice + ')');
-            //                 $('.check-invoice').text('');
-            //             }
-            //         }
-            //     });
-            // });
             @if ($invoice['tax_amount'] != null)
                 $('#tax_amount_input').show();
                 $('#tax_amount').hide();
@@ -2189,34 +2167,7 @@
         </script>
 
         <script>
-            $(document).ready(function() {
-                var invoice = $('#invoice_no').val();
-
-                $.ajax({
-                    type: "GET",
-                    dataType: "json",
-                    url: '{{ route('invoice.number-check') }}',
-                    data: {
-                        'invoice_no': invoice
-                    },
-                    success: function(resp) {
-                        if (resp.status == false) {
-                            $('.check-invoice').text(resp.message);
-                        } else {
-                            $('#invoice_show').html('(' + invoice + ')');
-                            $('.check-invoice').text('');
-                        }
-                    }
-                });
-
-                $("form").submit(function(e) {
-                    if ($('.check-invoice').text() !== '') {
-                        // alert('Form submission intercepted');
-                        e.preventDefault();
-                        return false;
-                    }
-                });
-            });
+          
             $('#invoice_no').keyup(function() {
                 var invoice = $('#invoice_no').val();
 
