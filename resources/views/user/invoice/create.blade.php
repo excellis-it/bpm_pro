@@ -426,6 +426,10 @@
             .form-left h2{
                 text-align: center
             }
+            .show-dis .form-floating .form-select{
+                padding: 5px  15px;
+                margin: 0px 10px 0px 10px;
+            }
         }
     </style>
     <style>

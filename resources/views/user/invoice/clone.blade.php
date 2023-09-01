@@ -454,6 +454,16 @@
                font-size: 14px!important;
                padding: 5px 22px!important;
             }
+            .show-dis .form-floating .form-select{
+                padding: 5px  15px;
+                margin: 0px 10px 0px 10px;
+            }
+            .annual-resale .form-control{
+                padding: 60px 10px 20px 10px!important;
+            }
+            .invoice-type-top{
+                padding: 0px 12px;
+            }
 
         }
     </style>
@@ -531,7 +541,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: 0px 10px;
+            margin: 0px 5px;
         }
 
         #add_more_item {
@@ -594,7 +604,8 @@
                                     </div>
                                 </div>
                                 <div class="form-div-wrap">
-                                    <div class="row justify-content-end">
+                                    <div class="invoice-type-top">
+                                      <div class="row justify-content-end">
                                         <div class="col-xl-2 co-md-4 col-12">
                                             <div class="temp-box">
                                                 <div class="temp-box-wrap">
@@ -668,6 +679,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
                                     </div>
                                     <div class="row justify-content-between">
                                         <div class="row justify-content-end">
@@ -849,7 +861,7 @@
                                                 <div class="form-group row">
 
                                                     <div class="col-sm-10">
-                                                        <div class="form-floating">
+                                                        <div class="form-floating annual-resale">
                                                             <input type="text" class="form-control"
                                                                 id="floatingInputValue" data-parsley-trigger="keyup"
                                                                 placeholder="123456789 RT"

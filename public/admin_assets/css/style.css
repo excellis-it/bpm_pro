@@ -11903,6 +11903,13 @@ body {
         .user-profile-page .profile-form-wrap{
             padding: 10px 20px;
         }
+        .create-mng .card-body{
+            padding: 0px 0px 10px 0px;
+        }
+        .create-mng .card-body .card{
+            -webkit-box-shadow: none!important;
+            border: none;
+        }
       }
       
         

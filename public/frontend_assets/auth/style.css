@@ -214,7 +214,7 @@ body{
     width: 100%;
   }
   .form-content .signup-form{
-    display: none;
+    /* display: none; */
   }
   .container #flip:checked ~ .forms .signup-form{
     display: block;

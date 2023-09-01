@@ -43,6 +43,9 @@
                     class="fa fa-ellipsis-v"></i></a>
             <div class="dropdown-menu dropdown-menu-right">
                 <a class="dropdown-item" href="{{ route('admin.profile') }}">My Profile</a>
+                <a class="dropdown-item" href="{{ route('user.list') }}">Manage Users </a>
+                <a class="dropdown-item" href="{{ route('managers.index') }}">Manage Managers </a>
+                <a class="dropdown-item" href="{{ route('home.cms') }}">Home Cms</a>
                 <a class="dropdown-item" href="{{ route('admin.logout') }}">Logout</a>
             </div>
         </div>

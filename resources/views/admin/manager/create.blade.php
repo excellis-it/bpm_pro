@@ -26,12 +26,12 @@
             </div>
         </div>
 
-        <div class="card">
+        <div class="card create-mng">
             <div class="card-body">
                 <div class="card-title">
                     <div class="row">
                     <div class="col-xl-12 mx-auto">
-                        <div class="card border-0 border-4">
+                        <div class="card">
                             <div class="card-body">
                                 <form action="{{route('managers.store')}}" method="post" enctype="multipart/form-data">
                                     @csrf
@@ -149,7 +149,6 @@
                                             </div>
                                             
                                         </div> 
-                                        </br>
                                         
                                         <div class="row" style="margin-top: 20px; float: left;">
                                             <div class="col-sm-9">
