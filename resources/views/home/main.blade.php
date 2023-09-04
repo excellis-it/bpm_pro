@@ -55,25 +55,19 @@
                                 <h2>{{$home_content->banner2_subtitle}}</h2>
                             </div>
                             <div class="d-flex align-items-center justify-content-center">
-                                <div class="btn-get">
-                              @if(Auth::check() && Auth::user()->hasRole('USER'))
-                                <a href="{{ route('invoice.index') }}" class="btn get-btn">Dashboard</a>
-                              @elseif(Auth::check() && Auth::user()->hasRole('ADMIN'))
-                                <a href="{{ route('user.list') }}" class="btn get-btn">Dashboard</a>
-                              @else
-                                <a href="{{ route('register') }}" class="btn get-btn">Login</a>
-                              @endif
-                            </div>
-                            <div class="btn-get btn-get-2">
-                              @if(Auth::check() && Auth::user()->hasRole('USER'))
-                                <a href="{{ route('invoice.index') }}" class="btn get-btn">Dashboard</a>
-                              @elseif(Auth::check() && Auth::user()->hasRole('ADMIN'))
-                                <a href="{{ route('user.list') }}" class="btn get-btn">Dashboard</a>
-                              @else
-                                <a href="{{ route('register') }}" class="btn get-btn">Signup</a>
-                              @endif
-                            </div>
-                            </div>
+                              <div class="btn-get">
+                                @if(Auth::check() && Auth::user()->hasRole('USER'))
+                                  <a href="{{ route('invoice.index') }}" class="btn get-btn">Dashboard</a>
+                                @elseif(Auth::check() && Auth::user()->hasRole('ADMIN'))
+                                  <a href="{{ route('user.list') }}" class="btn get-btn">Dashboard</a>
+                                @elseif(Auth::check() && Auth::user()->hasRole('MANAGER'))
+                                  <a href="{{ route('user.list') }}" class="btn get-btn">Dashboard</a>  
+                                @else
+                                  <a href="{{ route('login') }}" class="btn get-btn">Login</a>
+                                  <a href="{{ route('register') }}" class="btn get-btn sign-btn">Signup</a>
+                                @endif
+                              </div>
+                          </div>
                         </div>
                     </div>
                 </div>  
@@ -92,25 +86,19 @@
                                 <h2>{{$home_content->banner2_subtitle}}</h2>
                             </div>
                             <div class="d-flex align-items-center justify-content-center">
-                                <div class="btn-get">
-                              @if(Auth::check() && Auth::user()->hasRole('USER'))
-                                <a href="{{ route('invoice.index') }}" class="btn get-btn">Dashboard</a>
-                              @elseif(Auth::check() && Auth::user()->hasRole('ADMIN'))
-                                <a href="{{ route('user.list') }}" class="btn get-btn">Dashboard</a>
-                              @else
-                                <a href="{{ route('register') }}" class="btn get-btn">Login</a>
-                              @endif
-                            </div>
-                            <div class="btn-get btn-get-2">
-                              @if(Auth::check() && Auth::user()->hasRole('USER'))
-                                <a href="{{ route('invoice.index') }}" class="btn get-btn">Dashboard</a>
-                              @elseif(Auth::check() && Auth::user()->hasRole('ADMIN'))
-                                <a href="{{ route('user.list') }}" class="btn get-btn">Dashboard</a>
-                              @else
-                                <a href="{{ route('register') }}" class="btn get-btn">Signup</a>
-                              @endif
-                            </div>
-                            </div>
+                              <div class="btn-get">
+                                @if(Auth::check() && Auth::user()->hasRole('USER'))
+                                  <a href="{{ route('invoice.index') }}" class="btn get-btn">Dashboard</a>
+                                @elseif(Auth::check() && Auth::user()->hasRole('ADMIN'))
+                                  <a href="{{ route('user.list') }}" class="btn get-btn">Dashboard</a>
+                                @elseif(Auth::check() && Auth::user()->hasRole('MANAGER'))
+                                  <a href="{{ route('user.list') }}" class="btn get-btn">Dashboard</a>  
+                                @else
+                                  <a href="{{ route('login') }}" class="btn get-btn">Login</a>
+                                  <a href="{{ route('register') }}" class="btn get-btn sign-btn">Signup</a>
+                                @endif
+                              </div>
+                          </div>
                         </div>
                     </div>
                 </div>  

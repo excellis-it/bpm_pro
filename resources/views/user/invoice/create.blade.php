@@ -116,8 +116,8 @@
         }
 
         /* .signature input {
-                                                                                                                                                                                                                                                                                                display: none;
-                                                                                                                                                                                                                                                                                            } */
+                                                                                                                                                                                                                                                                                                    display: none;
+                                                                                                                                                                                                                                                                                                } */
 
         .signature label span {
             width: 100%;
@@ -363,7 +363,8 @@
         .description_box {
             margin: 20px 0px;
         }
-        .invoice-type-top{
+
+        .invoice-type-top {
             padding: 0px 12px;
         }
 
@@ -391,6 +392,7 @@
                 padding: 0px 0px;
                 margin-bottom: 0px;
             }
+
             .form-left {
                 margin-top: 0 !important;
             }
@@ -409,25 +411,31 @@
             }
 
             .form-floating .form-control {
-                margin-bottom: 15px!important;
+                margin-bottom: 15px !important;
             }
-            .form-group .data-field{
-                margin-bottom: 15px!important;
+
+            .form-group .data-field {
+                margin-bottom: 15px !important;
             }
-            .form-group{
+
+            .form-group {
                 margin: 0px;
             }
-            .description_box{
-                margin: 20px 0px!important;
+
+            .description_box {
+                margin: 20px 0px !important;
             }
-            .logo-div-wrap{
+
+            .logo-div-wrap {
                 margin-bottom: 10px;
             }
-            .form-left h2{
+
+            .form-left h2 {
                 text-align: center
             }
-            .show-dis .form-floating .form-select{
-                padding: 5px  15px;
+
+            .show-dis .form-select {
+                padding: 8px 15px;
                 margin: 0px 10px 0px 10px;
             }
         }
@@ -485,7 +493,9 @@
             color: #ff0000;
         }
 
-
+        .annual-resale .form-control {
+            padding: 60px 10px 20px 10px !important;
+        }
 
         .form-div {
             position: relative;
@@ -509,14 +519,15 @@
                 text-align: center;
                 width: 92%;
                 padding: 15px;
-                display: block!important;
+                display: block !important;
             }
 
             .form-div-wrap {
                 margin: 75px 0px 20px 0px;
             }
-            .pre-view-wrap{
-                justify-content: center!important
+
+            .pre-view-wrap {
+                justify-content: center !important
             }
 
         }
@@ -551,71 +562,73 @@
                                     </div>
                                 </div>
                                 <div class="form-div-wrap">
-                                  <div class="invoice-type-top">
-                                    <div class="row justify-content-end">
-                                        <div class="col-xl-2 co-md-4 col-12">
-                                            <div class="temp-box">
-                                                <div class="temp-box-wrap">
-                                                    <div class="inv-number">
-                                                        <div class="form-floating">
-                                                            <select class="form-select types" name="type"
-                                                                id="floatingSelect"
-                                                                aria-label="Floating label select example">
-                                                                <option selected value="Invoice">Invoice</option>
-                                                                <option value="Estimate">Estimate</option>
-                                                            </select>
-                                                            <label for="floatingSelect">Type</label>
-                                                            @if ($errors->has('type'))
-                                                                <div class="error" style="color:red;">
-                                                                    {{ $errors->first('type') }}</div>
-                                                            @endif
+                                    <div class="invoice-type-top">
+                                        <div class="row justify-content-end">
+                                            <div class="col-xl-2 co-md-4 col-12">
+                                                <div class="temp-box">
+                                                    <div class="temp-box-wrap">
+                                                        <div class="inv-number">
+                                                            <div class="form-floating">
+                                                                <select class="form-select types" name="type"
+                                                                    id="floatingSelect"
+                                                                    aria-label="Floating label select example">
+                                                                    <option selected value="Invoice">Invoice</option>
+                                                                    <option value="Estimate">Estimate</option>
+                                                                </select>
+                                                                <label for="floatingSelect">Type</label>
+                                                                @if ($errors->has('type'))
+                                                                    <div class="error" style="color:red;">
+                                                                        {{ $errors->first('type') }}</div>
+                                                                @endif
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-xl-2 co-md-4 col-12">
-                                            <div class="temp-box">
-                                                <div class="temp-box-wrap">
-                                                    <div class="inv-number">
-                                                        <div class="form-floating">
-                                                            <select class="form-select" name="currency" id="floatingSelect"
-                                                                aria-label="Floating label select example">
-                                                                <option selected value="USD">USD</option>
-                                                            </select>
-                                                            <label for="floatingSelect">Currency</label>
-                                                            @if ($errors->has('currency'))
-                                                                <div class="error" style="color:red;">
-                                                                    {{ $errors->first('currency') }}</div>
-                                                            @endif
+                                            <div class="col-xl-2 co-md-4 col-12">
+                                                <div class="temp-box">
+                                                    <div class="temp-box-wrap">
+                                                        <div class="inv-number">
+                                                            <div class="form-floating">
+                                                                <select class="form-select" name="currency"
+                                                                    id="floatingSelect"
+                                                                    aria-label="Floating label select example">
+                                                                    <option selected value="USD">USD</option>
+                                                                </select>
+                                                                <label for="floatingSelect">Currency</label>
+                                                                @if ($errors->has('currency'))
+                                                                    <div class="error" style="color:red;">
+                                                                        {{ $errors->first('currency') }}</div>
+                                                                @endif
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-xl-2 co-md-4 col-12">
-                                            <div class="temp-box">
-                                                <div class="temp-box-wrap">
-                                                    <div class="inv-number">
-                                                        <div class="form-floating">
-                                                            <select class="form-select" name="send_in" id="floatingSelect"
-                                                                aria-label="Floating label select example">
-                                                                <option selected value="1">One time</option>
-                                                                <option value="2">Weekly</option>
-                                                                <option value="3">Monthly</option>
-                                                            </select>
-                                                            <label for="floatingSelect">Send in</label>
-                                                            @if ($errors->has('send_in'))
-                                                                <div class="error" style="color:red;">
-                                                                    {{ $errors->first('send_in') }}</div>
-                                                            @endif
+                                            <div class="col-xl-2 co-md-4 col-12">
+                                                <div class="temp-box">
+                                                    <div class="temp-box-wrap">
+                                                        <div class="inv-number">
+                                                            <div class="form-floating">
+                                                                <select class="form-select" name="send_in"
+                                                                    id="floatingSelect"
+                                                                    aria-label="Floating label select example">
+                                                                    <option selected value="1">One time</option>
+                                                                    <option value="2">Weekly</option>
+                                                                    <option value="3">Monthly</option>
+                                                                </select>
+                                                                <label for="floatingSelect">Send in</label>
+                                                                @if ($errors->has('send_in'))
+                                                                    <div class="error" style="color:red;">
+                                                                        {{ $errors->first('send_in') }}</div>
+                                                                @endif
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                  </div>
                                     <div class="row justify-content-between">
                                         <div class="row justify-content-end">
                                             <div class="col-xl-12 col-12">
@@ -790,7 +803,7 @@
                                                 <div class="form-group row">
 
                                                     <div class="col-sm-10">
-                                                        <div class="form-floating">
+                                                        <div class="form-floating annual-resale">
                                                             <input type="text" class="form-control"
                                                                 id="floatingInputValue" data-parsley-trigger="keyup"
                                                                 placeholder="123456789 RT"
@@ -866,11 +879,11 @@
                                                             <input type="text" class="form-control"
                                                                 name="bil_to_email" required data-parsley-type="email"
                                                                 data-parsley-trigger="keyup" id="bill_to_email" ">
-                                                                                <label for="floatingInputValue"
-                                                                                class="col-sm-2 col-form-label">Email<span
-                                                                                    style="color: red;">*</span></label>
-                                                                                                                            
-                                                                                @if ($errors->has('bil_to_email'))
+                                                                                    <label for="floatingInputValue"
+                                                                                    class="col-sm-2 col-form-label">Email<span
+                                                                                        style="color: red;">*</span></label>
+                                                                                                                                
+                                                                                     @if ($errors->has('bil_to_email'))
                                                             <div class="error" style="color:red;">
                                                                 {{ $errors->first('bil_to_email') }}</div>
                                                             @endif
@@ -1299,23 +1312,16 @@
                                                 </div>
                                                 <div class="d-flex justify-content-between">
                                                     <div class="me-2 show-dis">
-                                                        <div class="form-floating">
-                                                            <input type="text" name="discount_price"
-                                                                class="form-control discount_price">
-                                                            <label for="floatingInputValue">Other Discount</label>
-                                                        </div>
+                                                        <input type="text" name="discount_price"
+                                                            class="form-control discount_price">
                                                     </div>
                                                     <div class="show-dis">
-                                                        <div class="form-floating">
-                                                            <select class="form-select currency-select"
-                                                                name="discount_type" id="floatingSelect"
-                                                                aria-label="Floating label select example">
-                                                                <option selected="" value="1">%</option>
-                                                                <option value="2">$</option>
-                                                            </select>
-                                                            <!--<label for="floatingSelect">Send in</label>-->
-
-                                                        </div>
+                                                        <select class="form-select currency-select" name="discount_type"
+                                                            aria-label="Floating label select example">
+                                                            <option selected="" value="1">%</option>
+                                                            <option value="2">$</option>
+                                                        </select>
+                                                        <!--<label for="floatingSelect">Send in</label>-->
                                                     </div>
                                                 </div>
                                                 <hr />
@@ -1369,53 +1375,53 @@
                 <div class="modal-content">
                     <div class="modal-body">
                         <div class="table-responsive">
-                        <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#ffffff"
-                            style="border-radius: 0px; margin: 0 auto;">
-                            <tbody>
+                            <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#ffffff"
+                                style="border-radius: 0px; margin: 0 auto;">
+                                <tbody>
 
-                                <tr>
-                                    <td style="padding:10px 30px 0">
-                                        <table width="100%" border="0" cellpadding="0" cellspacing="0"
-                                            align="center">
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <table border="0" cellpadding="0" cellspacing="0"
-                                                            align="left" style="width: 100%;">
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td
-                                                                        style="font-size: 14px; color: #000; font-weight: 500; line-height: 18px; vertical-align: top; text-align: left;font-family: Montserrat, sans-serif;">
-                                                                        <img src="webex.png" alt="logo"
-                                                                            id="popup_logo" border="0"
-                                                                            style="object-fit: contain; width: 100px; height: 50px;font-family: Montserrat, sans-serif; display:inline-block;" />
-                                                                        <span
-                                                                            style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
-                                                                            id="popup_comp"></span>
-                                                                        <span
-                                                                            style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
-                                                                            id="popup_add"></span>
-                                                                        <span
-                                                                            style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
-                                                                            id="popup_citystate"></span>
-                                                                        <span
-                                                                            style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
-                                                                            id="popup_phone"></span>
-                                                                        <span
-                                                                            style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
-                                                                            id="popup_email"></span>
+                                    <tr>
+                                        <td style="padding:10px 30px 0">
+                                            <table width="100%" border="0" cellpadding="0" cellspacing="0"
+                                                align="center">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <table border="0" cellpadding="0" cellspacing="0"
+                                                                align="left" style="width: 100%;">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td
+                                                                            style="font-size: 14px; color: #000; font-weight: 500; line-height: 18px; vertical-align: top; text-align: left;font-family: Montserrat, sans-serif;">
+                                                                            <img src="webex.png" alt="logo"
+                                                                                id="popup_logo" border="0"
+                                                                                style="object-fit: contain; width: 100px; height: 50px;font-family: Montserrat, sans-serif; display:inline-block;" />
+                                                                            <span
+                                                                                style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
+                                                                                id="popup_comp"></span>
+                                                                            <span
+                                                                                style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
+                                                                                id="popup_add"></span>
+                                                                            <span
+                                                                                style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
+                                                                                id="popup_citystate"></span>
+                                                                            <span
+                                                                                style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
+                                                                                id="popup_phone"></span>
+                                                                            <span
+                                                                                style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
+                                                                                id="popup_email"></span>
 
-                                                                    </td>
+                                                                        </td>
 
-                                                                    <td
-                                                                        style="font-size: 14px; font-weight: 500; color: #000; line-height: 20px; vertical-align: top; text-align: left;font-family: Montserrat, sans-serif;">
-                                                                        <table border="0" cellpadding="0"
-                                                                            cellspacing="0" align="right">
-                                                                            <tbody>
-                                                                                <tr>
-                                                                                    <td>
-                                                                                        <span
-                                                                                            style="color:  #007DD9;
+                                                                        <td
+                                                                            style="font-size: 14px; font-weight: 500; color: #000; line-height: 20px; vertical-align: top; text-align: left;font-family: Montserrat, sans-serif;">
+                                                                            <table border="0" cellpadding="0"
+                                                                                cellspacing="0" align="right">
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <span
+                                                                                                style="color:  #007DD9;
                                                                                             padding: 3px 0px;
                                                                                             text-align: right;
                                                                                             font-size: 36px;
@@ -1423,251 +1429,255 @@
                                                                                             font-weight: 500;
                                                                                             display: inline-block;
                                                                                             width:219px;font-family: Montserrat, sans-serif;"
-                                                                                            id="popup_type"></span><br>
-                                                                                    </td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td><span
-                                                                                            style="background: #007DD9; margin: 10px 0px; padding: 5px; color: #fff;  display: flex;
+                                                                                                id="popup_type"></span><br>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td><span
+                                                                                                style="background: #007DD9; margin: 10px 0px; padding: 5px; color: #fff;  display: flex;
                                                                                             justify-content: space-between;font-family: Montserrat, sans-serif; width:250px;">
-                                                                                            <span>INVOICE#</span>
-                                                                                            <span>DATE</span></span>
-                                                                                        <span
-                                                                                            style="color: #000; text-align: center; display: inline-block; width: 100%; font-size: 14px; display: flex; justify-content: space-between;font-family: Montserrat, sans-serif;">
+                                                                                                <span>INVOICE#</span>
+                                                                                                <span>DATE</span></span>
                                                                                             <span
-                                                                                                id="popup_invoice_number"></span>
-                                                                                            <span id="popup_date"></span>
-                                                                                        </span>
-                                                                                    </td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td><span
-                                                                                            style="background: #007DD9; margin: 10px 0px;  padding: 5px; color: #fff;  display: flex;
+                                                                                                style="color: #000; text-align: center; display: inline-block; width: 100%; font-size: 14px; display: flex; justify-content: space-between;font-family: Montserrat, sans-serif;">
+                                                                                                <span
+                                                                                                    id="popup_invoice_number"></span>
+                                                                                                <span
+                                                                                                    id="popup_date"></span>
+                                                                                            </span>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td><span
+                                                                                                style="background: #007DD9; margin: 10px 0px;  padding: 5px; color: #fff;  display: flex;
                                                                                             justify-content: start;font-family: Montserrat, sans-serif; width:250px;text-align: left;">
-                                                                                            TERMS</span>
-                                                                                        <span
-                                                                                            style="color: #000; text-align: left; display: inline-block; width: 100%; font-size: 14px; font-weight: 400;font-family: Montserrat, sans-serif;"
-                                                                                            id="popup_term"> </span>
-                                                                                    </td>
-                                                                                </tr>
-                                                                            </tbody>
-                                                                        </table>
-                                                                    </td>
-                                                                </tr>
+                                                                                                TERMS</span>
+                                                                                            <span
+                                                                                                style="color: #000; text-align: left; display: inline-block; width: 100%; font-size: 14px; font-weight: 400;font-family: Montserrat, sans-serif;"
+                                                                                                id="popup_term"> </span>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
 
-                                                            </tbody>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <table border="0" cellpadding="0" cellspacing="0"
-                                                            align="left"
-                                                            style="width: 100%; vertical-align: top; margin-top: 18px;">
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td
-                                                                        style="font-size: 14px; color: #000; font-weight: 400; line-height: 18px; vertical-align: top; text-align: right;font-family: Montserrat, sans-serif;">
-                                                                        <span
-                                                                            style="display: block; text-align: left; background: #007DD9; padding: 5px; color: #fff;font-family: Montserrat, sans-serif;font-weight:400">Bill
-                                                                            To</span>
-                                                                        <span
-                                                                            style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
-                                                                            id="popup_billto_name">Name:
-                                                                            Pritam Maity</span>
-                                                                        <span
-                                                                            style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
-                                                                            id="popup_billto_com">Company
-                                                                            Name</span>
-                                                                        <span
-                                                                            style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
-                                                                            id="popup_billto_add">Address</span>
-                                                                        <span
-                                                                            style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
-                                                                            id="popup_billto_zip">Zip
-                                                                            Code</span>
-                                                                        <span
-                                                                            style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
-                                                                            id="popup_billto_ph">Phone</span>
-                                                                        <span
-                                                                            style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
-                                                                            id="popup_billto_email">Email
-                                                                            Address</span>
-                                                                    </td>
-                                                                    <td style="vertical-align: top;">
-                                                                        <table border="0" cellpadding="0"
-                                                                            cellspacing="0" align="right"
-                                                                            style="vertical-align: top;">
-                                                                            <tbody>
-                                                                                <tr>
-                                                                                    <td><span
-                                                                                            style="background: #007DD9;
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <table border="0" cellpadding="0" cellspacing="0"
+                                                                align="left"
+                                                                style="width: 100%; vertical-align: top; margin-top: 18px;">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td
+                                                                            style="font-size: 14px; color: #000; font-weight: 400; line-height: 18px; vertical-align: top; text-align: right;font-family: Montserrat, sans-serif;">
+                                                                            <span
+                                                                                style="display: block; text-align: left; background: #007DD9; padding: 5px; color: #fff;font-family: Montserrat, sans-serif;font-weight:400">Bill
+                                                                                To</span>
+                                                                            <span
+                                                                                style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
+                                                                                id="popup_billto_name">Name:
+                                                                                Pritam Maity</span>
+                                                                            <span
+                                                                                style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
+                                                                                id="popup_billto_com">Company
+                                                                                Name</span>
+                                                                            <span
+                                                                                style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
+                                                                                id="popup_billto_add">Address</span>
+                                                                            <span
+                                                                                style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
+                                                                                id="popup_billto_zip">Zip
+                                                                                Code</span>
+                                                                            <span
+                                                                                style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
+                                                                                id="popup_billto_ph">Phone</span>
+                                                                            <span
+                                                                                style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
+                                                                                id="popup_billto_email">Email
+                                                                                Address</span>
+                                                                        </td>
+                                                                        <td style="vertical-align: top;">
+                                                                            <table border="0" cellpadding="0"
+                                                                                cellspacing="0" align="right"
+                                                                                style="vertical-align: top;">
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td><span
+                                                                                                style="background: #007DD9;
                                                                                             margin: 0 0 10px;
                                                                                             padding: 5px;
                                                                                             color: #fff;
                                                                                             width: 250px;
                                                                                             display: inline-block;
                                                                                             text-align: center;font-family: Montserrat, sans-serif; font-weight:500;font-size: 14px;">
-                                                                                            PROJECT NAME AND ADDRESS</span>
-                                                                                        <span
-                                                                                            style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
-                                                                                            id="popup_project_name"></span>
-                                                                                        <span
-                                                                                            style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
-                                                                                            id="popup_project_address"></span>
-                                                                                    </td>
-                                                                                </tr>
-                                                                            </tbody>
-                                                                        </table>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td height="20"></td>
-                                </tr>
-                                <tr>
-                                    <td style="padding:0 30px">
-                                        <table width="100%" border="0" cellpadding="0" cellspacing="0"
-                                            align="center">
-                                            <thead>
-                                                <tr>
-                                                    <th style="background: #007DD9; font-size: 16px; font-weight: 500;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;font-family: Montserrat, sans-serif;"
-                                                        width="32%" align="left">
-                                                        ITEM NAME
-                                                    </th>
-                                                    <th style="background: #007DD9; font-size: 16px;  font-weight: 500;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;font-family: Montserrat, sans-serif;"
-                                                        align="left">
-                                                        UNIT PRICE
-                                                    </th>
-                                                    <th style="background: #007DD9; font-size: 16px;  font-weight: 500; color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;font-family: Montserrat, sans-serif;"
-                                                        align="center">
-                                                        QUANTITY
-                                                    </th>
-                                                    <th style="background: #007DD9; font-size: 16px;  font-weight: 500;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;font-family: Montserrat, sans-serif;"
-                                                        align="right">
-                                                        EXTENDED PRICE
-                                                    </th>
-                                                </tr>
-                                                <tr>
-                                                    <td height="1" style="background: #bebebe;" colspan="4"></td>
-                                                </tr>
-                                            </thead>
-
-                                            <tbody id="tableVal">
-
-                                            </tbody>
-                                            <tfoot>
-                                                <tr>
-                                                    <td
-                                                        style="font-size: 16px;  color: #007DD9;  line-height: 14px;  vertical-align: top; padding:10px;font-family: Montserrat, sans-serif;">
-                                                        Notes: <span id="popup_notes"
-                                                            style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px;font-family: Montserrat, sans-serif;"
-                                                            align="right"></span>
-                                                    </td>
-                                                    <td colspan="2"
-                                                        style="font-size: 16px; color: #000; line-height: 14px; text-align: left; vertical-align: top; padding: 10px; font-weight: 400; background: #cce7ff;font-family: Montserrat, sans-serif;">
-                                                        Subtotal:
-                                                    </td>
-                                                    <td id="popup_total"
-                                                        style="font-size: 16px; color: #000; line-height: 14px; text-align: right; vertical-align: top; padding: 10px; font-weight: 400; background: #e6f3ff;font-family: Montserrat, sans-serif;">
-                                                        $390.00
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td
-                                                        style="font-size: 16px; color: #000; line-height: 14px; text-align: left; vertical-align: top; padding: 10px; font-weight: 400; background: #cce7ff;font-family: Montserrat, sans-serif;">
-                                                        Tax:
-                                                    </td>
-                                                    <td id="popup_tax_percentage"
-                                                        style="font-size: 16px; color: #000; line-height: 14px; text-align: left; vertical-align: top; padding: 10px; font-weight: 400; background: #cce7ff;font-family: Montserrat, sans-serif;">
-                                                        7.00%
-                                                    </td>
-                                                    <td id="popup_tax_amount"
-                                                        style="font-size: 16px; color: #000; line-height: 14px; text-align: right; vertical-align: top; padding: 10px; font-weight: 400; background: #e6f3ff;font-family: Montserrat, sans-serif;">
-                                                        $27.30
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td colspan="2"
-                                                        style="font-size: 16px; color: #000; line-height: 14px; text-align: left; vertical-align: top; padding: 10px; font-weight: 600; background: #cce7ff; border-top:2px solid #000;font-family: Montserrat, sans-serif;">
-                                                        TOTAL
-                                                    </td>
-                                                    <td id="popup_sum"
-                                                        style="font-size: 16px; color: #000; line-height: 14px; text-align: right; vertical-align: top; padding: 10px; font-weight: 600; background: #e6f3ff;  border-top:2px solid #000;font-family: Montserrat, sans-serif;">
-                                                        $417.30
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td height="1" colspan="4"
-                                                        style="border-bottom:3px solid #000"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="4"
-                                                        style="font-size: 16px; font-weight: 600; color: #007DD9;  line-height: 14px;  vertical-align: top; padding:10px;font-family: Montserrat, sans-serif;">
-                                                        <span id="additional_info">Additional Information:</span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="4">
-                                                        <div id="item-image" style="columns: 4; display:block;">
-
-                                                        </div>
-
-                                                    </td>
-                                                </tr>
-                                                <!--<tr>-->
-                                                <!--    <td height="1" colspan="4"-->
-                                                <!--        style="border-bottom:3px solid #000">-->
-                                                <!--    </td>-->
-                                                <!--</tr>-->
-                                        </table>
-                                    </td>
-                                </tr>
-                                </tfoot>
-                            </tbody>
-                        </table>
-                        </td>
-                        </tr>
-                        <tr>
-                            <td style="padding:0 30px">
-                                <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
-                                    <tbody>
-
-                                    </tbody>
-                                </table>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center"
-                                    bgcolor="#ffffff" style="border-radius: 0 0 10px 10px;">
+                                                                                                PROJECT NAME AND
+                                                                                                ADDRESS</span>
+                                                                                            <span
+                                                                                                style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
+                                                                                                id="popup_project_name"></span>
+                                                                                            <span
+                                                                                                style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
+                                                                                                id="popup_project_address"></span>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
                                     <tr>
                                         <td height="20"></td>
                                     </tr>
-                                    <tr bgcolor="#fff" style="text-align: center;">
-                                        <td height="50">
-                                            <p style="color: #606060; padding: 0px; margin: 0;">Powered by
-                                                xTriam.com</p>
-                                            <p
-                                                style="color: #000; padding: 10px; margin: 0;font-style: italic; font-weight: 600;font-family: Montserrat, sans-serif;">
-                                                Empowering Window and Door Contractors to Be More Profitable</p>
+                                    <tr>
+                                        <td style="padding:0 30px">
+                                            <table width="100%" border="0" cellpadding="0" cellspacing="0"
+                                                align="center">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="background: #007DD9; font-size: 16px; font-weight: 500;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;font-family: Montserrat, sans-serif;"
+                                                            width="32%" align="left">
+                                                            ITEM NAME
+                                                        </th>
+                                                        <th style="background: #007DD9; font-size: 16px;  font-weight: 500;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;font-family: Montserrat, sans-serif;"
+                                                            align="left">
+                                                            UNIT PRICE
+                                                        </th>
+                                                        <th style="background: #007DD9; font-size: 16px;  font-weight: 500; color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;font-family: Montserrat, sans-serif;"
+                                                            align="center">
+                                                            QUANTITY
+                                                        </th>
+                                                        <th style="background: #007DD9; font-size: 16px;  font-weight: 500;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;font-family: Montserrat, sans-serif;"
+                                                            align="right">
+                                                            EXTENDED PRICE
+                                                        </th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td height="1" style="background: #bebebe;" colspan="4">
+                                                        </td>
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody id="tableVal">
+
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <td
+                                                            style="font-size: 16px;  color: #007DD9;  line-height: 14px;  vertical-align: top; padding:10px;font-family: Montserrat, sans-serif;">
+                                                            Notes: <span id="popup_notes"
+                                                                style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; padding:10px;font-family: Montserrat, sans-serif;"
+                                                                align="right"></span>
+                                                        </td>
+                                                        <td colspan="2"
+                                                            style="font-size: 16px; color: #000; line-height: 14px; text-align: left; vertical-align: top; padding: 10px; font-weight: 400; background: #cce7ff;font-family: Montserrat, sans-serif;">
+                                                            Subtotal:
+                                                        </td>
+                                                        <td id="popup_total"
+                                                            style="font-size: 16px; color: #000; line-height: 14px; text-align: right; vertical-align: top; padding: 10px; font-weight: 400; background: #e6f3ff;font-family: Montserrat, sans-serif;">
+                                                            $390.00
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td
+                                                            style="font-size: 16px; color: #000; line-height: 14px; text-align: left; vertical-align: top; padding: 10px; font-weight: 400; background: #cce7ff;font-family: Montserrat, sans-serif;">
+                                                            Tax:
+                                                        </td>
+                                                        <td id="popup_tax_percentage"
+                                                            style="font-size: 16px; color: #000; line-height: 14px; text-align: left; vertical-align: top; padding: 10px; font-weight: 400; background: #cce7ff;font-family: Montserrat, sans-serif;">
+                                                            7.00%
+                                                        </td>
+                                                        <td id="popup_tax_amount"
+                                                            style="font-size: 16px; color: #000; line-height: 14px; text-align: right; vertical-align: top; padding: 10px; font-weight: 400; background: #e6f3ff;font-family: Montserrat, sans-serif;">
+                                                            $27.30
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td colspan="2"
+                                                            style="font-size: 16px; color: #000; line-height: 14px; text-align: left; vertical-align: top; padding: 10px; font-weight: 600; background: #cce7ff; border-top:2px solid #000;font-family: Montserrat, sans-serif;">
+                                                            TOTAL
+                                                        </td>
+                                                        <td id="popup_sum"
+                                                            style="font-size: 16px; color: #000; line-height: 14px; text-align: right; vertical-align: top; padding: 10px; font-weight: 600; background: #e6f3ff;  border-top:2px solid #000;font-family: Montserrat, sans-serif;">
+                                                            $417.30
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td height="1" colspan="4"
+                                                            style="border-bottom:3px solid #000"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="4"
+                                                            style="font-size: 16px; font-weight: 600; color: #007DD9;  line-height: 14px;  vertical-align: top; padding:10px;font-family: Montserrat, sans-serif;">
+                                                            <span id="additional_info">Additional Information:</span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="4">
+                                                            <div id="item-image" style="columns: 4; display:block;">
+
+                                                            </div>
+
+                                                        </td>
+                                                    </tr>
+                                                    <!--<tr>-->
+                                                    <!--    <td height="1" colspan="4"-->
+                                                    <!--        style="border-bottom:3px solid #000">-->
+                                                    <!--    </td>-->
+                                                    <!--</tr>-->
+                                            </table>
                                         </td>
                                     </tr>
-                                </table>
+                                    </tfoot>
+                                </tbody>
+                            </table>
                             </td>
-                        </tr>
-                        </tbody>
-                        </table>
+                            </tr>
+                            <tr>
+                                <td style="padding:0 30px">
+                                    <table width="100%" border="0" cellpadding="0" cellspacing="0"
+                                        align="center">
+                                        <tbody>
+
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center"
+                                        bgcolor="#ffffff" style="border-radius: 0 0 10px 10px;">
+                                        <tr>
+                                            <td height="20"></td>
+                                        </tr>
+                                        <tr bgcolor="#fff" style="text-align: center;">
+                                            <td height="50">
+                                                <p style="color: #606060; padding: 0px; margin: 0;">Powered by
+                                                    xTriam.com</p>
+                                                <p
+                                                    style="color: #000; padding: 10px; margin: 0;font-style: italic; font-weight: 600;font-family: Montserrat, sans-serif;">
+                                                    Empowering Window and Door Contractors to Be More Profitable</p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            </tbody>
+                            </table>
                         </div>
 
                     </div>

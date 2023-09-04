@@ -8,6 +8,10 @@
         width: 100%;
         height: 100px;
     }
+
+    .annual-resale .form-control{
+        padding: 60px 10px 20px 10px!important;
+    }
 </style>
 @endpush
 
@@ -240,7 +244,7 @@
                                                                 
                                                                 
                                                                 <div class="col-lg-6 col-12  my-1">
-                                                                    <div class="form-floating">
+                                                                    <div class="form-floating annual-resale">
                                                                     <input type="text" value="{{old('gst',Auth::user()->gst) }}"
                                                                         name="gst" class="form-control">
                                                                           <label for="floatingInputValue">Annual Resale Certificate for Sales Tax #</label>

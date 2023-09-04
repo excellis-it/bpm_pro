@@ -24,14 +24,17 @@
                         </a>
                     </div>
                     <!--<h2 class="text-head">BPM PRO</h2>-->
-                    <span class="text-1">Quality Service At An</span>
-                    <span class="text-2"> Affordable Price</span>
+                    <span class="text-1">Quick Invoices</span>
+                    <span class="text-2"> For Professionals On The Go</span>
                 </div>
             </div>
         </div>
         <div class="forms">
             <div class="form-content">
                 <div class="signup-form">
+                    <div class="login-page-logo d-md-none d-block">
+                        <a href="{{ url('/') }}"><img src="{{ asset('frontend_assets/img/invoice_logo1.png') }}" alt=""></a>
+                    </div>
                     <div class="title">Signup</div>
                     <form action="{{ route('register.store') }}"  method="post">
                         @csrf

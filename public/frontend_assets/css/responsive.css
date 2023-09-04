@@ -269,6 +269,9 @@
     .ftr-menu{
         padding: 60px 0px 0px 0px;  
     }
+    .banner_sec, .banner_sec .slick-slide {
+        height: 50vh;
+    }
 }
 @media (max-width:375.98px){
    

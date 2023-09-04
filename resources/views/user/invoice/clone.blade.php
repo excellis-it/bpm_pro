@@ -588,8 +588,7 @@
 
                                 <div class="inv-head-wrap d-flex justify-content-between">
                                     <div class="inv-head">
-                                        <h2>New Invoice - <span id="invoice_show" style="color: #ff7c04">
-                                                {{ $invoice['invoice_no'] }} </span></h2>
+                                        <h2>New Invoice - <span id="invoice_show" style="color: #ff7c04"></span></h2>
                                     </div>
 
                                     <div class="pre-view-wrap d-flex justify-content-end align-items-center">
@@ -1481,308 +1480,309 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-body">
-                        <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#ffffff"
-                            style="border-radius: 0px; margin: 0 auto;">
-                            <tbody>
+                        <div class="table-responsive">
+                            <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#ffffff"
+                                style="border-radius: 0px; margin: 0 auto;">
+                                <tbody>
 
-                                <tr>
-                                    <td style="padding:10px 30px 0">
-                                        <table width="100%" border="0" cellpadding="0" cellspacing="0"
-                                            align="center">
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <table border="0" cellpadding="0" cellspacing="0"
-                                                            align="left" style="width: 100%;">
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td
-                                                                        style="font-size: 14px; color: #000; font-weight: 500; line-height: 18px; vertical-align: top; text-align: left;font-family: Montserrat, sans-serif;">
-                                                                        <img src="webex.png" alt="logo"
-                                                                            id="popup_logo" border="0"
-                                                                            style="object-fit: contain; width: 100px; height: 50px;font-family: Montserrat, sans-serif; display:inline-block;" />
-                                                                        <span
-                                                                            style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
-                                                                            id="popup_comp"></span>
-                                                                        <span
-                                                                            style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
-                                                                            id="popup_add"> </span>
-                                                                        <span
-                                                                            style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
-                                                                            id="popup_citystate"></span>
-                                                                        <span
-                                                                            style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
-                                                                            id="popup_phone"> </span>
-                                                                        <span
-                                                                            style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
-                                                                            id="popup_email"></span>
+                                    <tr>
+                                        <td style="padding:10px 30px 0">
+                                            <table width="100%" border="0" cellpadding="0" cellspacing="0"
+                                                align="center">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <table border="0" cellpadding="0" cellspacing="0"
+                                                                align="left" style="width: 100%;">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td
+                                                                            style="font-size: 14px; color: #000; font-weight: 500; line-height: 18px; vertical-align: top; text-align: left;font-family: Montserrat, sans-serif;">
+                                                                            <img src="webex.png" alt="logo"
+                                                                                id="popup_logo" border="0"
+                                                                                style="object-fit: contain; width: 100px; height: 50px;font-family: Montserrat, sans-serif; display:inline-block;" />
+                                                                            <span
+                                                                                style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
+                                                                                id="popup_comp"></span>
+                                                                            <span
+                                                                                style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
+                                                                                id="popup_add"> </span>
+                                                                            <span
+                                                                                style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
+                                                                                id="popup_citystate"></span>
+                                                                            <span
+                                                                                style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
+                                                                                id="popup_phone"> </span>
+                                                                            <span
+                                                                                style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
+                                                                                id="popup_email"></span>
 
-                                                                    </td>
+                                                                        </td>
 
-                                                                    <td
-                                                                        style="font-size: 14px; font-weight: 500; color: #000; line-height: 20px; vertical-align: top; text-align: left;font-family: Montserrat, sans-serif;">
-                                                                        <table border="0" cellpadding="0"
-                                                                            cellspacing="0" align="right">
-                                                                            <tbody>
-                                                                                <tr>
-                                                                                    <td>
-                                                                                        <span
-                                                                                            style="color: #007DD9;
-                                                                                            padding: 3px 0px;
-                                                                                            text-align: center;
-                                                                                            font-size: 36px;
-                                                                                            line-height: 1;
-                                                                                            font-weight: 500;
-                                                                                            display: inline-block;
-                                                                                            width:219px;font-family: Montserrat, sans-serif;">INVOICE</span><br>
-                                                                                    </td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td><span
-                                                                                            style="background: #007DD9; margin: 10px 0px; padding: 5px; color: #fff;  display: flex;
-                                                                                            justify-content: space-between;font-family: Montserrat, sans-serif; width:250px;">
-                                                                                            <span>INVOICE#</span>
-                                                                                            <span>DATE</span></span>
-                                                                                        <span
-                                                                                            style="color: #000; text-align: center; display: inline-block; width: 100%; font-size: 14px;display: flex; justify-content: space-between;font-family: Montserrat, sans-serif;">
+                                                                        <td
+                                                                            style="font-size: 14px; font-weight: 500; color: #000; line-height: 20px; vertical-align: top; text-align: left;font-family: Montserrat, sans-serif;">
+                                                                            <table border="0" cellpadding="0"
+                                                                                cellspacing="0" align="right">
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td>
                                                                                             <span
-                                                                                                id="popup_invoice_number">2034</span>
+                                                                                                style="color: #007DD9;
+                                                                                                padding: 3px 0px;
+                                                                                                text-align: center;
+                                                                                                font-size: 36px;
+                                                                                                line-height: 1;
+                                                                                                font-weight: 500;
+                                                                                                display: inline-block;
+                                                                                                width:219px;font-family: Montserrat, sans-serif;">INVOICE</span><br>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td><span
+                                                                                                style="background: #007DD9; margin: 10px 0px; padding: 5px; color: #fff;  display: flex;
+                                                                                                justify-content: space-between;font-family: Montserrat, sans-serif; width:250px;">
+                                                                                                <span>INVOICE#</span>
+                                                                                                <span>DATE</span></span>
                                                                                             <span
-                                                                                                id="popup_date">03/08/2023</span>
-                                                                                        </span>
-                                                                                    </td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td><span
-                                                                                            style="background: #007DD9; margin: 10px 0px;  padding: 5px; color: #fff;  display: flex;
-                                                                                            justify-content: start;font-family: Montserrat, sans-serif; width:250px;text-align: left;">
-                                                                                            TERMS</span>
-                                                                                        <span
-                                                                                            style="color: #000; text-align: left; display: inline-block; width: 100%; font-size: 14px; font-weight: 400;font-family: Montserrat, sans-serif;"
-                                                                                            id="popup_term">
-                                                                                        </span>
-                                                                                    </td>
-                                                                                </tr>
-                                                                            </tbody>
-                                                                        </table>
-                                                                    </td>
-                                                                </tr>
+                                                                                                style="color: #000; text-align: center; display: inline-block; width: 100%; font-size: 14px;display: flex; justify-content: space-between;font-family: Montserrat, sans-serif;">
+                                                                                                <span
+                                                                                                    id="popup_invoice_number">2034</span>
+                                                                                                <span
+                                                                                                    id="popup_date">03/08/2023</span>
+                                                                                            </span>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td><span
+                                                                                                style="background: #007DD9; margin: 10px 0px;  padding: 5px; color: #fff;  display: flex;
+                                                                                                justify-content: start;font-family: Montserrat, sans-serif; width:250px;text-align: left;">
+                                                                                                TERMS</span>
+                                                                                            <span
+                                                                                                style="color: #000; text-align: left; display: inline-block; width: 100%; font-size: 14px; font-weight: 400;font-family: Montserrat, sans-serif;"
+                                                                                                id="popup_term">
+                                                                                            </span>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
 
-                                                            </tbody>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <table border="0" cellpadding="0" cellspacing="0"
-                                                            align="left"
-                                                            style="width: 100%; vertical-align: top; margin-top: 18px;">
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td
-                                                                        style="font-size: 14px; color: #000; font-weight: 400; line-height: 18px; vertical-align: top; text-align: right;font-family: Montserrat, sans-serif;">
-                                                                        <span
-                                                                            style="display: block; text-align: left; background: #007DD9; padding: 5px; color: #fff;font-family: Montserrat, sans-serif;font-weight:400">Bill
-                                                                            To</span>
-                                                                        <span
-                                                                            style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
-                                                                            id="popup_billto_name">Name:
-                                                                            Pritam Maity</span>
-                                                                        <span
-                                                                            style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
-                                                                            id="popup_billto_com">Company
-                                                                            Name</span>
-                                                                        <span
-                                                                            style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
-                                                                            id="popup_billto_add">Address</span>
-                                                                        <span
-                                                                            style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
-                                                                            id="popup_billto_zip">Zip
-                                                                            Code</span>
-                                                                        <span
-                                                                            style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
-                                                                            id="popup_billto_ph">Phone</span>
-                                                                        <span
-                                                                            style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
-                                                                            id="popup_billto_email">Email
-                                                                            Address</span>
-                                                                    </td>
-                                                                    <td style="vertical-align: top;">
-                                                                        <table border="0" cellpadding="0"
-                                                                            cellspacing="0" align="right"
-                                                                            style="vertical-align: top;font-family: Montserrat, sans-serif;">
-                                                                            <tbody>
-                                                                                <tr>
-                                                                                    <td><span
-                                                                                            style="background: #007DD9;
-                                                                                            margin: 0 0 10px;
-                                                                                            padding: 5px;
-                                                                                            color: #fff;
-                                                                                            width: 250px;
-                                                                                            display: inline-block;
-                                                                                            text-align: center;font-family: Montserrat, sans-serif; font-weight:500;font-size: 14px;">
-                                                                                            PROJECT NAME AND ADDRESS</span></br>
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <table border="0" cellpadding="0" cellspacing="0"
+                                                                align="left"
+                                                                style="width: 100%; vertical-align: top; margin-top: 18px;">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td
+                                                                            style="font-size: 14px; color: #000; font-weight: 400; line-height: 18px; vertical-align: top; text-align: right;font-family: Montserrat, sans-serif;">
+                                                                            <span
+                                                                                style="display: block; text-align: left; background: #007DD9; padding: 5px; color: #fff;font-family: Montserrat, sans-serif;font-weight:400">Bill
+                                                                                To</span>
+                                                                            <span
+                                                                                style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
+                                                                                id="popup_billto_name">Name:
+                                                                                Pritam Maity</span>
+                                                                            <span
+                                                                                style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
+                                                                                id="popup_billto_com">Company
+                                                                                Name</span>
+                                                                            <span
+                                                                                style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
+                                                                                id="popup_billto_add">Address</span>
+                                                                            <span
+                                                                                style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
+                                                                                id="popup_billto_zip">Zip
+                                                                                Code</span>
+                                                                            <span
+                                                                                style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
+                                                                                id="popup_billto_ph">Phone</span>
+                                                                            <span
+                                                                                style="display: block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;"
+                                                                                id="popup_billto_email">Email
+                                                                                Address</span>
+                                                                        </td>
+                                                                        <td style="vertical-align: top;">
+                                                                            <table border="0" cellpadding="0"
+                                                                                cellspacing="0" align="right"
+                                                                                style="vertical-align: top;font-family: Montserrat, sans-serif;">
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td><span
+                                                                                                style="background: #007DD9;
+                                                                                                margin: 0 0 10px;
+                                                                                                padding: 5px;
+                                                                                                color: #fff;
+                                                                                                width: 250px;
+                                                                                                display: inline-block;
+                                                                                                text-align: center;font-family: Montserrat, sans-serif; font-weight:500;font-size: 14px;">
+                                                                                                PROJECT NAME AND ADDRESS</span></br>
 
-                                                                                        <span
-                                                                                            style="display: inline-block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;width:250px;"
-                                                                                            id="popup_project_name"></span></br>
-                                                                                        <span
-                                                                                            style="display: inline-block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;width:250px;"
-                                                                                            id="popup_project_address"></span>
-                                                                                    </td>
-                                                                                </tr>
-                                                                            </tbody>
-                                                                        </table>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td height="20"></td>
-                                </tr>
-                                <tr>
-                                    <td style="padding:0 30px">
-                                        <table width="100%" border="0" cellpadding="0" cellspacing="0"
-                                            align="center">
-                                            <thead>
-                                                <tr>
-                                                    <th style="background: #007DD9; font-size: 16px; font-weight: 500;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;font-family: Montserrat, sans-serif;"
-                                                        width="32%" align="left">
-                                                        ITEM NAME
-                                                    </th>
-                                                    <th style="background: #007DD9; font-size: 16px;  font-weight: 500;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;font-family: Montserrat, sans-serif;"
-                                                        align="left">
-                                                        UNIT PRICE
-                                                    </th>
-                                                    <th style="background: #007DD9; font-size: 16px;  font-weight: 500; color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;font-family: Montserrat, sans-serif;"
-                                                        align="center">
-                                                        QUANTITY
-                                                    </th>
-                                                    <th style="background: #007DD9; font-size: 16px;  font-weight: 500;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;font-family: Montserrat, sans-serif;"
-                                                        align="right">
-                                                        EXTENDED PRICE
-                                                    </th>
-                                                </tr>
-                                                <tr>
-                                                    <td height="1" style="background: #bebebe;" colspan="4"></td>
-                                                </tr>
-                                                </thead>
-                                                <tbody id="tableVal">
-                                                
+                                                                                            <span
+                                                                                                style="display: inline-block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;width:250px;"
+                                                                                                id="popup_project_name"></span></br>
+                                                                                            <span
+                                                                                                style="display: inline-block; text-align: left; padding-top: 5px;font-family: Montserrat, sans-serif;width:250px;"
+                                                                                                id="popup_project_address"></span>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
                                                 </tbody>
-                                                <tfoot>
-                                                <tr>
-                                                    <td
-                                                        style="font-size: 16px; font-weight: 600; color: #007DD9;  line-height: 14px;  vertical-align: top; padding:10px;font-family: Montserrat, sans-serif;">
-                                                        Notes: <span id="popup_notes"
-                                                            style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; font-weight: 400;  padding:10px;font-family: Montserrat, sans-serif;"
-                                                            align="right"></span>
-                                                    </td>
-                                                    <td colspan="2"
-                                                        style="font-size: 16px; color: #000; line-height: 14px; text-align: left; vertical-align: top; padding: 10px; font-weight: 400; background: #cce7ff;font-family: Montserrat, sans-serif;">
-                                                        Subtotal:
-                                                    </td>
-                                                    <td id="popup_total"
-                                                        style="font-size: 16px; color: #000; line-height: 14px; text-align: right; vertical-align: top; padding: 10px; font-weight: 400; background: #e6f3ff;font-family: Montserrat, sans-serif;">
-                                                        $390.00
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td
-                                                        style="font-size: 16px; color: #000; line-height: 14px; text-align: left; vertical-align: top; padding: 10px; font-weight: 400; background: #cce7ff;font-family: Montserrat, sans-serif;">
-                                                        Tax:
-                                                    </td>
-                                                    <td id="popup_tax_percentage"
-                                                        style="font-size: 16px; color: #000; line-height: 14px; text-align: left; vertical-align: top; padding: 10px; font-weight: 400; background: #cce7ff;font-family: Montserrat, sans-serif;">
-                                                        7.00%
-                                                    </td>
-                                                    <td id="popup_tax_amount"
-                                                        style="font-size: 16px; color: #000; line-height: 14px; text-align: right; vertical-align: top; padding: 10px; font-weight: 400; background: #e6f3ff;font-family: Montserrat, sans-serif;">
-                                                        $27.30
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td colspan="2"
-                                                        style="font-size: 16px; color: #000; line-height: 14px; text-align: left; vertical-align: top; padding: 10px; font-weight: 600; background: #cce7ff; border-top:2px solid #000;font-family: Montserrat, sans-serif;">
-                                                        TOTAL
-                                                    </td>
-                                                    <td id="popup_sum"
-                                                        style="font-size: 16px; color: #000; line-height: 14px; text-align: right; vertical-align: top; padding: 10px; font-weight: 600; background: #e6f3ff;  border-top:2px solid #000;font-family: Montserrat, sans-serif;">
-                                                        $417.30
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td height="1" colspan="4"
-                                                        style="border-bottom:3px solid #000"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="4"
-                                                        style="font-size: 16px; font-weight: 600; color: #007DD9;  line-height: 14px;  vertical-align: top; padding:10px;font-family: Montserrat, sans-serif;">
-                                                        <span id="additional_info">Additional Information:</span>
-
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="4">
-                                                        <div id="item-image" style="columns: 4; display:block;">
-
-                                                        </div>
-
-                                                    </td>
-                                                </tr>
-                                                <!--<tr>-->
-                                                <!--    <td height="1" colspan="4"-->
-                                                <!--        style="border-bottom:3px solid #000">-->
-                                                <!--    </td>-->
-                                                <!--</tr>-->
-                                        </table>
-                                    </td>
-                                </tr>
-
-                            </tfoot>
-                        </table>
-                        </td>
-                        </tr>
-                        <tr>
-                            <td style="padding:0 30px">
-                                <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
-                                    <tbody>
-
-                                    </tbody>
-                                </table>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center"
-                                    bgcolor="#ffffff" style="border-radius: 0 0 10px 10px;">
+                                            </table>
+                                        </td>
+                                    </tr>
                                     <tr>
                                         <td height="20"></td>
                                     </tr>
-                                    <tr bgcolor="#fff" style="text-align: center;">
-                                        <td height="50">
-                                            <p style="color: #606060; padding: 0px; margin: 0;">Powered by
-                                                xTriam.com</p>
-                                            <p
-                                                style="color: #000; padding: 10px; margin: 0;font-style: italic; font-weight: 600;font-family: Montserrat, sans-serif;">
-                                                Empowering Window and Door Contractors to Be More Profitable</p>
+                                    <tr>
+                                        <td style="padding:0 30px">
+                                            <table width="100%" border="0" cellpadding="0" cellspacing="0"
+                                                align="center">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="background: #007DD9; font-size: 16px; font-weight: 500;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;font-family: Montserrat, sans-serif;"
+                                                            width="32%" align="left">
+                                                            ITEM NAME
+                                                        </th>
+                                                        <th style="background: #007DD9; font-size: 16px;  font-weight: 500;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;font-family: Montserrat, sans-serif;"
+                                                            align="left">
+                                                            UNIT PRICE
+                                                        </th>
+                                                        <th style="background: #007DD9; font-size: 16px;  font-weight: 500; color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;font-family: Montserrat, sans-serif;"
+                                                            align="center">
+                                                            QUANTITY
+                                                        </th>
+                                                        <th style="background: #007DD9; font-size: 16px;  font-weight: 500;  color: #fff; font-weight: normal; line-height: 1; vertical-align: top; padding: 10px;font-family: Montserrat, sans-serif;"
+                                                            align="right">
+                                                            EXTENDED PRICE
+                                                        </th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td height="1" style="background: #bebebe;" colspan="4"></td>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody id="tableVal">
+                                                    
+                                                    </tbody>
+                                                    <tfoot>
+                                                    <tr>
+                                                        <td
+                                                            style="font-size: 16px; font-weight: 600; color: #007DD9;  line-height: 14px;  vertical-align: top; padding:10px;font-family: Montserrat, sans-serif;">
+                                                            Notes: <span id="popup_notes"
+                                                                style="font-size: 14px;  color: #000;  line-height: 14px;  vertical-align: top; font-weight: 400;  padding:10px;font-family: Montserrat, sans-serif;"
+                                                                align="right"></span>
+                                                        </td>
+                                                        <td colspan="2"
+                                                            style="font-size: 16px; color: #000; line-height: 14px; text-align: left; vertical-align: top; padding: 10px; font-weight: 400; background: #cce7ff;font-family: Montserrat, sans-serif;">
+                                                            Subtotal:
+                                                        </td>
+                                                        <td id="popup_total"
+                                                            style="font-size: 16px; color: #000; line-height: 14px; text-align: right; vertical-align: top; padding: 10px; font-weight: 400; background: #e6f3ff;font-family: Montserrat, sans-serif;">
+                                                            $390.00
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td
+                                                            style="font-size: 16px; color: #000; line-height: 14px; text-align: left; vertical-align: top; padding: 10px; font-weight: 400; background: #cce7ff;font-family: Montserrat, sans-serif;">
+                                                            Tax:
+                                                        </td>
+                                                        <td id="popup_tax_percentage"
+                                                            style="font-size: 16px; color: #000; line-height: 14px; text-align: left; vertical-align: top; padding: 10px; font-weight: 400; background: #cce7ff;font-family: Montserrat, sans-serif;">
+                                                            7.00%
+                                                        </td>
+                                                        <td id="popup_tax_amount"
+                                                            style="font-size: 16px; color: #000; line-height: 14px; text-align: right; vertical-align: top; padding: 10px; font-weight: 400; background: #e6f3ff;font-family: Montserrat, sans-serif;">
+                                                            $27.30
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td colspan="2"
+                                                            style="font-size: 16px; color: #000; line-height: 14px; text-align: left; vertical-align: top; padding: 10px; font-weight: 600; background: #cce7ff; border-top:2px solid #000;font-family: Montserrat, sans-serif;">
+                                                            TOTAL
+                                                        </td>
+                                                        <td id="popup_sum"
+                                                            style="font-size: 16px; color: #000; line-height: 14px; text-align: right; vertical-align: top; padding: 10px; font-weight: 600; background: #e6f3ff;  border-top:2px solid #000;font-family: Montserrat, sans-serif;">
+                                                            $417.30
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td height="1" colspan="4"
+                                                            style="border-bottom:3px solid #000"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="4"
+                                                            style="font-size: 16px; font-weight: 600; color: #007DD9;  line-height: 14px;  vertical-align: top; padding:10px;font-family: Montserrat, sans-serif;">
+                                                            <span id="additional_info">Additional Information:</span>
+
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="4">
+                                                            <div id="item-image" style="columns: 4; display:block;">
+
+                                                            </div>
+
+                                                        </td>
+                                                    </tr>
+                                                    <!--<tr>-->
+                                                    <!--    <td height="1" colspan="4"-->
+                                                    <!--        style="border-bottom:3px solid #000">-->
+                                                    <!--    </td>-->
+                                                    <!--</tr>-->
+                                            </table>
                                         </td>
                                     </tr>
-                                </table>
-                            </td>
-                        </tr>
-                        </tbody>
-                        </table>
 
+                                </tfoot>
+                            </table>
+                            </td>
+                            </tr>
+                            <tr>
+                                <td style="padding:0 30px">
+                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
+                                        <tbody>
+
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center"
+                                        bgcolor="#ffffff" style="border-radius: 0 0 10px 10px;">
+                                        <tr>
+                                            <td height="20"></td>
+                                        </tr>
+                                        <tr bgcolor="#fff" style="text-align: center;">
+                                            <td height="50">
+                                                <p style="color: #606060; padding: 0px; margin: 0;">Powered by
+                                                    xTriam.com</p>
+                                                <p
+                                                    style="color: #000; padding: 10px; margin: 0;font-style: italic; font-weight: 600;font-family: Montserrat, sans-serif;">
+                                                    Empowering Window and Door Contractors to Be More Profitable</p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            </tbody>
+                            </table>
+                        </div>
                     </div>
 
                     <div class="modal-footer">
@@ -2182,6 +2182,7 @@
           
             $('#invoice_no').keyup(function() {
                 var invoice = $('#invoice_no').val();
+                
 
                 $.ajax({
                     type: "GET",
@@ -2192,8 +2193,10 @@
                     },
                     success: function(resp) {
                         if (resp.status == false) {
+                            
                             $('.check-invoice').text(resp.message);
                         } else {
+                           
                             $('#invoice_show').html('(' + invoice + ')');
                             $('.check-invoice').text('');
                         }

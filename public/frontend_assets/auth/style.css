@@ -231,3 +231,12 @@ body{
     height: 50px!important;
     position: relative!important;
 }
+.login-page-logo{
+  height: 35px;
+  width: 100%;
+}
+.login-page-logo img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
