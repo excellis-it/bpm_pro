@@ -83,7 +83,7 @@ class AuthController extends Controller
             
             if ($user->hasRole('ADMIN')) {
                 return redirect()->route('user.list');
-            } else if($user->hasRole('USER')){
+            } else if($user->hasRole('USER') && $user->status == 1){
                 return redirect()->route('invoice.index');
             } else if($user->hasRole('MANAGER')){
                  return redirect()->route('user.list');
