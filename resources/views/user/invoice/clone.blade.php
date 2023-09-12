@@ -66,7 +66,7 @@
             border-radius: 10px;
         }
         
-        .description_box{
+        .description_box {
            margin: 20px 0px; 
         }
 

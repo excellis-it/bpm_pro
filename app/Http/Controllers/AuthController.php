@@ -28,7 +28,7 @@ class AuthController extends Controller
 
     public function registerStore(Request $request)
     {
-       
+        
         $request->validate([
             'fname'     => 'required',
             'lname'     => 'required',
@@ -43,10 +43,11 @@ class AuthController extends Controller
         $input = $request->all();
         $user = new User;
         $user->first_name = $input['fname'];
-         $user->last_name = $input['lname'];
+        $user->last_name = $input['lname'];
         $user->email = $input['email'];
         $user->phone = $input['phone'];
         $user->password = bcrypt($input['password']);
+        $user->status = 1;
         $user->save();
         $user->assignRole('USER');
 
@@ -56,8 +57,10 @@ class AuthController extends Controller
             'phone' => $user->phone,
         ];
         Mail::to($request->email)->send(new WelcomeMail($maildata));
+        Auth::loginUsingId($user->id);
         
-        return redirect()->route('login')->with('message', 'Your account has been created successfully.');
+        return redirect()->route('invoice.index');
+       
     }
     
     public function login()
@@ -80,9 +83,9 @@ class AuthController extends Controller
             
             if ($user->hasRole('ADMIN')) {
                 return redirect()->route('user.list');
-            } else if($user->hasRole('USER') && $user->status == 1){
+            } else if($user->hasRole('USER')){
                 return redirect()->route('invoice.index');
-            } else if($user->hasRole('MANAGER') && $user->status == 1){
+            } else if($user->hasRole('MANAGER')){
                  return redirect()->route('user.list');
             }else{
                

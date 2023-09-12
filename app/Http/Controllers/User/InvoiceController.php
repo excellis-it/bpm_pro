@@ -156,7 +156,7 @@ class InvoiceController extends Controller
             'invoice_id' => '',
         ];
 
-        Mail::to($request->bil_to_email)->send(new InvoiceMail($maildata));
+        Mail::to($request->bil_to_email)->cc($request->from_email)->send(new InvoiceMail($maildata));
        
 
         return redirect()->route('invoice.index')->with('message', 'Invoice created successfully');
@@ -360,7 +360,7 @@ class InvoiceController extends Controller
                 'invoice_id' => '',
             ];
     
-            Mail::to($request->bil_to_email)->send(new InvoiceMail($maildata));
+            Mail::to($request->bil_to_email)->cc($request->from_email)->send(new InvoiceMail($maildata));
     
             return redirect()->route('invoice.index')->with('message', 'Invoice have been updated');
             } catch (\Throwable $th) {
@@ -525,7 +525,7 @@ class InvoiceController extends Controller
                 'invoice_id' => '',
             ];
     
-            Mail::to($request->bil_to_email)->send(new InvoiceMail($maildata));
+            Mail::to($request->bil_to_email)->cc($request->from_email)->send(new InvoiceMail($maildata));
            
     
             return redirect()->route('invoice.index')->with('message', 'Invoice created successfully');
